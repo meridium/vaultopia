@@ -1,0 +1,76 @@
+﻿@media screen {
+    /*-------------------------
+	1. RESET
+	--------------------------*/
+    html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+        margin: 0;
+        padding: 0;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    ol, ul {
+        list-style: none;
+    }
+    th {
+        text-align: left;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 100%;
+        font-weight: normal;
+    }
+    img {
+        border: none;
+        display: block;
+    }
+    header, section, article, aside {
+        display: block;
+    }
+
+    /*-------------------------
+	1. GLOBAL
+	--------------------------*/
+    html {
+        -webkit-font-smoothing: antialiased;
+    }
+    body {
+        font: 75%/1.5 'Avenir LT W02 55 Roman', 'helvetica neue', arial, sans-serif;
+        color: #505050;
+    }
+
+    h1, h2 {
+        font-family: ChunkFiveRegular;
+        color: #505050;
+        line-height: 1.1;
+    }
+
+    a {
+        text-decoration: none;
+        color: #ee5f12;
+    }
+
+    a:hover {
+        
+    }
+
+    .icon {
+        background-size: 300px 200px;
+        background-repeat: no-repeat;
+        background-image: url(/static/images/sprite.png);
+        text-indent: -9999px;
+        display: inline-block;
+    }
+
+    .button {
+        background: #39beb8;
+        color: #fff0f5;
+        font-family: 'Avenir LT W02 55 Roman';
+        text-transform: uppercase;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 2px;
+        display: inline-block;
+        padding: 8px 20px;
+        box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.15) inset;
+    }
+}
