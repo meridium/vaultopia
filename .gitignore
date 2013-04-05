@@ -110,6 +110,17 @@ UpgradeLog*.XML
 # EPIServer
 
 src/AppData
+src/IndexingService
+src/modulesbin
+src/modules
+src/App_Browsers
+
+!lang/SV.xml
+!lang/SV-UI.xml
+lang/
+
+src/Vaultopia.Web/License.config
+
 
 # MacOs Temp files
 ._*.*
