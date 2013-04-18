@@ -2,14 +2,15 @@
     .teasers {
         overflow: hidden;
     }
-    .teasers li {
+    .teasers > div { overflow: hidden; }
+    .teasers > div > div {
         float: left;
         width: 23.5%;
         margin: 0 2% 0 0;
         padding: 16.8% 0 0;
         position: relative;
     }
-    .teasers li:last-child {
+    .teasers > div > div:last-child {
         margin: 0;
     }
     .teasers h2 {
@@ -49,7 +50,11 @@
         opacity: .3;
     }
 
-    .teasers .wide {
+
+    .wide-teasers {
+        margin-top: -20px;
+    }
+    .wide-teasers > div > div {
         width: 49%;
         padding: 33px 0 0 0;
         margin: 0;
@@ -57,32 +62,26 @@
         border-bottom: 1px solid #e3e3e3;
         height: 152px;
     }
-    .teasers .wide:last-child {
-        border: 0;
-    }
-    .teasers .wide:nth-child(-n+2) {
-        margin-top: -20px;
-    }
-    .teasers .wide:nth-last-child(2) {
-        border: 0;
-    }
-    .teasers .wide:nth-child(odd) {
     
+    .wide-teasers > div > div:nth-last-child(-n+2) {
+        border: 0;
+    }
+    .wide-teasers > div > div:nth-child(odd) {
         float: left;
         width: 51%;
     }
-    .teasers .wide img {
+    .wide-teasers img {
         max-width:none;
         width: 118px;
         top: 30px;
     }
-    .teasers .wide h2,
-    .teasers .wide p {
+    .wide-teasers h2,
+    .wide-teasers p {
         padding-left: 135px;
         padding-right: 20px;
     }
    
-
+       
 }
 
 

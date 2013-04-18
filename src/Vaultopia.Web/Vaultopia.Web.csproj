@@ -107,17 +107,19 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
     <Compile Include="Controllers\StartPageController.cs" />
+    <Compile Include="Controllers\TeaserController.cs" />
+    <Compile Include="Controllers\TeaserWideController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Blocks\TeaserBlock.cs" />
+    <Compile Include="Models\Blocks\TeaserBlockViewModel.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
-    <Folder Include="Models\Blocks\" />
     <Folder Include="Models\Properties\" />
-    <Folder Include="Static\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Static\Fonts\Avenir\8afe744b-89a2-4ae2-a88e-05c6882580f3.svg" />
@@ -125,12 +127,24 @@
     <Content Include="Static\Fonts\ChunkFive\Chunkfive-webfont.svg" />
     <Content Include="Static\Fonts\ChunkFive\demo.html" />
     <Content Include="Static\Fonts\ChunkFive\stylesheet.css" />
+    <Content Include="Static\Images\dark.png" />
+    <Content Include="Static\Images\light.png" />
+    <Content Include="Static\Images\logotype.png" />
+    <Content Include="Static\Images\sprite.png" />
     <Content Include="Static\Scripts\Global.js" />
     <Content Include="Static\Scripts\Lib\jquery-1.9.1.js" />
     <Content Include="Static\Styles\Base.css" />
     <Content Include="Static\Styles\Fonts.css" />
     <Content Include="Static\Styles\Layout.css" />
     <Content Include="Static\Styles\Views.css" />
+    <Content Include="Static\Temp\push.jpg" />
+    <Content Include="Static\Temp\small01.jpg" />
+    <Content Include="Static\Temp\square01.jpg" />
+    <Content Include="Static\Temp\teaser01.jpg" />
+    <Content Include="Static\Temp\teaser02.jpg" />
+    <Content Include="Static\Temp\teaser03.jpg" />
+    <Content Include="Static\Temp\teaser04.jpg" />
+    <Content Include="Static\Temp\testimonial01.jpg" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -162,6 +176,9 @@
     <Content Include="Static\Fonts\ChunkFive\Chunkfive-webfont.eot" />
     <Content Include="Static\Fonts\ChunkFive\Chunkfive-webfont.ttf" />
     <Content Include="Static\Fonts\ChunkFive\Chunkfive-webfont.woff" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
+    <Content Include="Views\Teaser\Index.cshtml" />
+    <Content Include="Views\TeaserWide\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
