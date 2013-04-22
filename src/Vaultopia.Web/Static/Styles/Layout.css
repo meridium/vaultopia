@@ -234,6 +234,23 @@
         margin: 0 0 0 2%;
         float: left;
     }
+
+    footer #inspiration img {
+        border: 4px solid #fff;
+        border-radius: 2px;
+        max-width: 100%;
+    }
+    
+    footer #inspiration li {
+        float: left;
+        width: 26.3%;
+        margin-right: 7%;
+        margin-bottom: 13px;
+    }
+    footer #inspiration li:nth-child(3n) {
+        width: 26.3%;
+        margin-right: 0;
+    }
 }
 
 
@@ -316,6 +333,34 @@
 
         header .facebook,
     header .twitter { display: none; }
+
+    footer #about {
+        width: 32%;
+        margin-right: 2%;
+    }
+
+    footer #testimonials {
+        width: 66%;
+        margin: 0;
+    }
+
+    footer #inspiration {
+        clear: both;
+        float: none;
+        width: 100%;
+        margin: 0;
+        padding: 25px 0 0;
+    }
+    footer #inspiration li,
+    footer #inspiration li:nth-child(3n) {
+        width: auto;
+        margin: 0;
+        width: 13.67%;
+        margin-right: 3.4%;
+    }
+    footer #inspiration li:last-child {
+        margin: 0;
+    }
 
 }
 
