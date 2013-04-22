@@ -193,9 +193,45 @@
         margin: 0 .5%;
         float: left;
     }
+    footer #testimonials blockquote {
+        position: relative;
+    }
+    footer #testimonials p {
+        position: relative;
+        background: #2eb2ab;
+        height: 66px;
+        border-radius: 3px;
+        box-sizing: border-box;
+        font-size: 16px;
+        font-family: georgia;
+        font-style: italic;
+        padding: 8px 10px;
+        margin: 0 0 12px 80px;
+    }
+    footer #testimonials p:before {
+        content: "";
+        width: 6px;
+        height: 11px;
+        display: block;
+        position: absolute;
+        left:-6px;
+        top: 27px;
+        background-size: 300px 200px;
+        background-repeat: no-repeat;
+        background-image: url(/static/images/sprite.png);
+        background-position: -71px 0;
+    }
+    footer #testimonials img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 39px;
+        border: 3px solid #fff;
+    }
+
     footer #inspiration {
-        width: 24%;
-        margin: 0 0 0 1%;
+        width: 23%;
+        margin: 0 0 0 2%;
         float: left;
     }
 }
