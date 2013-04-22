@@ -120,6 +120,7 @@ src/Vaultopia.Web/App_Browsers
 lang/
 
 src/Vaultopia.Web/License.config
+*.config
 
 
 # MacOs Temp files
