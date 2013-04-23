@@ -120,8 +120,18 @@ src/Vaultopia.Web/App_Browsers
 lang/
 
 src/Vaultopia.Web/License.config
-*.config
+src/Vaultopia.Web/episerver.config
+src/Vaultopia.Web/connectionStrings.config
+src/Vaultopia.Web/EPiServerFramework.config
+src/Vaultopia.Web/EPiServerLog.config
+src/Vaultopia.Web/imagevault.client.config
+src/Vaultopia.Web/imagevault.idp.certificates.config
+src/Vaultopia.Web/imagevault.idp.portalshell.idp.config
+src/Vaultopia.Web/imagevault.idp.relyingparties.config
+src/Vaultopia.Web/imagevault.idp.tracing.config
+src/Vaultopia.Web/imagevault.idp.wif.config
 
+*.cer
 
 # MacOs Temp files
 ._*.*
