@@ -349,7 +349,7 @@
         float: none;
         width: 100%;
         margin: 0;
-        padding: 25px 0 0;
+        padding: 30px 0 0;
     }
     footer #inspiration li,
     footer #inspiration li:nth-child(3n) {
@@ -445,5 +445,14 @@
 
     #logotype {
         top: 16px;
+    }
+
+    footer #inspiration li,
+    footer #inspiration li:nth-child(3n) {
+        width: 20.7%;
+        margin: 0 5% 12px 0;
+    }
+    footer #inspiration li:nth-child(4n) {
+        margin-right: 0;
     }
 }
