@@ -70,7 +70,7 @@
         text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
         border-radius: 2px;
         display: inline-block;
-        padding: 8px 20px;
-        box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.15) inset;
+        padding: 8px 20px 9px;
+        box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.1) inset;
     }
 }
