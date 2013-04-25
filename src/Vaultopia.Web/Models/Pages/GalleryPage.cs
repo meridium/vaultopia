@@ -6,7 +6,7 @@ using EPiServer.Web;
 
 namespace Vaultopia.Web.Models.Pages {
     [ContentType(DisplayName = "Gallery", GUID = "f8b2c441-9e8c-4173-9d47-559e8c2a2fe9", Description = "")]
-    public class GalleryPage : PageData {
+    public class GalleryPage : SitePageData {
         
         [CultureSpecific]
         [Required]
