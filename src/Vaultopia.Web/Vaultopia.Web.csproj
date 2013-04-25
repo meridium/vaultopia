@@ -149,6 +149,7 @@
     <Compile Include="Models\Blocks\TeaserBlockViewModel.cs" />
     <Compile Include="Models\Pages\GalleryPage.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
+    <Compile Include="Models\UploadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Static\Scripts\Vaultopia.Upload.js" />
   </ItemGroup>

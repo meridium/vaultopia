@@ -54,6 +54,25 @@
         
     }
 
+
+    form label {
+        font-weight: bold;
+        display: block;
+    }
+    form input:not([type=submit]),
+    form textarea {
+        border: 1px solid #ececec;
+        background: #fff;
+        border-radius: 2px;
+        font-size: 14px;
+        font-family: 'Avenir LT W02 55 Roman', 'helvetica neue', arial, sans-serif;
+        padding: 12px 10px;
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0 0 15px;
+    }
+
+
     .icon {
         background-size: 300px 200px;
         background-repeat: no-repeat;
@@ -72,6 +91,7 @@
         display: inline-block;
         padding: 8px 20px 9px;
         box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.1) inset;
+        border: 0;
     }
 
     .overlay {

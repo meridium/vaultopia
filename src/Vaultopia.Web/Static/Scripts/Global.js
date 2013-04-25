@@ -19,8 +19,8 @@ $(document).ready(function () {
         });
     });
 
-
-    $('#upload-action').click(function(e) {
+    
+    $('#upload-action').click(function (e) {
         e.preventDefault();
         Vaultopia.Upload.init();
     });
