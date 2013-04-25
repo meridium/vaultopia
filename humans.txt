@@ -1,0 +1,12 @@
+﻿# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+Christian Andersson -- Frontend -- @krickelfox
+Marcus Lindblom -- Developer -- @kloojed
+Robert Blomqvist -- Developer
+
+# TECHNOLOGY COLOPHON
+
+HTML5, CSS3
