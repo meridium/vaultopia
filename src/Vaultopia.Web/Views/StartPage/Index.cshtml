@@ -1,4 +1,4 @@
-﻿@model Vaultopia.Web.Models.Pages.StartPage
+﻿@model Vaultopia.Web.Models.ViewModels.PageViewModel<Vaultopia.Web.Models.Pages.StartPage>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -16,7 +16,7 @@
     <div class="wrap">
         <h1>Awesome deals</h1>
         <div class="teasers">
-            @Html.PropertyFor(m => m.Teasers)
+            @Html.PropertyFor(m => m.CurrentPage.Teasers)
         </div>
     </div>
 </section>
@@ -24,7 +24,7 @@
     <div class="wrap">
         <h1>Popular destinations</h1>
         <div class="teasers wide-teasers">
-            @Html.PropertyFor(m => m.WideTeasers, new { Tag = "wide" })
+            @Html.PropertyFor(m => m.CurrentPage.WideTeasers, new { Tag = "wide" })
         </div>
     </div>
 </section>
