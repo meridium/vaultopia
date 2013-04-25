@@ -71,6 +71,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\EPiServer\EPiServer.XForms.dll</HintPath>
     </Reference>
+    <Reference Include="ImageVault.EPiServer.Common">
+      <HintPath>modulesbin\ImageVault.EPiServer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageVault.EPiServer7">
+      <HintPath>modulesbin\ImageVault.EPiServer7.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
