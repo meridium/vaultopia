@@ -70,7 +70,23 @@
         text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
         border-radius: 2px;
         display: inline-block;
-        padding: 8px 20px;
-        box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.15) inset;
+        padding: 8px 20px 9px;
+        box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.1) inset;
+    }
+
+    .overlay {
+        background: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+    }
+    .dialog {
+        margin: 100px auto;
+        background: #f2f2f2;
+        width: 525px;
+        min-height: 330px;
+        border-radius: 2px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
     }
 }

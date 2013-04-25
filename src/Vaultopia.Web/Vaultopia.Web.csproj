@@ -150,6 +150,7 @@
     <Compile Include="Models\Pages\GalleryPage.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Static\Scripts\Vaultopia.Upload.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Properties\" />
@@ -166,6 +167,7 @@
     <Content Include="Static\Images\sprite.png" />
     <Content Include="Static\Scripts\Global.js" />
     <Content Include="Static\Scripts\Lib\jquery-2.0.0.js" />
+    <Content Include="Static\Scripts\Lib\jquery.masonry.js" />
     <Content Include="Static\Styles\Base.css" />
     <Content Include="Static\Styles\Fonts.css" />
     <Content Include="Static\Styles\Layout.css" />
@@ -214,6 +216,7 @@
     <Content Include="Views\Teaser\Index.cshtml" />
     <Content Include="Views\TeaserWide\Index.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
+    <Content Include="Views\Gallery\Upload.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SelectedTemplate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
