@@ -15,5 +15,9 @@ namespace Vaultopia.Web.Controllers {
 
             return View(currentPage);
         }
+
+        public ActionResult Upload(GalleryPage currentPage) {
+            return View("Upload", currentPage);
+        }
     }
 }

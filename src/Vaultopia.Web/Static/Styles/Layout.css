@@ -138,9 +138,20 @@
 
     main {
         background: #f3f3f3;
-        background-image: url(/static/images/light.png);
+        background-image: url(/static/images/dark.png);
         background-size: 75px;
         display: block;
+    }
+
+    main h1 {
+        font-size: 30px;
+        padding: 60px 0 30px;
+    }
+
+    main .introduction {
+        font-size: 16px;
+        font-family: 'Avenir LT W02 85 Heavy';
+        line-height: 1.4;
     }
 
     main section h1 {
@@ -157,6 +168,8 @@
     }
     #popular {
         padding: 40px 0 35px;
+        background-image: url(/static/images/light.png);
+        background-size: 75px;
     }
 
 
