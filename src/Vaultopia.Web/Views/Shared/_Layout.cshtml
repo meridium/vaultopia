@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Vaultopia.Web.Helpers
+<!DOCTYPE html>
 
 <html>
     <head>
@@ -17,12 +18,9 @@
                 <a href="#global-nav" class="icon" id="toggle-nav">Navigation</a>
                 <h1 id="logotype"><img src="/Static/Images/logotype.png" alt="Vaultopia" /></h1>
                 <nav id="global-nav">
-                    <ul>
-                        <li><span>Home</span></li>
-                        <li><a href="/">Packages</a></li>
-                        <li><a href="/">Inspiration</a></li>
-                        <li><a href="/">Contact</a></li>
-                    </ul>
+                    @Html.Menu(
+                        page => Html.ContentLink(page),
+                        page => Html.DisplayFor(x => page.Name, "SelectedTemplate"))
                 </nav>
                 <a href="http://www.facebook.com" class="facebook icon">Facebook</a>
                 <a href="http://www.twitter.com" class="twitter icon">Twitter</a>

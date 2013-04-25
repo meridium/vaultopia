@@ -131,6 +131,7 @@ src/Vaultopia.Web/imagevault.idp.relyingparties.config
 src/Vaultopia.Web/imagevault.idp.tracing.config
 src/Vaultopia.Web/imagevault.idp.wif.config
 
+src/Vaultopia.Web/License.Config
 *.cer
 
 # MacOs Temp files
