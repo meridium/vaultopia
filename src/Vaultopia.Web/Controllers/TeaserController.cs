@@ -28,7 +28,7 @@ namespace Vaultopia.Web.Controllers {
             var model = new TeaserBlockViewModel {
                 Block = currentBlock,
                 Page = _repository.Get<PageData>(currentBlock.TeaserLink),
-                WebMedia = _client.Load<WebMedia>(currentBlock.TeaserImage.Id).Resize(width: 280, height: 180, resizeMode: ResizeMode.ScaleToFill).Single()
+                WebMedia = _client.Load<WebMedia>(currentBlock.TeaserImage.Id).ApplyEffects(currentBlock.TeaserImage.Effects).Single()
             };
 
             return PartialView(model);
