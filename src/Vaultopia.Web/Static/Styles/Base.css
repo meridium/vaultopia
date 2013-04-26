@@ -74,7 +74,7 @@
 
 
     .icon {
-        background-size: 300px 200px;
+        background-size: 200px 250px;
         background-repeat: no-repeat;
         background-image: url(/static/images/sprite.png);
         text-indent: -9999px;
