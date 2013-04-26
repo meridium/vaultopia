@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using EPiServer.Web.Mvc;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 
@@ -8,8 +9,10 @@ namespace Vaultopia.Web.Controllers
     {
         public ActionResult Index(StartPage currentPage)
         {
-            /* Implementation of action. You can create your own view model class that you pass to the view or
-             * you can pass the page type for simpler templates */
+            //Connect the view models testimonial properties to the start page's to make it editable
+            var editHints = ViewData.GetEditHints<PageViewModel<StartPage>, StartPage>();
+            editHints.AddConnection(m => m.Layout.FirstTestimonial, p => p.FirstSiteTestimonial);
+            editHints.AddConnection(m => m.Layout.SecondTestimonial, p => p.SecondSiteTestimonial);
 
             var viewModel = new PageViewModel<StartPage>(currentPage);
 

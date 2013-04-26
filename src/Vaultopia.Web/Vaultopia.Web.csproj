@@ -63,6 +63,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\EPiServer\EPiServer.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="EPiServer.Shell, Version=7.0.859.1, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\EPiServer.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="EPiServer.Web.WebControls, Version=7.0.586.1, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\EPiServer\EPiServer.Web.WebControls.dll</HintPath>
@@ -74,10 +78,14 @@
     <Reference Include="ImageVault.Client, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\ImageVault\ImageVault.Client.dll</HintPath>
+      <HintPath>modulesbin\ImageVault.Client.dll</HintPath>
     </Reference>
     <Reference Include="ImageVault.Common, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\ImageVault\ImageVault.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageVault.EPiServer.Common">
+      <HintPath>modulesbin\ImageVault.EPiServer.Common.dll</HintPath>
     </Reference>
     <Reference Include="ImageVault.EPiServer.Common, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -164,6 +172,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Models\Blocks\SiteTestimonialBlock.cs" />
     <Compile Include="Models\Blocks\TeaserBlock.cs" />
     <Compile Include="Models\Blocks\TeaserBlockViewModel.cs" />
     <Compile Include="Models\Pages\GalleryPage.cs" />
@@ -243,6 +252,7 @@
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Gallery\Upload.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SelectedTemplate.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteTestimonialBlock.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -119,7 +119,7 @@ src/Vaultopia.Web/App_Browsers
 !lang/SV-UI.xml
 lang/
 
-src/Vaultopia.Web/License.config
+src/Vaultopia.Web/License.Config
 src/Vaultopia.Web/episerver.config
 src/Vaultopia.Web/connectionStrings.config
 src/Vaultopia.Web/EPiServerFramework.config
