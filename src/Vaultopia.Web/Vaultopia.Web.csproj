@@ -71,11 +71,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\EPiServer\EPiServer.XForms.dll</HintPath>
     </Reference>
-    <Reference Include="ImageVault.EPiServer.Common">
-      <HintPath>modulesbin\ImageVault.EPiServer.Common.dll</HintPath>
+    <Reference Include="ImageVault.Client, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ImageVault\ImageVault.Client.dll</HintPath>
     </Reference>
-    <Reference Include="ImageVault.EPiServer7">
-      <HintPath>modulesbin\ImageVault.EPiServer7.dll</HintPath>
+    <Reference Include="ImageVault.Common, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ImageVault\ImageVault.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageVault.EPiServer.Common, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ImageVault\ImageVault.EPiServer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageVault.EPiServer7, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ImageVault\ImageVault.EPiServer7.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
