@@ -97,7 +97,7 @@
     }
     body.gallery #categories li {
         display: inline-block;
-        background-size: 300px 200px;
+        background-size: 200px 250px;
         background-repeat: no-repeat;
         background-image: url(/static/images/sprite.png);
         background-position: 0 -58px;
@@ -148,6 +148,49 @@
         box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.10) inset, 0 0 1px rgba(0,0,0,0.15);
         display: inline-block;
     }
+    #upload form {
+        overflow: hidden;
+    }
+    #upload form > div {
+        
+    }
+    #upload .upload {
+        width: 35%;
+        float: left;
+    }
+    #upload #droparea {
+        background: url(/static/images/sprite.png) no-repeat 0 -95px;
+        background-size: 200px 250px;
+        width: 111px;
+        height: 111px;
+        opacity: .2;
+        margin: 35px auto;
+    }
+    #upload #droparea.over {
+        opacity: .3;
+    }
+
+    #upload .metadata {
+        width: 65%;
+        float: left;
+        box-sizing: border-box;
+        border-left: 1px solid #fff;
+        min-height: 330px;
+    }
+    #upload .metadata > div {
+        padding: 30px 20px 0 20px;    
+    }
+    #upload .metadata .button {
+        float: right;
+        padding: 15px 40px;
+    }
+    #upload h1 {
+        background: #fff;
+        font-size: 18px;
+        padding: 20px;
+    }
+
+
 }
 
 @media only screen and (max-width : 768px) and (min-width: 400px) {
