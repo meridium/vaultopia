@@ -52,14 +52,16 @@
                 </section>
                 <section id="testimonials">
                     <h1>Testimonials</h1>
-                    <blockquote>
+                    @Html.PropertyFor(x => x.Layout.FirstTestimonial)
+                    @Html.PropertyFor(x => x.Layout.SecondTestimonial)
+                    @*                    <blockquote>
                         <p>Bwaaaaaaahhh!</p>
-                        <img src="/static/temp/testimonial01.jpg" alt="" width="60" height="60" />
+                        <img src="@Model.Layout.FirstTestimonial" alt="" width="60" height="60" />
                     </blockquote>
                     <blockquote>
                         <p>Vaultopia gave me the time of my life! Thank you!</p>
                         <img src="/static/temp/testimonial02.jpg" alt="" width="60" height="60" />
-                    </blockquote>
+                    </blockquote>*@
                 </section>
                 <section id="inspiration">
                     <h1>Inspiration</h1>

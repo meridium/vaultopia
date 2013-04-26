@@ -4,5 +4,6 @@ namespace Vaultopia.Web.Models.Pages
 {
     public abstract class SitePageData : PageData
     {
+
     }
 }
