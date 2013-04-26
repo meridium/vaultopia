@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using EPiServer.Web.Mvc;
+using ImageVault.Client;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 
@@ -30,7 +31,7 @@ namespace Vaultopia.Web.Controllers {
             return Content("uploaded");
         }
                 public GalleryController() {
-            //var client =  ClientFactory.GetSdkClient();
+            var client =  ClientFactory.GetSdkClient();
         }
     }
 }
