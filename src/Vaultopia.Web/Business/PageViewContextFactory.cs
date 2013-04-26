@@ -1,22 +1,30 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web.Routing;
+using ImageVault.Client;
+using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 
 namespace Vaultopia.Web.Business
 {
     public class PageViewContextFactory
     {
+        private readonly IContentLoader _contentLoader;
         private readonly UrlResolver _urlResolver;
+        private Client _client;
         /// <summary>
-        /// Initializes a new instance of the <see cref="PageViewContextFactory"/> class.
+        /// Initializes a new instance of the <see cref="PageViewContextFactory" /> class.
         /// </summary>
+        /// <param name="contentLoader">The content loader.</param>
         /// <param name="urlResolver">The URL resolver.</param>
-        public PageViewContextFactory(UrlResolver urlResolver)
+        public PageViewContextFactory(IContentLoader contentLoader, UrlResolver urlResolver)
         {
+            _contentLoader = contentLoader;
             _urlResolver = urlResolver;
+            _client = ClientFactory.GetSdkClient();
         }
 
         /// <summary>
@@ -27,8 +35,12 @@ namespace Vaultopia.Web.Business
         /// <returns></returns>
         public virtual LayoutModel CreateLayoutModel(ContentReference currentContentLink, RequestContext requestContext)
         {
+            var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
+
             return new LayoutModel
             {
+                FirstTestimonial = startPage.FirstSiteTestimonial,
+                SecondTestimonial = startPage.SecondSiteTestimonial,
                 LoggedIn = requestContext.HttpContext.User.Identity.IsAuthenticated,
                 LoginUrl = new MvcHtmlString(GetLoginUrl(currentContentLink))
             };
