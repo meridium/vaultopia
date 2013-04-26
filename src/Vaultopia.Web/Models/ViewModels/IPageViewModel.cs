@@ -1,5 +1,4 @@
-﻿using EPiServer.Core;
-using Vaultopia.Web.Models.Pages;
+﻿using Vaultopia.Web.Models.Pages;
 
 namespace Vaultopia.Web.Models.ViewModels
 {
