@@ -43,6 +43,10 @@ namespace Vaultopia.Web.Business
             {
                 var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
                 var list = new List<string>();
+                if (startPage.SiteInspiration.MediaList == null)
+                {
+                    return list;
+                }
                 foreach (var mediaReference in startPage.SiteInspiration.MediaList)
                 {
                     var media =
@@ -55,7 +59,6 @@ namespace Vaultopia.Web.Business
                         continue;
                     }
                     list.Add(media.Url);
-
                 }
                 return list;
             }

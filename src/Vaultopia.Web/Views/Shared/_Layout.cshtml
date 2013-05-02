@@ -58,11 +58,14 @@
                 <section id="inspiration">
                     <h1>Inspiration</h1>
                     <ul>
-                        @foreach (var media in Model.Layout.SiteInspirationUrls)
+                        @if (Model.Layout.SiteInspirationUrls != null)
                         {
-                            <li>
-                                <img src="@media"/>
-                            </li>
+                            foreach (var media in Model.Layout.SiteInspirationUrls)
+                            {
+                                <li>
+                                    <img src="@media"/>
+                                </li>
+                            } 
                         }
                     </ul>
                 </section>
