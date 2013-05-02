@@ -77,6 +77,11 @@
     </Reference>
     <Reference Include="ImageVault.Client, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ImageVault.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageVault.Common, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>modulesbin\ImageVault.Common.dll</HintPath>
       <HintPath>..\..\lib\ImageVault\ImageVault.Client.dll</HintPath>
       <HintPath>modulesbin\ImageVault.Client.dll</HintPath>
     </Reference>
@@ -184,6 +189,7 @@
     <Compile Include="Models\ViewModels\LayoutModel.cs" />
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Static\Scripts\Lib\jquery.html5uploader.js" />
     <Content Include="Static\Scripts\Vaultopia.Upload.js" />
   </ItemGroup>
   <ItemGroup>

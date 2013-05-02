@@ -14,6 +14,9 @@ namespace Vaultopia.Web
         {
             AreaRegistration.RegisterAllAreas();
 
+            RouteTable.Routes.MapRoute("Upload", "Gallery/UploadFile", new {controller = "Gallery", action = "UploadFile"});
+            RouteTable.Routes.MapRoute("Save", "Gallery/Save", new { controller = "Gallery", action = "Save" });
+
             // Attempt to reproduce the routing problem with a new 'something/*' handler
             //IRouteHandler routeHandler = new MyRouteHandler();  
 
@@ -77,6 +80,7 @@ namespace Vaultopia.Web
 
         public void Preload(string[] parameters) {
             //throw new System.NotImplementedException();
+
         }
     }
 }

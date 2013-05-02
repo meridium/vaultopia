@@ -36,4 +36,8 @@
         </ul>
         <a href="/" id="gallery-paging-action" class="button">Show more awesome photos</a>
     </section>
+            @using (Html.BeginForm("UploadFile", "Gallery", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+            <input type="file" name="file" />
+            <input type="submit" value="Do it!" name="submit" />
+        }
 </div>

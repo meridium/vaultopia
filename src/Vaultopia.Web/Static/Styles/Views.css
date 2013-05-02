@@ -164,9 +164,33 @@
         width: 111px;
         height: 111px;
         opacity: .2;
-        margin: 35px auto;
+        margin: 35px auto 22px auto;
     }
-    #upload #droparea.over {
+
+    #upload progress {
+        border-radius: 3px;
+        height: 6px;
+        background: #fff;
+        width: 55px;
+        margin: 0 auto;
+        display: block;
+        border:1px solid #ececec;
+    }
+
+    #upload progress::-webkit-progress-bar{
+        background: #fff;
+        border-radius: 3px;
+        
+        
+
+    }
+    #upload progress::-webkit-progress-value {
+    border-radius: 3px;
+        background: #c1c1c1;
+
+    }
+
+    #upload #droparea.hover {
         opacity: .3;
     }
 
@@ -184,10 +208,28 @@
         float: right;
         padding: 15px 40px;
     }
+    #upload .metadata textarea {
+        height: 65px;
+    }
     #upload h1 {
         background: #fff;
         font-size: 18px;
         padding: 20px;
+    }
+    #upload .upload p {
+        width: 100px;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        line-height: 1.2;
+        margin-top: -5px;
+        color: #999;
+    }
+    #upload .upload img {
+        width: 111px;
+        height: 111px;
+        margin: 0 auto;
+        margin: 35px auto 22px auto;
     }
 
 
