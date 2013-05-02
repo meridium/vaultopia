@@ -4,6 +4,8 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Web;
+using ImageVault.Common.Data;
+using ImageVault.EPiServer;
 
 namespace Vaultopia.Web.Models.Blocks {
     [ContentType(DisplayName = "TeaserBlock", GUID = "04ac15bc-91ed-4b60-94bf-57001a8e4744", Description = "")]
@@ -19,13 +21,10 @@ namespace Vaultopia.Web.Models.Blocks {
         [Display(GroupName = SystemTabNames.Content, Order = 2)]
         public virtual PageReference TeaserLink { get; set; }
 
-        /*
-            [CultureSpecific]
-            [Required(AllowEmptyStrings = false)]
-            [Display(GroupName = SystemTabNames.Content, Order = 4)]
-            public virtual String TeaserImage { get; set; }
-        */
-
+        [CultureSpecific]
+        [Display(GroupName = SystemTabNames.Content, Order = 4)]
+        public virtual MediaReference TeaserImage { get; set; }
+        
         [CultureSpecific]
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 5)]
