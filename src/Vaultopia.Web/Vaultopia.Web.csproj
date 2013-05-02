@@ -183,6 +183,7 @@
     <Compile Include="Models\ViewModels\LayoutModel.cs" />
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Static\Scripts\Lib\jquery.html5uploader.js" />
     <Content Include="Static\Scripts\Vaultopia.Upload.js" />
   </ItemGroup>
   <ItemGroup>
