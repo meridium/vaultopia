@@ -19,13 +19,6 @@ namespace Vaultopia.Web.Models.Blocks {
         [Display(GroupName = SystemTabNames.Content, Order = 2)]
         public virtual PageReference TeaserLink { get; set; }
 
-        /*
-            [CultureSpecific]
-            [Required(AllowEmptyStrings = false)]
-            [Display(GroupName = SystemTabNames.Content, Order = 4)]
-            public virtual String TeaserImage { get; set; }
-        */
-
         [CultureSpecific]
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 5)]
