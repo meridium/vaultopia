@@ -76,7 +76,121 @@
     .wide-teasers p {
         padding-left: 135px;
         padding-right: 20px;
-    }      
+    }
+    
+    body.gallery .introduction,
+    body.gallery #categories {
+        width: 75%;        
+    }
+    body.gallery #upload-action {
+        position: absolute;
+        right: 15px;
+        top: 122px;
+        font-family: 'Avenir LT W02 85 Heavy';
+        padding: 12px 25px;
+    }
+    body.gallery #categories {
+        margin: 30px 0;
+    }
+    body.gallery #categories ul {
+        display: inline-block;
+    }
+    body.gallery #categories li {
+        display: inline-block;
+        background-size: 200px 250px;
+        background-repeat: no-repeat;
+        background-image: url(/static/images/sprite.png);
+        background-position: 0 -58px;
+        padding: 0 0 0 12px;
+        margin: 0 5px 0 0;
+    }
+    body.gallery #categories li a {
+        background-color: #39beb8;
+        height: 25px;
+        display: block;
+        line-height: 25px;
+        color: #ffffff;
+        padding:0 10px 0 7px;
+        border-radius: 0 2px 2px 0;
+    }
+    body.gallery #categories-more-action {
+        display: inline-block;
+    }
+
+    body.gallery #gallery {
+        padding: 0 0 60px;
+        text-align: center;
+    }
+    body.gallery #gallery ul {
+        margin: 50px -20px 0 0;
+    }
+    body.gallery #gallery img {
+        max-width: 100%;
+        border: 4px solid #fff;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        
+    }
+    body.gallery #gallery li {
+        width: 25%;
+        display: block;
+        float: left;
+        padding:0 20px 16px 0;
+        box-sizing: border-box;
+    }
+    body.gallery #gallery-paging-action {
+        background: #fafafa;
+        color: #666;
+        text-shadow: none;
+        font-family: 'Avenir LT W02 85 Heavy';
+        margin: 30px 0 0;
+        box-sizing: border-box;
+        box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.10) inset, 0 0 1px rgba(0,0,0,0.15);
+        display: inline-block;
+    }
+    #upload form {
+        overflow: hidden;
+    }
+    #upload form > div {
+        
+    }
+    #upload .upload {
+        width: 35%;
+        float: left;
+    }
+    #upload #droparea {
+        background: url(/static/images/sprite.png) no-repeat 0 -95px;
+        background-size: 200px 250px;
+        width: 111px;
+        height: 111px;
+        opacity: .2;
+        margin: 35px auto;
+    }
+    #upload #droparea.over {
+        opacity: .3;
+    }
+
+    #upload .metadata {
+        width: 65%;
+        float: left;
+        box-sizing: border-box;
+        border-left: 1px solid #fff;
+        min-height: 330px;
+    }
+    #upload .metadata > div {
+        padding: 30px 20px 0 20px;    
+    }
+    #upload .metadata .button {
+        float: right;
+        padding: 15px 40px;
+    }
+    #upload h1 {
+        background: #fff;
+        font-size: 18px;
+        padding: 20px;
+    }
+
+
 }
 
 @media only screen and (max-width : 768px) and (min-width: 400px) {

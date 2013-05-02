@@ -1,4 +1,5 @@
-﻿
+﻿var Vaultopia = {};
+
 $(document).ready(function () {
     $('#toggle-nav').click(function(e) {
         e.preventDefault();
@@ -10,6 +11,20 @@ $(document).ready(function () {
             $('#global-nav').show();
             $(this).addClass('open');
         }
-
     });
+
+    $('#gallery ul').imagesLoaded(function() {
+        $('#gallery ul').masonry({
+            itemSelector: 'li'
+        });
+    });
+
+    
+    $('#upload-action').click(function (e) {
+        e.preventDefault();
+        Vaultopia.Upload.init();
+    });
+
+
+
 });
