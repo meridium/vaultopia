@@ -1,11 +1,13 @@
 ﻿@model Vaultopia.Web.Models.UploadModel
 <div class="overlay">
     <section class="dialog" id="upload">
-        @using (Html.BeginForm("Save")) {
+        @using (Html.BeginForm("Save", "Gallery", FormMethod.Post)) {
             <div class="upload">
                 <h1>1. Upload</h1>
                 <div>
                     <div id="droparea"></div>
+                    <progress max="100" value="0"></progress>
+                    <p>You can drag your photo here!</p>
                     <!-- input type="file" name="image-upload" / -->
                 </div>
             </div>
@@ -16,7 +18,7 @@
                     @Html.TextBoxFor(m => m.Title)<br />
                     @Html.LabelFor(m => m.Description)
                     @Html.TextAreaFor(m => m.Description)
-                    <input type="submit" value="Done" class="button" />
+                    <input type="submit" value="Done" class="button" name="submit" />
                 </div>
             </div>
         }
