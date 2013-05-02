@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Vaultopia.Web.Models.Blocks;
 
 namespace Vaultopia.Web.Models.ViewModels
@@ -39,5 +40,21 @@ namespace Vaultopia.Web.Models.ViewModels
         /// The second testimonial.
         /// </value>
         public virtual SiteTestimonialBlock SecondTestimonial { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site inspiration.
+        /// </summary>
+        /// <value>
+        /// The site inspiration.
+        /// </value>
+        public virtual SiteInspirationBlock SiteInspiration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site inspiration urls.
+        /// </summary>
+        /// <value>
+        /// The site inspiration urls.
+        /// </value>
+        public List<string> SiteInspirationUrls { get; set; }
     }
 }

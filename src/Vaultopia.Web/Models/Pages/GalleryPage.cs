@@ -29,6 +29,5 @@ namespace Vaultopia.Web.Models.Pages {
         [UIHint(UIHint.Textarea)]
         public virtual string Introduction { get; set; }
 
-
     }
 }

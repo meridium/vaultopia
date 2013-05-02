@@ -19,15 +19,15 @@ namespace Vaultopia.Web.Models.Blocks
         /// <value>
         /// The media.
         /// </value>
-        public virtual MediaReference Media
+        public virtual MediaReference MediaReference
         {
             get
             {
-                return this.GetPropertyValue(b => b.Media);
+                return this.GetPropertyValue(b => b.MediaReference);
             }
             set
             {
-                this.SetPropertyValue(b => b.Media, value);
+                this.SetPropertyValue(b => b.MediaReference, value);
             }
         }
 
@@ -41,11 +41,16 @@ namespace Vaultopia.Web.Models.Blocks
         {
             get
             {
-                if (Media == null)
+                if (MediaReference == null)
                 {
                     return string.Empty;
                 }
-                return _client.Load<WebMedia>(Media.Id).ApplyEffects(Media.Effects).SingleOrDefault().Url;
+                var media = _client.Load<WebMedia>(MediaReference.Id).ApplyEffects(MediaReference.Effects).SingleOrDefault();
+                if (media == null)
+                {
+                    return string.Empty;
+                }
+                return media.Url;
             }
         }
 

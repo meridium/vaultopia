@@ -13,6 +13,7 @@ namespace Vaultopia.Web.Controllers
             var editHints = ViewData.GetEditHints<PageViewModel<StartPage>, StartPage>();
             editHints.AddConnection(m => m.Layout.FirstTestimonial, p => p.FirstSiteTestimonial);
             editHints.AddConnection(m => m.Layout.SecondTestimonial, p => p.SecondSiteTestimonial);
+            //editHints.AddConnection(m => m.Layout.SiteInspiration, p => p.SiteInspiration);
 
             var viewModel = new PageViewModel<StartPage>(currentPage);
 
