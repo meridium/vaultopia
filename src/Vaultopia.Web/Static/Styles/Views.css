@@ -143,10 +143,17 @@
         color: #666;
         text-shadow: none;
         font-family: 'Avenir LT W02 85 Heavy';
-        margin: 30px 0 0;
+        margin: 30px auto 0;
         box-sizing: border-box;
         box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.10) inset, 0 0 1px rgba(0,0,0,0.15);
-        display: inline-block;
+        display: block;
+        width: 239px;
+        clear: both;
+    }
+    body.gallery #gallery-paging-action.loading {
+        text-indent: -9999px;
+        background: #fff url(/static/images/load.gif) no-repeat 50% 8px;
+        background-size: 16px;
     }
     #upload form {
         overflow: hidden;

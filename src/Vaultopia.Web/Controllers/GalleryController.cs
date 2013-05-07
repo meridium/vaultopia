@@ -10,6 +10,7 @@ using ImageVault.Client.Query;
 using ImageVault.Common.Data;
 using ImageVault.Common.Services;
 using Vaultopia.Web.Models;
+using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 
@@ -18,19 +19,48 @@ namespace Vaultopia.Web.Controllers {
 
         private readonly Client _client;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GalleryController" /> class.
+        /// </summary>
         public GalleryController() {
             _client = ClientFactory.GetSdkClient();
         }
 
+        /// <summary>
+        /// Indexes the specified current page.
+        /// </summary>
+        /// <param name="currentPage">The current page.</param>
+        /// <returns></returns>
         public ActionResult Index(GalleryPage currentPage) {
-            var viewModel = new PageViewModel<GalleryPage>(currentPage);
+            var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
+                    Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).Take(16).ToList()
+                };
+
             return View(viewModel);
         }
 
+        public ActionResult Load(GalleryPage currentPage, int skip) {
+
+            var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
+                Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).Skip(skip * 16).Take(17).ToList()
+            };
+
+            return PartialView("_Images", viewModel);
+        }
+
+        /// <summary>
+        /// Uploads this instance.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Upload() {
             return PartialView("Upload");
         }
 
+        /// <summary>
+        /// Saves the specified model.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Save(UploadModel model) {
 
@@ -57,6 +87,11 @@ namespace Vaultopia.Web.Controllers {
 
         }
 
+        /// <summary>
+        /// Uploads the file.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult UploadFile(HttpPostedFileBase file) {
 
