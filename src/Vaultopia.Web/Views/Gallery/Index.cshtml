@@ -1,4 +1,4 @@
-﻿@model Vaultopia.Web.Models.ViewModels.PageViewModel<GalleryPage>
+﻿@model Vaultopia.Web.Models.ViewModels.GalleryViewModel<GalleryPage>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -22,22 +22,8 @@
     </section>
     <section id="gallery">
         <ul>
-            <li><a href="/"><img src="/static/temp/gallery01.jpg"/></a></li>
-            <li><a href="/"><img src="/static/temp/gallery02.jpg"/></a></li>
-            <li><a href="/"><img src="/static/temp/gallery03.jpg"/></a></li>
-            <li><a href="/"><img src="/static/temp/gallery04.jpg"/></a></li>
-            <li><a href="/"><img src="/static/temp/gallery05.jpg"/></a></li>
-            <li><a href="/"><img src="/static/temp/gallery06.jpg"/></a></li>
-            <li><a href="/"><img src="/static/temp/gallery07.jpg"/></a></li>
-            <li><a href="/"><img src="/static/temp/gallery08.jpg"/></a></li>
-            <li><a href="/"><img src="/static/temp/gallery09.jpg"/></a></li>
-            <li><a href="/"><img src="/static/temp/gallery10.jpg"/></a></li>
-            <li><a href="/"><img src="/static/temp/gallery11.jpg"/></a></li>
+            @Html.Partial("_Images", Model)
         </ul>
         <a href="/" id="gallery-paging-action" class="button">Show more awesome photos</a>
     </section>
-            @using (Html.BeginForm("UploadFile", "Gallery", FormMethod.Post, new { enctype = "multipart/form-data" })) {
-            <input type="file" name="file" />
-            <input type="submit" value="Do it!" name="submit" />
-        }
 </div>
