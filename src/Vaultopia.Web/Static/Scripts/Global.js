@@ -25,6 +25,7 @@ $(document).ready(function () {
         Vaultopia.Upload.init();
     });
 
+    Vaultopia.Gallery.init();
 
 
 });

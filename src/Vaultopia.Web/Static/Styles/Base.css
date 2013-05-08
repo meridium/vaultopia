@@ -81,6 +81,12 @@
         display: inline-block;
     }
 
+    .sprite {
+        background-size: 200px 250px;
+        background-repeat: no-repeat;
+        background-image: url(/static/images/sprite.png);
+    }
+
     .button {
         background: #39beb8;
         color: #fff0f5;

@@ -1,0 +1,6 @@
+﻿@foreach (var image in Model.Images) {
+    <li>
+        <a href="@image.Thumbnail.Url"><img src="@image.Thumbnail.Url" alt=""/></a>
+        <a href="#" class="metadata-anchor icon">View image metadata</a>
+    </li>
+}
