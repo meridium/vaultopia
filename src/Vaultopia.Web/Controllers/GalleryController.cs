@@ -122,6 +122,18 @@ namespace Vaultopia.Web.Controllers {
             
             return null;
         }
+
+
+        /// <summary>
+        /// Shows the meta data.
+        /// </summary>
+        /// <param name="imageId">The image id.</param>
+        /// <returns></returns>
+        public ActionResult ShowMetaData(int imageId) {
+            var model = _client.Load<GalleryImage>(imageId).FirstOrDefault();
+            return PartialView("_MetaData", model);
+        }
+
         
 
     }

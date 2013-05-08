@@ -137,6 +137,12 @@
         float: left;
         padding:0 20px 16px 0;
         box-sizing: border-box;
+        position: relative;
+    }
+    body.gallery #gallery li:hover img {
+        opacity: 0.5;
+        
+
     }
     body.gallery #gallery-paging-action {
         background: #fafafa;
@@ -155,6 +161,20 @@
         background: #fff url(/static/images/load.gif) no-repeat 50% 8px;
         background-size: 16px;
     }
+        
+
+
+    body.gallery #gallery .metadata-anchor {
+        background-position: -82px -22px;
+        height: 17px;
+        width: 17px;
+        right: 21px;
+        bottom: 25px;
+        position: absolute;
+    }
+
+
+
     #upload form {
         overflow: hidden;
     }

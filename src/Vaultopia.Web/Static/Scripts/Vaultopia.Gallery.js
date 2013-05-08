@@ -28,6 +28,20 @@
                 }
             });
         });
+       
+        $('#metadata-anchor').on('click', function (e) {
+            alert('dsfs');
+            e.preventDefault();
+            var $that = $(this);
+
+            $.ajax({
+                data: { id: 16 },
+                onSuccess: function (data) {
+                    $that.closest('li').append(data);
+                }
+            });
+        });
+
     };
 
     var init = function () {
