@@ -1,12 +1,16 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web.Routing;
 using ImageVault.Client;
+using ImageVault.Client.Query;
+using ImageVault.Common.Data;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
+using System.Linq;
 
 namespace Vaultopia.Web.Business
 {
@@ -28,6 +32,39 @@ namespace Vaultopia.Web.Business
         }
 
         /// <summary>
+        /// Gets the site inspiration urls.
+        /// </summary>
+        /// <value>
+        /// The site inspiration urls.
+        /// </value>
+        protected List<string> SiteInspirationUrls
+        {
+            get
+            {
+                var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
+                var list = new List<string>();
+                if (startPage.SiteInspiration.MediaList == null)
+                {
+                    return list;
+                }
+                foreach (var mediaReference in startPage.SiteInspiration.MediaList)
+                {
+                    var media =
+                        _client.Load<WebMedia>(mediaReference.Id)
+                               .ApplyEffects(mediaReference.Effects)
+                               .Resize(119, 113, ResizeMode.ScaleToFill)
+                               .SingleOrDefault();
+                    if (media == null)
+                    {
+                        continue;
+                    }
+                    list.Add(media.Url);
+                }
+                return list;
+            }
+        }
+
+        /// <summary>
         /// Creates the layout model.
         /// </summary>
         /// <param name="currentContentLink">The current content link.</param>
@@ -41,6 +78,7 @@ namespace Vaultopia.Web.Business
             {
                 FirstTestimonial = startPage.FirstSiteTestimonial,
                 SecondTestimonial = startPage.SecondSiteTestimonial,
+                SiteInspirationUrls = SiteInspirationUrls,
                 LoggedIn = requestContext.HttpContext.User.Identity.IsAuthenticated,
                 LoginUrl = new MvcHtmlString(GetLoginUrl(currentContentLink))
             };

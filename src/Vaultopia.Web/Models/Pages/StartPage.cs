@@ -28,7 +28,7 @@ namespace Vaultopia.Web.Models.Pages {
         /// <value>
         /// The first site testimonial.
         /// </value>
-        [Display(GroupName = "Settings")]
+        [Display(GroupName = SystemTabNames.Content)]
         public virtual SiteTestimonialBlock FirstSiteTestimonial { get; set; }
 
         /// <summary>
@@ -37,8 +37,16 @@ namespace Vaultopia.Web.Models.Pages {
         /// <value>
         /// The second site testimonial.
         /// </value>
-        [Display(GroupName = "Settings")]
+        [Display(GroupName = SystemTabNames.Content)]
         public virtual SiteTestimonialBlock SecondSiteTestimonial { get; set; }
 
+        /// <summary>
+        /// Gets or sets the inspiration.
+        /// </summary>
+        /// <value>
+        /// The inspiration.
+        /// </value>
+        [Display(GroupName = SystemTabNames.Content)]
+        public virtual SiteInspirationBlock SiteInspiration { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using EPiServer.Core;
+using ImageVault.Common.Data;
 
 namespace Vaultopia.Web.Models.Blocks {
     public class TeaserBlockViewModel {
@@ -17,5 +18,6 @@ namespace Vaultopia.Web.Models.Blocks {
         /// The page.
         /// </value>
         public PageData Page { get; set; }
+        public WebMedia WebMedia { get; set; }
     }
 }

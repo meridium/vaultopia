@@ -56,24 +56,19 @@
                     <h1>Testimonials</h1>
                     @Html.PropertyFor(x => x.Layout.FirstTestimonial)
                     @Html.PropertyFor(x => x.Layout.SecondTestimonial)
-                    @*                    <blockquote>
-                        <p>Bwaaaaaaahhh!</p>
-                        <img src="@Model.Layout.FirstTestimonial" alt="" width="60" height="60" />
-                    </blockquote>
-                    <blockquote>
-                        <p>Vaultopia gave me the time of my life! Thank you!</p>
-                        <img src="/static/temp/testimonial02.jpg" alt="" width="60" height="60" />
-                    </blockquote>*@
                 </section>
                 <section id="inspiration">
                     <h1>Inspiration</h1>
                     <ul>
-                        <li><a href="/"><img src="/static/temp/square01.jpg" alt="" /></a></li>
-                        <li><a href="/"><img src="/static/temp/square01.jpg" alt="" /></a></li>
-                        <li><a href="/"><img src="/static/temp/square01.jpg" alt="" /></a></li>
-                        <li><a href="/"><img src="/static/temp/square01.jpg" alt="" /></a></li>
-                        <li><a href="/"><img src="/static/temp/square01.jpg" alt="" /></a></li>
-                        <li><a href="/"><img src="/static/temp/square01.jpg" alt="" /></a></li>
+                        @if (Model.Layout.SiteInspirationUrls != null)
+                        {
+                            foreach (var media in Model.Layout.SiteInspirationUrls)
+                            {
+                                <li>
+                                    <img src="@media"/>
+                                </li>
+                            } 
+                        }
                     </ul>
                 </section>
             </div>
