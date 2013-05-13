@@ -1,5 +1,6 @@
-﻿@foreach (var image in Model.Images) {
-    <li>
+﻿@using Vaultopia.Web.Models.Formats
+@foreach (GalleryImage image in Model.Images) {
+    <li data-image-id="@image.Id">
         <a href="@image.Thumbnail.Url"><img src="@image.Thumbnail.Url" alt=""/></a>
         <a href="#" class="metadata-anchor icon">View image metadata</a>
     </li>

@@ -29,15 +29,16 @@
             });
         });
        
-        $('#metadata-anchor').on('click', function (e) {
-            alert('dsfs');
+        $(document).on('click', '#gallery .metadata-anchor', function(e) {
             e.preventDefault();
+
             var $that = $(this);
 
             $.ajax({
-                data: { id: 16 },
-                onSuccess: function (data) {
-                    $that.closest('li').append(data);
+                url: 'ShowMetaData',
+                data: { imageId: $that.closest('li').attr('data-image-id') },
+                success: function (data) {
+                    alert(data);
                 }
             });
         });

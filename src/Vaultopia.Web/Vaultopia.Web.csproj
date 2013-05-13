@@ -259,6 +259,7 @@
     <Content Include="Views\Shared\DisplayTemplates\SelectedTemplate.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteTestimonialBlock.cshtml" />
     <Content Include="Views\Gallery\_Images.cshtml" />
+    <Content Include="Views\Gallery\_MetaData.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
