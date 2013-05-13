@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using EPiServer;
 using EPiServer.Core;
+using EPiServer.Framework.DataAnnotations;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc;
 using ImageVault.Client;
@@ -10,6 +11,7 @@ using ImageVault.Common.Data;
 using Vaultopia.Web.Models.Blocks;
 
 namespace Vaultopia.Web.Controllers {
+    [TemplateDescriptor(Tags = new[] { "narrow" }, AvailableWithoutTag = false, Inherited = false, Name = "Teaser")]
     public class TeaserController : BlockController<TeaserBlock> {
         private readonly IContentRepository _repository;
         private readonly Client _client;
@@ -25,10 +27,10 @@ namespace Vaultopia.Web.Controllers {
 
         public override ActionResult Index(TeaserBlock currentBlock) {
 
-            var model = new TeaserBlockViewModel {
+            var model = new TeaserBlockViewModel<TeaserBlock> {
                 Block = currentBlock,
                 Page = _repository.Get<PageData>(currentBlock.TeaserLink),
-                WebMedia = _client.Load<WebMedia>(currentBlock.TeaserImage.Id).ApplyEffects(currentBlock.TeaserImage.Effects).Single()
+                WebMedia = _client.Load<WebMedia>(currentBlock.TeaserImage.Id).ApplyEffects(currentBlock.TeaserImage.Effects).Resize(437,277,ResizeMode.ScaleToFill).Single()
             };
 
             return PartialView(model);

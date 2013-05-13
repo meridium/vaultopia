@@ -11,7 +11,7 @@ namespace Vaultopia.Web.Models.Blocks
     [ContentType(DisplayName = "SiteTestimonialBlock", GUID = "ba4fa9b3-53cb-44e6-9f89-4b156da4c002", Description = "", AvailableInEditMode = false)]
     public class SiteTestimonialBlock : BlockData
     {
-        private readonly Client _client = ClientFactory.GetSdkClient();
+        private readonly Client _client;
 
         /// <summary>
         /// Gets or sets the media.
@@ -45,7 +45,8 @@ namespace Vaultopia.Web.Models.Blocks
                 {
                     return string.Empty;
                 }
-                var media = _client.Load<WebMedia>(MediaReference.Id).ApplyEffects(MediaReference.Effects).SingleOrDefault();
+                var media =
+                    _client.Load<WebMedia>(MediaReference.Id).ApplyEffects(MediaReference.Effects).SingleOrDefault();
                 if (media == null)
                 {
                     return string.Empty;
@@ -62,5 +63,13 @@ namespace Vaultopia.Web.Models.Blocks
         /// </value>
         [CultureSpecific]
         public virtual string Testimonial { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SiteTestimonialBlock"/> class.
+        /// </summary>
+        public SiteTestimonialBlock()
+        {
+            _client = ClientFactory.GetSdkClient();
+        }
     }
 }

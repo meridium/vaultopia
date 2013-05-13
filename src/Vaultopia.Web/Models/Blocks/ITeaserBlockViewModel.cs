@@ -1,20 +1,17 @@
 ﻿using EPiServer.Core;
 using ImageVault.Common.Data;
 
-namespace Vaultopia.Web.Models.Blocks {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class TeaserBlockViewModel<T> : ITeaserBlockViewModel<T>
+namespace Vaultopia.Web.Models.Blocks
+{
+    public interface ITeaserBlockViewModel<T>
     {
-
         /// <summary>
         /// Gets or sets the block.
         /// </summary>
         /// <value>
         /// The block.
         /// </value>
-        public T Block { get; set; }
+        T Block { get; set; }
 
         /// <summary>
         /// Gets or sets the page.
@@ -22,7 +19,7 @@ namespace Vaultopia.Web.Models.Blocks {
         /// <value>
         /// The page.
         /// </value>
-        public PageData Page { get; set; }
+        PageData Page { get; set; }
 
         /// <summary>
         /// Gets or sets the web media.
@@ -30,6 +27,6 @@ namespace Vaultopia.Web.Models.Blocks {
         /// <value>
         /// The web media.
         /// </value>
-        public WebMedia WebMedia { get; set; }
+        WebMedia WebMedia { get; set; }
     }
 }
