@@ -1,1 +1,15 @@
-﻿
+﻿@model Vaultopia.Web.Models.Formats.GalleryImage
+<section id="metadata">
+    <span class="arrow sprite"></span>
+    <h1>@Model.Title</h1>
+    <em>@Model.DateAdded.ToString("MMM dd yyyy, hh:mm tt")</em>
+    <span class="photographer icon">Photographer: </span>@Model.Photographer
+
+    <ul class="exif">
+        <li>ISO @Model.Iso</li>
+        <li>@Model.FocalLength mm</li>
+        <li>f/@Model.Aperture</li>
+        <li>@Model.ExposureTime</li>
+        <li><span>JPEG</span></li>
+    </ul>
+</section>

@@ -34,13 +34,21 @@
 
             var $that = $(this);
 
-            $.ajax({
-                url: 'ShowMetaData',
-                data: { imageId: $that.closest('li').attr('data-image-id') },
-                success: function (data) {
-                    alert(data);
-                }
-            });
+            if ($that.closest('li').find('#metadata').length > 0) {
+                $('#metadata').remove();
+                return;
+            } else {
+                $('#metadata').remove();
+                $.ajax({
+                    url: 'ShowMetaData',
+                    data: { imageId: $that.closest('li').attr('data-image-id') },
+                    success: function (data) {
+                        $that.after(data);
+                    }
+                });
+            }
+
+
         });
 
     };
