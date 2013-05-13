@@ -24,6 +24,9 @@
             });
             
         });
+
+
+
     };
 
     var initDrop = function() {
@@ -74,7 +77,10 @@
             }
         });
     };
+
+   
     
+
     var init = function () {
         $.get("upload", function (data) {
             
