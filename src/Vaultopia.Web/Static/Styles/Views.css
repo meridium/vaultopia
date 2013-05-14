@@ -139,8 +139,9 @@
         box-sizing: border-box;
         position: relative;
     }
+
     body.gallery #gallery li:hover img {
-        opacity: 0.5;
+        /*opacity: 0.5;*/
         
 
     }
@@ -171,6 +172,25 @@
         right: 21px;
         bottom: 25px;
         position: absolute;
+        display: none;
+    }
+
+    body.gallery #gallery .metadata-anchor > span {
+        
+    }
+    body.gallery #gallery .enlarge {
+        background-position: -136px -93px;
+        display: block;
+        width: 46px;
+        height: 46px;
+        margin-top: -34px;
+        margin-left: -23px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 9999;
+        display: none;
+
     }
 
     body.gallery #metadata {

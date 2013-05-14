@@ -186,6 +186,7 @@
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Static\Images\load.gif" />
+    <Content Include="Static\Scripts\Lib\jquery.hoverIntent.js" />
     <Content Include="Static\Scripts\Lib\jquery.html5uploader.js" />
     <Content Include="Static\Scripts\Vaultopia.Gallery.js" />
     <Content Include="Static\Scripts\Vaultopia.Upload.js" />
