@@ -171,10 +171,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Models\Blocks\ITeaserBlockViewModel.cs" />
     <Compile Include="Models\Blocks\SiteInspirationBlock.cs" />
     <Compile Include="Models\Blocks\SiteTestimonialBlock.cs" />
     <Compile Include="Models\Blocks\TeaserBlock.cs" />
     <Compile Include="Models\Blocks\TeaserBlockViewModel.cs" />
+    <Compile Include="Models\Blocks\WideTeaserBlock.cs" />
     <Compile Include="Models\Formats\GalleryImage.cs" />
     <Compile Include="Models\Pages\GalleryPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
@@ -185,6 +187,9 @@
     <Compile Include="Models\ViewModels\LayoutModel.cs" />
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Resources\LanguageFiles\PropertyNames.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Static\Images\load.gif" />
     <Content Include="Static\Scripts\Lib\jquery.hoverIntent.js" />
     <Content Include="Static\Scripts\Lib\jquery.html5uploader.js" />

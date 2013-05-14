@@ -7,7 +7,13 @@ using Vaultopia.Web.Models.Blocks;
 namespace Vaultopia.Web.Models.Pages {
     [ContentType(DisplayName = "Home", GUID = "2c4be70b-20cf-4e10-ad51-52bdd98b99f7", Description = "")]
     public class StartPage : SitePageData {
-        
+
+        /// <summary>
+        /// Gets or sets the teasers.
+        /// </summary>
+        /// <value>
+        /// The teasers.
+        /// </value>
         [CultureSpecific]
         [Editable(true)]
         [Display(
@@ -15,6 +21,12 @@ namespace Vaultopia.Web.Models.Pages {
             Order = 1)]
         public virtual ContentArea Teasers { get; set; }
 
+        /// <summary>
+        /// Gets or sets the wide teasers.
+        /// </summary>
+        /// <value>
+        /// The wide teasers.
+        /// </value>
         [CultureSpecific]
         [Editable(true)]
         [Display(

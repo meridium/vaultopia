@@ -17,7 +17,7 @@
     <div class="wrap">
         <h1>Awesome deals</h1>
         <div class="teasers">
-            @Html.PropertyFor(m => m.CurrentPage.Teasers)
+            @Html.PropertyFor(m => m.CurrentPage.Teasers, new { Tag = "narrow"})
         </div>
     </div>
 </section>

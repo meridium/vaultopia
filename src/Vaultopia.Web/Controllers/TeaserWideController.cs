@@ -12,7 +12,7 @@ using Vaultopia.Web.Models.Blocks;
 
 namespace Vaultopia.Web.Controllers {
     [TemplateDescriptor(Tags = new [] { "wide" }, AvailableWithoutTag = false, Inherited = false, Name="TeaserWide")]
-    public class TeaserWideController : BlockController<TeaserBlock> {
+    public class TeaserWideController : BlockController<WideTeaserBlock> {
 
         private readonly IContentRepository _repository;
         private readonly Client _client;
@@ -26,12 +26,12 @@ namespace Vaultopia.Web.Controllers {
             _client = ClientFactory.GetSdkClient();
         }
 
-        public override ActionResult Index(TeaserBlock currentBlock) {
+        public override ActionResult Index(WideTeaserBlock currentBlock) {
 
-            var model = new TeaserBlockViewModel {
+            var model = new TeaserBlockViewModel<WideTeaserBlock> {
                                                      Block = currentBlock,
                                                      Page = _repository.Get<PageData>(currentBlock.TeaserLink),
-                                                     WebMedia = _client.Load<WebMedia>(currentBlock.TeaserImage.Id).ApplyEffects(currentBlock.TeaserImage.Effects).Single()
+                                                     WebMedia = _client.Load<WebMedia>(currentBlock.TeaserImage.Id).ApplyEffects(currentBlock.TeaserImage.Effects).Resize(237, 167, ResizeMode.ScaleToFill).Single()
                                                  };
 
             return PartialView(model);
