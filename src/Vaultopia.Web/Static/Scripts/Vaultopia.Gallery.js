@@ -25,6 +25,7 @@
                         }
                         
                         registerHoverEvents();
+                        $container.find('.image').fancybox();
                     });
                 }
             });
@@ -106,6 +107,7 @@
         $container = $('#gallery');
         registerEvents();
 
+        $container.find('.image').fancybox();
 
     };
 

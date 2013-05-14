@@ -175,9 +175,6 @@
         display: none;
     }
 
-    body.gallery #gallery .metadata-anchor > span {
-        
-    }
     body.gallery #gallery .enlarge {
         background-position: -136px -93px;
         display: block;
@@ -188,7 +185,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        z-index: 9999;
+        z-index: 999;
         display: none;
 
     }
