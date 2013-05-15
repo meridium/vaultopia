@@ -33,7 +33,7 @@ namespace Vaultopia.Web.Controllers {
         /// <returns></returns>
         public ActionResult Index(GalleryPage currentPage) {
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
-                    Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).Take(16).ToList()
+                    Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).OrderByDescending(m => m.DateAdded).Take(16).ToList()
                 };
 
             return View(viewModel);
@@ -42,7 +42,7 @@ namespace Vaultopia.Web.Controllers {
         public ActionResult Load(GalleryPage currentPage, int skip) {
 
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
-                Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).Skip(skip * 16).Take(17).ToList()
+                Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).OrderByDescending(m => m.DateAdded).Skip(skip * 16).Take(17).ToList()
             };
 
             return PartialView("_Images", viewModel);

@@ -191,6 +191,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Static\Images\load.gif" />
+    <Content Include="Static\Scripts\Lib\jquery.fancybox.js" />
     <Content Include="Static\Scripts\Lib\jquery.hoverIntent.js" />
     <Content Include="Static\Scripts\Lib\jquery.html5uploader.js" />
     <Content Include="Static\Scripts\Vaultopia.Gallery.js" />
@@ -216,6 +217,11 @@
     <Content Include="Static\Styles\Base.css" />
     <Content Include="Static\Styles\Fonts.css" />
     <Content Include="Static\Styles\Layout.css" />
+    <Content Include="Static\Styles\Lib\fancybox\blank.gif" />
+    <Content Include="Static\Styles\Lib\fancybox\fancybox_loading.gif" />
+    <Content Include="Static\Styles\Lib\fancybox\fancybox_overlay.png" />
+    <Content Include="Static\Styles\Lib\fancybox\fancybox_sprite.png" />
+    <Content Include="Static\Styles\Lib\fancybox\jquery.fancybox.css" />
     <Content Include="Static\Styles\Views.css" />
     <Content Include="Static\Temp\push.jpg" />
     <Content Include="Static\Temp\small01.jpg" />

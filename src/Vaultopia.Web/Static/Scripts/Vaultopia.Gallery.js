@@ -57,12 +57,14 @@
                     success: function (html) {
                         var $html = $(html);
                         
-                        $html.hide();
+                       
                         
                         $section.removeClass('loading').find('span').after($html);
-                        $html.fadeIn(100);
+                      
 
-                        
+
+
+                        initMap($html.find('#map').attr('data-map-lat'), $html.find('#map').attr('data-map-lng'));
 
                     }
                 });
@@ -83,12 +85,12 @@
     var registerHoverEvents = function() {
         $('#gallery li').hoverIntent(function () {
             $(this).addClass('hover');
-            $(this).find('img').fadeTo(100, .3);
+            $(this).find('a img').fadeTo(100, .5);
             $(this).find('.enlarge').fadeIn(100);
             $(this).find('.metadata-anchor').fadeIn(100);
         }, function () {
             $(this).removeClass('hover');
-            $(this).find('img').fadeTo(100, 1);
+            $(this).find('a img').fadeTo(100, 1);
             $(this).find('.enlarge').fadeOut(100);
             if ($(this).find('#metadata').length == 0) {
                 $(this).find('.metadata-anchor').fadeOut(100);
@@ -100,6 +102,32 @@
         $('.metadata-anchor').fadeOut(100);
         $('#metadata').fadeOut(100, function () {
             $(this).remove();
+        });
+    };
+
+    var initMap = function (lat, lng) {
+        console.log(lat);
+        console.log(lng);
+
+        if (lat == "" || lng == "") {
+            return;
+        }
+
+        var myLatlng = new window.google.maps.LatLng(lat, lng);
+        var mapOptions = {
+            disableDefaultUI: true,
+            zoom: 6,
+            center: myLatlng,
+            mapTypeId: window.google.maps.MapTypeId.ROADMAP
+        };
+        var map = new window.google.maps.Map(document.getElementById('map'), mapOptions);
+            
+        var icon = new google.maps.MarkerImage("/static/images/marker.png", null, null, null, new google.maps.Size(18,25));
+            
+        var marker = new window.google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            icon: icon
         });
     };
 
