@@ -181,6 +181,8 @@
     <Compile Include="Models\Pages\GalleryPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
+    <Compile Include="Models\Properties\VaultPicker\VaultPickerEditorDescriptor.cs" />
+    <Compile Include="Models\Properties\VaultPicker\VaultPickerSelectionFactory.cs" />
     <Compile Include="Models\UploadModel.cs" />
     <Compile Include="Models\ViewModels\GalleryViewModel.cs" />
     <Compile Include="Models\ViewModels\IPageViewModel.cs" />
@@ -195,9 +197,7 @@
     <Content Include="Static\Scripts\Vaultopia.Gallery.js" />
     <Content Include="Static\Scripts\Vaultopia.Upload.js" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Properties\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\LanguageFiles\Layout.xml" />
     <Content Include="Static\Fonts\Avenir\8afe744b-89a2-4ae2-a88e-05c6882580f3.svg" />
