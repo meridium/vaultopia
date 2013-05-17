@@ -359,6 +359,7 @@
     #upload .metadata .button {
         float: right;
         padding: 15px 40px;
+        opacity: .3;
     }
     #upload .metadata textarea {
         height: 65px;

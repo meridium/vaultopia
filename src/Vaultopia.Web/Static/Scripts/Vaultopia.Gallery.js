@@ -17,7 +17,7 @@
                     var $images = $('<ul>' + data + '</ul>');
 
                     $images.imagesLoaded(function() {
-                        if ($images.find('li').length <= 16) {
+                        if ($images.find('li').length <= 32) {
                             $('#gallery-paging-action').remove();
                         }
 
