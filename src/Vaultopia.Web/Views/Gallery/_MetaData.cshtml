@@ -1,1 +1,18 @@
-﻿METADATA!!!!
+﻿@model Vaultopia.Web.Models.Formats.GalleryImage
+
+<div>
+    <h1>@Model.Title</h1>
+    <em>@Model.DateAdded.ToString("MMM dd yyyy, hh:mm tt")</em>
+    <span class="photographer icon">Photographer: </span>@Model.Photographer
+
+    <ul class="exif">
+        <li>ISO @Model.Iso</li>
+        <li>@Model.FocalLength mm</li>
+        <li>f/@Model.Aperture</li>
+        <li>@Model.ExposureTime</li>
+        <li><span>JPEG</span></li>
+    </ul>
+    
+    <div id="map" data-map-lat="@Model.Latitude" data-map-lng="@Model.Longitude"></div>
+</div>
+

@@ -139,8 +139,9 @@
         box-sizing: border-box;
         position: relative;
     }
+
     body.gallery #gallery li:hover img {
-        opacity: 0.5;
+        /*opacity: 0.5;*/
         
 
     }
@@ -171,15 +172,139 @@
         right: 21px;
         bottom: 25px;
         position: absolute;
+        display: none;
     }
 
+    body.gallery #gallery .enlarge {
+        background-position: -136px -93px;
+        display: block;
+        width: 46px;
+        height: 46px;
+        margin-top: -34px;
+        margin-left: -23px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 999;
+        display: none;
+
+    }
+
+    body.gallery #metadata {
+        position: absolute;
+        bottom: -289px;
+        right: -86px;
+        background: rgba(51, 51, 51, 0.98);
+        width: 230px;
+        height: 300px;
+        border-radius: 2px;
+        z-index: 9999;
+        color: #ffffff;
+        text-align: left;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+        padding: 12px;
+        box-sizing: border-box;
+        box-shadow: inset 0 -3px 0 #282828;
+    }
+    body.gallery #metadata h1 {
+        text-transform: uppercase;
+        font-size: 12px;
+        color: #ffffff;
+        font-family: 'Avenir LT W02 85 Heavy';
+        padding: 4px 0 0;
+    }
+    body.gallery #metadata .exif {
+        color: #fcffca;
+        margin: 55px 0 0;
+        border-top: 1px solid #484848;
+        padding: 10px 0 0;
+    }
+    body.gallery #metadata .photographer {
+        width: 16px;
+        height: 12px;
+        background-position: -97px 0px;
+        vertical-align: middle;
+    }
+    body.gallery #metadata em {
+        color: #aeaead;
+        margin-bottom: 7px;
+        display: block;
+        font-size: 11px;
+    }
+    body.gallery #metadata .exif li {
+        width: 19%;
+        padding: 0;
+        text-align: center;
+        font-size: 10px;
+        font-family: 'Avenir LT W02 85 Heavy';
+        white-space: nowrap;
+    }
+    body.gallery #metadata .exif li span {
+        background:#fcffca;
+        color: #333;
+        text-shadow: none;
+        padding: 0 2px;
+        border-radius: 1px;
+    }
+    body.gallery #metadata .exif li:first-child {
+        width: 24%; 
+        text-align: left;
+    }
+    body.gallery #metadata .exif li:last-child { text-align: right; }
+
+    body.gallery #metadata .arrow {
+        width: 16px;
+        height: 8px;
+        display: block;
+        position: absolute;
+        top: -8px;
+        left: 107px;
+        background-position: -129px 0;
+    }
+
+    body.gallery #metadata #map {
+        width: 100%;
+        height: 125px;
+        background: #000;
+        text-shadow: none;
+        color: #666;
+        margin: 25px 0 0;
+        background: url(/static/images/nomap.png) no-repeat;
+        background-size: 206px 126px;
+    }
+    body.gallery #metadata #map .gmnoprint > div {
+        background: none !important;
+    }
+        body.gallery #metadata #map .gmnoprint a {
+            text-decoration: none;
+        }
 
 
+    body.gallery #metadata #map {
+        
+    }
+    #upload {
+        position: relative;
+    }
     #upload form {
         overflow: hidden;
     }
     #upload form > div {
         
+    }
+    #upload .close {
+        width: 13px;
+        height: 13px;
+        position: absolute;
+        top: 22px;
+        right: 20px;
+        background-position: -124px -22px;
+        opacity: .2;
+        -webkit-transition: opacity .25s ease-in-out;
+        transition: opacity .25s ease-in-out;
+    }
+    #upload .close:hover {
+        opacity: .5;
     }
     #upload .upload {
         width: 35%;
@@ -258,6 +383,8 @@
         margin: 0 auto;
         margin: 35px auto 22px auto;
     }
+
+
 
 
 }

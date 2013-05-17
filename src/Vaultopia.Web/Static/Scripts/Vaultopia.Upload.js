@@ -8,23 +8,32 @@
             
             $('.overlay').remove();
 
+            var model = {
+                Id: imageId,
+                Title: $container.find('input[name="Title"]').val(),
+                Description: $container.find('textarea[name="Description"]').val()
+            };
+
+          
+
             $.ajax({
                 type: 'POST',
-                data: {
-                    Id : imageId,
-                    Title: $container.find('input[name="Title"]').val(),
-                    Description: $container.find('textarea[name="Description"]').val()
-                },
+                data: JSON.stringify(model),
                 url: '/gallery/save',
-                dataType: 'json',
-                success: function(url) {
-                    //TODO: Add image to gallery.
-                    alert(url);
+                contentType: 'application/json',
+                success: function(data) {
+
+                    $(document).trigger('FileSaved', data);
+                    
                 }
             });
             
         });
 
+
+        $(document).on('click', 'remove-image-anchor', function() {
+
+        });
 
 
     };
@@ -67,9 +76,11 @@
                 var $image = $('<img src="' + response.Url + '" alt="" width="111" height="111" />');
 
                 $droparea.after($image);
-                $image.after('<p><a href="">Remove image</a></p>');
+                $image.after('<p><a href="" id="remove-image-anchor">Remove image</a></p>');
 
                 imageId = response.Id;
+
+
 
             },
             onServerError: function (e, file) {
