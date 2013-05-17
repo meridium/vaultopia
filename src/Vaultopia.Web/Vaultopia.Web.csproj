@@ -193,6 +193,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Static\Images\load.gif" />
+    <Content Include="Static\Images\marker.png" />
+    <Content Include="Static\Images\nomap.png" />
+    <Content Include="Static\Scripts\Lib\jquery.fancybox.js" />
+    <Content Include="Static\Scripts\Lib\jquery.hoverIntent.js" />
     <Content Include="Static\Scripts\Lib\jquery.html5uploader.js" />
     <Content Include="Static\Scripts\Vaultopia.Gallery.js" />
     <Content Include="Static\Scripts\Vaultopia.Upload.js" />
@@ -215,6 +219,11 @@
     <Content Include="Static\Styles\Base.css" />
     <Content Include="Static\Styles\Fonts.css" />
     <Content Include="Static\Styles\Layout.css" />
+    <Content Include="Static\Styles\Lib\fancybox\blank.gif" />
+    <Content Include="Static\Styles\Lib\fancybox\fancybox_loading.gif" />
+    <Content Include="Static\Styles\Lib\fancybox\fancybox_overlay.png" />
+    <Content Include="Static\Styles\Lib\fancybox\fancybox_sprite.png" />
+    <Content Include="Static\Styles\Lib\fancybox\jquery.fancybox.css" />
     <Content Include="Static\Styles\Views.css" />
     <Content Include="Static\Temp\push.jpg" />
     <Content Include="Static\Temp\small01.jpg" />
@@ -264,6 +273,8 @@
     <Content Include="Views\Shared\DisplayTemplates\SelectedTemplate.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteTestimonialBlock.cshtml" />
     <Content Include="Views\Gallery\_Images.cshtml" />
+    <Content Include="Views\Gallery\_MetaData.cshtml" />
+    <Content Include="Views\Gallery\_Image.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
