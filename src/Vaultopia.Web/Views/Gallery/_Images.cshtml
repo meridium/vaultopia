@@ -1,10 +1,4 @@
 ﻿@using Vaultopia.Web.Models.Formats
 @foreach (GalleryImage image in Model.Images) {
-    <li data-image-id="@image.Id">
-        <a href="@image.Thumbnail.Url" class="image">
-            <span class="enlarge sprite"></span>
-            <img src="@image.Thumbnail.Url" alt=""/>
-        </a>
-        <a href="#" class="metadata-anchor icon">View image metadata</a>
-    </li>
+    @Html.Partial("_Image", image)
 }

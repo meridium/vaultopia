@@ -17,18 +17,35 @@
                     var $images = $('<ul>' + data + '</ul>');
 
                     $images.imagesLoaded(function() {
-                        $('#gallery ul').append($images.find('li:not(:last-child)')).masonry('reload');
-                        $('#gallery-paging-action').removeClass('loading');
-                        
                         if ($images.find('li').length <= 16) {
                             $('#gallery-paging-action').remove();
                         }
-                        
+
+                        $('#gallery ul').append($images.find('li:not(:last-child)')).masonry('reload');
+                        $('#gallery-paging-action').removeClass('loading');
+  
                         registerHoverEvents();
                         $container.find('.image').fancybox();
                     });
                 }
             });
+
+
+
+
+        });
+        
+
+        $(document).bind('FileSaved', function (e, html) {
+
+            //Don't know why I need to wrap my li...
+            var $html = $('<ul>' + html + '</ul>');;
+            
+            $html.imagesLoaded(function () {
+                $container.find('ul').prepend($html.find('li')).masonry('reload');
+                registerHoverEvents();
+            }); 
+
         });
        
         $(document).on('click', '#gallery .metadata-anchor', function(e) {

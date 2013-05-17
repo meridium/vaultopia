@@ -1,6 +1,7 @@
 ﻿@model Vaultopia.Web.Models.UploadModel
 <div class="overlay">
     <section class="dialog" id="upload">
+        <a href="#" class="close icon">Close</a>
         @using (Html.BeginForm("Save", "Gallery", FormMethod.Post)) {
             <div class="upload">
                 <h1>1. Upload</h1>

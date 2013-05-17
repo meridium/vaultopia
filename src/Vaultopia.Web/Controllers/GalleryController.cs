@@ -14,7 +14,16 @@ using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 
+
 namespace Vaultopia.Web.Controllers {
+
+    public class Foo : Controller {
+        
+        public ActionResult Save() {
+            return Content("sdf");
+        }
+
+    }
     public class GalleryController : PageControllerBase<GalleryPage> {
 
         private readonly Client _client;
@@ -61,9 +70,10 @@ namespace Vaultopia.Web.Controllers {
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns></returns>
+    
         [HttpPost]
         public ActionResult Save(UploadModel model) {
-
+            
             //Why can't I load the mediaitem with the same id i just saved...?
             var mediaItem = _client.Load<MediaItem>(Int32.Parse(model.Id)).FirstOrDefault();
 
@@ -72,15 +82,17 @@ namespace Vaultopia.Web.Controllers {
             }
 
             //TODO: Update metadata...
+            
+
 
             var service = _client.CreateChannel<IMediaService>();
+
             service.Save(new List<MediaItem> { mediaItem }, MediaServiceSaveOptions.MarkAsOrganized);
 
-            //Why can't Save take an Image? Seems a little unnecessary to load both the mediaitem and image?
-            var image = _client.Load<Image>(mediaItem.Id).Resize(486).SingleOrDefault();
+            var image = _client.Load<GalleryImage>(mediaItem.Id).SingleOrDefault();
 
             if (image != null) {
-                return Content(image.Url);
+                return PartialView("_Image", image);
             }
 
             return new EmptyResult();
@@ -109,8 +121,8 @@ namespace Vaultopia.Web.Controllers {
             var contentservice = _client.CreateChannel<IMediaContentService>();
             var mediaItem = contentservice.StoreContentInVault(id, file.FileName, file.ContentType, vault.Id);
 
-            var service = _client.CreateChannel<IMediaService>();
-            service.Save(new List<MediaItem> { mediaItem }, MediaServiceSaveOptions.MarkAsOrganized);
+            //var service = _client.CreateChannel<IMediaService>();
+            //service.Save(new List<MediaItem> { mediaItem }, MediaServiceSaveOptions.MarkAsOrganized);
 
 
             var image = _client.Load<Image>(mediaItem.Id).Resize(222, 222, ResizeMode.ScaleToFill).SingleOrDefault();
