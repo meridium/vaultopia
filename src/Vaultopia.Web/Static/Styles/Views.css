@@ -317,13 +317,18 @@
         height: 111px;
         opacity: .2;
         margin: 35px auto 22px auto;
+        -webkit-transition: opacity .1s ease-in-out;
+        transition: opacity .1s ease-in-out;
+    }   
+    #upload #droparea.hover {
+        opacity: .3;
     }
 
     #upload progress {
         border-radius: 3px;
         height: 6px;
         background: #fff;
-        width: 55px;
+        width: 65px;
         margin: 0 auto;
         display: block;
         border:1px solid #ececec;
@@ -342,9 +347,7 @@
 
     }
 
-    #upload #droparea.hover {
-        opacity: .3;
-    }
+
 
     #upload .metadata {
         width: 65%;
