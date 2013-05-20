@@ -1,4 +1,6 @@
-﻿var Vaultopia = {};
+﻿var Vaultopia = {
+    Home: {},
+};
 
 $(document).ready(function () {
     $('#toggle-nav').click(function(e) {

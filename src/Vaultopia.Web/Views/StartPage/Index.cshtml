@@ -10,8 +10,9 @@
             <h1>Where do you want to go?</h1>
             <p>Find your dream vacation among hundreds of destinations worldwide.</p>
             <a href="/" class="button">Learn more</a>
-        </div>
+        </div>e
     </div>
+    <div class="slide" style="background-image:url(/static/temp/push.jpg)"></div>
 </section>
 <section id="deals">
     <div class="wrap">
@@ -29,3 +30,11 @@
         </div>
     </div>
 </section>
+
+@section ExternalScripts {
+    <script type="text/javascript">
+        Vaultopia.Home.SlideShow.init({
+            images: [{ url: "/static/temp/push.jpg" }, { url: "/static/temp/push2.jpg" }]
+        });
+    </script>
+}
