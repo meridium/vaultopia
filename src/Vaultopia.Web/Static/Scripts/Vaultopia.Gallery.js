@@ -4,12 +4,25 @@
 
     var init = function () {
         $container = $('#gallery');
+        
+        $container.find('ul').imagesLoaded(function () {
+            $container.find('ul').masonry({
+                itemSelector: 'li'
+            });
+        });
+
         registerEvents();
 
         $container.find('.image').fancybox();
     };
 
     var registerEvents = function() {
+
+        $('#upload-action').click(function (e) {
+            e.preventDefault();
+            //Open upload dialog
+            Vaultopia.Upload.init();
+        });
 
         $('#gallery-paging-action').click(handlePaging);
         
