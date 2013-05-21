@@ -1,0 +1,60 @@
+﻿@model Vaultopia.Web.Models.ViewModels.PageViewModel<Article>
+@{
+    ViewBag.BodyClass = "article";
+}
+
+<div id="main">
+    <div class="wrap">
+        <main>
+            <h1>@Html.PropertyFor(x => x.CurrentPage.Heading)</h1>
+            <p class="introduction">
+                @Html.PropertyFor(x => x.CurrentPage.Introduction)
+            </p>
+            <div id="primary">
+                @Html.PropertyFor(x => x.CurrentPage.MainBody)
+                @Html.PropertyFor(x => x.CurrentPage.Media)
+            </div>
+            <div id="secondary">
+                <ul>
+                    <li><span></span><a href="#">Lorem ipsum dolor</a></li>
+                    <li><span></span><a href="#">Dolor sit amet</a></li>
+                </ul>
+            </div>
+        </main>
+        <aside>
+            @Html.PropertyFor(x => x.CurrentPage.Teasers,new { Tag = "aside"})
+        </aside>
+    </div>
+</div>
+
+@*<div class="wrap">
+    
+    <div id="content">
+        
+        <h1>@Html.PropertyFor(x => x.CurrentPage.Heading)</h1>
+
+        <p class="introduction">
+            @Html.PropertyFor(x => x.CurrentPage.Introduction)
+        </p>
+
+        @Html.PropertyFor(x => x.CurrentPage.MainBody)
+        
+        @Html.PropertyFor(x => x.CurrentPage.Media, new { currentPage = Model.CurrentPage})
+
+    </div>
+    
+    <div>
+        
+        <ul>
+            <li>En lista</li>
+        </ul>
+
+    </div>
+
+    <aside>
+        
+        @Html.PropertyFor(x => x.CurrentPage.Teasers,new { Tag = "aside"})
+
+    </aside>
+
+</div>*@

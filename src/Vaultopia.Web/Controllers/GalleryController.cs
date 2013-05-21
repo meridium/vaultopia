@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EPiServer.Web.Mvc;
 using ImageVault.Client;
 using ImageVault.Client.Query;
 using ImageVault.Common.Data;
@@ -16,7 +14,6 @@ using Vaultopia.Web.Models.ViewModels;
 
 namespace Vaultopia.Web.Controllers {
     public class GalleryController : PageControllerBase<GalleryPage> {
-
         private readonly Client _client;
 
         /// <summary>
@@ -32,7 +29,8 @@ namespace Vaultopia.Web.Controllers {
         /// <param name="currentPage">The current page.</param>
         /// <returns></returns>
         public ActionResult Index(GalleryPage currentPage) {
-            var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
+            var viewModel = new GalleryViewModel<GalleryPage>(currentPage)
+                {
                     Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).Take(16).ToList()
                 };
 
@@ -40,10 +38,10 @@ namespace Vaultopia.Web.Controllers {
         }
 
         public ActionResult Load(GalleryPage currentPage, int skip) {
-
-            var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
-                Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).Skip(skip * 16).Take(17).ToList()
-            };
+            var viewModel = new GalleryViewModel<GalleryPage>(currentPage)
+                {
+                    Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).Skip(skip*16).Take(17).ToList()
+                };
 
             return PartialView("_Images", viewModel);
         }
@@ -63,28 +61,28 @@ namespace Vaultopia.Web.Controllers {
         /// <returns></returns>
         [HttpPost]
         public ActionResult Save(UploadModel model) {
-
             //Why can't I load the mediaitem with the same id i just saved...?
             var mediaItem = _client.Load<MediaItem>(Int32.Parse(model.Id)).FirstOrDefault();
 
-            if (mediaItem == null) {
+            if (mediaItem == null)
+            {
                 return new EmptyResult();
             }
 
             //TODO: Update metadata...
 
             var service = _client.CreateChannel<IMediaService>();
-            service.Save(new List<MediaItem> { mediaItem }, MediaServiceSaveOptions.MarkAsOrganized);
+            service.Save(new List<MediaItem> {mediaItem}, MediaServiceSaveOptions.MarkAsOrganized);
 
             //Why can't Save take an Image? Seems a little unnecessary to load both the mediaitem and image?
             var image = _client.Load<Image>(mediaItem.Id).Resize(486).SingleOrDefault();
 
-            if (image != null) {
+            if (image != null)
+            {
                 return Content(image.Url);
             }
 
             return new EmptyResult();
-
         }
 
         /// <summary>
@@ -94,11 +92,11 @@ namespace Vaultopia.Web.Controllers {
         /// <returns></returns>
         [HttpPost]
         public JsonResult UploadFile(HttpPostedFileBase file) {
-
             //TODO: Get Vault id from some nifty place.
             var vault = _client.Query<Vault>().FirstOrDefault(v => v.Id == 1);
 
-            if (vault == null) {
+            if (vault == null)
+            {
                 throw new Exception("No vault found with provided id");
             }
 
@@ -110,16 +108,17 @@ namespace Vaultopia.Web.Controllers {
             var mediaItem = contentservice.StoreContentInVault(id, file.FileName, file.ContentType, vault.Id);
 
             var service = _client.CreateChannel<IMediaService>();
-            service.Save(new List<MediaItem> { mediaItem }, MediaServiceSaveOptions.MarkAsOrganized);
+            service.Save(new List<MediaItem> {mediaItem}, MediaServiceSaveOptions.MarkAsOrganized);
 
 
             var image = _client.Load<Image>(mediaItem.Id).Resize(222, 222, ResizeMode.ScaleToFill).SingleOrDefault();
 
-            if (image != null) {
-                var response = new { mediaItem.Id, image.Url };
+            if (image != null)
+            {
+                var response = new {mediaItem.Id, image.Url};
                 return Json(response);
             }
-            
+
             return null;
         }
 
@@ -133,8 +132,5 @@ namespace Vaultopia.Web.Controllers {
             var model = _client.Load<GalleryImage>(imageId).FirstOrDefault();
             return PartialView("_MetaData", model);
         }
-
-        
-
     }
 }
