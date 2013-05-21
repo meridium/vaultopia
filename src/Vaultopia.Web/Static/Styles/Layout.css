@@ -107,7 +107,7 @@
     #push {
         height: 590px;
         position: relative;
-
+        background: #666;
     }
 
     #push .slide {
@@ -148,6 +148,26 @@
         font-family: 'Avenir LT W02 85 Heavy';
         padding: 13px 30px 15px;
         margin: 25px 0 0;
+    }
+
+    #push .next {
+        background-position: -129px -151px;
+        width: 21px;
+        height: 21px;
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 88px;
+    }
+
+    #push .prev {
+        background-position: -129px -186px;
+        width: 21px;
+        height: 21px;
+        display: block;
+        position: absolute;
+        left: 20px;
+        top: 88px;
     }
 
     main {

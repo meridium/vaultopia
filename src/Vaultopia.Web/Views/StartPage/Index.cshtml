@@ -1,4 +1,4 @@
-﻿@model Vaultopia.Web.Models.ViewModels.PageViewModel<Vaultopia.Web.Models.Pages.StartPage>
+﻿@model Vaultopia.Web.Models.ViewModels.StartPageViewModel<Vaultopia.Web.Models.Pages.StartPage>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.BodyClass = "home";
@@ -12,7 +12,7 @@
             <a href="/" class="button">Learn more</a>
         </div>e
     </div>
-    <div class="slide" style="background-image:url(/static/temp/push.jpg)"></div>
+    <div class="slide" style="background-image:url(@Model.FirstSlideUrl)"></div>
 </section>
 <section id="deals">
     <div class="wrap">
@@ -33,7 +33,7 @@
 
 @section ExternalScripts {
     <script type="text/javascript">
-        Vaultopia.Home.SlideShow.init({
+        Vaultopia.SlideShow.init({
             images: [{ url: "/static/temp/push.jpg" }, { url: "/static/temp/push2.jpg" }]
         });
     </script>
