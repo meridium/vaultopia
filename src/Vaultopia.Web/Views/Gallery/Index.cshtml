@@ -9,7 +9,7 @@
     <h1>@Model.CurrentPage.Heading</h1>
     <p class="introduction">Far far away, behind the word mountains, far from the countries Vokalia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
     <a class="button" id="upload-action" href="@Url.Action("Upload")">Upload your photos!</a>
-    <section id="categories">
+    <section id="categories" style="display: none;">
         <ul>
             <li><a href="/">Summer</a></li>
             <li><a href="/">Beach</a></li>
@@ -27,3 +27,7 @@
         <a href="/" id="gallery-paging-action" class="button">Show more awesome photos</a>
     </section>
 </div>
+
+@section ExternalScripts {
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeGCmrvtGi8k18J9qQPD4end49bOrjEBA&sensor=false"></script>
+}
