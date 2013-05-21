@@ -1,4 +1,4 @@
-﻿Vaultopia.Home.SlideShow = function () {
+﻿Vaultopia.SlideShow = function () {
 
     var $container,
         $next,
@@ -34,11 +34,23 @@
     };
 
     var updateIndex = function(step) {
+        if (_index + step + 1 > _images.length) {
+            _index = 0;
+            return;
+        }
+        if (_index + step < 0) {
+            _index = _images.length - 1;
+            return;
+        }
         _index = _index + step;
     };
 
     var changeImage = function() {
-        var $image = $('<div class="slide" style="background-image:url(' + _images[_index].url + ')"></div>');
+        if ($container.find('.slide').is(':animated')) {
+            return;
+        }
+
+        var $image = $('<div class="slide" style="background-image:url(' + _images[_index].Url + ')"></div>');
 
         $image.imagesLoaded(function () {
             $container.find('.slide').before($image);
@@ -50,10 +62,10 @@
     };
 
     var initControls = function() {
-        $prev = $('<a href="#" class="prev">Previous</a>');
+        $prev = $('<a href="#" class="prev icon">Previous</a>');
         $container.find('div > div').append($prev);
 
-        $next = $('<a href="#" class="next">Next</a>');
+        $next = $('<a href="#" class="next icon">Next</a>');
         $container.find('div > div').append($next);
     };
 

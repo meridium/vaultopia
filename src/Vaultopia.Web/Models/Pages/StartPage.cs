@@ -2,6 +2,7 @@
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
+using ImageVault.EPiServer;
 using Vaultopia.Web.Models.Blocks;
 
 namespace Vaultopia.Web.Models.Pages {
@@ -60,5 +61,15 @@ namespace Vaultopia.Web.Models.Pages {
         /// </value>
         [Display(GroupName = SystemTabNames.Content)]
         public virtual SiteInspirationBlock SiteInspiration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the media list.
+        /// </summary>
+        /// <value>
+        /// The media list.
+        /// </value>
+        [Display(GroupName = SystemTabNames.Content)]
+        [BackingType(typeof(PropertyMediaList))]
+        public virtual MediaReferenceList<MediaReference> PushMediaList { get; set; }
     }
 }
