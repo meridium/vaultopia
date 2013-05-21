@@ -11,7 +11,7 @@ using Vaultopia.Web.Models.ViewModels;
 namespace Vaultopia.Web.Controllers {
     public class StartPageController : PageControllerBase<StartPage> {
 
-        private Client _client;
+        private readonly Client _client;
 
         /// <summary>
         /// 
@@ -62,10 +62,6 @@ namespace Vaultopia.Web.Controllers {
         /// <returns></returns>
         public string GetSlidesAsJson(StartPage currentPage) {
 
-            /*var list = _client.Query<PushImage>()
-                       .Where(x => currentPage.PushMediaList.Select(m => m.Id)
-                       .Contains(x.Id)).Select(m => m.Slide.Url).ToList();*/
-
             var list = currentPage.PushMediaList.Select(x => new {
                                                                     Url = GetImageUrl(x.Id)
                                                                  }).ToList();
@@ -82,10 +78,7 @@ namespace Vaultopia.Web.Controllers {
         /// <returns></returns>
         private string GetImageUrl(int id) {
             var item = _client.Load<PushImage>(id).FirstOrDefault();
-            if (item != null) {
-                return item.Slide.Url;
-            }
-            return String.Empty;
+            return item != null ? item.Slide.Url : String.Empty;
         }
     }
 }
