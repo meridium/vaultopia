@@ -26,7 +26,9 @@
         <header>
             <div class="wrap">
                 <a href="#global-nav" class="icon" id="toggle-nav">Navigation</a>
-                <h1 id="logotype"><img src="/Static/Images/logotype.png" alt="Vaultopia" /></h1>
+                <h1 id="logotype">
+                    <a href="/"><img src="/Static/Images/logotype.png" alt="Vaultopia" /></a>
+                </h1>
                 <nav id="global-nav">
                     @Html.Menu(
                         page => Html.ContentLink(page),
