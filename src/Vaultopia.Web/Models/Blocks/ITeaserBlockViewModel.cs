@@ -1,10 +1,8 @@
 ﻿using EPiServer.Core;
 using ImageVault.Common.Data;
 
-namespace Vaultopia.Web.Models.Blocks
-{
-    public interface ITeaserBlockViewModel<T>
-    {
+namespace Vaultopia.Web.Models.Blocks {
+    public interface ITeaserBlockViewModel<T> {
         /// <summary>
         /// Gets or sets the block.
         /// </summary>

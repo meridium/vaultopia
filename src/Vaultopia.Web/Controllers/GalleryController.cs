@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
-using EPiServer.Web.Mvc;
 using ImageVault.Client;
 using ImageVault.Client.Query;
 using ImageVault.Common.Data;
@@ -27,7 +25,6 @@ namespace Vaultopia.Web.Controllers {
 
     }
     public class GalleryController : PageControllerBase<GalleryPage> {
-
         private readonly Client _client;
 
         /// <summary>

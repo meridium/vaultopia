@@ -1,12 +1,10 @@
 ﻿using Vaultopia.Web.Models.ViewModels;
 
-namespace Vaultopia.Web.Business
-{
+namespace Vaultopia.Web.Business {
     /// <summary>
     /// 
     /// </summary>
-    interface IModifyLayout
-    {
+    internal interface IModifyLayout {
         /// <summary>
         /// Modifies the layout.
         /// </summary>

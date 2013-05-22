@@ -29,7 +29,7 @@
 
     header .button {
         position: absolute;
-        right: 0;
+        right: 12px;
         top: 18px;
     }
 
@@ -266,7 +266,7 @@
         background-size: 200px 250px;
         background-repeat: no-repeat;
         background-image: url(/static/images/sprite.png);
-        background-position: -71px 0;
+        background-position: -109px 0;
     }
     footer #testimonials img {
         position: absolute;
@@ -445,7 +445,7 @@
         right: 0;
         display: none;
         border-top: 3px solid #2eb2ab;
-        z-index: 1;
+        z-index: 99999;
     }
     #global-nav ul {
         background: #ffffff;

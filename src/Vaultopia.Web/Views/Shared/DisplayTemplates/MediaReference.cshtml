@@ -1,0 +1,12 @@
+﻿@model ImageVault.EPiServer.MediaReference
+@if (Model == null)
+{
+    @Html.Action("RenderPlaceholder","Article")
+}
+else
+{
+    <div class="media-placeholder">
+        @Html.Action("RenderMedia","Article", new { mediaReference = Model })
+    </div>
+    
+}

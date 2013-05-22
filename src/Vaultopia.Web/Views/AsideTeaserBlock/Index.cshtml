@@ -1,0 +1,8 @@
+﻿@model Vaultopia.Web.Models.Blocks.ITeaserBlockViewModel<Vaultopia.Web.Models.Blocks.AsideTeaserBlock>
+
+<article>
+    <img src="@Model.WebMedia.Url" alt="" width="207" height="138" />
+    <h2><a href="/">@Html.PropertyFor(m => m.Block.TeaserHeading)</a></h2>
+    <p>@Html.PropertyFor(m => m.Block.TeaserText)</p>
+    <p class="location"><strong class="icon">Location: </strong>@Html.PropertyFor(m => m.Block.TeaserLocation)</p>
+</article>
