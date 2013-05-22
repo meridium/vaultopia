@@ -12,20 +12,18 @@ using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 using System.Linq;
 
-namespace Vaultopia.Web.Business
-{
-    public class PageViewContextFactory
-    {
+namespace Vaultopia.Web.Business {
+    public class PageViewContextFactory {
         private readonly IContentLoader _contentLoader;
         private readonly UrlResolver _urlResolver;
         private Client _client;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PageViewContextFactory" /> class.
         /// </summary>
         /// <param name="contentLoader">The content loader.</param>
         /// <param name="urlResolver">The URL resolver.</param>
-        public PageViewContextFactory(IContentLoader contentLoader, UrlResolver urlResolver)
-        {
+        public PageViewContextFactory(IContentLoader contentLoader, UrlResolver urlResolver) {
             _contentLoader = contentLoader;
             _urlResolver = urlResolver;
             _client = ClientFactory.GetSdkClient();
@@ -37,10 +35,8 @@ namespace Vaultopia.Web.Business
         /// <value>
         /// The site inspiration urls.
         /// </value>
-        protected List<string> SiteInspirationUrls
-        {
-            get
-            {
+        protected List<string> SiteInspirationUrls {
+            get {
                 var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
                 var list = new List<string>();
                 if (startPage.SiteInspiration.MediaList == null)
@@ -70,18 +66,17 @@ namespace Vaultopia.Web.Business
         /// <param name="currentContentLink">The current content link.</param>
         /// <param name="requestContext">The request context.</param>
         /// <returns></returns>
-        public virtual LayoutModel CreateLayoutModel(ContentReference currentContentLink, RequestContext requestContext)
-        {
+        public virtual LayoutModel CreateLayoutModel(ContentReference currentContentLink, RequestContext requestContext) {
             var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
 
             return new LayoutModel
-            {
-                FirstTestimonial = startPage.FirstSiteTestimonial,
-                SecondTestimonial = startPage.SecondSiteTestimonial,
-                SiteInspirationUrls = SiteInspirationUrls,
-                LoggedIn = requestContext.HttpContext.User.Identity.IsAuthenticated,
-                LoginUrl = new MvcHtmlString(GetLoginUrl(currentContentLink))
-            };
+                {
+                    FirstTestimonial = startPage.FirstSiteTestimonial,
+                    SecondTestimonial = startPage.SecondSiteTestimonial,
+                    SiteInspirationUrls = SiteInspirationUrls,
+                    LoggedIn = requestContext.HttpContext.User.Identity.IsAuthenticated,
+                    LoginUrl = new MvcHtmlString(GetLoginUrl(currentContentLink))
+                };
         }
 
         /// <summary>
@@ -89,8 +84,7 @@ namespace Vaultopia.Web.Business
         /// </summary>
         /// <param name="returnToContentLink">The return to content link.</param>
         /// <returns></returns>
-        private string GetLoginUrl(ContentReference returnToContentLink)
-        {
+        private string GetLoginUrl(ContentReference returnToContentLink) {
             return string.Format(
                 "{0}?ReturnUrl={1}",
                 FormsAuthentication.LoginUrl,

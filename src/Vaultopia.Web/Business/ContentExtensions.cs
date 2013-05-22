@@ -6,10 +6,8 @@ using EPiServer.Filters;
 using EPiServer.Framework.Web;
 using EPiServer.ServiceLocation;
 
-namespace Vaultopia.Web.Business
-{
-    public static class ContentExtensions
-    {
+namespace Vaultopia.Web.Business {
+    public static class ContentExtensions {
         /// <summary>
         /// Filters for display.
         /// </summary>
@@ -18,8 +16,8 @@ namespace Vaultopia.Web.Business
         /// <param name="requirePageTemplate">if set to <c>true</c> [require page template].</param>
         /// <param name="requireVisibleInMenu">if set to <c>true</c> [require visible in menu].</param>
         /// <returns></returns>
-        public static IEnumerable<T> FilterForDisplay<T>(this IEnumerable<T> contents, bool requirePageTemplate = false, bool requireVisibleInMenu = false) where T : IContent
-        {
+        public static IEnumerable<T> FilterForDisplay<T>(this IEnumerable<T> contents, bool requirePageTemplate = false,
+                                                         bool requireVisibleInMenu = false) where T : IContent {
             var accessFilter = new FilterAccess();
             var publishedFilter = new FilterPublished(ServiceLocator.Current.GetInstance<IContentRepository>());
             contents = contents.Where(x => !publishedFilter.ShouldFilter(x) && !accessFilter.ShouldFilter(x));
@@ -41,8 +39,7 @@ namespace Vaultopia.Web.Business
         /// </summary>
         /// <param name="content">The content.</param>
         /// <returns></returns>
-        private static bool VisibleInMenu(IContent content)
-        {
+        private static bool VisibleInMenu(IContent content) {
             var page = content as PageData;
             return page == null || page.VisibleInMenu;
         }
