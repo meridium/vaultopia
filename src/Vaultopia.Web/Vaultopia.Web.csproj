@@ -203,6 +203,7 @@
     <Content Include="Static\Images\nomap.png" />
     <Content Include="Static\Scripts\Lib\jquery.fancybox.js" />
     <Content Include="Static\Scripts\Lib\jquery.hoverIntent.js" />
+    <Content Include="Static\Scripts\Vaultopia.ArticleSlideshow.js" />
     <Content Include="Static\Scripts\Vaultopia.Gallery.js" />
     <Content Include="Static\Scripts\Vaultopia.Slideshow.js" />
     <Content Include="Static\Scripts\Vaultopia.Upload.js" />
