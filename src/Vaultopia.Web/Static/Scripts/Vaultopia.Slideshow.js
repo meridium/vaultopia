@@ -50,7 +50,7 @@
             return;
         }
 
-        var $image = $('<div class="slide" style="background-image:url(' + _images[_index].Url + ')"></div>');
+        var $image = $('<div class="slide" style="background-image:url(' + _images[_index] + ')"></div>');
 
         $image.imagesLoaded(function () {
             $container.find('.slide').before($image);

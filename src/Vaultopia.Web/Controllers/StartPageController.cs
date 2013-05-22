@@ -61,10 +61,7 @@ namespace Vaultopia.Web.Controllers {
         /// <param name="currentPage">The current page.</param>
         /// <returns></returns>
         public string GetSlidesAsJson(StartPage currentPage) {
-
-            var list = currentPage.PushMediaList.Select(x => new {
-                                                                    Url = GetImageUrl(x.Id)
-                                                                 }).ToList();
+            var list = _client.Load<PushImage>(currentPage.PushMediaList.Select(x => x.Id)).ToList().Select(i => i.Slide.Url);
 
             var json = new JavaScriptSerializer().Serialize(list);
 
