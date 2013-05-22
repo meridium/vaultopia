@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+<<<<<<< HEAD
 using System.Web.Script.Serialization;
-using EPiServer.Shell.ObjectEditing.EditorDescriptors;
+=======
+>>>>>>> 8d190c67d1ef4a50014c9a72cc61ae375dcb5bdd
 using EPiServer.Web.Mvc;
 using ImageVault.Client;
 using Vaultopia.Web.Models.Formats;
@@ -12,7 +14,11 @@ using Vaultopia.Web.Models.ViewModels;
 namespace Vaultopia.Web.Controllers {
     public class StartPageController : PageControllerBase<StartPage> {
 
+<<<<<<< HEAD
         private readonly Client _client;
+=======
+        private Client _client;
+>>>>>>> 8d190c67d1ef4a50014c9a72cc61ae375dcb5bdd
 
         /// <summary>
         /// 
@@ -26,8 +32,12 @@ namespace Vaultopia.Web.Controllers {
             editHints.AddConnection(m => m.Layout.SecondTestimonial, p => p.SecondSiteTestimonial);
 
             var viewModel = new StartPageViewModel<StartPage>(currentPage) {
+<<<<<<< HEAD
                                                                                FirstSlideUrl = GetFirstSlideUrl(currentPage),
                                                                                Slides = GetSlidesAsJson(currentPage)
+=======
+                                                                               FirstSlideUrl = GetFirstSlideUrl(currentPage)
+>>>>>>> 8d190c67d1ef4a50014c9a72cc61ae375dcb5bdd
                                                                            };
             return View(viewModel);
         }
@@ -56,6 +66,7 @@ namespace Vaultopia.Web.Controllers {
             return String.Empty;
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Gets the slides as json.
         /// </summary>
@@ -81,5 +92,21 @@ namespace Vaultopia.Web.Controllers {
             var item = _client.Load<PushImage>(id).FirstOrDefault();
             return item != null ? item.Slide.Url : String.Empty;
         }
+=======
+        public string GetSlidesAsJson(StartPage currentPage) {
+
+            //var list = _client.Query<PushImage>().Where(x => currentPage.PushMediaList.Select(m => m.Id).Contains(x.Id)).ToList();
+
+            var json = currentPage.PushMediaList.Select(x => new {
+                                                                     Url = _client.Load<PushImage>(x.Id).FirstOrDefault().Slide.Url
+                                                                 }).ToList();
+            
+                
+           
+
+            return String.Empty;
+        }
+
+>>>>>>> 8d190c67d1ef4a50014c9a72cc61ae375dcb5bdd
     }
 }

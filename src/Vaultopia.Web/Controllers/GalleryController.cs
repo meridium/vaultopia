@@ -182,10 +182,6 @@ namespace Vaultopia.Web.Controllers {
                 StringValue = title
             };
 
-            //get the media item to which we should attach the metadata to. (We inlcude all user metadata)
-            //var item = client.Query<MediaItem>()
-            //         .Include(x => x.Metadata.Where(md => md.DefinitionType == MetadataDefinitionTypes.User))
-            //        .Take(1).FirstOrDefault();
             //when we save the metadata we only want to modify the new one
             //when we clear the metadata, this will not clear the metadata stored in the db only for this copy
             if (item.Metadata != null) {

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using EPiServer.Shell.ObjectEditing.EditorDescriptors;
 using EPiServer.Web.Mvc;
 using ImageVault.Client;
 using Vaultopia.Web.Models.Formats;
@@ -12,7 +10,7 @@ using Vaultopia.Web.Models.ViewModels;
 namespace Vaultopia.Web.Controllers {
     public class StartPageController : PageControllerBase<StartPage> {
 
-        private readonly Client _client;
+        private Client _client;
 
         /// <summary>
         /// 
@@ -26,8 +24,7 @@ namespace Vaultopia.Web.Controllers {
             editHints.AddConnection(m => m.Layout.SecondTestimonial, p => p.SecondSiteTestimonial);
 
             var viewModel = new StartPageViewModel<StartPage>(currentPage) {
-                                                                               FirstSlideUrl = GetFirstSlideUrl(currentPage),
-                                                                               Slides = GetSlidesAsJson(currentPage)
+                                                                               FirstSlideUrl = GetFirstSlideUrl(currentPage)
                                                                            };
             return View(viewModel);
         }
@@ -56,30 +53,19 @@ namespace Vaultopia.Web.Controllers {
             return String.Empty;
         }
 
-        /// <summary>
-        /// Gets the slides as json.
-        /// </summary>
-        /// <param name="currentPage">The current page.</param>
-        /// <returns></returns>
         public string GetSlidesAsJson(StartPage currentPage) {
 
-            var list = currentPage.PushMediaList.Select(x => new {
-                                                                    Url = GetImageUrl(x.Id)
+            //var list = _client.Query<PushImage>().Where(x => currentPage.PushMediaList.Select(m => m.Id).Contains(x.Id)).ToList();
+
+            var json = currentPage.PushMediaList.Select(x => new {
+                                                                     Url = _client.Load<PushImage>(x.Id).FirstOrDefault().Slide.Url
                                                                  }).ToList();
+            
+                
+           
 
-            var json = new JavaScriptSerializer().Serialize(list);
-
-            return json;
+            return String.Empty;
         }
 
-        /// <summary>
-        /// Gets the image URL.
-        /// </summary>
-        /// <param name="id">The id.</param>
-        /// <returns></returns>
-        private string GetImageUrl(int id) {
-            var item = _client.Load<PushImage>(id).FirstOrDefault();
-            return item != null ? item.Slide.Url : String.Empty;
-        }
     }
 }
