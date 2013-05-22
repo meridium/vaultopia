@@ -162,6 +162,8 @@
     <Compile Include="Business\Initialization\FilterConfig.cs" />
     <Compile Include="Business\Initialization\PageContextActionFilter.cs" />
     <Compile Include="Business\PageViewContextFactory.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\AsideTeaserBlockController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
@@ -171,6 +173,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Models\Blocks\AsideTeaserBlock.cs" />
     <Compile Include="Models\Blocks\ITeaserBlockViewModel.cs" />
     <Compile Include="Models\Blocks\SiteInspirationBlock.cs" />
     <Compile Include="Models\Blocks\SiteTestimonialBlock.cs" />
@@ -178,6 +181,7 @@
     <Compile Include="Models\Blocks\TeaserBlockViewModel.cs" />
     <Compile Include="Models\Blocks\WideTeaserBlock.cs" />
     <Compile Include="Models\Formats\GalleryImage.cs" />
+    <Compile Include="Models\Pages\Article.cs" />
     <Compile Include="Models\Formats\PushImage.cs" />
     <Compile Include="Models\Pages\GalleryPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
@@ -199,6 +203,7 @@
     <Content Include="Static\Images\nomap.png" />
     <Content Include="Static\Scripts\Lib\jquery.fancybox.js" />
     <Content Include="Static\Scripts\Lib\jquery.hoverIntent.js" />
+    <Content Include="Static\Scripts\Vaultopia.ArticleSlideshow.js" />
     <Content Include="Static\Scripts\Vaultopia.Gallery.js" />
     <Content Include="Static\Scripts\Vaultopia.Slideshow.js" />
     <Content Include="Static\Scripts\Vaultopia.Upload.js" />
@@ -275,6 +280,9 @@
     <Content Include="Views\Shared\DisplayTemplates\SelectedTemplate.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteTestimonialBlock.cshtml" />
     <Content Include="Views\Gallery\_Images.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\AsideTeaserBlock\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MediaReference.cshtml" />
     <Content Include="Views\Gallery\_MetaData.cshtml" />
     <Content Include="Views\Gallery\_Image.cshtml" />
     <None Include="Web.Debug.config">

@@ -4,12 +4,17 @@
 
     var init = function () {
         $container = $('#gallery');
-        
-        $container.find('ul').imagesLoaded(function () {
-            $container.find('ul').masonry({
-                itemSelector: 'li'
+
+        console.log($(window).width());
+
+        //if ($(window).width() > 768) {
+            $container.find('ul').imagesLoaded(function() {
+                $container.find('ul').masonry({
+                    itemSelector: 'li'
+                });
             });
-        });
+        //}
+        
 
         registerEvents();
 
@@ -17,6 +22,10 @@
     };
 
     var registerEvents = function() {
+
+        $(window).resize(function() {
+            $container.find('ul').masonry('reload');
+        });
 
         $('#upload-action').click(function (e) {
             e.preventDefault();

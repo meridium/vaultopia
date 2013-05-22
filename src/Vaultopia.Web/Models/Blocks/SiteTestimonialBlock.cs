@@ -6,11 +6,10 @@ using ImageVault.Client.Query;
 using ImageVault.Common.Data;
 using ImageVault.EPiServer;
 
-namespace Vaultopia.Web.Models.Blocks
-{
-    [ContentType(DisplayName = "SiteTestimonialBlock", GUID = "ba4fa9b3-53cb-44e6-9f89-4b156da4c002", Description = "", AvailableInEditMode = false)]
-    public class SiteTestimonialBlock : BlockData
-    {
+namespace Vaultopia.Web.Models.Blocks {
+    [ContentType(DisplayName = "SiteTestimonialBlock", GUID = "ba4fa9b3-53cb-44e6-9f89-4b156da4c002", Description = "",
+        AvailableInEditMode = false)]
+    public class SiteTestimonialBlock : BlockData {
         private readonly Client _client;
 
         /// <summary>
@@ -19,16 +18,9 @@ namespace Vaultopia.Web.Models.Blocks
         /// <value>
         /// The media.
         /// </value>
-        public virtual MediaReference MediaReference
-        {
-            get
-            {
-                return this.GetPropertyValue(b => b.MediaReference);
-            }
-            set
-            {
-                this.SetPropertyValue(b => b.MediaReference, value);
-            }
+        public virtual MediaReference MediaReference {
+            get { return this.GetPropertyValue(b => b.MediaReference); }
+            set { this.SetPropertyValue(b => b.MediaReference, value); }
         }
 
         /// <summary>
@@ -37,21 +29,18 @@ namespace Vaultopia.Web.Models.Blocks
         /// <value>
         /// The media URL.
         /// </value>
-        public virtual string MediaUrl
-        {
-            get
-            {
+        public virtual string MediaUrl {
+            get {
                 if (MediaReference == null)
                 {
                     return string.Empty;
                 }
                 var media =
-                    _client.Load<WebMedia>(MediaReference.Id).ApplyEffects(MediaReference.Effects).SingleOrDefault();
-                if (media == null)
-                {
-                    return string.Empty;
-                }
-                return media.Url;
+                    _client.Load<WebMedia>(MediaReference.Id)
+                           .ApplyEffects(MediaReference.Effects)
+                           .Resize(132, 132, ResizeMode.ScaleToFill)
+                           .SingleOrDefault();
+                return media == null ? string.Empty : media.Url;
             }
         }
 
@@ -67,8 +56,7 @@ namespace Vaultopia.Web.Models.Blocks
         /// <summary>
         /// Initializes a new instance of the <see cref="SiteTestimonialBlock"/> class.
         /// </summary>
-        public SiteTestimonialBlock()
-        {
+        public SiteTestimonialBlock() {
             _client = ClientFactory.GetSdkClient();
         }
     }

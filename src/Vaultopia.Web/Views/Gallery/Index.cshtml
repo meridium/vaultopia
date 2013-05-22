@@ -4,30 +4,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.BodyClass = "gallery";
 }
-
-<div class="wrap">
-    <h1>@Model.CurrentPage.Heading</h1>
-    <p class="introduction">Far far away, behind the word mountains, far from the countries Vokalia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-    <a class="button" id="upload-action" href="@Url.Action("Upload")">Upload your photos!</a>
-    <section id="categories" style="display: none;">
-        <ul>
-            <li><a href="/">Summer</a></li>
-            <li><a href="/">Beach</a></li>
-            <li><a href="/">Female</a></li>
-            <li><a href="/">Male</a></li>
-            <li><a href="/">Water</a></li>
-            <li><a href="/">City</a></li>
-        </ul>
-        <a href="/" id="categories-more-action">Show more categories...</a>
-    </section>
-    <section id="gallery">
-        <ul>
-            @Html.Partial("_Images", Model)
-        </ul>
-        <a href="/" id="gallery-paging-action" class="button">Show more awesome photos</a>
-    </section>
-</div>
-
+<main>
+    <div class="wrap">
+        <h1>@Model.CurrentPage.Heading</h1>
+        <p class="introduction">Far far away, behind the word mountains, far from the countries Vokalia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+        <a class="button" id="upload-action" href="@Url.Action("Upload")">Upload your photos!</a>
+        <section id="categories" style="display: none;">
+            <ul>
+                <li><a href="/">Summer</a></li>
+                <li><a href="/">Beach</a></li>
+                <li><a href="/">Female</a></li>
+                <li><a href="/">Male</a></li>
+                <li><a href="/">Water</a></li>
+                <li><a href="/">City</a></li>
+            </ul>
+            <a href="/" id="categories-more-action">Show more categories...</a>
+        </section>
+        <section id="gallery">
+            <ul>
+                @Html.Partial("_Images", Model)
+            </ul>
+            <a href="/" id="gallery-paging-action" class="button">Show more awesome photos</a>
+        </section>
+    </div>
+</main>
 @section ExternalScripts {
     <script type="text/javascript">
         Vaultopia.Gallery.init();
