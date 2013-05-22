@@ -9,7 +9,7 @@
     var init = function (slides) {
 
         _images = slides.images;
-        $container = $('#push');
+        $container = $('#slide');
 
         if (_images.length == 0) {
             return;
@@ -19,13 +19,13 @@
         registerEvents();
     };
 
-    var registerEvents = function() {
-        $next.click(function(e) {
+    var registerEvents = function () {
+        $next.click(function (e) {
             e.preventDefault();
             updateIndex(1);
             changeImage();
         });
-        
+
         $prev.click(function (e) {
             e.preventDefault();
             updateIndex(-1);
@@ -33,7 +33,7 @@
         });
     };
 
-    var updateIndex = function(step) {
+    var updateIndex = function (step) {
         if (_index + step + 1 > _images.length) {
             _index = 0;
             return;
@@ -45,7 +45,7 @@
         _index = _index + step;
     };
 
-    var changeImage = function() {
+    var changeImage = function () {
         if ($container.find('.slide').is(':animated')) {
             return;
         }
@@ -61,7 +61,7 @@
         });
     };
 
-    var initControls = function() {
+    var initControls = function () {
         $prev = $('<a href="#" class="prev icon">Previous</a>');
         $container.find('div > div').append($prev);
 
@@ -72,5 +72,5 @@
     return {
         init: init
     };
-    
+
 }()
