@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using EPiServer.Shell.ObjectEditing.EditorDescriptors;
 using EPiServer.Web.Mvc;
 using ImageVault.Client;
 using Vaultopia.Web.Models.Formats;
