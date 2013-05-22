@@ -22,6 +22,8 @@
         <meta charset="utf-8" />
     </head>
     <body class="@ViewBag.BodyClass">
+        @Html.RenderEPiServerQuickNavigator()
+        @Html.FullRefreshPropertiesMetaData()
         @RenderSection("dialog", false)
         <header>
             <div class="wrap">
@@ -44,9 +46,9 @@
                 }
             </div>
         </header>
-        <main>
+        @*<main>*@
             @RenderBody()
-        </main>
+        @*</main>*@
         <footer>
             <div class="wrap">
                 <section id="about">

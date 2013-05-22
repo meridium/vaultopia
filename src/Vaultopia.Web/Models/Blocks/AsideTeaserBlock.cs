@@ -7,9 +7,8 @@ using EPiServer.Web;
 using ImageVault.EPiServer;
 
 namespace Vaultopia.Web.Models.Blocks {
-    [ContentType(DisplayName = "TeaserBlock", GUID = "04ac15bc-91ed-4b60-94bf-57001a8e4744", Description = "")]
-    public class TeaserBlock : BlockData {
-        
+    [ContentType(DisplayName = "AsideTeaserBlock", GUID = "165c5437-5906-42fa-b48f-c938af0557e8", Description = "")]
+    public class AsideTeaserBlock : BlockData {
         [CultureSpecific]
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 1)]
@@ -24,7 +23,7 @@ namespace Vaultopia.Web.Models.Blocks {
         [Display(GroupName = SystemTabNames.Content, Order = 4)]
         [Required]
         public virtual MediaReference TeaserImage { get; set; }
-        
+
         [CultureSpecific]
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 5)]
@@ -35,11 +34,6 @@ namespace Vaultopia.Web.Models.Blocks {
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 6)]
         public virtual String TeaserLocation { get; set; }
-
-        [CultureSpecific]
-        [Required(AllowEmptyStrings = false)]
-        [Display(GroupName = SystemTabNames.Content, Order = 6)]
-        public virtual int TeaserPrice { get; set; }
 
     }
 }
