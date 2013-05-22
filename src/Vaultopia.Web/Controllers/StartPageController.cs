@@ -45,9 +45,9 @@ namespace Vaultopia.Web.Controllers {
         /// <param name="currentPage">The current page.</param>
         /// <returns></returns>
         public string GetFirstSlideUrl(StartPage currentPage) {
-            var mediaRef = currentPage.PushMediaList.FirstOrDefault();
-            if(mediaRef != null) {
-                var image = _client.Load<PushImage>(mediaRef.Id).FirstOrDefault();
+            var mediaRef = currentPage.PushMediaList;
+            if (mediaRef != null && mediaRef.Count > 0) {
+                var image = _client.Load<PushImage>(mediaRef[0].Id).FirstOrDefault();
                 if (image != null) {
                     return image.Slide.Url;
                 }
@@ -61,6 +61,10 @@ namespace Vaultopia.Web.Controllers {
         /// <param name="currentPage">The current page.</param>
         /// <returns></returns>
         public string GetSlidesAsJson(StartPage currentPage) {
+            if(currentPage.PushMediaList == null) {
+                return String.Empty;
+            }
+            
             var list = _client.Load<PushImage>(currentPage.PushMediaList.Select(x => x.Id)).ToList().Select(i => i.Slide.Url);
 
             var json = new JavaScriptSerializer().Serialize(list);
@@ -68,14 +72,5 @@ namespace Vaultopia.Web.Controllers {
             return json;
         }
 
-        /// <summary>
-        /// Gets the image URL.
-        /// </summary>
-        /// <param name="id">The id.</param>
-        /// <returns></returns>
-        private string GetImageUrl(int id) {
-            var item = _client.Load<PushImage>(id).FirstOrDefault();
-            return item != null ? item.Slide.Url : String.Empty;
-        }
     }
 }
