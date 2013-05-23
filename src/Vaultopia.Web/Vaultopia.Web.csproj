@@ -181,6 +181,7 @@
     <Compile Include="Models\Blocks\TeaserBlockViewModel.cs" />
     <Compile Include="Models\Blocks\WideTeaserBlock.cs" />
     <Compile Include="Models\Formats\GalleryImage.cs" />
+    <Compile Include="Models\Formats\SlideImage.cs" />
     <Compile Include="Models\Pages\Article.cs" />
     <Compile Include="Models\Formats\PushImage.cs" />
     <Compile Include="Models\Pages\GalleryPage.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="Models\Properties\VaultPicker\VaultPickerEditorDescriptor.cs" />
     <Compile Include="Models\Properties\VaultPicker\VaultPickerSelectionFactory.cs" />
     <Compile Include="Models\UploadModel.cs" />
+    <Compile Include="Models\ViewModels\ArticleViewModel.cs" />
     <Compile Include="Models\ViewModels\GalleryViewModel.cs" />
     <Compile Include="Models\ViewModels\IPageViewModel.cs" />
     <Compile Include="Models\ViewModels\LayoutModel.cs" />
