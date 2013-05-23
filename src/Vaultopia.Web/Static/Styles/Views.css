@@ -40,7 +40,7 @@
         }
         body.article #secondary li a {
             display: inline-block;
-            background-size: 200px 250px;
+            background-size: 200px 300px;
             background-repeat: no-repeat;
             background-image: url(/static/images/sprite.png);
             background-position: -155px -17px;
@@ -196,7 +196,7 @@
     }
     body.gallery #categories li {
         display: inline-block;
-        background-size: 200px 250px;
+        background-size: 200px 300px;
         background-repeat: no-repeat;
         background-image: url(/static/images/sprite.png);
         background-position: 0 -58px;
@@ -411,7 +411,7 @@
     }
     #upload #droparea {
         background: url(/static/images/sprite.png) no-repeat 0 -95px;
-        background-size: 200px 250px;
+        background-size: 200px 300px;
         width: 111px;
         height: 111px;
         opacity: .2;
@@ -487,6 +487,60 @@
         margin: 35px auto 22px auto;
     }
 
+
+    #slideshow {
+        width: 720px;
+        background-color: #fff;
+        max-width: 100%;
+        border: 4px solid #fff;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        overflow: hidden;
+        padding-top: 378px;
+        position: relative;
+    }
+    #slideshow > img {
+        max-width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    #slideshow ul img {
+        width: 140px;
+        margin-top: 3px;
+        opacity: 1;
+        -webkit-transition: opacity .1s ease-in-out;
+        transition: opacity .1s ease-in-out;
+    }
+    #slideshow ul li.selected img {
+        opacity: .5;
+    }
+    #slideshow ul img:hover {
+        opacity: .5;
+    }
+    #slideshow li { float: left;margin-right: 3px; }
+    #slideshow li:last-child {
+        margin: 0;
+    }
+    #slideshow .next,
+    #slideshow .prev {
+        position: absolute;
+        top: 155px;
+        z-index: 9999;
+        height: 44px;
+        width: 44px;
+    }
+
+    #slideshow .next {
+        right: 25px;
+        background-position:-53px -221px;
+    }
+    #slideshow .prev {
+        left: 25px;
+        background-position:0 -221px;
+    }
 
 
 

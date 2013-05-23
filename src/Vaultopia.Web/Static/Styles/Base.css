@@ -73,7 +73,7 @@
 
 
     .icon {
-        background-size: 200px 250px;
+        background-size: 200px 300px;
         background-repeat: no-repeat;
         background-image: url(/static/images/sprite.png);
         text-indent: -9999px;
@@ -81,7 +81,7 @@
     }
 
     .sprite {
-        background-size: 200px 250px;
+        background-size: 200px 300px;
         background-repeat: no-repeat;
         background-image: url(/static/images/sprite.png);
     }

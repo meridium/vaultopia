@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
-using EPiServer.Core;
 using EPiServer.Editor;
 using EPiServer.Web.Mvc;
 using ImageVault.Client;
@@ -21,7 +21,7 @@ namespace Vaultopia.Web.Controllers {
         /// <returns></returns>
         public ActionResult Index(Article currentPage) {
             var viewModel = new ArticleViewModel<Article>(currentPage) {
-                                                                           Slides = client.Load<SlideImage>(currentPage.SlideMediaList.Select(x => x.Id)).Take(5).ToList()
+                                                                            Slides = currentPage.SlideMediaList != null ? client.Load<SlideImage>(currentPage.SlideMediaList.Select(x => x.Id)).Take(5).ToList() : null
                                                                        };
             return View(viewModel);
         }
