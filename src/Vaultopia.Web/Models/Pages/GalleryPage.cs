@@ -29,6 +29,12 @@ namespace Vaultopia.Web.Models.Pages {
         [UIHint(UIHint.Textarea)]
         public virtual string Introduction { get; set; }
 
+        /// <summary>
+        /// Gets or sets the vault picker.
+        /// </summary>
+        /// <value>
+        /// The vault picker.
+        /// </value>
         [UIHint("VaultPicker")]
         [Display(Name = "VaultPicker", Description = "List of available ImageVault vaults", GroupName = SystemTabNames.Content, Order = 3)]
         public virtual string VaultPicker { get; set; }

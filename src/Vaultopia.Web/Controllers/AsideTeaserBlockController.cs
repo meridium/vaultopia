@@ -17,16 +17,6 @@ namespace Vaultopia.Web.Controllers {
         private readonly Client _client;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AsideTeaserBlockController"/> class.
-        /// </summary>
-        public AsideTeaserBlockController() {
-            var repository = ServiceLocator.Current.GetInstance<IContentRepository>();
-
-            _repository = repository;
-            _client = ClientFactory.GetSdkClient();
-        }
-
-        /// <summary>
         /// Indexes the specified current block.
         /// </summary>
         /// <param name="currentBlock">The current block.</param>
@@ -42,6 +32,14 @@ namespace Vaultopia.Web.Controllers {
                                       .SingleOrDefault()
                 };
             return PartialView(model);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AsideTeaserBlockController" /> class.
+        /// </summary>
+        public AsideTeaserBlockController() {
+            _repository = ServiceLocator.Current.GetInstance<IContentRepository>(); ;
+            _client = ClientFactory.GetSdkClient();
         }
     }
 }

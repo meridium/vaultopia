@@ -13,17 +13,14 @@ using Vaultopia.Web.Models.Blocks;
 namespace Vaultopia.Web.Controllers {
     [TemplateDescriptor(Tags = new[] {"narrow"}, AvailableWithoutTag = false, Inherited = false, Name = "Teaser")]
     public class TeaserController : BlockController<TeaserBlock> {
-        private readonly IContentRepository _repository;
         private readonly Client _client;
+        private readonly IContentRepository _repository;
 
-        public TeaserController( /*IContentRepository repository*/) {
-            //Why can't this be injected?
-            var repository = ServiceLocator.Current.GetInstance<IContentRepository>();
-
-            _repository = repository;
-            _client = ClientFactory.GetSdkClient();
-        }
-
+        /// <summary>
+        /// Indexes the specified current block.
+        /// </summary>
+        /// <param name="currentBlock">The current block.</param>
+        /// <returns></returns>
         public override ActionResult Index(TeaserBlock currentBlock) {
             var model = new TeaserBlockViewModel<TeaserBlock>
                 {
@@ -37,6 +34,15 @@ namespace Vaultopia.Web.Controllers {
                 };
 
             return PartialView(model);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TeaserController"/> class.
+        /// </summary>
+        public TeaserController() {
+            var repository = ServiceLocator.Current.GetInstance<IContentRepository>();
+            _repository = repository;
+            _client = ClientFactory.GetSdkClient();
         }
     }
 }

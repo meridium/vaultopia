@@ -16,23 +16,8 @@ using Vaultopia.Web.Models.ViewModels;
 
 
 namespace Vaultopia.Web.Controllers {
-
-    public class Foo : Controller {
-        
-        public ActionResult Save() {
-            return Content("sdf");
-        }
-
-    }
     public class GalleryController : PageControllerBase<GalleryPage> {
         private readonly Client _client;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GalleryController" /> class.
-        /// </summary>
-        public GalleryController() {
-            _client = ClientFactory.GetSdkClient();
-        }
 
         /// <summary>
         /// Indexes the specified current page.
@@ -47,6 +32,12 @@ namespace Vaultopia.Web.Controllers {
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Loads the specified current page.
+        /// </summary>
+        /// <param name="currentPage">The current page.</param>
+        /// <param name="skip">The skip.</param>
+        /// <returns></returns>
         public ActionResult Load(GalleryPage currentPage, int skip) {
 
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
@@ -69,7 +60,6 @@ namespace Vaultopia.Web.Controllers {
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns></returns>
-    
         [HttpPost]
         public ActionResult Save(UploadModel model) {
             
@@ -101,6 +91,7 @@ namespace Vaultopia.Web.Controllers {
         /// </summary>
         /// <param name="file">The file.</param>
         /// <returns></returns>
+        /// <exception cref="System.Exception">No vault found with provided id</exception>
         [HttpPost]
         public JsonResult UploadFile(HttpPostedFileBase file) {
 
@@ -149,6 +140,11 @@ namespace Vaultopia.Web.Controllers {
             return PartialView("_MetaData", model);
         }
 
+        /// <summary>
+        /// Saves the metadata test.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <param name="title">The title.</param>
         public void SaveMetadataTest(MediaItem item, string title) {
             var client = _client;
 
@@ -195,6 +191,13 @@ namespace Vaultopia.Web.Controllers {
             //as stated above, we cannot delete any metadata. Any metadata passed to the save function will only 
             //be added/modified for now.
             ms.Save(new List<MediaItem> { item }, MediaServiceSaveOptions.Metadata);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GalleryController" /> class.
+        /// </summary>
+        public GalleryController() {
+            _client = ClientFactory.GetSdkClient();
         }
 
     }
