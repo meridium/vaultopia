@@ -70,6 +70,12 @@ namespace Vaultopia.Web.Models.Pages
             Order = 4)]
         public virtual MediaReference Media { get; set; }
 
+        /// <summary>
+        /// Gets or sets the teasers.
+        /// </summary>
+        /// <value>
+        /// The teasers.
+        /// </value>
         [CultureSpecific]
         [Editable(true)]
         [Display(

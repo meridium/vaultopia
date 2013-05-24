@@ -13,10 +13,17 @@ namespace Vaultopia.Web.Models.Blocks {
         private readonly Client _client;
 
         /// <summary>
-        /// Gets or sets the media.
+        ///     Initializes a new instance of the <see cref="SiteTestimonialBlock" /> class.
+        /// </summary>
+        public SiteTestimonialBlock() {
+            _client = ClientFactory.GetSdkClient();
+        }
+
+        /// <summary>
+        ///     Gets or sets the media.
         /// </summary>
         /// <value>
-        /// The media.
+        ///     The media.
         /// </value>
         public virtual MediaReference MediaReference {
             get { return this.GetPropertyValue(b => b.MediaReference); }
@@ -24,18 +31,17 @@ namespace Vaultopia.Web.Models.Blocks {
         }
 
         /// <summary>
-        /// Gets the media URL.
+        ///     Gets the media URL.
         /// </summary>
         /// <value>
-        /// The media URL.
+        ///     The media URL.
         /// </value>
         public virtual string MediaUrl {
             get {
-                if (MediaReference == null)
-                {
+                if (MediaReference == null) {
                     return string.Empty;
                 }
-                var media =
+                WebMedia media =
                     _client.Load<WebMedia>(MediaReference.Id)
                            .ApplyEffects(MediaReference.Effects)
                            .Resize(132, 132, ResizeMode.ScaleToFill)
@@ -45,19 +51,12 @@ namespace Vaultopia.Web.Models.Blocks {
         }
 
         /// <summary>
-        /// Gets or sets the site logotype title.
+        ///     Gets or sets the site logotype title.
         /// </summary>
         /// <value>
-        /// The site logotype title.
+        ///     The site logotype title.
         /// </value>
         [CultureSpecific]
         public virtual string Testimonial { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SiteTestimonialBlock"/> class.
-        /// </summary>
-        public SiteTestimonialBlock() {
-            _client = ClientFactory.GetSdkClient();
-        }
     }
 }

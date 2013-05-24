@@ -48,6 +48,16 @@
           <help></help>
         </property>
 
+        <property name="PushMediaList">
+          <caption>Image slider</caption>
+          <help></help>
+        </property>
+
+        <property name="VaultPicker">
+          <caption>List media from vault</caption>
+          <help></help>
+        </property>
+
         <property name="Teasers">
           <caption>Awesome deals</caption>
           <help></help>
