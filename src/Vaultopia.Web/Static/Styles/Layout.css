@@ -232,6 +232,9 @@
         font-family: 'Avenir LT W02 85 Heavy';
         margin: 10px 0 0;
     }
+    footer .button:hover {
+        background: #fff;
+    }
     footer #about {
         width: 24%;
         margin: 0 1% 0 0;

@@ -48,11 +48,8 @@
     a {
         text-decoration: none;
         color: #ee5f12;
-    }
-    a:hover {
-        
-    }
 
+    }
 
     form label {
         font-weight: bold;
@@ -98,6 +95,11 @@
         padding: 8px 20px 9px;
         box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.1) inset;
         border: 0;
+        -webkit-transition: background .2s ease-in-out;
+        transition: background .2s ease-in-out;
+    }
+    .button:hover {
+        background: #38b4ae;
     }
 
     .overlay {
