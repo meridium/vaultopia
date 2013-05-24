@@ -6,7 +6,7 @@ using Vaultopia.Web.Models.Pages;
 namespace Vaultopia.Web.Controllers {
     public abstract class PageControllerBase<T> : PageController<T> where T : SitePageData {
         /// <summary>
-        /// Logouts this instance.
+        ///     Logouts this instance.
         /// </summary>
         /// <returns></returns>
         public ActionResult Logout() {
