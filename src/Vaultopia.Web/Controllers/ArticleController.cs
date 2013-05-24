@@ -24,7 +24,7 @@ namespace Vaultopia.Web.Controllers {
         /// <returns></returns>
         public ActionResult Index(Article currentPage) {
             var viewModel = new ArticleViewModel<Article>(currentPage) {
-                                                                            Slides = currentPage.SlideMediaList != null ? client.Load<SlideImage>(currentPage.SlideMediaList.Select(x => x.Id)).Take(5).ToList() : null
+                                                                            Slides = currentPage.SlideMediaList != null ? _client.Load<SlideImage>(currentPage.SlideMediaList.Select(x => x.Id)).Take(5).ToList() : null
                                                                        };
             return View(viewModel);
         }
