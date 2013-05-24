@@ -67,6 +67,7 @@
         font-family: 'Avenir LT W02 55 Roman', 'helvetica neue', arial, sans-serif;
         padding: 12px 10px;
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         width: 100%;
         margin: 0 0 15px;
     }

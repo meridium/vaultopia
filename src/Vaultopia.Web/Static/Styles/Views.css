@@ -68,6 +68,7 @@
         border-radius: 2px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         margin-bottom: 20px;
         padding: 0 11px;
         font-size: 13px;
@@ -95,6 +96,7 @@
         border-radius: 2px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         margin-bottom: 1em;     
     }
 
@@ -125,6 +127,7 @@
         border-radius: 2px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         position: absolute;
         top: 0;
         left: 0;
@@ -156,6 +159,7 @@
         padding: 33px 0 0 0;
         margin: 0;
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         border-bottom: 1px solid #e3e3e3;
         height: 152px;
     }
@@ -240,6 +244,7 @@
         float: left;
         padding:0 20px 16px 0;
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         position: relative;
     }
 
@@ -255,6 +260,7 @@
         font-family: 'Avenir LT W02 85 Heavy';
         margin: 30px auto 0;
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.10) inset, 0 0 1px rgba(0,0,0,0.15);
         display: block;
         width: 239px;
@@ -307,6 +313,7 @@
         text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
         padding: 12px;
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         box-shadow: inset 0 -3px 0 #282828;
     }
     body.gallery #metadata h1 {
@@ -456,6 +463,7 @@
         width: 65%;
         float: left;
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         border-left: 1px solid #fff;
         min-height: 330px;
     }
@@ -500,6 +508,7 @@
         border-radius: 2px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         margin-bottom: 20px;
         margin-top: 20px;
         overflow: hidden;
