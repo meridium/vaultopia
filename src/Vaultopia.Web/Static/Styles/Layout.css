@@ -439,6 +439,8 @@
 
     header {
         min-height: 55px;
+        position: relative;
+        z-index: 9999999;
     }
 
     #global-nav {
@@ -448,7 +450,7 @@
         right: 0;
         display: none;
         border-top: 3px solid #2eb2ab;
-        z-index: 99999;
+        z-index: 999999;
     }
     #global-nav ul {
         background: #ffffff;
@@ -479,7 +481,7 @@
         right: 15px;
         top: 13px;
         display: block;
-        z-index: 999;
+        z-index: 9999999;
     }
     #toggle-nav.open {
         background-position: -40px -22px;
