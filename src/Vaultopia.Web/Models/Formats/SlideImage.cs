@@ -10,7 +10,7 @@ namespace Vaultopia.Web.Models.Formats {
         /// <value>
         /// The slide.
         /// </value>
-        [ResizeEffect(Width = 710, Height = 377, ResizeMode = ResizeMode.ScaleToFill)]
+        [ResizeEffect(Width = 1420, Height = 754, ResizeMode = ResizeMode.ScaleToFill)]
         public Image LargeImage { get; set; }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace Vaultopia.Web.Models.Formats {
         /// <value>
         /// The small image.
         /// </value>
-        [ResizeEffect(Width = 280, Height = 91, ResizeMode = ResizeMode.ScaleToFill)]
+        [ResizeEffect(Width = 280, Height = 184, ResizeMode = ResizeMode.ScaleToFill)]
         public Thumbnail SmallImage { get; set; }
     }
 }

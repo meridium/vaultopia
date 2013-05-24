@@ -82,5 +82,15 @@ namespace Vaultopia.Web.Models.Pages
             GroupName = "Aside",
             Order = 1)]
         public virtual ContentArea Teasers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the slide media list.
+        /// </summary>
+        /// <value>
+        /// The slide media list.
+        /// </value>
+        [Display(GroupName = SystemTabNames.Content)]
+        [BackingType(typeof(PropertyMediaList))]
+        public virtual MediaReferenceList<MediaReference> SlideMediaList { get; set; }
     }
 }
