@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using EPiServer.ServiceLocation;
+using EPiServer.Web.Routing;
 using ImageVault.Client;
 using ImageVault.Client.Query;
 using ImageVault.Common.Data;
@@ -26,7 +28,7 @@ namespace Vaultopia.Web.Controllers {
         /// <returns></returns>
         public ActionResult Index(GalleryPage currentPage) {
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
-                    Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).OrderByDescending(m => m.DateAdded).Take(32).ToList()
+                    Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded).Take(32).ToList()
                 };
 
             return View(viewModel);
@@ -41,7 +43,7 @@ namespace Vaultopia.Web.Controllers {
         public ActionResult Load(GalleryPage currentPage, int skip) {
 
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
-                Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).OrderByDescending(m => m.DateAdded).Skip(skip * 32).Take(33).ToList()
+                Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded).Skip(skip * 32).Take(33).ToList()
             };
 
             return PartialView("_Images", viewModel);
@@ -95,8 +97,12 @@ namespace Vaultopia.Web.Controllers {
         [HttpPost]
         public JsonResult UploadFile(HttpPostedFileBase file) {
 
+            // Fetch the current page
+            var pageRouteHelper = ServiceLocator.Current.GetInstance<PageRouteHelper>();
+            var currentPage = pageRouteHelper.Page as GalleryPage;
+
             //TODO: Get Vault id from some nifty place.
-            var vault = _client.Query<Vault>().FirstOrDefault(v => v.Id == 1);
+            var vault = _client.Query<Vault>().FirstOrDefault(v => v.Id == int.Parse(currentPage.VaultPicker));
 
             if (vault == null) {
                 throw new Exception("No vault found with provided id");
