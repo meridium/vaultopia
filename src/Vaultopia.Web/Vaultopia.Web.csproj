@@ -157,6 +157,10 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
+    <Compile Include="Business\Channels\DisplayResolutionBase.cs" />
+    <Compile Include="Business\Channels\DisplayResolutions.cs" />
+    <Compile Include="Business\Channels\MobileChannel.cs" />
+    <Compile Include="Business\Channels\WebChannel.cs" />
     <Compile Include="Business\ContentExtensions.cs" />
     <Compile Include="Business\IModifyLayout.cs" />
     <Compile Include="Business\Initialization\FilterConfig.cs" />
@@ -197,6 +201,7 @@
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Models\ViewModels\StartPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Resources\LanguageFiles\Channels.xml" />
     <Content Include="Resources\LanguageFiles\PropertyNames.xml">
       <SubType>Designer</SubType>
     </Content>
