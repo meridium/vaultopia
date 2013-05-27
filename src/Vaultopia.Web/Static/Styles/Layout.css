@@ -175,7 +175,7 @@
 
     main {
         background: #f3f3f3;
-        background-image: url(/static/images/dark.png);
+        background-image: url(../images/dark.png);
         background-size: 75px;
         display: block;
     }
@@ -197,14 +197,14 @@
     }
 
     #deals {
-        background-image: url(/static/images/dark.png);
+        background-image: url(../images/dark.png);
         background-size: 75px;
         border-bottom: 1px solid #fff;
         padding: 40px 0 35px;
     }
     #popular {
         padding: 40px 0 35px;
-        background-image: url(/static/images/light.png);
+        background-image: url(../images/light.png);
         background-size: 75px;
     }
 
@@ -271,7 +271,7 @@
         top: 27px;
         background-size: 200px 300px;
         background-repeat: no-repeat;
-        background-image: url(/static/images/sprite.png);
+        background-image: url(../images/sprite.png);
         background-position: -71px 0;
     }
     footer #testimonials img {

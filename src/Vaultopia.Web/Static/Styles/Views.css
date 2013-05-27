@@ -1,7 +1,7 @@
 ﻿@media screen {
     body.article #main {
         background-color: #f3f3f3;
-        background-image: url(/static/images/dark.png);
+        background-image: url(../images/dark.png);
         background-size: 75px;
         border-bottom: 1px solid #fff;
         border-top: 1px solid #fff;
@@ -42,7 +42,7 @@
             display: inline-block;
             background-size: 200px 300px;
             background-repeat: no-repeat;
-            background-image: url(/static/images/sprite.png);
+            background-image: url(../images/sprite.png);
             background-position: -155px -17px;
             padding: 4px 0 3px 23px;
         }
@@ -201,7 +201,7 @@
         display: inline-block;
         background-size: 200px 300px;
         background-repeat: no-repeat;
-        background-image: url(/static/images/sprite.png);
+        background-image: url(../images/sprite.png);
         background-position: 0 -58px;
         padding: 0 0 0 12px;
         margin: 0 5px 0 0;
@@ -263,7 +263,7 @@
     }
     body.gallery #gallery-paging-action.loading {
         text-indent: -9999px;
-        background: #fff url(/static/images/load.gif) no-repeat 50% 8px;
+        background: #fff url(../images/load.gif) no-repeat 50% 8px;
         background-size: 16px;
     }
         
@@ -374,7 +374,7 @@
         text-shadow: none;
         color: #666;
         margin: 25px 0 0;
-        background: url(/static/images/nomap.png) no-repeat;
+        background: url(../images/nomap.png) no-repeat;
         background-size: 206px 126px;
     }
     body.gallery #metadata #map .gmnoprint > div {
@@ -416,7 +416,7 @@
         float: left;
     }
     #upload #droparea {
-        background: url(/static/images/sprite.png) no-repeat 0 -95px;
+        background: url(../images/sprite.png) no-repeat 0 -95px;
         background-size: 200px 300px;
         width: 111px;
         height: 111px;

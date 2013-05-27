@@ -69,11 +69,11 @@ namespace Vaultopia.Web
         /// <param name="context">The context.</param>
         public void Initialize(InitializationEngine context) {
 
-            // Find the imagevaultws route and remove it
+            // Find the imagevaultws route and remove it (if it exists)
             var route = RouteTable.Routes.Where(r => r.GetType() == typeof (Route))
-                                  .Cast<Route>().Single(r => r.Url == "imagevaultws/{*value}");
-
-            RouteTable.Routes.Remove(route);
+                                  .Cast<Route>().SingleOrDefault(r => r.Url == "imagevaultws/{*value}");
+			if(route!=null)
+				RouteTable.Routes.Remove(route);
 
             // Insert custom imagevaultws route
             var handler = new RestHandler("imagevaultws");
