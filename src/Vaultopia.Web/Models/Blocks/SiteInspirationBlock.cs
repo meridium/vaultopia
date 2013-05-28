@@ -7,15 +7,12 @@ namespace Vaultopia.Web.Models.Blocks {
         AvailableInEditMode = false)]
     public class SiteInspirationBlock : BlockData {
         /// <summary>
-        /// Gets or sets the media list.
+        ///     Gets or sets the media list.
         /// </summary>
         /// <value>
-        /// The media list.
+        ///     The media list.
         /// </value>
-        [BackingType(typeof (PropertyMediaList))]
-        public virtual MediaReferenceList<MediaReference> MediaList {
-            get { return this.GetPropertyValue(b => b.MediaList); }
-            set { this.SetPropertyValue(b => b.MediaList, value); }
-        }
+        [BackingType(typeof(PropertyMediaList))]
+        public virtual MediaReferenceList<MediaReference> MediaList { get; set; }
     }
 }

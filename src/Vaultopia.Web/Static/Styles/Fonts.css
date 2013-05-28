@@ -11,29 +11,29 @@
 
 @font-face{
     font-family:"Avenir LT W02 55 Roman";
-    src:url("/static/fonts/avenir/469ea7ce-bb40-478a-aa21-da079357c969.eot?#iefix");
-    src:url("/static/fonts/avenir/469ea7ce-bb40-478a-aa21-da079357c969.eot?#iefix") format("eot"),
-        url("/static/fonts/avenir/5104d540-ac5c-442d-8581-1e9f4ecd37f0.woff") format("woff"),
-        url("/static/fonts/avenir/6662a841-5b52-4af6-a868-6b43e3d7b263.ttf") format("truetype"),
-        url("/static/fonts/avenir/bfcb105e-6348-434a-ba7b-31cd4bb80da6.svg#bfcb105e-6348-434a-ba7b-31cd4bb80da6") format("svg");
+    src:url("../fonts/avenir/469ea7ce-bb40-478a-aa21-da079357c969.eot?#iefix");
+    src:url("../fonts/avenir/469ea7ce-bb40-478a-aa21-da079357c969.eot?#iefix") format("eot"),
+        url("../fonts/avenir/5104d540-ac5c-442d-8581-1e9f4ecd37f0.woff") format("woff"),
+        url("../fonts/avenir/6662a841-5b52-4af6-a868-6b43e3d7b263.ttf") format("truetype"),
+        url("../fonts/avenir/bfcb105e-6348-434a-ba7b-31cd4bb80da6.svg#bfcb105e-6348-434a-ba7b-31cd4bb80da6") format("svg");
 }
 
 @font-face{
     font-family:"Avenir LT W02 85 Heavy";
-    src:url("/static/fonts/avenir/e9427e66-afa8-4ceb-bb31-7a970fb469ea.eot?#iefix");
-    src:url("/static/fonts/avenir/e9427e66-afa8-4ceb-bb31-7a970fb469ea.eot?#iefix") format("eot"),
-        url("/static/fonts/avenir/748da442-9dd9-4a4d-8da0-b114e16e5d7f.woff") format("woff"),
-        url("/static/fonts/avenir/6beeeb66-0b4e-4162-8788-8bf688b9829a.ttf") format("truetype"),
-        url("/static/fonts/avenir/8afe744b-89a2-4ae2-a88e-05c6882580f3.svg#8afe744b-89a2-4ae2-a88e-05c6882580f3") format("svg");
+    src:url("../fonts/avenir/e9427e66-afa8-4ceb-bb31-7a970fb469ea.eot?#iefix");
+    src:url("../fonts/avenir/e9427e66-afa8-4ceb-bb31-7a970fb469ea.eot?#iefix") format("eot"),
+        url("../fonts/avenir/748da442-9dd9-4a4d-8da0-b114e16e5d7f.woff") format("woff"),
+        url("../fonts/avenir/6beeeb66-0b4e-4162-8788-8bf688b9829a.ttf") format("truetype"),
+        url("../fonts/avenir/8afe744b-89a2-4ae2-a88e-05c6882580f3.svg#8afe744b-89a2-4ae2-a88e-05c6882580f3") format("svg");
 }
 
 @font-face {
     font-family: 'ChunkFiveRegular';
-    src: url('/static/fonts/chunkfive/Chunkfive-webfont.eot');
-    src: url('/static/fonts/chunkfive/Chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/chunkfive/Chunkfive-webfont.woff') format('woff'),
-         url('/static/fonts/chunkfive/Chunkfive-webfont.ttf') format('truetype'),
-         url('/static/fonts/chunkfive/Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+    src: url('../fonts/chunkfive/Chunkfive-webfont.eot');
+    src: url('../fonts/chunkfive/Chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/chunkfive/Chunkfive-webfont.woff') format('woff'),
+         url('../fonts/chunkfive/Chunkfive-webfont.ttf') format('truetype'),
+         url('../fonts/chunkfive/Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 }

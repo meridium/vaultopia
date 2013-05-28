@@ -201,6 +201,7 @@
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Models\ViewModels\StartPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Resources\LanguageFiles\Channels.xml" />
     <Content Include="Resources\LanguageFiles\PropertyNames.xml">
       <SubType>Designer</SubType>
     </Content>

@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vaultopia.Web", "Vaultopia.Web\Vaultopia.Web.csproj", "{3D79ADE5-DADB-47D2-933D-E98F9773AFAD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C00BFC06-E437-42B1-8FFA-F02F9A6EA8BB}"
+	ProjectSection(SolutionItems) = preProject
+		ProjectSettings.xml = ProjectSettings.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

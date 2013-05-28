@@ -108,6 +108,9 @@
         height: 590px;
         position: relative;
         background: #666;
+        margin: 0 auto;
+        max-width: 1440px;
+        border-bottom: 1px solid #fff;
     }
 
     #push .slide {
@@ -172,7 +175,7 @@
 
     main {
         background: #f3f3f3;
-        background-image: url(/static/images/dark.png);
+        background-image: url(../images/dark.png);
         background-size: 75px;
         display: block;
     }
@@ -194,15 +197,14 @@
     }
 
     #deals {
-        background-image: url(/static/images/dark.png);
+        background-image: url(../images/dark.png);
         background-size: 75px;
         border-bottom: 1px solid #fff;
-        border-top: 1px solid #fff;
         padding: 40px 0 35px;
     }
     #popular {
         padding: 40px 0 35px;
-        background-image: url(/static/images/light.png);
+        background-image: url(../images/light.png);
         background-size: 75px;
     }
 
@@ -230,6 +232,9 @@
         font-family: 'Avenir LT W02 85 Heavy';
         margin: 10px 0 0;
     }
+    footer .button:hover {
+        background: #fff;
+    }
     footer #about {
         width: 24%;
         margin: 0 1% 0 0;
@@ -249,6 +254,7 @@
         height: 66px;
         border-radius: 3px;
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         font-size: 16px;
         font-family: georgia;
         font-style: italic;
@@ -265,7 +271,7 @@
         top: 27px;
         background-size: 200px 300px;
         background-repeat: no-repeat;
-        background-image: url(/static/images/sprite.png);
+        background-image: url(../images/sprite.png);
         background-position: -71px 0;
     }
     footer #testimonials img {
@@ -436,6 +442,8 @@
 
     header {
         min-height: 55px;
+        position: relative;
+        z-index: 9999999;
     }
 
     #global-nav {
@@ -445,7 +453,7 @@
         right: 0;
         display: none;
         border-top: 3px solid #2eb2ab;
-        z-index: 99999;
+        z-index: 999999;
     }
     #global-nav ul {
         background: #ffffff;
@@ -476,7 +484,7 @@
         right: 15px;
         top: 13px;
         display: block;
-        z-index: 999;
+        z-index: 9999999;
     }
     #toggle-nav.open {
         background-position: -40px -22px;

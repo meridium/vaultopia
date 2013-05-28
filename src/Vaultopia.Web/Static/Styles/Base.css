@@ -48,11 +48,8 @@
     a {
         text-decoration: none;
         color: #ee5f12;
-    }
-    a:hover {
-        
-    }
 
+    }
 
     form label {
         font-weight: bold;
@@ -67,6 +64,7 @@
         font-family: 'Avenir LT W02 55 Roman', 'helvetica neue', arial, sans-serif;
         padding: 12px 10px;
         box-sizing: border-box;
+        -moz-box-sizing: border-box;
         width: 100%;
         margin: 0 0 15px;
     }
@@ -75,7 +73,7 @@
     .icon {
         background-size: 200px 300px;
         background-repeat: no-repeat;
-        background-image: url(/static/images/sprite.png);
+        background-image: url(../images/sprite.png);
         text-indent: -9999px;
         display: inline-block;
     }
@@ -83,7 +81,7 @@
     .sprite {
         background-size: 200px 300px;
         background-repeat: no-repeat;
-        background-image: url(/static/images/sprite.png);
+        background-image: url(../images/sprite.png);
     }
 
     .button {
@@ -97,6 +95,11 @@
         padding: 8px 20px 9px;
         box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.1) inset;
         border: 0;
+        -webkit-transition: background .2s ease-in-out;
+        transition: background .2s ease-in-out;
+    }
+    .button:hover {
+        background: #38b4ae;
     }
 
     .overlay {

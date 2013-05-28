@@ -137,3 +137,6 @@ src/Vaultopia.Web/License.Config
 # MacOs Temp files
 ._*.*
 .DS*
+
+# Windows OS Temp files
+Thumbs.db

@@ -10,27 +10,22 @@ namespace Vaultopia.Web
 {
     public class Global : EPiServer.Global
     {
+        /// <summary>
+        /// Application_s the start.
+        /// </summary>
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
 
             RouteTable.Routes.MapRoute("Upload", "Gallery/UploadFile", new {controller = "Gallery", action = "UploadFile"});
             RouteTable.Routes.MapRoute("Save", "Gallery/Save", new { controller = "Gallery", action = "Save" });
-
-
-            // Attempt to reproduce the routing problem with a new 'something/*' handler
-            //IRouteHandler routeHandler = new MyRouteHandler();  
-
-            //RouteTable.Routes.Insert(0,new Route("foo/{*value}",routeHandler));
-            //RouteTable.Routes.Insert(0, new MyRoute("bar/{*value}", routeHandler));
         }
     }
 
     /// <summary>
-    /// A custom route to use instead of the default imagevaultws 
+    /// A custom route to use instead of the default imagevaultws
     /// that is added when initializing ImageVault,
     /// to bypass the content link issue.
-    /// 
     /// Todo: Remove when fixed in ImageVault
     /// </summary>
     public class MyRoute : Route {
@@ -48,6 +43,13 @@ namespace Vaultopia.Web
     /// Todo: Remove when fixed in ImageVault
     /// </summary>
     public class MyRouteHandler : IRouteHandler {
+        /// <summary>
+        /// Provides the object that processes the request.
+        /// </summary>
+        /// <param name="requestContext">An object that encapsulates information about the request.</param>
+        /// <returns>
+        /// An object that processes the request.
+        /// </returns>
         public IHttpHandler GetHttpHandler(RequestContext requestContext) {
             return new MvcHandler(requestContext);
         }
@@ -61,13 +63,17 @@ namespace Vaultopia.Web
     /// </summary>
     [InitializableModule, ModuleDependency(typeof(ImageVault.EPiServer.ImageVaultModule))]
     public class MyInitMod:IInitializableModule {
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public void Initialize(InitializationEngine context) {
 
-            // Find the imagevaultws route and remove it
+            // Find the imagevaultws route and remove it (if it exists)
             var route = RouteTable.Routes.Where(r => r.GetType() == typeof (Route))
-                                  .Cast<Route>().Single(r => r.Url == "imagevaultws/{*value}");
-
-            RouteTable.Routes.Remove(route);
+                                  .Cast<Route>().SingleOrDefault(r => r.Url == "imagevaultws/{*value}");
+			if(route!=null)
+				RouteTable.Routes.Remove(route);
 
             // Insert custom imagevaultws route
             var handler = new RestHandler("imagevaultws");

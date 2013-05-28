@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using EPiServer.ServiceLocation;
+using EPiServer.Web.Routing;
 using ImageVault.Client;
 using ImageVault.Client.Query;
 using ImageVault.Common.Data;
@@ -16,23 +18,8 @@ using Vaultopia.Web.Models.ViewModels;
 
 
 namespace Vaultopia.Web.Controllers {
-
-    public class Foo : Controller {
-        
-        public ActionResult Save() {
-            return Content("sdf");
-        }
-
-    }
     public class GalleryController : PageControllerBase<GalleryPage> {
         private readonly Client _client;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GalleryController" /> class.
-        /// </summary>
-        public GalleryController() {
-            _client = ClientFactory.GetSdkClient();
-        }
 
         /// <summary>
         /// Indexes the specified current page.
@@ -41,16 +28,22 @@ namespace Vaultopia.Web.Controllers {
         /// <returns></returns>
         public ActionResult Index(GalleryPage currentPage) {
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
-                    Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).OrderByDescending(m => m.DateAdded).Take(32).ToList()
+                    Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded).Take(32).ToList()
                 };
 
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Loads the specified current page.
+        /// </summary>
+        /// <param name="currentPage">The current page.</param>
+        /// <param name="skip">The skip.</param>
+        /// <returns></returns>
         public ActionResult Load(GalleryPage currentPage, int skip) {
 
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
-                Images = _client.Query<GalleryImage>().Where(m => m.VaultId == 1).OrderByDescending(m => m.DateAdded).Skip(skip * 32).Take(33).ToList()
+                Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded).Skip(skip * 32).Take(33).ToList()
             };
 
             return PartialView("_Images", viewModel);
@@ -69,7 +62,6 @@ namespace Vaultopia.Web.Controllers {
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns></returns>
-    
         [HttpPost]
         public ActionResult Save(UploadModel model) {
             
@@ -101,11 +93,16 @@ namespace Vaultopia.Web.Controllers {
         /// </summary>
         /// <param name="file">The file.</param>
         /// <returns></returns>
+        /// <exception cref="System.Exception">No vault found with provided id</exception>
         [HttpPost]
         public JsonResult UploadFile(HttpPostedFileBase file) {
 
+            // Fetch the current page
+            var pageRouteHelper = ServiceLocator.Current.GetInstance<PageRouteHelper>();
+            var currentPage = pageRouteHelper.Page as GalleryPage;
+
             //TODO: Get Vault id from some nifty place.
-            var vault = _client.Query<Vault>().FirstOrDefault(v => v.Id == 1);
+            var vault = _client.Query<Vault>().FirstOrDefault(v => v.Id == int.Parse(currentPage.VaultPicker));
 
             if (vault == null) {
                 throw new Exception("No vault found with provided id");
@@ -149,6 +146,11 @@ namespace Vaultopia.Web.Controllers {
             return PartialView("_MetaData", model);
         }
 
+        /// <summary>
+        /// Saves the metadata test.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <param name="title">The title.</param>
         public void SaveMetadataTest(MediaItem item, string title) {
             var client = _client;
 
@@ -195,6 +197,13 @@ namespace Vaultopia.Web.Controllers {
             //as stated above, we cannot delete any metadata. Any metadata passed to the save function will only 
             //be added/modified for now.
             ms.Save(new List<MediaItem> { item }, MediaServiceSaveOptions.Metadata);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GalleryController" /> class.
+        /// </summary>
+        public GalleryController() {
+            _client = ClientFactory.GetSdkClient();
         }
 
     }
