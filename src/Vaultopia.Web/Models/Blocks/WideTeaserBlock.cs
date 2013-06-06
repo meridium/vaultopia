@@ -39,6 +39,7 @@ namespace Vaultopia.Web.Models.Blocks {
         /// </value>
         [CultureSpecific]
         [Display(GroupName = SystemTabNames.Content, Order = 4)]
+        [Required]
         public virtual MediaReference TeaserImage { get; set; }
 
         /// <summary>

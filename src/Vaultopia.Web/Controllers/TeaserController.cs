@@ -22,16 +22,22 @@ namespace Vaultopia.Web.Controllers {
         /// <param name="currentBlock">The current block.</param>
         /// <returns></returns>
         public override ActionResult Index(TeaserBlock currentBlock) {
-            var model = new TeaserBlockViewModel<TeaserBlock>
-                {
-                    Block = currentBlock,
-                    Page = _repository.Get<PageData>(currentBlock.TeaserLink),
-                    WebMedia =
-                        _client.Load<WebMedia>(currentBlock.TeaserImage.Id)
+
+            WebMedia media = null;
+            // try to load, apply effects and resize the image
+            if (currentBlock.TeaserImage != null) {
+                media = _client.Load<WebMedia>(currentBlock.TeaserImage.Id)
                                .ApplyEffects(currentBlock.TeaserImage.Effects)
-                               .Resize(437, 277, ResizeMode.ScaleToFill)
-                               .Single()
-                };
+                               .Resize(218, 138, ResizeMode.ScaleToFill)
+                .SingleOrDefault() ?? _client.Load<WebMedia>(currentBlock.TeaserImage.Id)
+                                             .Resize(null, 138).SingleOrDefault();
+            }
+
+            var model = new TeaserBlockViewModel<TeaserBlock> {
+                Block = currentBlock,
+                Page = _repository.Get<PageData>(currentBlock.TeaserLink),
+                WebMedia = media
+            };
 
             return PartialView(model);
         }
