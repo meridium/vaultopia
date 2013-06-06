@@ -23,6 +23,14 @@ namespace Vaultopia.Web.Models.ViewModels {
         public bool LoggedIn { get; set; }
 
         /// <summary>
+        /// Gets or sets the start page URL.
+        /// </summary>
+        /// <value>
+        /// The start page URL.
+        /// </value>
+        public string StartPageUrl { get; set; }
+
+        /// <summary>
         ///     Gets or sets the first testimonial.
         /// </summary>
         /// <value>
