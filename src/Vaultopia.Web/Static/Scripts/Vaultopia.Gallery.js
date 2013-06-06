@@ -101,7 +101,7 @@
         };
         var map = new window.google.maps.Map(document.getElementById('map'), mapOptions);
             
-        var icon = new google.maps.MarkerImage("../images/marker.png", null, null, null, new google.maps.Size(18,25));
+        var icon = new google.maps.MarkerImage("../../static/images/marker.png", null, null, null, new google.maps.Size(18,25));
             
         var marker = new window.google.maps.Marker({
             position: myLatlng,
