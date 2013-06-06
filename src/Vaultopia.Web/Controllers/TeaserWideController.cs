@@ -30,15 +30,29 @@ namespace Vaultopia.Web.Controllers {
         /// <param name="currentBlock">The current block.</param>
         /// <returns></returns>
         public override ActionResult Index(WideTeaserBlock currentBlock) {
+
+            // abort if the the property is empty
+            if (currentBlock.TeaserImage == null) {
+                return new EmptyResult();
+            }
+
+            // try to load, apply effects and resize the image
+            var media = _client.Load<WebMedia>(currentBlock.TeaserImage.Id)
+                               .ApplyEffects(currentBlock.TeaserImage.Effects)
+                               .Resize(237, 167, ResizeMode.ScaleToFill)
+                               .SingleOrDefault();
+
+            // abort if media is not an image
+            if (media == null) {
+                return new EmptyResult();
+            }
+
             var model = new TeaserBlockViewModel<WideTeaserBlock>
                 {
                     Block = currentBlock,
                     Page = _repository.Get<PageData>(currentBlock.TeaserLink),
-                    WebMedia =
-                        _client.Load<WebMedia>(currentBlock.TeaserImage.Id)
-                               .ApplyEffects(currentBlock.TeaserImage.Effects)
-                               .Resize(237, 167, ResizeMode.ScaleToFill)
-                               .Single()
+                    WebMedia = media
+                        
                 };
 
             return PartialView(model);
