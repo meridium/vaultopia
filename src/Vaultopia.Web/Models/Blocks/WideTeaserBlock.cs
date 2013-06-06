@@ -18,7 +18,7 @@ namespace Vaultopia.Web.Models.Blocks {
         [CultureSpecific]
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 1)]
-        public virtual String TeaserHeading { get; set; }
+        public virtual String WideTeaserHeading { get; set; }
 
         /// <summary>
         /// Gets or sets the teaser link.
@@ -29,7 +29,7 @@ namespace Vaultopia.Web.Models.Blocks {
         [CultureSpecific]
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 2)]
-        public virtual PageReference TeaserLink { get; set; }
+        public virtual PageReference WideTeaserLink { get; set; }
 
         /// <summary>
         /// Gets or sets the teaser image.
@@ -40,7 +40,7 @@ namespace Vaultopia.Web.Models.Blocks {
         [CultureSpecific]
         [Display(GroupName = SystemTabNames.Content, Order = 4)]
         [Required]
-        public virtual MediaReference TeaserImage { get; set; }
+        public virtual MediaReference WideTeaserImage { get; set; }
 
         /// <summary>
         /// Gets or sets the teaser text.
@@ -52,7 +52,7 @@ namespace Vaultopia.Web.Models.Blocks {
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 5)]
         [UIHint(UIHint.Textarea)]
-        public virtual String TeaserText { get; set; }
+        public virtual String WideTeaserText { get; set; }
 
         /// <summary>
         /// Gets or sets the teaser location.
@@ -63,7 +63,7 @@ namespace Vaultopia.Web.Models.Blocks {
         [CultureSpecific]
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 6)]
-        public virtual String TeaserLocation { get; set; }
+        public virtual String WideTeaserLocation { get; set; }
 
         /// <summary>
         /// Gets or sets the teaser price.
@@ -74,6 +74,6 @@ namespace Vaultopia.Web.Models.Blocks {
         [CultureSpecific]
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 6)]
-        public virtual int TeaserPrice { get; set; }
+        public virtual int WideTeaserPrice { get; set; }
     }
 }

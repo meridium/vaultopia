@@ -92,7 +92,7 @@
         </property>
 
         <property name="TeaserImage">
-          <caption>Media</caption>
+          <caption>Media (Displays an image or a youtube video)</caption>
           <help></help>
         </property>
 
@@ -110,6 +110,37 @@
           <caption>Price</caption>
           <help></help>
         </property>
+
+        <!-- WideTeaserBlock -->
+        <property name="WideTeaserHeading">
+          <caption>Heading</caption>
+          <help></help>
+        </property>
+
+        <property name="WideTeaserLink">
+          <caption>Link</caption>
+          <help></help>
+        </property>
+
+        <property name="WideTeaserImage">
+          <caption>Media (Displays only images)</caption>
+          <help></help>
+        </property>
+
+        <property name="WideTeaserText">
+          <caption>Text</caption>
+          <help></help>
+        </property>
+
+        <property name="WideTeaserLocation">
+          <caption>Location</caption>
+          <help></help>
+        </property>
+
+        <property name="WideTeaserPrice">
+          <caption>Price</caption>
+          <help></help>
+        </property> 
         
       </common>
     </pagetypes>

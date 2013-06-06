@@ -1,11 +1,11 @@
 ﻿@model Vaultopia.Web.Models.Blocks.ITeaserBlockViewModel<Vaultopia.Web.Models.Blocks.WideTeaserBlock>
 
 <article>
-    <h2><a href="/">@Html.PropertyFor(m => m.Block.TeaserHeading)</a></h2>
+    <h2><a href="/">@Html.PropertyFor(m => m.Block.WideTeaserHeading)</a></h2>
     @if (Model.WebMedia != null) {
         <img src="@Model.WebMedia.Url" alt="" />
     }
-    <p>@Html.PropertyFor(m => m.Block.TeaserText)</p>
-    <p class="location"><strong class="icon">Location: </strong>@Html.PropertyFor(m => m.Block.TeaserLocation)</p>
-    <p class="price"><strong>Pris: </strong>$@Html.PropertyFor(m => m.Block.TeaserPrice)</p>
+    <p>@Html.PropertyFor(m => m.Block.WideTeaserText)</p>
+    <p class="location"><strong class="icon">Location: </strong>@Html.PropertyFor(m => m.Block.WideTeaserLocation)</p>
+    <p class="price"><strong>Pris: </strong>$@Html.PropertyFor(m => m.Block.WideTeaserPrice)</p>
 </article>

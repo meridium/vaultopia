@@ -33,9 +33,9 @@ namespace Vaultopia.Web.Controllers {
 
             WebMedia media = null;
             // try to load, apply effects and resize the image
-            if (currentBlock.TeaserImage != null) {
-                media = _client.Load<WebMedia>(currentBlock.TeaserImage.Id)
-                               .ApplyEffects(currentBlock.TeaserImage.Effects)
+            if (currentBlock.WideTeaserImage != null) {
+                media = _client.Load<WebMedia>(currentBlock.WideTeaserImage.Id)
+                               .ApplyEffects(currentBlock.WideTeaserImage.Effects)
                                .Resize(237, 167, ResizeMode.ScaleToFill)
                                .SingleOrDefault();
             }
@@ -43,7 +43,7 @@ namespace Vaultopia.Web.Controllers {
             var model = new TeaserBlockViewModel<WideTeaserBlock>
                 {
                     Block = currentBlock,
-                    Page = _repository.Get<PageData>(currentBlock.TeaserLink),
+                    Page = _repository.Get<PageData>(currentBlock.WideTeaserLink),
                     WebMedia = media
                 };
 
