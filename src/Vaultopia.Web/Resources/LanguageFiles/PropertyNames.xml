@@ -66,14 +66,51 @@
         <property name="WideTeasers">
           <caption>Popular destinations</caption>
           <help></help>
-        </property>        
-        
+        </property>
+
+        <!-- Article -->
+        <property name="SlideMediaList">
+          <caption>Slideshow</caption>
+          <help></help>
+        </property>
+
         <!-- ContactBlock -->
         <property name="ContactBlockImage">
           <caption>Image</caption>
           <help></help>
         </property>
 
+        <!-- TeaserBlock -->
+        <property name="TeaserHeading">
+          <caption>Heading</caption>
+          <help></help>
+        </property>
+
+        <property name="TeaserLink">
+          <caption>Link</caption>
+          <help></help>
+        </property>
+
+        <property name="TeaserImage">
+          <caption>Media</caption>
+          <help></help>
+        </property>
+
+        <property name="TeaserText">
+          <caption>Text</caption>
+          <help></help>
+        </property>
+
+        <property name="TeaserLocation">
+          <caption>Location</caption>
+          <help></help>
+        </property>
+
+        <property name="TeaserPrice">
+          <caption>Price</caption>
+          <help></help>
+        </property>
+        
       </common>
     </pagetypes>
     
