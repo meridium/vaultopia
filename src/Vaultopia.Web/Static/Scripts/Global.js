@@ -14,4 +14,7 @@ $(document).ready(function () {
         }
     });
 
+
+    $('#inspiration').find('.image').fancybox();
+
 });
