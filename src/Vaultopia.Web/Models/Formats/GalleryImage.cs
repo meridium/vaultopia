@@ -166,6 +166,10 @@ namespace Vaultopia.Web.Models.Formats {
 
                 decimal decimalDegrees = minutes/60 + degrees;
 
+                if (GpsLatitudeRef == "S") {
+                    decimalDegrees = decimalDegrees * -1;
+                }
+
                 return decimalDegrees.ToString();
             }
             set { _latitude = value; }
@@ -195,6 +199,10 @@ namespace Vaultopia.Web.Models.Formats {
                 decimal minutes = Decimal.Parse(lng[1]);
 
                 decimal decimalDegrees = minutes/60 + degrees;
+
+                if (GpsLongitudeRef == "W") {
+                    decimalDegrees = decimalDegrees * -1;
+                }
 
                 return decimalDegrees.ToString();
             }
