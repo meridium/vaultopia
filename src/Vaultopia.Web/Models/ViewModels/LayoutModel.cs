@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Vaultopia.Web.Models.Blocks;
+using Vaultopia.Web.Models.Formats;
 
 namespace Vaultopia.Web.Models.ViewModels {
     /// <summary>
@@ -60,6 +61,6 @@ namespace Vaultopia.Web.Models.ViewModels {
         /// <value>
         ///     The site inspiration urls.
         /// </value>
-        public List<string> SiteInspirationUrls { get; set; }
+        public List<InspirationImage> SiteInspirationUrls { get; set; }
     }
 }

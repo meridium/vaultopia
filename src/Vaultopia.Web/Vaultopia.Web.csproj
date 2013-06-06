@@ -185,6 +185,7 @@
     <Compile Include="Models\Blocks\TeaserBlockViewModel.cs" />
     <Compile Include="Models\Blocks\WideTeaserBlock.cs" />
     <Compile Include="Models\Formats\GalleryImage.cs" />
+    <Compile Include="Models\Formats\InspirationImage.cs" />
     <Compile Include="Models\Formats\SlideImage.cs" />
     <Compile Include="Models\Pages\Article.cs" />
     <Compile Include="Models\Formats\PushImage.cs" />
