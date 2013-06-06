@@ -74,7 +74,8 @@ namespace Vaultopia.Web.Business {
                     SecondTestimonial = startPage.SecondSiteTestimonial,
                     SiteInspirationUrls = SiteInspirationUrls,
                     LoggedIn = requestContext.HttpContext.User.Identity.IsAuthenticated,
-                    LoginUrl = new MvcHtmlString(GetLoginUrl(currentContentLink))
+                    LoginUrl = new MvcHtmlString(GetLoginUrl(currentContentLink)),
+                    StartPageUrl = startPage.LinkURL
                 };
         }
 
