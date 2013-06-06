@@ -7,9 +7,8 @@ using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web.Routing;
 using ImageVault.Client;
-using ImageVault.Client.Query;
-using ImageVault.Common.Data;
 using ImageVault.EPiServer;
+using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 
@@ -31,34 +30,28 @@ namespace Vaultopia.Web.Business {
         }
 
         /// <summary>
-        ///     Gets the site inspiration urls.
+        /// Gets the inspiration images.
         /// </summary>
         /// <value>
-        ///     The site inspiration urls.
+        /// The inspiration images.
         /// </value>
-        protected List<string> SiteInspirationUrls {
+        protected List<InspirationImage> InspirationImages {
             get {
-                var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
-                var list = new List<string>();
-                if (startPage.SiteInspiration.MediaList == null) {
-                    return list;
-                }
-                // TODO remove this and use Load<T>(IEnumerable<int>).ApplyEffects() when it is available via the API
-                foreach (MediaReference mediaReference in startPage.SiteInspiration.MediaList) {
-                    WebMedia media =
-                        _client.Load<WebMedia>(mediaReference.Id)
-                               .ApplyEffects(mediaReference.Effects)
-                               .Resize(119, 113, ResizeMode.ScaleToFill)
-                               .SingleOrDefault();
-                    if (media == null) {
-                        continue;
+                if (_inspirationImages == null) {
+                    var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
+                    _inspirationImages = new List<InspirationImage>();
+                    foreach (MediaReference mediaReference in startPage.SiteInspiration.MediaList) {
+                        InspirationImage media = _client.Load<InspirationImage>(mediaReference.Id).SingleOrDefault();
+                        if (media == null) {
+                            continue;
+                        }
+                        _inspirationImages.Add(media);
                     }
-                    list.Add(media.Url);
                 }
-                return list;
+                return _inspirationImages;
             }
         }
-
+        private List<InspirationImage> _inspirationImages; 
         /// <summary>
         ///     Creates the layout model.
         /// </summary>
@@ -72,7 +65,7 @@ namespace Vaultopia.Web.Business {
                 {
                     FirstTestimonial = startPage.FirstSiteTestimonial,
                     SecondTestimonial = startPage.SecondSiteTestimonial,
-                    SiteInspirationUrls = SiteInspirationUrls,
+                    SiteInspirationUrls = InspirationImages,
                     LoggedIn = requestContext.HttpContext.User.Identity.IsAuthenticated,
                     LoginUrl = new MvcHtmlString(GetLoginUrl(currentContentLink)),
                     StartPageUrl = startPage.LinkURL
