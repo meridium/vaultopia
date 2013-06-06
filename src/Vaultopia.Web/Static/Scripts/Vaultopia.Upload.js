@@ -83,7 +83,7 @@
         $.ajax({
             type: 'POST',
             data: JSON.stringify(model),
-            url: '/gallery/save',
+            url: '/gallery/save/',
             contentType: 'application/json',
             success: function (data) {
                 $(document).trigger('FileSaved', data);
@@ -97,7 +97,7 @@
         formData.append('file', file);
 
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/Gallery/UploadFile');
+        xhr.open('POST', '/Gallery/UploadFile/');
 
         xhr.upload.onprogress = function(e) {
             if (e.lengthComputable) {
