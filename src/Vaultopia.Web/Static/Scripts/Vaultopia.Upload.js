@@ -3,6 +3,7 @@
         imageId;
 
     var init = function () {
+        
         $.get("upload", function (data) {
             //Get and show dialog
             $('body').prepend(data);
@@ -65,7 +66,8 @@
         $container.find('.button').fadeTo(100, .5);
     };
 
-    var save = function(e) {
+    var save = function (e) {
+        
         e.preventDefault();
 
         if (imageId === undefined) {
@@ -83,7 +85,7 @@
         $.ajax({
             type: 'POST',
             data: JSON.stringify(model),
-            url: '/gallery/save/',
+            url: rootDir + 'Gallery/Save/',
             contentType: 'application/json',
             success: function (data) {
                 $(document).trigger('FileSaved', data);
@@ -97,7 +99,7 @@
         formData.append('file', file);
 
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/Gallery/UploadFile/');
+        xhr.open('POST', rootDir + 'Gallery/UploadFile/');
 
         xhr.upload.onprogress = function(e) {
             if (e.lengthComputable) {
