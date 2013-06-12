@@ -101,8 +101,8 @@ namespace Vaultopia.Web.Controllers {
             var pageRouteHelper = ServiceLocator.Current.GetInstance<PageRouteHelper>();
             var currentPage = pageRouteHelper.Page as GalleryPage;
 
-            //TODO: Get Vault id from some nifty place.
-            var vault = _client.Query<Vault>().FirstOrDefault(v => v.Id == int.Parse(currentPage.VaultPicker));
+            // If the current page can not be found (no VaultPicker found) use the first available vault
+            var vault = currentPage != null ? _client.Query<Vault>().FirstOrDefault(v => v.Id == int.Parse(currentPage.VaultPicker)) : _client.Query<Vault>().FirstOrDefault();
 
             if (vault == null) {
                 throw new Exception("No vault found with provided id");
