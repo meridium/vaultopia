@@ -170,6 +170,8 @@
     <Compile Include="Controllers\AsideTeaserBlockController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
+    <Compile Include="Controllers\Slide.cs" />
+    <Compile Include="Models\Formats\Slide.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Controllers\TeaserController.cs" />
     <Compile Include="Controllers\TeaserWideController.cs" />
@@ -186,7 +188,6 @@
     <Compile Include="Models\Blocks\WideTeaserBlock.cs" />
     <Compile Include="Models\Formats\GalleryImage.cs" />
     <Compile Include="Models\Formats\InspirationImage.cs" />
-    <Compile Include="Models\Formats\SlideImage.cs" />
     <Compile Include="Models\Pages\Article.cs" />
     <Compile Include="Models\Formats\PushImage.cs" />
     <Compile Include="Models\Pages\GalleryPage.cs" />
@@ -293,6 +294,7 @@
     <Content Include="Views\Shared\DisplayTemplates\MediaReference.cshtml" />
     <Content Include="Views\Gallery\_MetaData.cshtml" />
     <Content Include="Views\Gallery\_Image.cshtml" />
+    <None Include="Properties\PublishProfiles\Web.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

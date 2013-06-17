@@ -13,7 +13,9 @@
                     <img src="@Model.Slides.FirstOrDefault().LargeImage.Url" alt="" />
                     <ul>
                         @foreach (var image in Model.Slides) {
+                            
                             <li data-large-url="@image.LargeImage.Url"><img src="@image.SmallImage.Url" alt="" /></li>
+                            
                         }
                     </ul>
                 </div>
