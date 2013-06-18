@@ -23,9 +23,38 @@ namespace Vaultopia.Web.Controllers {
         /// <param name="currentPage">The current page.</param>
         /// <returns></returns>
         public ActionResult Index(Article currentPage) {
-            var viewModel = new ArticleViewModel<Article>(currentPage) {
-                                                                            Slides = currentPage.SlideMediaList != null ? _client.Load<SlideImage>(currentPage.SlideMediaList.Select(x => x.Id)).Take(5).ToList() : null
-                                                                       };
+
+            var slides = new List<Slide>();
+
+            var viewModel = new ArticleViewModel<Article>(currentPage);
+
+            if (currentPage.SlideMediaList != null && currentPage.SlideMediaList.Count > 0) {
+
+                var mediaReferences = currentPage.SlideMediaList.Take(5);
+
+                foreach (var mediaReference in mediaReferences) {
+                    var slide = new Slide
+                        {
+                            SmallImage =
+                                _client.Load<WebMedia>(mediaReference.Id)
+                                       .ApplyEffects(mediaReference.Effects)
+                                       .Resize(280, 184, ResizeMode.ScaleToFill)
+                                       .SingleOrDefault(),
+                            LargeImage =
+                                _client.Load<WebMedia>(mediaReference.Id)
+                                       .ApplyEffects(mediaReference.Effects)
+                                       .Resize(1420, 754, ResizeMode.ScaleToFill)
+                                       .SingleOrDefault()
+                        };
+                    if (slide.LargeImage == null || slide.SmallImage == null) {
+                        continue;
+                    }
+                    slides.Add(slide);
+                }
+
+                viewModel.Slides = slides;
+            }
+
             return View(viewModel);
         }
 

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Vaultopia.Web.Models.Formats;
+using Vaultopia.Web.Controllers;
 using Vaultopia.Web.Models.Pages;
 
 namespace Vaultopia.Web.Models.ViewModels {
@@ -14,7 +14,7 @@ namespace Vaultopia.Web.Models.ViewModels {
         /// <value>
         /// The slides.
         /// </value>
-        public List<SlideImage> Slides { get; set; }
+        public List<Slide> Slides { get; set; }
 
     }
 }
