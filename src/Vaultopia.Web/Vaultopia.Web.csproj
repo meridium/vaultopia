@@ -171,7 +171,6 @@
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\Slide.cs" />
-    <Compile Include="Models\Formats\Slide.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Controllers\TeaserController.cs" />
     <Compile Include="Controllers\TeaserWideController.cs" />
