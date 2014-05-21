@@ -1,0 +1,41 @@
+﻿@using EPiServer.Web.Mvc.Html
+@model Vaultopia.Web.Models.ViewModels.StartPageViewModel<Vaultopia.Web.Models.Pages.StartPage>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BodyClass = "home";
+}
+<main>
+    <section id="push">
+        <div class="wrap">
+            <div>
+                <h1>Where do you want to go?</h1>
+                <p>Find your dream vacation among hundreds of destinations worldwide.</p>
+                <a href="/" class="button">Learn more</a>
+            </div>e
+        </div>
+        <div class="slide" style="background-image:url(@Model.FirstSlideUrl)"></div>
+    </section>
+    <section id="deals">
+        <div class="wrap">
+            <h1>Awesome deals</h1>
+            <div class="teasers">
+                @Html.PropertyFor(m => m.CurrentPage.Teasers, new { Tag = "narrow"})
+            </div>
+        </div>
+    </section>
+    <section id="popular">
+        <div class="wrap">
+            <h1>Popular destinations</h1>
+            <div class="teasers wide-teasers">
+                @Html.PropertyFor(m => m.CurrentPage.WideTeasers, new { Tag = "wide" })
+            </div>
+        </div>
+    </section>
+</main>
+@section ExternalScripts {
+    <script type="text/javascript">
+        Vaultopia.SlideShow.init({
+            images: @Html.Raw(Model.Slides)
+        });
+    </script>
+}

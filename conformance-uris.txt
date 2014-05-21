@@ -1,0 +1,4 @@
+#Add paths to test, using markdown syntax like:
+#[Startsida](http://bearded-wallhack.qa.meridium.se)
+#[Undersida](http://bearded-wallhack.qa.meridium.se/sv/undersida/)
+[Startsida](http://vaultopia.qa.meridium.se)
