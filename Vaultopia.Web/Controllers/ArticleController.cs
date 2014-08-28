@@ -9,7 +9,6 @@ using ImageVault.Client;
 using ImageVault.Client.Query;
 using ImageVault.Common.Data;
 using ImageVault.EPiServer;
-using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 
@@ -69,7 +68,7 @@ namespace Vaultopia.Web.Controllers {
             var currentPage = pageRouteHelper.Page;
 
             // Load the property settings for the media reference
-            var propertyData = currentPage.Property["Media"];
+            var propertyData = currentPage.Property["Media2"];
             var settings = (PropertyMediaSettings) propertyData.GetSetting(typeof (PropertyMediaSettings));
 
             try {

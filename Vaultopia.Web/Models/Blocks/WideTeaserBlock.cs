@@ -4,6 +4,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Web;
+using ImageVault.Common.Data;
 using ImageVault.EPiServer;
 
 namespace Vaultopia.Web.Models.Blocks {
@@ -41,6 +42,16 @@ namespace Vaultopia.Web.Models.Blocks {
         [Display(GroupName = SystemTabNames.Content, Order = 4)]
         [Required]
         public virtual MediaReference WideTeaserImage { get; set; }
+
+        [CultureSpecific]
+        [Display(GroupName = SystemTabNames.Content, Order = 4)]
+        [Required]
+        public virtual MediaReference WideTeaserImage1 { get; set; }
+
+        [CultureSpecific]
+        [Display(GroupName = SystemTabNames.Content, Order = 4)]
+        [Required]
+        public virtual MediaReference Ecke { get; set; }
 
         /// <summary>
         /// Gets or sets the teaser text.

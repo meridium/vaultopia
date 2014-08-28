@@ -28,7 +28,9 @@
             </p>
             <div id="primary">
                 @Html.PropertyFor(x => x.CurrentPage.MainBody)
-                @Html.PropertyFor(x => x.CurrentPage.Media)
+                @Html.PropertyFor(x => x.CurrentPage.MyMedia)
+                <br />
+                @Html.PropertyFor(x => x.CurrentPage.MyMediaList, "MediaReferenceList")
             </div>
             <div id="secondary">
                 <ul>

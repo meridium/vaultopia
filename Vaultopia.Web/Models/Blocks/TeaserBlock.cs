@@ -4,6 +4,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Web;
+using ImageVault.Common.Data;
 using ImageVault.EPiServer;
 
 namespace Vaultopia.Web.Models.Blocks {

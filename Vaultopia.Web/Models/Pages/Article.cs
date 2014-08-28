@@ -2,7 +2,7 @@
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
-using EPiServer.Web;
+using ImageVault.Common.Data;
 using ImageVault.EPiServer;
 
 namespace Vaultopia.Web.Models.Pages
@@ -37,7 +37,6 @@ namespace Vaultopia.Web.Models.Pages
             Description = "",
             GroupName = SystemTabNames.Content,
             Order = 2)]
-        [UIHint(UIHint.Textarea)]
         public virtual string Introduction { get; set; }
 
         /// <summary>
@@ -55,6 +54,15 @@ namespace Vaultopia.Web.Models.Pages
             Order = 3)]
         public virtual XhtmlString MainBody { get; set; }
 
+        [CultureSpecific]
+        [Editable(true)]
+        [Display(
+            Name = "Media",
+            Description = "",
+            GroupName = SystemTabNames.Content,
+            Order = 4)]
+        public virtual MediaReference Media { get; set; }
+
         /// <summary>
         /// Gets or sets the media.
         /// </summary>
@@ -64,11 +72,22 @@ namespace Vaultopia.Web.Models.Pages
         [CultureSpecific]
         [Editable(true)]
         [Display(
-            Name = "",
+            Name = "MyMedia",
             Description = "",
             GroupName = SystemTabNames.Content,
-            Order = 4)]
-        public virtual MediaReference Media { get; set; }
+            Order = 4)]        
+        public virtual MediaReference MyMedia { get; set; }
+
+        [CultureSpecific]
+        [Editable(true)]
+        [Display(
+            Name = "MyMediaList",
+            Description = "",
+            GroupName = SystemTabNames.Content,
+            Order = 4)]        
+        //[UIHint("MediaReferenceList", PresentationLayer.Edit)]
+        [BackingType(typeof(PropertyMediaList))]
+        public virtual MediaReferenceList<MediaReference> MyMediaList { get; set; }
 
         /// <summary>
         /// Gets or sets the teasers.

@@ -46,6 +46,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Castle.Windsor.3.2.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="CMS">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.7.8.3\lib\net40\CMS.dll</HintPath>
+    </Reference>
     <Reference Include="EPiServer, Version=7.7.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPiServer.CMS.Core.7.7.1\lib\net40\EPiServer.dll</HintPath>
@@ -57,6 +60,10 @@
     <Reference Include="EPiServer.BaseLibrary, Version=7.7.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPiServer.CMS.Core.7.7.1\lib\net40\EPiServer.BaseLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="EPiServer.Cms.Shell.UI, Version=7.8.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.7.8.3\lib\net40\EPiServer.Cms.Shell.UI.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.Configuration, Version=7.7.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -102,6 +109,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPiServer.Framework.7.7.1\lib\net40\EPiServer.Shell.dll</HintPath>
     </Reference>
+    <Reference Include="EPiServer.Shell.UI, Version=7.8.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.7.8.3\lib\net40\EPiServer.Shell.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="EPiServer.UI, Version=7.8.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.7.8.3\lib\net40\EPiServer.UI.dll</HintPath>
+    </Reference>
     <Reference Include="EPiServer.Web.WebControls, Version=7.7.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPiServer.CMS.Core.7.7.1\lib\net40\EPiServer.Web.WebControls.dll</HintPath>
@@ -129,6 +144,9 @@
     <Reference Include="ImageVault.EPiServer7">
       <HintPath>..\packages\ImageVault.EPiServer7.4.4.12\lib\net40\ImageVault.EPiServer7.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
@@ -145,6 +163,9 @@
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Shell">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.7.8.3\lib\net40\Shell.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -195,6 +216,18 @@
     <Content Include="Resources\LanguageFiles\Layout.xml" />
     <Content Include="Resources\LanguageFiles\PropertyNames.xml" />
     <Content Include="robots.txt" />
+    <Content Include="modules\_protected\Shell\web.config" />
+    <Content Include="modules\_protected\Shell\EPiServer.Shell.UI.zip" />
+    <Content Include="modules\_protected\CMS\web.config" />
+    <Content Include="modules\_protected\CMS\EPiServer.Cms.Shell.UI.zip" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Static\Fonts\Avenir\8afe744b-89a2-4ae2-a88e-05c6882580f3.svg" />
     <Content Include="Static\Fonts\Avenir\bfcb105e-6348-434a-ba7b-31cd4bb80da6.svg" />
     <Content Include="Static\Fonts\ChunkFive\Chunkfive-webfont.svg" />
@@ -317,7 +350,6 @@
     <Content Include="Views\Gallery\_Image.cshtml" />
     <Content Include="Views\Gallery\_Images.cshtml" />
     <Content Include="Views\Gallery\_MetaData.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MediaReference.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SelectedTemplate.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteTestimonialBlock.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -328,6 +360,7 @@
     <Content Include="imagevault.client.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

@@ -41,7 +41,7 @@ namespace Vaultopia.Web.Models.Pages {
         /// <value>
         /// The first site testimonial.
         /// </value>
-        [Display(GroupName = SystemTabNames.Content)]
+        [Display(GroupName = SystemTabNames.Content)]        
         public virtual SiteTestimonialBlock FirstSiteTestimonial { get; set; }
 
         /// <summary>

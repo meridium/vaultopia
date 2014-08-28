@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{22B5A9
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageVault.Mvc.Essentials", "ImageVault.Mvc.Essentials", "{93ACC679-6D5D-4898-BE98-79E3DB94BF45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageVault.Mvc.Essentials", "Vaultopia.Web\ImageVault.Mvc.Essentials.csproj", "{559E8618-D0E3-4B6E-A68E-300380AC9273}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +24,15 @@ Global
 		{546E319E-7804-4D59-A850-FF6F5BD1F9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{546E319E-7804-4D59-A850-FF6F5BD1F9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{546E319E-7804-4D59-A850-FF6F5BD1F9E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{559E8618-D0E3-4B6E-A68E-300380AC9273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{559E8618-D0E3-4B6E-A68E-300380AC9273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{559E8618-D0E3-4B6E-A68E-300380AC9273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{559E8618-D0E3-4B6E-A68E-300380AC9273}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{559E8618-D0E3-4B6E-A68E-300380AC9273} = {93ACC679-6D5D-4898-BE98-79E3DB94BF45}
 	EndGlobalSection
 EndGlobal

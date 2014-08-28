@@ -1,7 +1,7 @@
-﻿using Vaultopia.Web.Models.Pages;
+﻿using EPiServer.Core;
 
 namespace Vaultopia.Web.Models.ViewModels {
-    public class PageViewModel<T> : IPageViewModel<T> where T : SitePageData {
+    public class PageViewModel<T> : IPageViewModel<T> where T : PageData {
         /// <summary>
         ///     Initializes a new instance of the <see cref="PageViewModel{T}" /> class.
         /// </summary>

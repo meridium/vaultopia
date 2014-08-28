@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -42,6 +41,7 @@ namespace Vaultopia.Web.Controllers {
         /// <param name="currentPage">The current page.</param>
         /// <returns></returns>
         public ActionResult Index(StartPage currentPage) {
+
             //Connect the view models testimonial properties to the start page's to make it editable
             var editHints = ViewData.GetEditHints<PageViewModel<StartPage>, StartPage>();
             editHints.AddConnection(m => m.Layout.FirstTestimonial, p => p.FirstSiteTestimonial);
