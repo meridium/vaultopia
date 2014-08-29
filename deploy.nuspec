@@ -1,0 +1,32 @@
+<?xml version='1.0'?>
+<package xmlns='http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd'>
+    <metadata>
+        <id>vaultopia</id>
+        <version>0.0.1</version>
+        <title>Vaultopia</title>
+        <summary></summary>
+        <authors>Team Foxtrot</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Vaultopia</description>
+    </metadata>
+    <files>
+        <file src='Vaultopia.Web\bin\*.*' target='bin' />
+		<file src='Vaultopia.Web\Views\**\*.*' target='Views' />
+        <file src='Vaultopia.Web\global.asax' target='' />
+        <file src='Vaultopia.Web\web.config' target='' />
+        <file src='Vaultopia.Web\episerverframework.config' target='' />
+		<file src='Vaultopia.Web\episerverframework.QA.config' target='' />
+        <file src='Vaultopia.Web\episerverframework.UAT.config' target='' />
+		<file src='Vaultopia.Web\episerver.config' target='' />
+		<file src='Vaultopia.Web\connectionStrings.config' target='' />
+		<file src='Vaultopia.Web\connectionStrings.QA.config' target='' />
+        <file src='Vaultopia.Web\connectionStrings.UAT.config' target='' />
+		<file src='conformance-uris.txt' target='' />
+		<file src='packages\psake.4.2.0.1\tools\psake.psm1' target='' />
+        <file src='packages\Meridium.Psake.2.1.0\tools\PreDeploy.ps1' target='' />
+		<file src='packages\Meridium.Psake.2.1.0\tools\PostDeploy.ps1' target='' />
+        <file src='packages\Meridium.Psake.2.1.0\tools\default.ps1' target='' />
+        <file src='packages\Meridium.Psake.2.1.0\tools\funclib.ps1' target='' />
+		<file src='packages\Meridium.Psake.2.1.0\tools\edit-xml.ps1' target='' />
+    </files>
+</package>

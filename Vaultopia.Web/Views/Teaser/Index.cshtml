@@ -1,0 +1,14 @@
+﻿@using EPiServer.Web.Mvc.Html
+@model Vaultopia.Web.Models.Blocks.ITeaserBlockViewModel<Vaultopia.Web.Models.Blocks.TeaserBlock>
+
+<article>
+    <h2><a href="@Url.PageUrl(Model.Page.LinkURL)">@Html.PropertyFor(m => m.Block.TeaserHeading)</a></h2>
+
+    @*@if (Model.WebMedia != null) {
+        @Html.Raw(Model.WebMedia.Html)
+    }*@
+    @Html.PropertyFor(x => x.Block.TeaserImage)
+    <p>@Html.PropertyFor(m => m.Block.TeaserText)</p>
+    <p class="location"><strong class="icon">Location: </strong>@Html.PropertyFor(m => m.Block.TeaserLocation)</p>
+    <p class="price"><strong>Pris: </strong>$@Html.PropertyFor(m => m.Block.TeaserPrice)</p>
+</article>
