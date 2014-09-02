@@ -298,7 +298,27 @@
             </summary>
             <param name="id">The blob identifier</param>
             <returns>A blob provider</returns>
-            <exception cref="T:System.ArgumentException">Throw if no matching provider was found</exception>
+            <exception cref="T:System.ArgumentException">Thrown if no matching provider was found</exception>
+        </member>
+        <member name="M:EPiServer.Framework.Blobs.BlobFactory.RegisterProvider(EPiServer.Framework.Blobs.BlobProvider)">
+            <summary>
+            Register a blob provider
+            </summary>
+            <param name="provider">The provider to register</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when provider or its name is null or empty</exception>
+        </member>
+        <member name="M:EPiServer.Framework.Blobs.BlobFactory.UnregisterProvider(System.String)">
+            <summary>
+            Unregister a blob provider
+            </summary>
+            <param name="name">The name of the provider (also used as authority in blob ID)</param>
+            <returns>Returns <c>true</c> if the provider was found and removed</returns>
+            <remarks>Provider names are not case sensitive</remarks>
+        </member>
+        <member name="P:EPiServer.Framework.Blobs.BlobFactory.DefaultProvider">
+            <summary>
+            The default provider
+            </summary>
         </member>
         <member name="P:EPiServer.Framework.Blobs.BlobFactory.Instance">
             <summary>
@@ -2533,6 +2553,11 @@
             <param name="httpContext">The HTTP context.</param>
             <returns></returns>
         </member>
+        <member name="T:EPiServer.Security.ClaimTypes">
+            <summary>
+            This class exist in .NET 4.5 and is temporary added until we go up to 4.5
+            </summary>
+        </member>
         <member name="T:EPiServer.Framework.Security.ISiteSecret">
             <summary>
             Describes a site wide secret used for symmetric encryption and message authentication.
@@ -3191,6 +3216,84 @@
             Wildcard symbol used in search
             </summary>
             <remarks>If not set, the consuming class may use a default, e.g. "%"</remarks>
+        </member>
+        <member name="T:EPiServer.Security.SecurityEntityProvider">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Signature for component that provides security entities which can be used to apply access rights for items (for example IContent).
+            </summary>
+        </member>
+        <member name="M:EPiServer.Security.SecurityEntityProvider.Search(System.String,System.String)">
+            <summary>
+            Searches all security entities of given type with a matching name.
+            </summary>
+            <param name="partOfValue">Part of value to match or null to get all of given type.</param>
+            <param name="claimType">The claimType to search for.</param>
+            <returns>A list of all matching entities or an empty list if no matches.</returns>
+        </member>
+        <member name="M:EPiServer.Security.SecurityEntityProvider.Search(System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Searches all security entities of given type with a matching name with paging support.
+            </summary>
+            <param name="partOfValue">Part of value to match or null to get all of given type.</param>
+            <param name="claimType">The claim type to search for.</param>
+            <param name="startIndex">The start index, used for paging</param>
+            <param name="maxRows">The maximum number of rows returned</param>
+            <param name="totalCount">The total amount of matched entites. Return -1 if provider does not support paging.</param>
+            <returns>A list of all matching entities or an empty list if no matches.</returns>
+        </member>
+        <member name="T:EPiServer.Security.SecurityEntityProviderExtensions">
+            <summary>
+            Convenience extension methods for <see cref="T:EPiServer.Security.SecurityEntityProvider"/>
+            </summary>
+        </member>
+        <member name="M:EPiServer.Security.SecurityEntityProviderExtensions.SearchRoles(EPiServer.Security.SecurityEntityProvider,System.String)">
+            <summary>
+            Search all roles matching <paramref name="partOfName"/>.
+            </summary>
+            <param name="securityEntityProvider">The provider that is extended</param>
+            <param name="partOfName">part of the role name to match. Null or String.Empty will return all roles.</param>
+            <returns>A list of matching roles.</returns>
+        </member>
+        <member name="M:EPiServer.Security.SecurityEntityProviderExtensions.SearchRoles(EPiServer.Security.SecurityEntityProvider,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Search all roles matching <paramref name="partOfName"/>.
+            </summary>
+            <param name="securityEntityProvider">The provider that is extended</param>
+            <param name="partOfName">part of the role name to match. Null or String.Empty will return all roles.</param>
+            <param name="startIndex">The start index, used for paging</param>
+            <param name="maxRows">The maximum number of rows returned</param>
+            <param name="totalCount">The total amount of matched entites. Return -1 if provider does not support paging.</param>
+            <returns>A list of all matching entities or an empty list if no matches.</returns>
+            <returns>A list of matching roles.</returns>
+        </member>
+        <member name="M:EPiServer.Security.SecurityEntityProviderExtensions.SearchUsersByName(EPiServer.Security.SecurityEntityProvider,System.String)">
+            <summary>
+            Search all users with a matching <paramref name="partOfName"/>.
+            </summary>
+            <param name="securityEntityProvider">The provider that is extended</param>
+            <param name="partOfName">part of the user name to match. Null or String.Empty will return all users.</param>
+            <returns>A list of matching users.</returns>
+        </member>
+        <member name="M:EPiServer.Security.SecurityEntityProviderExtensions.SearchUsersByName(EPiServer.Security.SecurityEntityProvider,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Search all users matching <paramref name="partOfName"/>.
+            </summary>
+            <param name="securityEntityProvider">The provider that is extended</param>
+            <param name="partOfName">part of the user name to match. Null or String.Empty will return all users.</param>
+            <param name="startIndex">The start index, used for paging</param>
+            <param name="maxRows">The maximum number of rows returned</param>
+            <param name="totalCount">The total amount of matched entites. Return -1 if provider does not support paging.</param>
+            <returns>A list of all matching entities or an empty list if no matches.</returns>
+            <returns>A list of matching users.</returns>
+        </member>
+        <member name="M:EPiServer.Security.SecurityEntityProviderExtensions.SearchUsersByEmail(EPiServer.Security.SecurityEntityProvider,System.String)">
+            <summary>
+            Search all users with an email matching <paramref name="partOfEmail"/>.
+            </summary>
+            <param name="securityEntityProvider">The provider that is extended</param>
+            <param name="partOfEmail">part of the email to match.</param>
+            <returns>A list of matching users.</returns>
         </member>
         <member name="T:EPiServer.Framework.Serialization.IObjectSerializer">
             <summary>

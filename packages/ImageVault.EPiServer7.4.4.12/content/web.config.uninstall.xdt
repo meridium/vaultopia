@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform" xmlns:asm="urn:schemas-microsoft-com:asm.v1">
-  <system.webServer>
-    <handlers>
-      <add name="ImageVaultMediaHandler" xdt:Transform="Remove"/>
-      <add name="ImageVaultPublishedMediaHandler" xdt:Transform="Remove"/>
-    </handlers>
-  </system.webServer>
-</configuration>

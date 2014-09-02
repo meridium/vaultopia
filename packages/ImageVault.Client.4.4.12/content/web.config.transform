@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<configuration>
-	<configSections>
-		<section name="imagevault.client" type="ImageVault.Client.Configuration.ClientConfigurationSection, ImageVault.Client"/>
-	</configSections>
-	<imagevault.client configSource="imagevault.client.config"/>
-</configuration>

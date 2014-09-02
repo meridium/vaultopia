@@ -901,9 +901,9 @@
             <returns>True if exception is licenseexception, otherwise false.</returns>
             <exception cref="T:System.NullReferenceException">If exception is null.</exception>
         </member>
-        <member name="F:ImageVault.Client.Rest.ServiceClientProxyBase.SerializerSettings">
+        <member name="T:ImageVault.Client.Rest.IServiceClientProxy">
             <summary>
-            Gets the SerializerSettings of the <see cref="T:ImageVault.Client.Rest.ServiceClientProxyBase"/>
+            An interface that defines a service client property
             </summary>
         </member>
         <member name="M:ImageVault.Client.Rest.ServiceClientProxyBase.#cctor">
@@ -934,59 +934,29 @@
             <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
-        <member name="M:ImageVault.Client.Rest.ServiceClientProxyBase.Call(System.String,System.Object,System.Type)">
+        <member name="P:ImageVault.Client.Rest.ServiceClientProxyBase.AuthUtil">
             <summary>
-            
+            Gets the AuthUtil of the ServiceClientProxyBase
             </summary>
-            <param name="name"></param>
-            <param name="argument"></param>
-            <param name="returnType"></param>
-            <returns></returns>
+            <value></value>
         </member>
-        <member name="M:ImageVault.Client.Rest.ServiceClientProxyBase.CallWithContent(System.String,ImageVault.Client.Rest.IRequestContent,System.Type,System.Boolean)">
+        <member name="P:ImageVault.Client.Rest.ServiceClientProxyBase.BaseUri">
             <summary>
-            Performs the actual Http call.
+            Gets the BaseUri of the ServiceClientProxyBase
             </summary>
-            <param name="url"></param>
-            <param name="requestContent"></param>
-            <param name="returnType"></param>
-            <param name="forceNewAuthToken"></param>
-            <returns></returns>
-            <exception cref="T:ImageVault.Common.ImageVaultException">If callWithContent to '.</exception>
+            <value></value>
         </member>
-        <member name="M:ImageVault.Client.Rest.ServiceClientProxyBase.DeserializeResponse(System.Type,System.Net.HttpWebResponse)">
+        <member name="P:ImageVault.Client.Rest.ServiceClientProxyBase.Timeout">
             <summary>
-            Deserializes the response content to a suitable object
+            Gets or sets the time-out value in milliseconds for the GetResponse() and GetRequestStream() methods.
             </summary>
-            <param name="type">The <see cref="T:System.Type"/>  of the expected response</param>
-            <param name="response">The <see cref="T:System.Net.HttpWebResponse"/> where the response data exists.</param>
-            <returns></returns>
-            <exception cref="T:System.NotSupportedException">If cannot deserialize response.</exception>
+            <value>The number of milliseconds to wait before the request times out. The default value is 100,000 milliseconds (100 seconds).</value>
         </member>
-        <member name="M:ImageVault.Client.Rest.ServiceClientProxyBase.GetContentType(System.String)">
+        <member name="P:ImageVault.Client.Rest.ServiceClientProxyBase.ClientProxyInvoker">
             <summary>
-            Gets the content type from the supplied content type header value
+            Get/Sets the ClientProxyInvoker of the ServiceClientProxyBase
             </summary>
-            <param name="contentTypeHeaderValue"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ImageVault.Client.Rest.ServiceClientProxyBase.DeserializeXmlResponse(System.Type,System.Net.HttpWebResponse)">
-            <summary>
-            Deserializes the supplied xml response as an instance of the supplied type.
-            </summary>
-            <param name="type">The <see cref="T:System.Type"/> to deserialize the data to.</param>
-            <param name="response">The <see cref="T:System.Net.HttpWebResponse"/> containing the data.</param>
-            <returns></returns>
-            <exception cref="T:ImageVault.Common.ImageVaultException">If cannot get response stream from response.</exception>
-        </member>
-        <member name="M:ImageVault.Client.Rest.ServiceClientProxyBase.DeserializeJsonResponse(System.Type,System.Net.HttpWebResponse)">
-            <summary>
-            Deserializes the supplied json response as an instance of the supplied type.
-            </summary>
-            <param name="type">The <see cref="T:System.Type"/> to deserialize the data to.</param>
-            <param name="response">The <see cref="T:System.Net.HttpWebResponse"/> containing the data.</param>
-            <returns></returns>
-            <exception cref="T:ImageVault.Common.ImageVaultException">If cannot get response stream from response.</exception>
+            <value></value>
         </member>
         <member name="M:ImageVault.Client.Rest.CategoryServiceClientProxy.#ctor(ImageVault.Client.Configuration.ClientConfigurationSection,ImageVault.Client.Authentication.IvOAuthTokenUtil)">
             <summary>
@@ -1002,6 +972,145 @@
             </summary>
             <param name="configuration"></param>
             <param name="authUtil"></param>
+        </member>
+        <member name="T:ImageVault.Client.Rest.IClientProxyInvoker">
+            <summary>
+            An interface for defining a client proxy call invoker 
+            </summary>
+        </member>
+        <member name="F:ImageVault.Client.Rest.ClientProxyHttpInvoker.SerializerSettings">
+            <summary>
+            Gets the SerializerSettings of the <see cref="T:ImageVault.Client.Rest.ServiceClientProxyBase"/>
+            </summary>
+        </member>
+        <member name="M:ImageVault.Client.Rest.ClientProxyHttpInvoker.Call(System.String,System.Object,System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="argument"></param>
+            <param name="returnType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Client.Rest.ClientProxyHttpInvoker.CallWithContent(System.String,ImageVault.Client.Rest.IRequestContent,System.Type,System.Boolean)">
+            <summary>
+            Performs the actual Http call.
+            </summary>
+            <param name="url"></param>
+            <param name="requestContent"></param>
+            <param name="returnType"></param>
+            <param name="forceNewAuthToken"></param>
+            <returns></returns>
+            <exception cref="T:ImageVault.Common.ImageVaultException">If callWithContent to '.</exception>
+        </member>
+        <member name="M:ImageVault.Client.Rest.ClientProxyHttpInvoker.DeserializeResponse(System.Type,ImageVault.Client.Rest.IHttpWebResponse)">
+            <summary>
+            Deserializes the response content to a suitable object
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/>  of the expected response</param>
+            <param name="response">The <see cref="T:System.Net.HttpWebResponse"/> where the response data exists.</param>
+            <returns></returns>
+            <exception cref="T:System.NotSupportedException">If cannot deserialize response.</exception>
+        </member>
+        <member name="M:ImageVault.Client.Rest.ClientProxyHttpInvoker.GetContentType(System.String)">
+            <summary>
+            Gets the content type from the supplied content type header value
+            </summary>
+            <param name="contentTypeHeaderValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Client.Rest.ClientProxyHttpInvoker.DeserializeXmlResponse(System.Type,ImageVault.Client.Rest.IHttpWebResponse)">
+            <summary>
+            Deserializes the supplied xml response as an instance of the supplied type.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> to deserialize the data to.</param>
+            <param name="response">The <see cref="T:System.Net.HttpWebResponse"/> containing the data.</param>
+            <returns></returns>
+            <exception cref="T:ImageVault.Common.ImageVaultException">If cannot get response stream from response.</exception>
+        </member>
+        <member name="M:ImageVault.Client.Rest.ClientProxyHttpInvoker.DeserializeJsonResponse(System.Type,ImageVault.Client.Rest.IHttpWebResponse)">
+            <summary>
+            Deserializes the supplied json response as an instance of the supplied type.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> to deserialize the data to.</param>
+            <param name="response">The <see cref="T:System.Net.HttpWebResponse"/> containing the data.</param>
+            <returns></returns>
+            <exception cref="T:ImageVault.Common.ImageVaultException">If cannot get response stream from response.</exception>
+        </member>
+        <member name="P:ImageVault.Client.Rest.ClientProxyHttpInvoker.ServiceClientProxy">
+            <summary>
+            Get/Sets the ServiceClientProxy of the ClientProxyHttpInvoker
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:ImageVault.Client.Rest.IHttpWebResponse">
+            <summary>
+            The IHttpWebResponse interface 
+            </summary>
+        </member>
+        <member name="M:ImageVault.Client.Rest.IHttpWebResponse.GetResponseStream">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Client.Rest.IHttpWebResponse.Close">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ImageVault.Client.Rest.IHttpWebResponse.ContentType">
+            <summary>
+            Gets the ContentType of the IHttpWebResponse
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Client.Rest.IHttpWebResponse.StatusCode">
+            <summary>
+            Gets the StatusCode of the IHttpWebResponse
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Client.Rest.IHttpWebResponse.StatusDescription">
+            <summary>
+            Gets the StatusDescription of the IHttpWebResponse
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ImageVault.Client.Rest.HttpWebResponseWrapper.#ctor(System.Net.HttpWebResponse)">
+            <summary>
+            Initializes a new instance of the <b>HttpWebResponseWrapper</b> class.
+            </summary>
+            <param name="httpWebResponse"></param>
+        </member>
+        <member name="M:ImageVault.Client.Rest.HttpWebResponseWrapper.GetResponseStream">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Client.Rest.HttpWebResponseWrapper.Close">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ImageVault.Client.Rest.HttpWebResponseWrapper.ContentType">
+            <summary>
+            Gets the ContentType of the HttpWebResponseWrapper
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Client.Rest.HttpWebResponseWrapper.StatusCode">
+            <summary>
+            Gets the StatusCode of the HttpWebResponseWrapper
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Client.Rest.HttpWebResponseWrapper.StatusDescription">
+            <summary>
+            Gets the StatusDescription of the HttpWebResponseWrapper
+            </summary>
+            <value></value>
         </member>
         <member name="M:ImageVault.Client.Rest.DemoServiceClientProxy.#ctor(ImageVault.Client.Configuration.ClientConfigurationSection,ImageVault.Client.Authentication.IvOAuthTokenUtil)">
             <summary>
@@ -1043,6 +1152,12 @@
             </summary>
             <value>If null, the default value of the binding will be used</value>
         </member>
+        <member name="P:ImageVault.Client.IClientChannelFactory.Timeout">
+            <summary>
+            Get/Sets the Timeout of the IClient
+            </summary>
+            <value>The number of milliseconds to wait before the request times out. The default value is 100,000 milliseconds (100 seconds).</value>
+        </member>
         <member name="M:ImageVault.Client.Rest.HttpRestClientChannelFactory.#ctor(ImageVault.Client.Configuration.ClientConfigurationSection,ImageVault.Client.Authentication.IvOAuthTokenUtil)">
             <summary>
             Initializes a new instance of the <b>HttpRestClientChannelFactory</b> class.
@@ -1060,7 +1175,13 @@
         </member>
         <member name="P:ImageVault.Client.Rest.HttpRestClientChannelFactory.SendTimeout">
             <summary>
-            Get/Sets the SendTimeout of the HttpRestClientChannelFactory
+            Gets or sets the interval of time provided for a write operation to complete before the transport raises an exception.
+            </summary>
+            <value>If null, the default value of the binding will be used</value>
+        </member>
+        <member name="P:ImageVault.Client.Rest.HttpRestClientChannelFactory.Timeout">
+            <summary>
+            Get/Sets the Timeout of the Client
             </summary>
             <value></value>
         </member>
@@ -1123,6 +1244,13 @@
             Gets or sets the interval of time provided for a write operation to complete before the transport raises an exception.
             </summary>
             <value>If null, the default value of the binding will be used</value>
+        </member>
+        <member name="P:ImageVault.Client.IClient.Timeout">
+            <summary>
+            Get/Sets the Timeout of the IClient
+            </summary>
+            <value>The number of milliseconds to wait before the request times out. The default value is 100,000 milliseconds (100 seconds).
+            If set to null, the default value will be used.</value>
         </member>
         <member name="P:ImageVault.Client.IClient.PublishIdentifier">
             <summary>
@@ -2466,6 +2594,12 @@
             </summary>
             <value>If null, the default value of the binding will be used</value>
         </member>
+        <member name="P:ImageVault.Client.Client.Timeout">
+            <summary>
+            Get/Sets the Timeout of the Client
+            </summary>
+            <value></value>
+        </member>
         <member name="P:ImageVault.Client.Client.PublishIdentifier">
             <summary>
             Get/Sets the PublishIdentifier of the Client
@@ -3035,7 +3169,13 @@
         </member>
         <member name="P:ImageVault.Client.RestClientChannelFactory.SendTimeout">
             <summary>
-            Get/Sets the SendTimeout of the RestClientChannelFactory
+            Gets or sets the interval of time provided for a write operation to complete before the transport raises an exception.
+            </summary>
+            <value>If null, the default value of the binding will be used</value>
+        </member>
+        <member name="P:ImageVault.Client.RestClientChannelFactory.Timeout">
+            <summary>
+            Get/Sets the Timeout of the Client
             </summary>
             <value></value>
         </member>
@@ -3130,6 +3270,19 @@
             </summary>
             <param name="configuration"></param>
             <param name="authUtil"></param>
+        </member>
+        <member name="M:ImageVault.Client.Rest.MediaShareServiceClientProxy.#ctor(ImageVault.Client.Configuration.ClientConfigurationSection,ImageVault.Client.Authentication.IvOAuthTokenUtil)">
+            <summary>
+            Initializes a new instance of the <b>MediaShareServiceClientProxy</b> class.
+            </summary>
+            <param name="configuration"></param>
+            <param name="authUtil"></param>
+        </member>
+        <member name="M:ImageVault.Client.Rest.MediaShareServiceClientProxy.Save(ImageVault.Common.Data.MediaShare)">
+            <inheritdoc/> 
+        </member>
+        <member name="M:ImageVault.Client.Rest.MediaShareServiceClientProxy.Get(System.String,ImageVault.Common.Data.Query.MediaItemQuery)">
+            <inheritdoc/> 
         </member>
         <member name="M:ImageVault.Client.Rest.MediaStorageServiceClientProxy.#ctor(ImageVault.Client.Configuration.ClientConfigurationSection,ImageVault.Client.Authentication.IvOAuthTokenUtil)">
             <summary>

@@ -7222,6 +7222,14 @@
             since that would lead to that a previously published page will have none version published right now. in that case
             we set version to DelayedPublished meaning it will get published later when StartPublish date is reached.</remarks>
         </member>
+        <member name="M:EPiServer.WorkflowFoundation.Workflows.ApprovalBase.RejectPage(EPiServer.Core.PageReference,System.String)">
+            <summary>
+            Rejects the version of the page.
+            </summary>
+            <param name="pageLink">The version that is rejected.</param>
+            <param name="userName">The user who rejected the version.</param>
+            <remarks>The page will be rejected on behalf of the user who rejected the version.</remarks>
+        </member>
         <member name="M:EPiServer.WorkflowFoundation.Workflows.ApprovalBase.SendApprovedEmail(EPiServer.WorkflowFoundation.Activities.SendEmailActivity,EPiServer.WorkflowFoundation.Workflows.ApprovalEventArgs)">
             <summary>
             Sends an email to page owner about approved page.
