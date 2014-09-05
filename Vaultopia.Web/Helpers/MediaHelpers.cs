@@ -1,19 +1,11 @@
 ﻿using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
-using EPiServer.Web.WebControls;
 using ImageVault.Client;
 using ImageVault.Common.Data;
 using ImageVault.EPiServer;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using ImageVault.Client.Query;
-using Vaultopia.Web.Models.Pages;
-using Vaultopia.Web.Models.ViewModels;
-using System.Web.Helpers;
-using EPiServer.Core;
+
 
 namespace Vaultopia.Web.Helpers
 {
@@ -34,7 +26,6 @@ namespace Vaultopia.Web.Helpers
             var settings = new PropertyMediaSettings();
 
             // Load the property settings for the media reference
-      
             var propertyName = currentPage.Property.Where(x => Equals(x.Value, mediaReference)).Select(x => x.Name).SingleOrDefault();
             var propertyData = currentPage.Property[propertyName];
             try
