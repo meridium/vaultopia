@@ -68,8 +68,13 @@ namespace Vaultopia.Web.Controllers {
             var currentPage = pageRouteHelper.Page;
 
             // Load the property settings for the media reference
-            var propertyData = currentPage.Property["Media2"];
+            var propertyData = currentPage.Property["Media"];
+            if (propertyData == null)
+            {
+                return string.Empty;
+            }
             var settings = (PropertyMediaSettings) propertyData.GetSetting(typeof (PropertyMediaSettings));
+
 
             try {
                 // Start building the query for the specific media

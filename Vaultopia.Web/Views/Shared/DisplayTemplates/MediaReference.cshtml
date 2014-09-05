@@ -1,4 +1,5 @@
 ﻿@using EPiServer.Editor
+@using Vaultopia.Web.Helpers
 @model ImageVault.EPiServer.MediaReference
 @if (Model == null)
 {
@@ -7,8 +8,9 @@
     }
 }
 else
-{
+ {
+     
     <div class="media-placeholder">
-        @Html.Action("RenderMedia","Article", new { mediaReference = Model })
+         @Html.Raw(MediaHelpers.RenderMedia(Model)) 
     </div>
 }

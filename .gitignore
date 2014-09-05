@@ -114,7 +114,6 @@ Backup*/
 UpgradeLog*.XML
 *License.Config
 */modulesbin/*
-*/modules/_protected/**
 
 # MacOs Temp files
 ._*.*
