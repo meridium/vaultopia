@@ -565,6 +565,7 @@
     .teasers > div > div:nth-child(even) {
         margin-right: 0;
     }
+
 }
 
 @media only screen and (max-width : 400px) {
@@ -575,6 +576,7 @@
         margin: 0 0 25px;
         padding: 68% 0 0;
     }
+
 }
 
 @media only screen and (max-width : 768px) {

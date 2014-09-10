@@ -24,7 +24,8 @@
         border: none;
         display: block;
     }
-    header, section, article, aside {
+    header, section, 
+    , aside {
         display: block;
     }
 

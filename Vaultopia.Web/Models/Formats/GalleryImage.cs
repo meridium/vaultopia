@@ -24,6 +24,9 @@ namespace Vaultopia.Web.Models.Formats {
         [ResizeEffect(Width = 486)]
         public Thumbnail Thumbnail { get; set; }
 
+        [ResizeEffect(Width = 250)]
+        public Thumbnail ThumbnailSmall { get; set; }
+
         /// <summary>
         ///     Gets or sets the title.
         /// </summary>

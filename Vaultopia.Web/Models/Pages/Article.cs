@@ -7,7 +7,8 @@ using ImageVault.EPiServer;
 
 namespace Vaultopia.Web.Models.Pages
 {
-    [ContentType(DisplayName = "Article", GUID = "a3aa568f-7ddd-4cc8-a5d3-066676125b3c", Description = "")]
+    [ContentType(DisplayName = "Article" +
+                               "", GUID = "a3aa568f-7ddd-4cc8-a5d3-066676125b3c", Description = "")]
     public class Article : SitePageData
     {
         /// <summary>

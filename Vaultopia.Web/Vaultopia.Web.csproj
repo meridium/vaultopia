@@ -289,6 +289,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Helpers\PropertyHelpers.cs" />
     <Compile Include="Models\Blocks\AsideTeaserBlock.cs" />
     <Compile Include="Models\Blocks\ITeaserBlockViewModel.cs" />
     <Compile Include="Models\Blocks\SiteInspirationBlock.cs" />

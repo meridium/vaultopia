@@ -1,4 +1,6 @@
 ﻿@using EPiServer.Web.Mvc.Html
+@using ImageVault.EPiServer
+@using Vaultopia.Web.Helpers;
 @model Vaultopia.Web.Models.ViewModels.ArticleViewModel<Vaultopia.Web.Models.Pages.Article>
 @{
     ViewBag.BodyClass = "article";
@@ -6,31 +8,35 @@
 
 <div id="main">
     <div class="wrap">
-           
+
         <main>
-            
-            @if(Model.Slides != null) {
+
+            @if (Model.Slides != null)
+            {
                 <div id="slideshow">
                     <img src="@Model.Slides.FirstOrDefault().LargeImage.Url" alt="" />
                     <ul>
-                        @foreach (var image in Model.Slides) {
-                            
+                        @foreach (var image in Model.Slides)
+                        {
+
                             <li data-large-url="@image.LargeImage.Url"><img src="@image.SmallImage.Url" alt="" /></li>
-                            
+
                         }
                     </ul>
                 </div>
             }
 
-            <h1>@Html.PropertyFor(x => x.CurrentPage.Heading)</h1>
+            <h1 class="article">@Html.PropertyFor(x => x.CurrentPage.Heading)</h1>
+
             <p class="introduction">
                 @Html.PropertyFor(x => x.CurrentPage.Introduction)
             </p>
+
             <div id="primary">
                 @Html.PropertyFor(x => x.CurrentPage.MainBody)
-                @Html.PropertyFor(x => x.CurrentPage.MyMedia)
+                @Html.PropertyFor(x => x.CurrentPage.MyMedia, new { PropertySettings = PropertyHelpers.GetPropertySettings<Vaultopia.Web.Models.Pages.Article, MediaReference, PropertyMediaSettings>(Model.CurrentPage, m => m.MyMedia) })
                 <br />
-                @Html.PropertyFor(x => x.CurrentPage.MyMediaList, "MediaReferenceList")
+                @Html.PropertyFor(x => x.CurrentPage.MyMediaList, new { PropertySettings = PropertyHelpers.GetPropertySettings<Vaultopia.Web.Models.Pages.Article, MediaReferenceList<MediaReference>, PropertyMediaSettings>(Model.CurrentPage, m => m.MyMediaList) })
             </div>
             <div id="secondary">
                 <ul>
@@ -39,7 +45,7 @@
             </div>
         </main>
         <aside>
-            @Html.PropertyFor(x => x.CurrentPage.Teasers,new { Tag = "aside"})
+            @Html.PropertyFor(x => x.CurrentPage.Teasers, new { Tag = "aside" })
         </aside>
     </div>
 </div>

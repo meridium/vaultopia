@@ -11,6 +11,6 @@ else
  {
      
     <div class="media-placeholder">
-         @Html.Raw(MediaHelpers.RenderMedia(Model)) 
+     @Html.RenderMedia(Model, new { propertySettings = ViewData["PropertySettings"]})
     </div>
 }
