@@ -1,0 +1,12 @@
+﻿
+@model Vaultopia.Web.Models.ViewModels.GalleryViewModel<Vaultopia.Web.Models.Pages.GalleryPage>
+ 
+@using (Html.BeginForm())
+{ 
+@Html.DropDownList("category", new SelectList(Model.Categorys, "Id", "Name"))
+<input type="submit" value="Search" />
+
+}
+
+
+

@@ -9,6 +9,9 @@
         <h1>@Model.CurrentPage.Heading</h1>
         <p class="introduction">Browse through memories from trips made by various Vaultopia travelers and seek inspiration to your next trip, or contribute with your own memories and inspire others.</p>
         <a class="button" id="upload-action" href="@Url.Action("Upload")">Upload your photos!</a>
+
+
+
         <section id="categories" style="display: none;">
             <ul>
                 <li><a href="/">Summer</a></li>
@@ -20,6 +23,12 @@
             </ul>
             <a href="/" id="categories-more-action">Show more categories...</a>
         </section>
+
+        <section id="search">
+
+            @Html.Partial("_Search", Model)
+        </section>
+
         <section id="gallery">
             <ul>
                 @Html.Partial("_Images", Model)

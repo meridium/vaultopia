@@ -71,11 +71,11 @@
                 <section id="inspiration">
                     <h1>Inspiration</h1>
                     <ul>
-                        @if (Model.Layout.SiteInspirationUrls != null)
+                        @if(Model.Layout.SiteInspirationUrls != null)
                         {
                             foreach (var media in Model.Layout.SiteInspirationUrls)
-                            {
-                                <li>
+                            {                        
+                                <li>                                    
                                     <a href="@media.Preview.Url" class="image">
                                         <img src="@media.Thumbnail.Url" alt=""/>
                                     </a>

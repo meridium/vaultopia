@@ -17,8 +17,10 @@ using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 
 
-namespace Vaultopia.Web.Controllers {
-    public class GalleryController : PageControllerBase<GalleryPage> {
+namespace Vaultopia.Web.Controllers
+{
+    public class GalleryController : PageControllerBase<GalleryPage>
+    {
         private readonly Client _client;
 
         /// <summary>
@@ -26,13 +28,57 @@ namespace Vaultopia.Web.Controllers {
         /// </summary>
         /// <param name="currentPage">The current page.</param>
         /// <returns></returns>
-        public ActionResult Index(GalleryPage currentPage) {
-            var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
-                    Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded).Take(32).ToList()
-                };
+        public ActionResult Index(GalleryPage currentPage, int cId = 0) {
+
+            //TODO: om cid är noll, ladda allt
+            var viewModel = new GalleryViewModel<GalleryPage>(currentPage) ;
+
+            List<Category> categories = new List<Category>();
+            if(cId == 0)
+            {  
+                viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)) .OrderByDescending(m => m.DateAdded).Take(32).ToList();
+             
+            }
+            else
+            {
+              viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded).Take(32).ToList();
+                //viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).Where(m => m.VaultId == cId).OrderByDescending(m => m.DateAdded).Take(32).ToList();
+                }
+            
+            viewModel.Categorys = _client.Query<Category>().ToList();
+            viewModel.SelectedCategoryID = cId;
+
+          
 
             return View(viewModel);
         }
+
+
+        /// <summary>
+        /// Search
+        /// </summary>
+        /// <returns></returns>
+
+        [HttpPost]
+        public ActionResult _Search(GalleryPage searchView)
+        {
+            // var iv = new GalleryViewModel<GalleryPage>(); 
+            // IEnumerable<SelectListItem> items = iv.Categorys.Select(c = new SelectListItem{Value = c.Id.ToString(), Text = c.Name});
+            var categorySearch = new GalleryViewModel<GalleryPage>(searchView)
+            {
+                Categorys = _client.Query<Category>().Where(m => m.Categories.ContainsAll(1, 2)).ToList()
+            };
+
+            // ViewBag.Categories = categorySearch;
+
+
+            return View(categorySearch);
+        }
+
+
+
+
+
 
         /// <summary>
         /// Loads the specified current page.
@@ -40,9 +86,11 @@ namespace Vaultopia.Web.Controllers {
         /// <param name="currentPage">The current page.</param>
         /// <param name="skip">The skip.</param>
         /// <returns></returns>
-        public ActionResult Load(GalleryPage currentPage, int skip) {
+        public ActionResult Load(GalleryPage currentPage, int skip)
+        {
 
-            var viewModel = new GalleryViewModel<GalleryPage>(currentPage) {
+            var viewModel = new GalleryViewModel<GalleryPage>(currentPage)
+            {
                 Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded).Skip(skip * 32).Take(33).ToList()
             };
 
@@ -53,7 +101,8 @@ namespace Vaultopia.Web.Controllers {
         /// Uploads this instance.
         /// </summary>
         /// <returns></returns>
-        public ActionResult Upload() {
+        public ActionResult Upload()
+        {
             return PartialView("Upload");
         }
 
@@ -63,12 +112,14 @@ namespace Vaultopia.Web.Controllers {
         /// <param name="model">The model.</param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Save(UploadModel model) {
-            
+        public ActionResult Save(UploadModel model)
+        {
+
             //Why can't I load the mediaitem with the same id i just saved...?
             var mediaItem = _client.Load<MediaItem>(Int32.Parse(model.Id)).Include(x => x.Metadata.Where(md => md.DefinitionType == MetadataDefinitionTypes.User)).FirstOrDefault();
 
-            if (mediaItem == null) {
+            if (mediaItem == null)
+            {
                 return new EmptyResult();
             }
 
@@ -80,7 +131,8 @@ namespace Vaultopia.Web.Controllers {
 
             var image = _client.Load<GalleryImage>(mediaItem.Id).SingleOrDefault();
 
-            if (image != null) {
+            if (image != null)
+            {
                 return PartialView("_Image", image);
             }
 
@@ -95,7 +147,8 @@ namespace Vaultopia.Web.Controllers {
         /// <returns></returns>
         /// <exception cref="System.Exception">No vault found with provided id</exception>
         [HttpPost]
-        public JsonResult UploadFile(HttpPostedFileBase file) {
+        public JsonResult UploadFile(HttpPostedFileBase file)
+        {
 
             // Fetch the current page
             var pageRouteHelper = ServiceLocator.Current.GetInstance<PageRouteHelper>();
@@ -104,7 +157,8 @@ namespace Vaultopia.Web.Controllers {
             // If the current page can not be found (no VaultPicker found) use the first available vault
             var vault = currentPage != null ? _client.Query<Vault>().FirstOrDefault(v => v.Id == int.Parse(currentPage.VaultPicker)) : _client.Query<Vault>().FirstOrDefault();
 
-            if (vault == null) {
+            if (vault == null)
+            {
                 throw new Exception("No vault found with provided id");
             }
 
@@ -115,23 +169,25 @@ namespace Vaultopia.Web.Controllers {
             var contentservice = _client.CreateChannel<IMediaContentService>();
             var mediaItem = contentservice.StoreContentInVault(id, file.FileName, file.ContentType, vault.Id);
 
-           
+
 
             var mediaId = mediaItem.Id;
 
             MediaItem poll = null;
-            while (poll == null) {
+            while (poll == null)
+            {
                 poll = _client.Query<MediaItem>().Where(x => x.Id == mediaId).Where("MediaItemState:" + MediaItemStates.MediaReadyToUse).FirstOrDefault();
                 Thread.Sleep(1000);
             }
 
             var image = _client.Load<Image>(mediaItem.Id).Resize(222, 222, ResizeMode.ScaleToFill).SingleOrDefault();
 
-            if (image != null) {
+            if (image != null)
+            {
                 var response = new { mediaItem.Id, image.Url };
                 return Json(response);
             }
-            
+
             return null;
         }
 
@@ -141,7 +197,8 @@ namespace Vaultopia.Web.Controllers {
         /// </summary>
         /// <param name="imageId">The image id.</param>
         /// <returns></returns>
-        public ActionResult ShowMetaData(int imageId) {
+        public ActionResult ShowMetaData(int imageId)
+        {
             var model = _client.Load<GalleryImage>(imageId).FirstOrDefault();
             return PartialView("_MetaData", model);
         }
@@ -151,27 +208,32 @@ namespace Vaultopia.Web.Controllers {
         /// </summary>
         /// <param name="item">The item.</param>
         /// <param name="title">The title.</param>
-        public void SaveMetadataTest(MediaItem item, string title) {
+        public void SaveMetadataTest(MediaItem item, string title)
+        {
             var client = _client;
 
             //Yuck! Metadata handling is ugly so far.
 
             //create or find the metadata definition that you want to store
             //here we create the one we need if it isn't found
-            var template = new MetadataDefinition {
+            var template = new MetadataDefinition
+            {
                 MetadataDefinitionType = MetadataDefinitionTypes.User,
                 Name = "Title",
                 MetadataType = MetadataTypes.String
             };
             var mds = client.CreateChannel<IMetadataDefinitionService>();
             //first find all metadata definitions of the same def type and type as the one requested and that matches the name.
-            var definition = mds.Find(new MetadataDefinitionQuery {
-                Filter = {
+            var definition = mds.Find(new MetadataDefinitionQuery
+            {
+                Filter =
+                {
                     MetadataDefinitionType = template.MetadataDefinitionType,
                     MetadataType = template.MetadataType
                 }
             }).FirstOrDefault(d => d.Name == template.Name);
-            if (definition == null) {
+            if (definition == null)
+            {
                 //if no match was found, create the template instead
                 var id = mds.Save(template);
                 definition = template;
@@ -179,17 +241,19 @@ namespace Vaultopia.Web.Controllers {
             }
             //create the metadata itself by setting the id of the definition and the value (important to create a metadata of 
             //the same sort as the defined MetadataType.
-            var m = new MetadataString {
+            var m = new MetadataString
+            {
                 MetadataDefinitionId = definition.Id,
                 StringValue = title
             };
 
             //when we save the metadata we only want to modify the new one
             //when we clear the metadata, this will not clear the metadata stored in the db only for this copy
-            if (item.Metadata != null) {
+            if (item.Metadata != null)
+            {
                 item.Metadata.Clear();
             }
-            
+
             //add the new/modified metadata
             item.Metadata.Add(m);
             var ms = client.CreateChannel<IMediaService>();
@@ -202,7 +266,8 @@ namespace Vaultopia.Web.Controllers {
         /// <summary>
         /// Initializes a new instance of the <see cref="GalleryController" /> class.
         /// </summary>
-        public GalleryController() {
+        public GalleryController()
+        {
             _client = ClientFactory.GetSdkClient();
         }
 
