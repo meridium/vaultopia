@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Routing;
-using EPiServer.BaseLibrary;
 using ImageVault.Client;
 using ImageVault.Common.Data;
 using ImageVault.EPiServer;
 using System.Linq;
 using ImageVault.Client.Query;
-using Vaultopia.Web.Business.Channels;
 
 using System.Web.Script.Serialization;
 

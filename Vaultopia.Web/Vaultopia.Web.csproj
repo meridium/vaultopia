@@ -133,21 +133,21 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="ImageVault.Client, Version=4.4.22.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
+    <Reference Include="ImageVault.Client, Version=4.5.2.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ImageVault.Client.4.4.22\lib\net40\ImageVault.Client.dll</HintPath>
+      <HintPath>..\packages\ImageVault.Client.4.5.2\lib\net40\ImageVault.Client.dll</HintPath>
     </Reference>
-    <Reference Include="ImageVault.Common, Version=4.4.22.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
+    <Reference Include="ImageVault.Common, Version=4.5.2.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ImageVault.Client.4.4.22\lib\net40\ImageVault.Common.dll</HintPath>
+      <HintPath>..\packages\ImageVault.Client.4.5.2\lib\net40\ImageVault.Common.dll</HintPath>
     </Reference>
-    <Reference Include="ImageVault.EPiServer.Common, Version=4.4.22.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ImageVault.EPiServer.Common, Version=4.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ImageVault.EPiServer7.4.4.22\lib\net40\ImageVault.EPiServer.Common.dll</HintPath>
+      <HintPath>..\packages\ImageVault.EPiServer7.4.5.2\lib\net40\ImageVault.EPiServer.Common.dll</HintPath>
     </Reference>
-    <Reference Include="ImageVault.EPiServer7, Version=4.4.22.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ImageVault.EPiServer7, Version=4.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ImageVault.EPiServer7.4.4.22\lib\net40\ImageVault.EPiServer7.dll</HintPath>
+      <HintPath>..\packages\ImageVault.EPiServer7.4.5.2\lib\net40\ImageVault.EPiServer7.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>

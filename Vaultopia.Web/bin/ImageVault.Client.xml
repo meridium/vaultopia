@@ -2635,11 +2635,12 @@
         </member>
         <member name="M:ImageVault.Client.ClientFactory.GetOrCreateClient(ImageVault.Client.ClientFactory.ClientKey,System.Func{ImageVault.Client.Client})">
             <summary>
-            
+            Gets a client from the cache or creates one if no one exists.
             </summary>
             <param name="key"></param>
             <param name="clientCreator"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="key"/> is null.</exception>
         </member>
         <member name="M:ImageVault.Client.ClientFactory.GetSdkClient">
             <summary>
@@ -2647,6 +2648,19 @@
             </summary>
             <remarks>If <see cref="P:ImageVault.Client.ClientFactory.SdkPublishIdentifier"/> is changed, this must be called again to reflect the update.</remarks>
             <returns></returns>
+        </member>
+        <member name="M:ImageVault.Client.ClientFactory.CreateClient(System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="actAs"></param>
+            <param name="roles"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Client.ClientFactory.ClearCache">
+            <summary>
+            Clears the client cache.
+            </summary>
         </member>
         <member name="M:ImageVault.Client.ClientFactory.GetService``1">
             <summary>
@@ -3282,6 +3296,15 @@
             <inheritdoc/> 
         </member>
         <member name="M:ImageVault.Client.Rest.MediaShareServiceClientProxy.Get(System.String,ImageVault.Common.Data.Query.MediaItemQuery)">
+            <inheritdoc/> 
+        </member>
+        <member name="M:ImageVault.Client.Rest.MediaShareServiceClientProxy.FindShareByMediaItemId(System.Int32)">
+            <inheritdoc/> 
+        </member>
+        <member name="M:ImageVault.Client.Rest.MediaShareServiceClientProxy.Delete(System.String)">
+            <inheritdoc/> 
+        </member>
+        <member name="M:ImageVault.Client.Rest.MediaShareServiceClientProxy.GetShares(System.Collections.Generic.IList{System.String})">
             <inheritdoc/> 
         </member>
         <member name="M:ImageVault.Client.Rest.MediaStorageServiceClientProxy.#ctor(ImageVault.Client.Configuration.ClientConfigurationSection,ImageVault.Client.Authentication.IvOAuthTokenUtil)">

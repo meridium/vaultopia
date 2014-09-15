@@ -27,7 +27,6 @@ namespace Vaultopia.Web.Controllers {
             get {
                 if (_imageSlides == null)
                 {
-                    //var slides = new List<PushImage>();
                     var slides = new List<Dictionary<string, string>>();
                     // Fetch the current page
                     var pageRouteHelper = ServiceLocator.Current.GetInstance<PageRouteHelper>();
@@ -36,13 +35,13 @@ namespace Vaultopia.Web.Controllers {
                     {
                         var numOfSlides = _client.Load<PushImage>(currentPage.PushMediaList.Select(x => x.Id)).ToList();
 
-                        foreach (var key in numOfSlides)
+                        foreach (var slide in numOfSlides)
                         {
                             var dict = new Dictionary<string, string>
                             {
-                                {"large", key.Slide.Url},
-                                {"medium", key.MediumSlide.Url},
-                                {"small", key.SmallSlide.Url}
+                                {"large", slide.Slide.Url},
+                                {"medium", slide.MediumSlide.Url},
+                                {"small", slide.SmallSlide.Url}
                             };
                             slides.Add(dict);
                         }

@@ -955,9 +955,11 @@
         </member>
         <member name="T:ImageVault.Common.Data.MediaShare">
             <summary>
-            Summary description for MediaShare.
+            The MediaShare class defines a media share
             </summary>
             <remarks>
+            The media share defines a set of media items and a specific format that these items should be shared under.
+            
             2014-05-08 dan: Created
             </remarks>
         </member>
@@ -968,21 +970,22 @@
         </member>
         <member name="M:ImageVault.Common.Data.MediaShare.#ctor(ImageVault.Common.Data.MediaShare)">
             <summary>
-            Initializes a new instance of the <b>MediaShare</b> class.
+            Initializes a new instance of the <b>MediaShare</b> class and copies the data from the supplied MediaShare.
             </summary>
-            <param name="mediaShare"></param>
+            <param name="mediaShare">The <see cref="T:ImageVault.Common.Data.MediaShare"/> to copy the information from</param>
         </member>
         <member name="M:ImageVault.Common.Data.MediaShare.CopyFrom(ImageVault.Common.Data.MediaShare)">
             <summary>
-            
+            Copies the data from another media share.
             </summary>
-            <param name="mediaShare"></param>
+            <remarks>No references to the copied object is kept. Reference values are cloned.</remarks>
+            <param name="mediaShare">The <see cref="T:ImageVault.Common.Data.MediaShare"/> to copy the information from</param>
         </member>
         <member name="P:ImageVault.Common.Data.MediaShare.Id">
             <summary>
             Get/Sets the Id of the MediaShare
             </summary>
-            <value></value>
+            <value>This id is part of the url for retrieving the share</value>
         </member>
         <member name="P:ImageVault.Common.Data.MediaShare.Name">
             <summary>
@@ -1006,13 +1009,13 @@
             <summary>
             Get/Sets the MediaFormatId of the MediaShare
             </summary>
-            <value></value>
+            <value>The id of the MediaFormat that is selected for the share</value>
         </member>
         <member name="P:ImageVault.Common.Data.MediaShare.Items">
             <summary>
             Get/Sets the Items of the MediaShare
             </summary>
-            <value></value>
+            <value>The set of media items that the share consists of. When creating the share, only the Id of the MediaItem is necessary.</value>
         </member>
         <member name="T:ImageVault.Common.Data.Query.GlobalRoleIdentityFilter">
             <summary>
@@ -6152,7 +6155,7 @@
         </member>
         <member name="T:ImageVault.Common.Services.IMediaShareService">
             <summary>
-            Summary description for IMediaShareService.
+            The IMediaShareService defines the methods used for working with <see cref="T:ImageVault.Common.Data.MediaShare"/> instances.
             </summary>
             <remarks>
             2014-05-08 dan: Created 
@@ -6171,8 +6174,30 @@
             </summary>
             <param name="id">The id of the Media share to get</param>
             <param name="query">The query to use to retrieve extra information. Filter.Id, Populate.PublishIdentifier, Populate.MediaFormats[0] will be set as stated 
-            for the share.</param>
+            for the share. Is optional.</param>
             <returns>The found <see cref="T:ImageVault.Common.Data.MediaShare"/> or null if no matching share is found.</returns>
+            <remarks>If you specify MediaFormats in the MediaItemQuery, these will be found in the MediaItem from MediaConversions[1] and forwards. MediaConversions[0]
+            will contain the conversion for the format specified in the <see cref="T:ImageVault.Common.Data.MediaShare"/>.</remarks>
+        </member>
+        <member name="M:ImageVault.Common.Services.IMediaShareService.GetShares(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Gets a list of media shares with the supplied ids
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Common.Services.IMediaShareService.FindShareByMediaItemId(System.Int32)">
+            <summary>
+            Find all shares, containing the given mediaItemId.
+            </summary>
+            <param name="mediaItemId">The Id to search for</param>
+            <returns>Enumerable set of MediaShares</returns>
+        </member>
+        <member name="M:ImageVault.Common.Services.IMediaShareService.Delete(System.String)">
+            <summary>
+            Deletes the share with the given id.
+            </summary>
+            <param name="shareId">Id of share to delete</param>
         </member>
         <member name="T:ImageVault.Common.Services.IMediaStreamService">
             <summary>
