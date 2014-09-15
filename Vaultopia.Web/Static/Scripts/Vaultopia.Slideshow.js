@@ -17,6 +17,12 @@
 
         initControls();
         registerEvents();
+        changeImage();
+
+        $(window).resize(function () {
+            clearTimeout(this.id);
+            this.id = setTimeout(changeImage, 2000);
+        });
     };
 
     var registerEvents = function() {
@@ -45,12 +51,26 @@
         _index = _index + step;
     };
 
+    var pickImage = function () {
+
+        if (window.matchMedia("screen and (min-width: 768px)").matches) {
+            return $('<div class="slide" style="background-image:url(' + _images[_index].large + ')"></div>');
+        }
+        else if (window.matchMedia("screen and (max-width: 768px) and (min-width: 400px)").matches) {
+            return $('<div class="slide" style="background-image:url(' + _images[_index].medium + ')"></div>');
+        }
+        else {
+            return $('<div class="slide" style="background-image:url(' + _images[_index].small + ')"></div>');
+        }
+
+    };
+
     var changeImage = function() {
         if ($container.find('.slide').is(':animated')) {
             return;
         }
 
-        var $image = $('<div class="slide" style="background-image:url(' + _images[_index] + ')"></div>');
+        var $image = pickImage();
 
         $image.imagesLoaded(function () {
             $container.find('.slide').before($image);
@@ -60,6 +80,8 @@
             });
         });
     };
+
+
 
     var initControls = function() {
         $prev = $('<a href="#" class="prev icon">Previous</a>');

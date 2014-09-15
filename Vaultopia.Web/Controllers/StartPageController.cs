@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using EPiServer.ServiceLocation;
@@ -20,20 +22,37 @@ namespace Vaultopia.Web.Controllers {
         /// <value>
         /// The image slides.
         /// </value>
-        public IEnumerable<string> ImageSlides {
+        public IEnumerable<Dictionary<string, string>> ImageSlides
+        {
             get {
-                if (_imageSlides == null) {
+                if (_imageSlides == null)
+                {
+                    //var slides = new List<PushImage>();
+                    var slides = new List<Dictionary<string, string>>();
                     // Fetch the current page
                     var pageRouteHelper = ServiceLocator.Current.GetInstance<PageRouteHelper>();
                     var currentPage = pageRouteHelper.Page as StartPage;
-                    if (currentPage != null && currentPage.PushMediaList != null && currentPage.PushMediaList.Count > 0) {
-                        _imageSlides = _client.Load<PushImage>(currentPage.PushMediaList.Select(x => x.Id)).ToList().Select(i => i.Slide.Url).ToList();
+                    if (currentPage != null && currentPage.PushMediaList != null && currentPage.PushMediaList.Count > 0)
+                    {
+                        var numOfSlides = _client.Load<PushImage>(currentPage.PushMediaList.Select(x => x.Id)).ToList();
+
+                        foreach (var key in numOfSlides)
+                        {
+                            var dict = new Dictionary<string, string>
+                            {
+                                {"large", key.Slide.Url},
+                                {"medium", key.MediumSlide.Url},
+                                {"small", key.SmallSlide.Url}
+                            };
+                            slides.Add(dict);
+                        }
+                        _imageSlides = slides;
                     }
                 }
                 return _imageSlides;
             }
         }
-        private IEnumerable<string> _imageSlides;
+        private IEnumerable<Dictionary<string, string>> _imageSlides;
 
         /// <summary>
         ///     Indexes the specified current page.
@@ -49,7 +68,8 @@ namespace Vaultopia.Web.Controllers {
 
             var viewModel = new StartPageViewModel<StartPage>(currentPage)
                 {
-                    FirstSlideUrl = ImageSlides != null ? ImageSlides.FirstOrDefault() : null,
+
+                    FirstSlideUrl = ImageSlides != null ? ImageSlides.FirstOrDefault().Where(x => x.Key == "large").Select(x => x.Value.ToString()).FirstOrDefault() : null,
                     Slides = new JavaScriptSerializer().Serialize(ImageSlides)
                 };
             return View(viewModel);

@@ -254,7 +254,6 @@
     <Content Include="Static\Scripts\Lib\jquery.fancybox.js" />
     <Content Include="Static\Scripts\Lib\jquery.hoverIntent.js" />
     <Content Include="Static\Scripts\Lib\jquery.masonry.js" />
-    <Content Include="Static\Scripts\Vaultopia.ArticleMySlide.js" />
     <Content Include="Static\Scripts\Vaultopia.ArticleSlideshow.js" />
     <Content Include="Static\Scripts\Vaultopia.Gallery.js" />
     <Content Include="Static\Scripts\Vaultopia.ArticleSlideResponsive.js" />

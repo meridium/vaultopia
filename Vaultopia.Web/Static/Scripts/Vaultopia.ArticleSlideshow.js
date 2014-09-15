@@ -20,6 +20,11 @@
         initControls();
         registerEvents();
         changeImage();
+
+        $(window).resize(function () {
+            clearTimeout(this.id);
+            this.id = setTimeout(changeImage, 2000);
+        });
     };
 
     var registerEvents = function () {
@@ -88,11 +93,6 @@
             });
         });
     };
-
-    $(window).resize(function () {
-        clearTimeout(this.id);
-        this.id = setTimeout(changeImage, 2000);
-    });
 
     var initControls = function () {
         $prev = $('<a href="#" class="prev icon">Previous</a>');
