@@ -14,5 +14,8 @@ namespace Vaultopia.Web.Models.Formats {
         /// </value>
         [ResizeEffect(Width = 2400)]
         public Image Slide { get; set; }
+
+        [ResizeEffect(Width = 1400)]
+        public Image MediumSlide { get; set; }
     }
 }

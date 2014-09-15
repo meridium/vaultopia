@@ -1,19 +1,25 @@
 ﻿Vaultopia.ArticleSlideShow = function () {
 
     var $container,
+        $imageHolder,
         $next,
         $prev,
-        $currentSlide;
+        $currentSlide,
+        $largeBreakingPoint,
+        $mediumBreakingPoint;
 
     var init = function () {
+        $largeBreakingPoint = window.matchMedia("(min-width: 768px)").matches;
+        $mediumBreakingPoint = window.matchMedia("(min-width: 400px)").matches;
 
+        $imageHolder = $('#slideshow .slidewrap');
         $container = $('#slideshow');
         $currentSlide = $container.find('li:first-child');
 
         $currentSlide.addClass('selected');
-
         initControls();
         registerEvents();
+        changeImage();
     };
 
     var registerEvents = function () {
@@ -39,27 +45,39 @@
             changeImage();
         });
 
-        $container.find('img').click(function(e) {
+        $container.find('img').click(function (e) {
             e.preventDefault();
             $currentSlide = $(this).closest('li');
             changeImage();
         });
     };
 
-    var changeImage = function () {
+    var pickImage = function() {
         if ($container.find('img').is(':animated')) {
             return;
         }
-
         $container.find('li').removeClass('selected');
         $currentSlide.addClass('selected');
-        
-        var url = $currentSlide.attr('data-large-url');
 
-        var $image = $('<img src="' + url + '" alt="" />');
+        var mobileUrl = $currentSlide.attr('data-mobile-url');
+        var mediumUrl = $currentSlide.attr('data-medium-url');
+        var largeUrl = $currentSlide.attr('data-large-url');
 
+        if (window.matchMedia("screen and (min-width: 768px)").matches) {
+            return $('<img src="' + largeUrl + '" alt="" />');
+        }
+        else if (window.matchMedia("screen and (max-width: 768px) and (min-width: 400px)").matches) {
+            return $('<img src="' + mediumUrl + '" alt="" />');
+        }
+        else {
+            return $('<img src="' + mobileUrl + '" alt="" />');
+        } 
+    };
+
+    var changeImage = function () {
+        var $image = pickImage();
         $image.imagesLoaded(function () {
-            $container.children('img').before($image);
+            $imageHolder.children('img').before($image);
 
             /*$image.next().animate({ left: '-500px', opacity: '0' }, 400, function() {
                 $(this).remove();
@@ -71,12 +89,17 @@
         });
     };
 
+    $(window).resize(function () {
+        clearTimeout(this.id);
+        this.id = setTimeout(changeImage, 2000);
+    });
+
     var initControls = function () {
         $prev = $('<a href="#" class="prev icon">Previous</a>');
-        $container.prepend($prev);
+        $imageHolder.prepend($prev);
 
         $next = $('<a href="#" class="next icon">Next</a>');
-        $container.append($next);
+        $imageHolder.append($next);
     };
 
     return {

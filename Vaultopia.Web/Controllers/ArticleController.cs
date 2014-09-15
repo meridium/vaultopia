@@ -39,11 +39,22 @@ namespace Vaultopia.Web.Controllers {
                                        .ApplyEffects(mediaReference.Effects)
                                        .Resize(280, 184, ResizeMode.ScaleToFill)
                                        .SingleOrDefault(),
+                            MobileImage =
+                                _client.Load<WebMedia>(mediaReference.Id)
+                                       .ApplyEffects(mediaReference.Effects)
+                                       .Resize(426, 226, ResizeMode.ScaleToFill)
+                                       .SingleOrDefault(),
+                            MediumImage =
+                                _client.Load<WebMedia>(mediaReference.Id)
+                                        .ApplyEffects(mediaReference.Effects)
+                                        .Resize(852, 452, ResizeMode.ScaleToFill)
+                                        .SingleOrDefault(),
                             LargeImage =
                                 _client.Load<WebMedia>(mediaReference.Id)
                                        .ApplyEffects(mediaReference.Effects)
                                        .Resize(1420, 754, ResizeMode.ScaleToFill)
                                        .SingleOrDefault()
+
                         };
                     if (slide.LargeImage == null || slide.SmallImage == null) {
                         continue;

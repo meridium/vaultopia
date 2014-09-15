@@ -221,7 +221,9 @@
     <Content Include="Readme.ImageVault.EPiServer7.txt" />
     <Content Include="Resources\LanguageFiles\Channels.xml" />
     <Content Include="Resources\LanguageFiles\Layout.xml" />
-    <Content Include="Resources\LanguageFiles\PropertyNames.xml" />
+    <Content Include="Resources\LanguageFiles\PropertyNames.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="robots.txt" />
     <Content Include="modules\_protected\Shell\EPiServer.Shell.UI.zip" />
     <Content Include="modules\_protected\CMS\EPiServer.Cms.Shell.UI.zip" />
@@ -252,8 +254,10 @@
     <Content Include="Static\Scripts\Lib\jquery.fancybox.js" />
     <Content Include="Static\Scripts\Lib\jquery.hoverIntent.js" />
     <Content Include="Static\Scripts\Lib\jquery.masonry.js" />
+    <Content Include="Static\Scripts\Vaultopia.ArticleMySlide.js" />
     <Content Include="Static\Scripts\Vaultopia.ArticleSlideshow.js" />
     <Content Include="Static\Scripts\Vaultopia.Gallery.js" />
+    <Content Include="Static\Scripts\Vaultopia.ArticleSlideResponsive.js" />
     <Content Include="Static\Scripts\Vaultopia.Slideshow.js" />
     <Content Include="Static\Scripts\Vaultopia.Upload.js" />
     <Content Include="Static\Styles\Base.css" />

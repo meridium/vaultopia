@@ -57,6 +57,9 @@
         right: 136px;
     }
 
+    header .article {
+        max-width: 100%;
+    }
     #toggle-nav { display: none; }
 
     #global-nav {
