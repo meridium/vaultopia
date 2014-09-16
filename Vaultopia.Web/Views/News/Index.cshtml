@@ -1,0 +1,29 @@
+﻿@using EPiServer.Web.Mvc.Html
+@using ImageVault.EPiServer
+@using Vaultopia.Web.Helpers
+@using Vaultopia.Web.Models.Pages;
+
+@model Vaultopia.Web.Models.ViewModels.NewsPageViewModel<NewsPage>
+@{
+    ViewBag.BodyClass = "news";
+}
+
+<main>
+    <div class="wrap">
+
+
+        <div class="newstop">
+            @Html.PropertyFor(x => x.CurrentPage.MainImage, new { PropertySettings = PropertyHelpers.GetPropertySettings<NewsPage, MediaReference, PropertyMediaSettings>(Model.CurrentPage, m => m.MainImage) })
+        </div>
+        <h1>@Html.PropertyFor(x => x.CurrentPage.NewsHeading)</h1>
+        <p class="introduction">
+            @Html.PropertyFor(x => x.CurrentPage.IntroText)
+        </p>
+        <p class="maintext">
+            @Html.PropertyFor(x => x.CurrentPage.NewsText)
+        </p>
+
+
+    </div>
+
+</main>

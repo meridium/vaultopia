@@ -1,10 +1,13 @@
-﻿@using EPiServer.Web.Mvc.Html
+﻿@using System.Web.Razor.Parser.SyntaxTree
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
 @using Vaultopia.Web.Helpers
 @using ImageVault.EPiServer
 @model Vaultopia.Web.Models.Blocks.ITeaserBlockViewModel<Vaultopia.Web.Models.Blocks.TeaserBlock>
 
 <article>
     <h2><a href="@Url.PageUrl(Model.Page.LinkURL)">@Html.PropertyFor(m => m.Block.TeaserHeading)</a></h2>
+
 
     @*@if (Model.WebMedia != null) {
             @Html.Raw(Model.WebMedia.Html)
