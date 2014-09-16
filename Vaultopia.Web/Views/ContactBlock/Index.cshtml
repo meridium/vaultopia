@@ -1,0 +1,17 @@
+﻿@using EPiServer.Web.Mvc.Html
+@model Vaultopia.Web.Models.Blocks.ContactBlock
+
+<div class="contactFormBody">
+    <h1>@Html.PropertyFor(m => m.Name)</h1> 
+    @Html.PropertyFor(m => m.ContactInfo)
+    <div class="contactForm">
+        @Html.DisplayFor(m => m.ContactImage1)
+        @Html.DisplayFor(m => m.MiniInfo1)
+
+    </div>
+    <div class="contactForm">
+        @Html.DisplayFor(m => m.ContactImage2)
+        @Html.DisplayFor(m => m.MiniInfo2)
+    </div>
+    
+</div>

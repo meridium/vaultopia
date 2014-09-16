@@ -308,6 +308,17 @@
         width: 26.3%;
         margin-right: 0;
     }
+
+    .contactForm 
+    {
+        width: 100%;
+      
+    }
+
+    .contactFormBody {
+         font-family: 'Avenir LT W02 85 Heavy';
+    }
+   
 }
 
 
@@ -419,6 +430,12 @@
         margin: 0;
     }
 
+    .contactForm 
+    {
+        width: 100%;
+      
+    }
+
 }
 
 
@@ -513,5 +530,11 @@
     }
     footer #inspiration li:nth-child(4n) {
         margin-right: 0;
+    }
+
+    .contactForm 
+    {
+        width: 100%;    
+      
     }
 }

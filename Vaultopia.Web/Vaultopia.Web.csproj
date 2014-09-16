@@ -14,7 +14,7 @@
     <RootNamespace>Vaultopia.Web</RootNamespace>
     <AssemblyName>Vaultopia.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -280,6 +280,7 @@
     <Compile Include="Business\Initialization\FilterConfig.cs" />
     <Compile Include="Business\Initialization\PageContextActionFilter.cs" />
     <Compile Include="Business\PageViewContextFactory.cs" />
+    <Compile Include="Controllers\ContactBlockController.cs" />
     <Compile Include="Helpers\MediaHelpers.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AsideTeaserBlockController.cs" />
@@ -295,6 +296,7 @@
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\PropertyHelpers.cs" />
     <Compile Include="Models\Blocks\AsideTeaserBlock.cs" />
+    <Compile Include="Models\Blocks\ContactBlock.cs" />
     <Compile Include="Models\Blocks\ITeaserBlockViewModel.cs" />
     <Compile Include="Models\Blocks\SiteInspirationBlock.cs" />
     <Compile Include="Models\Blocks\SiteTestimonialBlock.cs" />
@@ -375,6 +377,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\DisplayTemplates\MediaReference.cshtml" />
     <Content Include="Views\Gallery\_Search.cshtml" />
+    <Content Include="Views\ContactBlock\Index.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>
@@ -397,7 +400,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63689</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63654/</IISUrl>
+          <IISUrl>http://vaultopia.local</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

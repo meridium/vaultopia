@@ -103,6 +103,8 @@ namespace Vaultopia.Web.Models.Pages
             Order = 1)]
         public virtual ContentArea Teasers { get; set; }
 
+
+        public virtual ContentArea Contact { get; set; }
         /// <summary>
         /// Gets or sets the slide media list.
         /// </summary>

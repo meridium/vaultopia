@@ -41,7 +41,7 @@ namespace Vaultopia.Web.Controllers
             }
             else
             {
-              viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded).Take(32).ToList();
+                viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).Where(m => m.Id== cId).OrderByDescending(m => m.DateAdded).Take(32).ToList();
                 //viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).Where(m => m.VaultId == cId).OrderByDescending(m => m.DateAdded).Take(32).ToList();
                 }
             
