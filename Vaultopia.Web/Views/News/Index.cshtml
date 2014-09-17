@@ -14,18 +14,20 @@
 
 <main>
     <div class="wrap">
-        <div class="newstop">
-            @Html.PropertyFor(x => x.CurrentPage.MainImage, new { PropertySettings = PropertyHelpers.GetPropertySettings<NewsPage, MediaReference, PropertyMediaSettings>(Model.CurrentPage, m => m.MainImage) })
-        </div>
-        <div class="NewsInfo">
-            <h1>@Html.PropertyFor(x => x.CurrentPage.NewsHeading)</h1>
-            <p class="introduction">
-                @Html.PropertyFor(x => x.CurrentPage.IntroText)
-            </p>
-            <p>
-                @Html.PropertyFor(x => x.CurrentPage.NewsText)
-            </p>
-            <a href="@Url.PageUrl(startPage.LinkURL)" class="button">Return to startpage</a>
+        <div class="innerwrap">
+            <div class="newstop">
+                @Html.PropertyFor(x => x.CurrentPage.MainImage, new { PropertySettings = PropertyHelpers.GetPropertySettings<NewsPage, MediaReference, PropertyMediaSettings>(Model.CurrentPage, m => m.MainImage) })
+            </div>
+            <div class="NewsInfo">
+                <h1>@Html.PropertyFor(x => x.CurrentPage.NewsHeading)</h1>
+                <p class="introduction">
+                    @Html.PropertyFor(x => x.CurrentPage.IntroText)
+                </p>
+                <p>
+                    @Html.PropertyFor(x => x.CurrentPage.NewsText)
+                </p>
+                <a href="@Url.PageUrl(startPage.LinkURL)" class="button">Return to startpage</a>
+            </div>
         </div>
     </div>
 

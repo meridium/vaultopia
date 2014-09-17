@@ -386,6 +386,7 @@
         padding-top: 60px;
         padding-bottom: 60px;
     }
+
     body.news .newstop {    
         margin-left: auto;
         margin-right: auto;
@@ -397,6 +398,7 @@
         margin: 0 auto;
         border-radius: 2px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        position: relative;
 
     }
     body.news .NewsInfo {
@@ -406,6 +408,11 @@
         font-size: 15px;
         line-height: 1.5;
         margin-bottom: 18px;
+    }
+
+    .innerwrap {
+        max-width: 600px;
+        margin: 0 auto;
     }
 
     body.gallery #metadata #map {
@@ -705,6 +712,8 @@
         float: left;
         width: 100%;
     }
+
+
 }
 
 @media only screen and (max-width: 1020px) {
