@@ -28,25 +28,28 @@ namespace Vaultopia.Web.Controllers
         /// </summary>
         /// <param name="currentPage">The current page.</param>
         /// <returns></returns>
-        public ActionResult Index(GalleryPage currentPage, int cId = 0) {
+        /// 
+       
+        public ActionResult Index(GalleryPage currentPage, int category = 0) {
 
             //TODO: om cid är noll, ladda allt
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage) ;
 
             List<Category> categories = new List<Category>();
-            if(cId == 0)
+            if(category == 0)
             {  
-                viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)) .OrderByDescending(m => m.DateAdded).Take(32).ToList();
+                viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded).Take(32).ToList();
              
             }
             else
             {
-                viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).Where(m => m.Id== cId).OrderByDescending(m => m.DateAdded).Take(32).ToList();
+                viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
+                
                 //viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).Where(m => m.VaultId == cId).OrderByDescending(m => m.DateAdded).Take(32).ToList();
                 }
             
             viewModel.Categorys = _client.Query<Category>().ToList();
-            viewModel.SelectedCategoryID = cId;
+            viewModel.SelectedCategoryID = category;
 
           
 
@@ -54,26 +57,6 @@ namespace Vaultopia.Web.Controllers
         }
 
 
-        /// <summary>
-        /// Search
-        /// </summary>
-        /// <returns></returns>
-
-        [HttpPost]
-        public ActionResult _Search(GalleryPage searchView)
-        {
-            // var iv = new GalleryViewModel<GalleryPage>(); 
-            // IEnumerable<SelectListItem> items = iv.Categorys.Select(c = new SelectListItem{Value = c.Id.ToString(), Text = c.Name});
-            var categorySearch = new GalleryViewModel<GalleryPage>(searchView)
-            {
-                Categorys = _client.Query<Category>().Where(m => m.Categories.ContainsAll(1, 2)).ToList()
-            };
-
-            // ViewBag.Categories = categorySearch;
-
-
-            return View(categorySearch);
-        }
 
 
 
@@ -130,6 +113,8 @@ namespace Vaultopia.Web.Controllers
             service.Save(new List<MediaItem> { mediaItem }, MediaServiceSaveOptions.MarkAsOrganized);
 
             var image = _client.Load<GalleryImage>(mediaItem.Id).SingleOrDefault();
+
+            
 
             if (image != null)
             {

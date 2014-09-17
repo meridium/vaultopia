@@ -21,7 +21,7 @@ namespace Vaultopia.Web.Models.Blocks
             Description = "Name field's description",
             GroupName = SystemTabNames.Content,
             Order = 1)]
-
+       
         public virtual MediaReference ContactImage1 { get; set; }
         public virtual MediaReference ContactImage2 { get; set; }
         public virtual String Name { get; set; }
