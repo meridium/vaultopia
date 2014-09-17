@@ -25,17 +25,6 @@ namespace Vaultopia.Web.Models.Pages
         public virtual String NewsHeading { get; set; }
 
         /// <summary>
-        /// Gets or sets the news link.
-        /// </summary>
-        /// <value>
-        /// The news link.
-        /// </value>
-        [CultureSpecific]
-        [Required(AllowEmptyStrings = false)]
-        [Display(GroupName = SystemTabNames.Content, Order = 2)]
-        public virtual PageReference NewsLink { get; set; }
-
-        /// <summary>
         /// Gets or sets the main image.
         /// </summary>
         /// <value>
@@ -65,7 +54,7 @@ namespace Vaultopia.Web.Models.Pages
         /// </value>
         [CultureSpecific]
         [Required(AllowEmptyStrings = false)]
-        [Display(GroupName = SystemTabNames.Content, Order = 5)]
+        [Display(GroupName = SystemTabNames.Content, Order = 4)]
         [UIHint(UIHint.Textarea)]
         public virtual String IntroText { get; set; }
 
@@ -101,5 +90,12 @@ namespace Vaultopia.Web.Models.Pages
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 6)]
         public virtual int NewsPrice { get; set; }
+
+        public override void SetDefaultValues(ContentType contentType)
+        {
+            base.SetDefaultValues(contentType);
+
+            VisibleInMenu = false;
+        }
     }
 }
