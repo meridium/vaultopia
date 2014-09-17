@@ -311,13 +311,11 @@
 
     .contactForm 
     {
-        width: 100%;
+        
       
     }
 
-    .contactFormBody {
-         font-family: 'Avenir LT W02 85 Heavy';
-    }
+  
    
 }
 
@@ -432,8 +430,7 @@
 
     .contactForm 
     {
-        width: 100%;
-      
+        
     }
 
 }
@@ -534,7 +531,7 @@
 
     .contactForm 
     {
-        width: 100%;    
+         
       
     }
 }
