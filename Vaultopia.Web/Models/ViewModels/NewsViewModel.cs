@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ImageVault.Common.Data;
 using Vaultopia.Web.Models.Pages;
 
 namespace Vaultopia.Web.Models.ViewModels
@@ -12,5 +13,7 @@ namespace Vaultopia.Web.Models.ViewModels
             : base(page)
         {
         }
+
+        public WebMedia WebMedia;
     }
 }

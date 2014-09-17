@@ -53,18 +53,36 @@ namespace Vaultopia.Web.Helpers
                 {
                     query = query.ApplyEffects(mediaReference.Effects);
                 }
+
+               
                 var mediaItems = new List<MediaItem>();
-                var largeImage = GetMedia(query, settings.Width, settings.Height, settings.ResizeMode);
-                var smallImage = GetMedia(query, 300, settings.Height, settings.ResizeMode);
+                var standardImage = GetMedia(query, settings.Width, settings.Height, settings.ResizeMode);
+                var mediumImage = GetMedia(query, settings.Width, settings.Height, settings.ResizeMode);
+                var smallImage = GetMedia(query, settings.Width, settings.Height, settings.ResizeMode);
+
+                if (standardImage.Width > 800)
+                {
+                    mediumImage = GetMedia(query, 800, settings.Height, settings.ResizeMode);
+                    smallImage = GetMedia(query, 400, settings.Height, settings.ResizeMode);
+                }
+                else if (standardImage.Width > 400)
+                {
+                    smallImage = GetMedia(query, 400, settings.Height, settings.ResizeMode);
+                }
 
 
                 mediaItems.Add(new MediaItem()
                 {
                     MediaVersion = MediaItem.Version.Alternate,
-                    MediaSource = largeImage.Url,
+                    MediaSource = standardImage.Url,
+                    BreakPoint = "(min-width: 768px)"
+                });
+                mediaItems.Add(new MediaItem()
+                {
+                    MediaVersion = MediaItem.Version.Alternate,
+                    MediaSource = mediumImage.Url,
                     BreakPoint = "(min-width: 400px)"
                 });
-
                 mediaItems.Add(new MediaItem()
                  {
                      MediaVersion = MediaItem.Version.Default,

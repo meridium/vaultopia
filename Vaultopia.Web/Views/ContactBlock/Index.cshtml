@@ -1,17 +1,18 @@
 ﻿@using EPiServer.Web.Mvc.Html
-@model Vaultopia.Web.Models.Blocks.ContactBlock
+@using ImageVault.EPiServer
+@using Vaultopia.Web.Helpers;
+@using Vaultopia.Web.Models.Blocks
+@model ContactBlock
 
 <div class="contactFormBody">
     <h1>@Html.PropertyFor(m => m.Name)</h1> 
     @Html.PropertyFor(m => m.ContactInfo)
     <div class="contactForm">
-        @Html.DisplayFor(m => m.ContactImage1)
+        @Html.PropertyFor(x => x.ContactImage1, new { PropertySettings = PropertyHelpers.GetPropertySettings<ContactBlock, MediaReference, PropertyMediaSettings>(Model, m => m.ContactImage1) })
         @Html.DisplayFor(m => m.MiniInfo1)
-
     </div>
     <div class="contactForm">
-        @Html.DisplayFor(m => m.ContactImage2)
+        @Html.PropertyFor(x => x.ContactImage2, new { PropertySettings = PropertyHelpers.GetPropertySettings<ContactBlock, MediaReference, PropertyMediaSettings>(Model, m => m.ContactImage2) })
         @Html.DisplayFor(m => m.MiniInfo2)
     </div>
-    
 </div>

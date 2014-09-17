@@ -384,24 +384,28 @@
         }
     body.news main {
         padding-top: 60px;
+        padding-bottom: 60px;
     }
-    body.news .newstop {
-        background-color: #fff;
-        border-radius: 2px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    body.news .newstop {    
         margin-left: auto;
         margin-right: auto;
-        max-width: 100%;
         position: relative;
     }
-    p.maintext {
+
+    body.news .newstop img {
+        max-width: 100%;
+        margin: 0 auto;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+
+    }
+    body.news .NewsInfo {
+        position: relative;
+    }
+    body.news .NewsInfo p {
         font-size: 15px;
         line-height: 1.5;
         margin-bottom: 18px;
-    }
-
-    .margin {
-        
     }
 
     body.gallery #metadata #map {
