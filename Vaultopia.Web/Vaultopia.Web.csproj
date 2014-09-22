@@ -224,6 +224,7 @@
     <Content Include="Resources\LanguageFiles\PropertyNames.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Resources\LanguageFiles\Vaultopia.xml" />
     <Content Include="robots.txt" />
     <Content Include="modules\_protected\Shell\EPiServer.Shell.UI.zip" />
     <Content Include="modules\_protected\CMS\EPiServer.Cms.Shell.UI.zip" />
@@ -276,6 +277,7 @@
     <Compile Include="Business\Channels\MobileChannel.cs" />
     <Compile Include="Business\Channels\WebChannel.cs" />
     <Compile Include="Business\ContentExtensions.cs" />
+    <Compile Include="Business\Download.cs" />
     <Compile Include="Business\IModifyLayout.cs" />
     <Compile Include="Business\Initialization\FilterConfig.cs" />
     <Compile Include="Business\Initialization\PageContextActionFilter.cs" />

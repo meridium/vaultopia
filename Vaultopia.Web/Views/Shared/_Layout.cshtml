@@ -73,14 +73,17 @@
                     <ul>
                         @if(Model.Layout.SiteInspirationUrls != null)
                         {
-                            foreach (var media in Model.Layout.SiteInspirationUrls)
-                            {                        
-                                <li>                                    
-                                    <a href="@media.Preview.Url" class="image">
-                                        <img src="@media.Thumbnail.Url" alt=""/>
-                                    </a>
-                                </li>
-                            } 
+                            if (!IsPost)
+                            {
+                                foreach (var media in Model.Layout.SiteInspirationUrls)
+                                {
+                                    <li>                                    
+                                        <a href="@media.Preview.Url" class="image">
+                                            <img src="@media.Thumbnail.Url" alt=""/>
+                                        </a>
+                                    </li>
+                                }
+                            }
                         }
                     </ul>
                 </section>

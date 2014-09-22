@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
+using EPiServer.XForms.WebControls;
 using ImageVault.Client;
 using ImageVault.Client.Query;
 using ImageVault.Common.Data;
@@ -29,33 +30,81 @@ namespace Vaultopia.Web.Controllers
         /// <param name="currentPage">The current page.</param>
         /// <returns></returns>
         /// 
-       
-        public ActionResult Index(GalleryPage currentPage, int category = 0) {
 
-            //TODO: om cid är noll, ladda allt
-            var viewModel = new GalleryViewModel<GalleryPage>(currentPage) ;
+        public ActionResult Index(GalleryPage currentPage, int category = 0, string searchImage = null)
+        {
 
-            List<Category> categories = new List<Category>();
-            if(category == 0)
-            {  
-                viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded).Take(32).ToList();
-             
+         
+            var viewModel = new GalleryViewModel<GalleryPage>(currentPage);
+             //List<Category> categories = new List<Category>();
+
+            if (category == 0  && string.IsNullOrEmpty(searchImage))
+            {
+                viewModel.Images =
+                    _client.Query<GalleryImage>()
+                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
+                        .OrderByDescending(m => m.DateAdded)
+                        .Take(32)
+                        .ToList();
+
             }
+            else if(category != 0 && string.IsNullOrEmpty(searchImage))
+            {
+
+                viewModel.Images =
+                      _client.Query<GalleryImage>()
+                          .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
+                
+             
+                   
+            }
+            
             else
             {
-                viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
-                
-                //viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).Where(m => m.VaultId == cId).OrderByDescending(m => m.DateAdded).Take(32).ToList();
+
+                //viewModel.Images =
+                // _client.Query<GalleryImage>()
+                //       .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Metadata.ToString().ToLower().Contains(searchImage.ToLower()) && m.Categories.Contains(category)).ToList();
+
+                //viewModel.Images =
+                //    _client.Query<GalleryImage>()
+                //        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
+                //        .Where(m => m.Metadata.ToString() == null).ToList();
+
+
+                List<GalleryImage> derb  =
+                    _client.Query<GalleryImage>()
+                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
+
+                List<GalleryImage> res = new List<GalleryImage>();
+
+                foreach (var item in derb)
+                {
+                    foreach (var data in item.Metadata)
+                    {
+                        if ((data.Value != null) &&
+                        (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))) { 
+                           
+                            
+                                res.Add(item);
+                            
+                        }
+                        
+                     
+                    }
                 }
-            
-            viewModel.Categorys = _client.Query<Category>().ToList();
+
+                viewModel.Images = res;
+
+            }
+
+            viewModel.Categorys = _client.Query<Category>().Include(x => x.IsUsed).ToList().Where(x => x.IsUsed.HasValue).ToList();
             viewModel.SelectedCategoryID = category;
 
-          
+
 
             return View(viewModel);
         }
-
 
 
 
@@ -124,6 +173,8 @@ namespace Vaultopia.Web.Controllers
             return new EmptyResult();
 
         }
+
+
 
         /// <summary>
         /// Uploads the file.

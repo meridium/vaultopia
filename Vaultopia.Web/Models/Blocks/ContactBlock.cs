@@ -21,13 +21,51 @@ namespace Vaultopia.Web.Models.Blocks
             Description = "Name field's description",
             GroupName = SystemTabNames.Content,
             Order = 1)]
-       
-        public virtual MediaReference ContactImage1 { get; set; }
-        public virtual MediaReference ContactImage2 { get; set; }
         public virtual String Name { get; set; }
+
+        /// <summary>
+        /// Info about how to contact
+        /// </summary> 
+        /// <value>
+        /// Info
+        /// </value>
+        [CultureSpecific]
         public virtual XhtmlString ContactInfo { get; set; }
 
+        /// <summary>
+        /// Imagephoto for contact 1
+        /// </summary> 
+        /// <value>
+        /// image photot
+        /// </value>
+        [CultureSpecific]
+        public virtual MediaReference ContactImage1 { get; set; }
+
+        /// <summary>
+        /// Imagephoto for contact 2
+        /// </summary> 
+        /// <value>
+        /// image photot
+        /// </value>
+        [CultureSpecific]
+        public virtual MediaReference ContactImage2 { get; set; }
+        
+        /// <summary>
+        /// Contact info for imgae 1
+        /// </summary> 
+        /// <value>
+        /// contact info 
+        /// </value>
+        [CultureSpecific]
         public virtual XhtmlString MiniInfo1 { get; set; }
+
+        /// <summary>
+        /// Contact info for imgae 2
+        /// </summary> 
+        /// <value>
+        /// contact info 
+        /// </value>
+        [CultureSpecific]
         public virtual XhtmlString MiniInfo2 { get; set; }
 
     }
