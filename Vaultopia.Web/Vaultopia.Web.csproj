@@ -169,6 +169,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ProcessMap.EPiServer7, Version=3.3.0.0, Culture=neutral, PublicKeyToken=01f4840270d48493, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ProcessMap.EPiServer7.dll</HintPath>
+    </Reference>
     <Reference Include="Shell, Version=3.1.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPiServer.CMS.UI.Core.7.13.0\lib\net40\Shell.dll</HintPath>
@@ -224,7 +228,6 @@
     <Content Include="Resources\LanguageFiles\PropertyNames.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Resources\LanguageFiles\Vaultopia.xml" />
     <Content Include="robots.txt" />
     <Content Include="modules\_protected\Shell\web.config" />
     <Content Include="modules\_protected\Shell\EPiServer.Shell.UI.zip" />
@@ -278,7 +281,6 @@
     <Compile Include="Business\Channels\MobileChannel.cs" />
     <Compile Include="Business\Channels\WebChannel.cs" />
     <Compile Include="Business\ContentExtensions.cs" />
-    <Compile Include="Business\Download.cs" />
     <Compile Include="Business\IModifyLayout.cs" />
     <Compile Include="Business\Initialization\FilterConfig.cs" />
     <Compile Include="Business\Initialization\PageContextActionFilter.cs" />
@@ -315,7 +317,6 @@
     <Compile Include="Models\Pages\Article.cs" />
     <Compile Include="Models\Pages\GalleryPage.cs" />
     <Compile Include="Models\Pages\NewsPage.cs" />
-    <Compile Include="Models\Pages\Process.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
     <Compile Include="Models\Properties\VaultPicker\VaultPickerEditorDescriptor.cs" />
