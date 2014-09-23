@@ -15,6 +15,8 @@ namespace Vaultopia.Web.Models.Formats {
         /// </summary>
         public Image Original { get; set; }
 
+        public WebMedia ForDownload { get; set; }
+
         /// <summary>
         ///     Gets or sets the thumbnail.
         /// </summary>

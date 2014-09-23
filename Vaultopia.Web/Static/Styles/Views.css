@@ -382,6 +382,57 @@
         body.gallery #metadata #map .gmnoprint a {
             text-decoration: none;
         }
+    body.gallery .downloadbtn {
+        position: absolute;
+        cursor: pointer;
+        left:50%;
+        margin-left: -59.5px;
+        -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+	    -moz-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+	    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    body.gallery .formatbox {
+        width: 100%;
+        background: rgba(51, 51, 51, 0.98);
+        padding-top: 25px;
+        padding-bottom: 25px;
+        position: relative;
+        border-radius: 3px;
+        text-align: center;
+    }
+
+    body.gallery .formatimg {
+        margin: 0 auto;
+        width: 250px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        border-radius: 3px;
+    }
+
+    body.gallery .innerformatbox img {
+      
+        
+    }
+
+
+    body.gallery .formatbtn {
+        background: #6B6A6A;
+        margin-right: 5px;
+        cursor: pointer;
+
+        
+    }
+
+    body.gallery #dwnloadtest {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        height: 200px;
+        z-index: 9999;
+        position: absolute;
+    }
+
     body.news main {
         padding-top: 60px;
         padding-bottom: 60px;
@@ -678,6 +729,11 @@
      #slideshow ul li {
         width: 49.6%;
     }
+
+     .fancybox-title iframe {
+    min-height: 30px;
+    vertical-align: middle;
+}
 }
 
 @media only screen and (max-width : 768px) {

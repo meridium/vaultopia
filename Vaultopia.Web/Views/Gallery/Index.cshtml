@@ -1,8 +1,11 @@
-﻿@model Vaultopia.Web.Models.ViewModels.GalleryViewModel<Vaultopia.Web.Models.Pages.GalleryPage>
+﻿@using Vaultopia.Web.Helpers;
+@model Vaultopia.Web.Models.ViewModels.GalleryViewModel<Vaultopia.Web.Models.Pages.GalleryPage>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.BodyClass = "gallery";
+    
+   
 }
 <main>
     <div class="wrap">
@@ -23,9 +26,8 @@
             </ul>
             <a href="/" id="categories-more-action">Show more categories...</a>
         </section>
-
         <section id="search">
-
+               
             @Html.Partial("_Search", Model)
         </section>
 
@@ -41,5 +43,10 @@
     <script type="text/javascript">
         Vaultopia.Gallery.init();
     </script>
+    @*<script>
+        Vaultopia.Gallery.DownloadBtn.init();
+    </script>*@
+    
+<script src="~/Static/Scripts/Vaultopia.Gallary.DownloadBtn.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeGCmrvtGi8k18J9qQPD4end49bOrjEBA&sensor=false"></script>
 }

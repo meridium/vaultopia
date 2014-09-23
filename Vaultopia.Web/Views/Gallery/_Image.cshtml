@@ -3,10 +3,10 @@
 
 <li data-image-id="@Model.Id">
     
-        <a href="@Model.Thumbnail.Url" class="image">
+        <a title="" href="@Model.Thumbnail.Url" class="image">
             <span class="enlarge sprite"></span>
             <picture>
-                <source media="(min-width: 500px)" srcset="@Model.Thumbnail.Url"/>
+                <source media="(min-width: 400px)" srcset="@Model.Thumbnail.Url"/>
 
                 <img src="@Model.ThumbnailSmall.Url" alt="" />
             </picture>

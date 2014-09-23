@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services;
+using EPiServer.Cms.Shell.UI.Models.ExternalLinks;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 using EPiServer.XForms.WebControls;
@@ -12,10 +14,12 @@ using ImageVault.Client.Query;
 using ImageVault.Common.Data;
 using ImageVault.Common.Data.Query;
 using ImageVault.Common.Services;
+using ImageVault.EPiServer;
 using Vaultopia.Web.Models;
 using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
+using System.Web.Script.Serialization;
 
 
 namespace Vaultopia.Web.Controllers
@@ -102,9 +106,67 @@ namespace Vaultopia.Web.Controllers
             viewModel.SelectedCategoryID = category;
 
 
+          
 
             return View(viewModel);
         }
+
+        [WebMethod]
+        public string Download(int imageId, string format, string width)
+        {
+
+            var downloadFormat = new ImageFormat();
+            switch (format)
+            {
+                case "png": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
+                    break;
+                case "jpg": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
+                    break;
+                case "gif": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
+                    break;
+            }
+
+            var image = _client.Load<Image>(imageId).UseFormat(downloadFormat).FirstOrDefault();
+            //return image.Url;
+            return _client.Load<WebMedia>(imageId).UseFormat(downloadFormat).FirstOrDefault().Url ?? string.Empty;
+
+            //switch (format)
+            //{
+            //    case "png": 
+            //        downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
+            //        return query.UseFormat(downloadFormat).FirstOrDefault().Url;
+            //        break;
+            //    case "jpg": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
+            //        break;
+            //    case "gif": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
+            //        break;
+            //}
+
+            //return _client.Load<WebMedia>(imageId).UseFormat(downloadFormat).FirstOrDefault().Url ?? string.Empty;
+
+
+            //var downloads = new Download();
+            //switch (format)
+            //{
+            //    case "png":
+            //        var pngFormat = new WebMediaFormat() { MediaFormatOutputType = MediaFormatOutputTypes.Png };
+            //var firstOrDefaultpng = _client.Load<WebMedia>(imageId).UseFormat(pngFormat).FirstOrDefault();
+            //        if (firstOrDefaultpng != null)
+            //return firstOrDefaultpng.Url;
+            //        break;
+            //    case "jpg":
+            //        var jpgFormat = new WebMediaFormat() { MediaFormatOutputType = MediaFormatOutputTypes.Jpeg, Width = 200};
+            //        var firstOrDefaultjpg = _client.Load<WebMedia>(imageId).UseFormat(jpgFormat).FirstOrDefault();
+            //        if (firstOrDefaultjpg != null)
+            //            return firstOrDefaultjpg.Url;
+            //        break;
+            //    case "gif":
+            //        //choosenFormat = new ImageFormat() { MediaFormatOutputType = MediaFormatOutputTypes.Gif };
+            //        break;
+            //}
+            //return string.Empty;
+        }
+
 
 
 

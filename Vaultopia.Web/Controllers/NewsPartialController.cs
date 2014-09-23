@@ -22,7 +22,7 @@ namespace Vaultopia.Web.Controllers
         {
 
             var startPage = DataFactory.Instance.GetPage(PageReference.StartPage);
-            
+          
             //Get current contentarea for rendering
             var currentContentArea = ControllerContext.ParentActionViewContext.ViewData.Model as ContentArea;
 

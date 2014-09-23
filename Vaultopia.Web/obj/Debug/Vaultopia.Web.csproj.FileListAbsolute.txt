@@ -140,7 +140,6 @@ C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Webpages.Deployment.xml
 C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Webpages.Razor.xml
 C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Helpers.xml
 C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Mvc.xml
-C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.csprojResolveAssemblyReference.cache
 C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.dll
 C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.pdb
 C:\Projects\VaultTopia\vaultopia\Vaultopia.Web\bin\Vaultopia.Web.dll.config
@@ -219,3 +218,4 @@ C:\Projects\VaultTopia\vaultopia\Vaultopia.Web\bin\System.Web.Mvc.xml
 C:\Projects\VaultTopia\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.dll
 C:\Projects\VaultTopia\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.pdb
 C:\Projects\VaultTopia\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.csprojResolveAssemblyReference.cache
+C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.csprojResolveAssemblyReference.cache
