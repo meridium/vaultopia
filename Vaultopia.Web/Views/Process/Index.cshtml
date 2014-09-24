@@ -1,0 +1,24 @@
+﻿@using EPiServer.Web.Mvc.Html
+@model Vaultopia.Web.Models.ViewModels.PageViewModel<Vaultopia.Web.Models.Pages.Process>
+@{
+    ViewBag.BodyClass = "process";
+}
+<div id="main">
+    <div class="wrap">
+
+        <main>
+
+            <h1>@Html.PropertyFor(x => x.CurrentPage.Heading)</h1>
+            <p class="introduction">
+                @Html.PropertyFor(x => x.CurrentPage.Introduction)
+            </p>
+            <div id="primary">
+                @Html.PropertyFor(x => x.CurrentPage.ProcessMap)
+                @Html.PropertyFor(x => x.CurrentPage.MainBody)
+            </div>
+        </main>
+        <aside>
+            @Html.PropertyFor(x => x.CurrentPage.Teasers, new { Tag = "aside" })
+        </aside>
+    </div>
+</div>

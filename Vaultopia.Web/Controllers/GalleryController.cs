@@ -37,8 +37,6 @@ namespace Vaultopia.Web.Controllers
 
         public ActionResult Index(GalleryPage currentPage, int category = 0, string searchImage = null)
         {
-
-         
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage);
              //List<Category> categories = new List<Category>();
 
@@ -54,18 +52,10 @@ namespace Vaultopia.Web.Controllers
             }
             else if(category != 0 && string.IsNullOrEmpty(searchImage))
             {
-
-                viewModel.Images =
-                      _client.Query<GalleryImage>()
-                          .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
-                
-             
-                   
+                viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
             }
-            
             else
             {
-
                 //viewModel.Images =
                 // _client.Query<GalleryImage>()
                 //       .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Metadata.ToString().ToLower().Contains(searchImage.ToLower()) && m.Categories.Contains(category)).ToList();
@@ -76,37 +66,15 @@ namespace Vaultopia.Web.Controllers
                 //        .Where(m => m.Metadata.ToString() == null).ToList();
 
 
-                List<GalleryImage> derb  =
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
+                var derb  = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
 
-                List<GalleryImage> res = new List<GalleryImage>();
-
-                foreach (var item in derb)
-                {
-                    foreach (var data in item.Metadata)
-                    {
-                        if ((data.Value != null) &&
-                        (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))) { 
-                           
-                            
-                                res.Add(item);
-                            
-                        }
-                        
-                     
-                    }
-                }
+                var res = (from item in derb from data in item.Metadata where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower())) select item).ToList();
 
                 viewModel.Images = res;
-
             }
 
             viewModel.Categorys = _client.Query<Category>().Include(x => x.IsUsed).ToList().Where(x => x.IsUsed.HasValue).ToList();
             viewModel.SelectedCategoryID = category;
-
-
-          
 
             return View(viewModel);
         }
@@ -114,64 +82,28 @@ namespace Vaultopia.Web.Controllers
         [WebMethod]
         public string Download(int imageId, string format, string width)
         {
-
             var downloadFormat = new ImageFormat();
             switch (format)
             {
-                case "png": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
+                case "pngdefault":
+                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
                     break;
-                case "jpg": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
+                case "jpgdefault": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
                     break;
-                case "gif": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
+                case "gifdefault": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
                     break;
+                case "pngmedium": 
+                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
+                    downloadFormat.Width = int.Parse(width);
+                    break;
+                case "jpgmedium": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
+                    break;
+                case "gifmedium": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
+                    break;
+
             }
-
-            var image = _client.Load<Image>(imageId).UseFormat(downloadFormat).FirstOrDefault();
-            //return image.Url;
             return _client.Load<WebMedia>(imageId).UseFormat(downloadFormat).FirstOrDefault().Url ?? string.Empty;
-
-            //switch (format)
-            //{
-            //    case "png": 
-            //        downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
-            //        return query.UseFormat(downloadFormat).FirstOrDefault().Url;
-            //        break;
-            //    case "jpg": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
-            //        break;
-            //    case "gif": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
-            //        break;
-            //}
-
-            //return _client.Load<WebMedia>(imageId).UseFormat(downloadFormat).FirstOrDefault().Url ?? string.Empty;
-
-
-            //var downloads = new Download();
-            //switch (format)
-            //{
-            //    case "png":
-            //        var pngFormat = new WebMediaFormat() { MediaFormatOutputType = MediaFormatOutputTypes.Png };
-            //var firstOrDefaultpng = _client.Load<WebMedia>(imageId).UseFormat(pngFormat).FirstOrDefault();
-            //        if (firstOrDefaultpng != null)
-            //return firstOrDefaultpng.Url;
-            //        break;
-            //    case "jpg":
-            //        var jpgFormat = new WebMediaFormat() { MediaFormatOutputType = MediaFormatOutputTypes.Jpeg, Width = 200};
-            //        var firstOrDefaultjpg = _client.Load<WebMedia>(imageId).UseFormat(jpgFormat).FirstOrDefault();
-            //        if (firstOrDefaultjpg != null)
-            //            return firstOrDefaultjpg.Url;
-            //        break;
-            //    case "gif":
-            //        //choosenFormat = new ImageFormat() { MediaFormatOutputType = MediaFormatOutputTypes.Gif };
-            //        break;
-            //}
-            //return string.Empty;
         }
-
-
-
-
-
-
 
 
         /// <summary>

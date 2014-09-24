@@ -286,9 +286,9 @@
     <Compile Include="Business\Initialization\PageContextActionFilter.cs" />
     <Compile Include="Business\PageViewContextFactory.cs" />
     <Compile Include="Controllers\ContactBlockController.cs" />
-    <Compile Include="Controllers\Download.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NewsPartialController.cs" />
+    <Compile Include="Controllers\ProcessController.cs" />
     <Compile Include="Helpers\MediaHelpers.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AsideTeaserBlockController.cs" />
@@ -317,6 +317,7 @@
     <Compile Include="Models\Pages\Article.cs" />
     <Compile Include="Models\Pages\GalleryPage.cs" />
     <Compile Include="Models\Pages\NewsPage.cs" />
+    <Compile Include="Models\Pages\Process.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
     <Compile Include="Models\Properties\VaultPicker\VaultPickerEditorDescriptor.cs" />
@@ -390,6 +391,7 @@
     <Content Include="Views\ContactBlock\Index.cshtml" />
     <Content Include="Views\Partials\News.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Process\Index.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

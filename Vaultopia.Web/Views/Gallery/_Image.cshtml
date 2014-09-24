@@ -1,7 +1,7 @@
 ﻿@using Vaultopia.Web.Helpers
 @model Vaultopia.Web.Models.Formats.GalleryImage
 
-<li data-image-id="@Model.Id">
+<li data-image-id="@Model.Id" data-image-width="@Model.Original.Width">
     
         <a title="" href="@Model.Thumbnail.Url" class="image">
             <span class="enlarge sprite"></span>
