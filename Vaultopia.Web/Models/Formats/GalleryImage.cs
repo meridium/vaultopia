@@ -1,4 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using EPiServer;
 using ImageVault.Client.Descriptors;
 using ImageVault.Client.Descriptors.Effects;
 using ImageVault.Common.Data;
@@ -160,7 +163,7 @@ namespace Vaultopia.Web.Models.Formats {
                     return String.Empty;
                 }
 
-                string[] lat = _latitude.Replace(',', '.').Split(' ');
+                string[] lat = _latitude.Replace('.', ',').Split(' ');
 
                 if (lat.Length < 2) {
                     return String.Empty;
@@ -180,7 +183,6 @@ namespace Vaultopia.Web.Models.Formats {
             set { _latitude = value; }
         }
 
-
         /// <summary>
         /// Gets or sets the longitude.
         /// </summary>
@@ -194,7 +196,7 @@ namespace Vaultopia.Web.Models.Formats {
                     return String.Empty;
                 }
 
-                string[] lng = _longitude.Replace(',', '.').Split(' ');
+                string[] lng = _longitude.Replace('.', ',').Split(' ');
 
                 if (lng.Length < 2) {
                     return String.Empty;
@@ -204,6 +206,7 @@ namespace Vaultopia.Web.Models.Formats {
                 decimal minutes = Decimal.Parse(lng[1]);
 
                 decimal decimalDegrees = minutes/60 + degrees;
+
 
                 if (GpsLongitudeRef == "W") {
                     decimalDegrees = decimalDegrees * -1;

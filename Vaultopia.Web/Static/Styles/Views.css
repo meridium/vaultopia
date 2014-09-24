@@ -299,7 +299,7 @@
         right: -86px;
         background: rgba(51, 51, 51, 0.98);
         width: 230px;
-        height: 300px;
+        height: 315px;
         border-radius: 2px;
         z-index: 9999;
         color: #ffffff;
@@ -319,7 +319,7 @@
     }
     body.gallery #metadata .exif {
         color: #fcffca;
-        margin: 55px 0 0;
+        margin: 17px 0 0;
         border-top: 1px solid #484848;
         padding: 10px 0 0;
     }

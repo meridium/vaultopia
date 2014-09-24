@@ -23,13 +23,22 @@
         
     }
     
+    .DdlSearch {
+        height: 40px;
+         border:0px;
+        outline:0px;
+    }
 
     .Search {
          padding-top: 10px;
     }
 
+    .txbSearch {
+        border: solid black 1px;
+    }
 
     .tbxSearch {
+        
         padding-right: 100px;
     }
     header {
@@ -229,6 +238,9 @@
         background-size: 75px;
     }
 
+    .txbUrl {
+        float: right;
+    }
 
     footer {
         padding: 40px 0 50px;
