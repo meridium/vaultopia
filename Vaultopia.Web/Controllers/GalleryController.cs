@@ -155,7 +155,7 @@ namespace Vaultopia.Web.Controllers
         }
 
         [WebMethod]
-        public string Download(int imageId, string format, string width)
+        public string Download(int imageId, string format, int width)
         {
             var downloadFormat = new ImageFormat();
             switch (format)
@@ -169,7 +169,7 @@ namespace Vaultopia.Web.Controllers
                     break;
                 case "pngmedium": 
                     downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
-                    downloadFormat.Width = int.Parse(width);
+                    downloadFormat.Width = width;
                     break;
                 case "jpgmedium": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
                     break;
