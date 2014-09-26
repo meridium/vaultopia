@@ -29,7 +29,6 @@ namespace Vaultopia.Web.Helpers
         /// <returns></returns>
         public static MvcHtmlString RenderMedia(this HtmlHelper helper, MediaReference mediaReference, object metaData)
         {
-
             var settings = new PropertyMediaSettings();
 
             if (metaData != null)
@@ -70,10 +69,13 @@ namespace Vaultopia.Web.Helpers
                 {
                     mediumImage = GetMedia(query, 800, settings.Height, settings.ResizeMode);
                     smallImage = GetMedia(query, 400, settings.Height, settings.ResizeMode);
+                
                 }
                 else if (standardImage.Width > 400)
                 {
                     smallImage = GetMedia(query, 400, settings.Height, settings.ResizeMode);
+                
+                
                 }
 
 

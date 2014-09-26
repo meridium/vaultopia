@@ -420,13 +420,13 @@
         margin-bottom: 15px;
     }
 
-    body.gallery ul.formatitem {
+    body.gallery ul.formatitems {
         position: relative;
         list-style:none;
         margin: 0 auto;
     }
 
-    body.gallery ul.formatitem li {
+    body.gallery ul.formatitems li {
         background: rgb(77, 77, 77);
         cursor: pointer;
         text-align: center;
@@ -438,7 +438,7 @@
         border-top: 1px solid #3D3D3D;
     }
 
-    body.gallery ul.formatitem li:not(:first-child):hover {
+    body.gallery ul.formatitems li:not(:first-child):hover {
         -webkit-transition: background 1s; 
 	    transition: background 1s;
         -webkit-transition: color 0.7s; 
@@ -450,19 +450,19 @@
     body.gallery ul.formatbottom li {
         border-bottom: 1px solid #3D3D3D;
     }
-    body.gallery ul.formatbottom li:first-child {
+    body.gallery .downloadformats ul:last-child li:first-child {
         border-bottom-left-radius: 3px;
     }
-    body.gallery ul.formatbottom li:last-child {
+    body.gallery .downloadformats ul:last-child li:last-child {
         border-bottom-right-radius: 3px;
     }
-    body.gallery ul.formattop li:first-child {
+    body.gallery .downloadformats ul:first-child li:first-child {
         border-top-left-radius: 3px;
     }
-    body.gallery ul.formattop li:last-child {
+    body.gallery .downloadformats ul:first-child li:last-child {
         border-top-right-radius: 3px;
     }
-    body.gallery .formatitem li:first-child {
+    body.gallery .formatitems li:first-child {
         width: 60px;
         border-left: 1px solid #3D3D3D;
         cursor: default;

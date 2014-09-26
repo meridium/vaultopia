@@ -50,7 +50,7 @@ var addButtons = function() {
     var buttons = { jpg: ["<li>JPG</li>"], png: ["<li>PNG</li>"], gif: ["<li>GIF</li>"] };
     var format;
     for (var i = 0; i < imageResolutions.length;) {
-        if (originalWidth > imageResolutions[i].width || originalWidth == imageResolutions[i].width) { 
+        if (originalWidth > imageResolutions[i].width || originalWidth === imageResolutions[i].width) { 
             format = imageResolutions[i].format;
             var listItem = '<li data-format-width="' + imageResolutions[i].width + '" data-format-type="' + imageResolutions[i].format + '">' + imageResolutions[i].linkName + ' (' + imageResolutions[i].width.toString() + 'x'+ imageResolutions[i].height.toString() + ')</li>';
             switch (format) {
@@ -77,15 +77,15 @@ $(document).on('click', '#displayformats', function () {
         content: '<div class="formatbox">' +
             '<img class="formatimg" src="' + img + '" alt="" />' +
             '<div class="downloadformats">' +
-            '<ul class="formatitem formattop">' + addButtons().jpg.join("") + '</ul>' +
-            '<ul class="formatitem">' + addButtons().png.join("") + '</ul>' +
-            '<ul class="formatitem formatbottom">' + addButtons().gif.join("") + '</ul>' +
+            '<ul class="formatitems">' + addButtons().jpg.join("") + '</ul>' +
+            '<ul class="formatitems">' + addButtons().png.join("") + '</ul>' +
+            '<ul class="formatitems">' + addButtons().gif.join("") + '</ul>' +
             '</div>' +
             '</div>'
     });
 });
 
-$(document).on('click', '.formatitem li', function (e) {
+$(document).on('click', '.formatitems li', function (e) {
     e.preventDefault();
     var formatType = $(this).attr("data-format-type");
     var formatWidth = $(this).attr("data-format-width");
