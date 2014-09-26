@@ -8,6 +8,7 @@
     @using (Html.BeginForm())
 {
     <div class="Search">
+        
         <div class="ddlSearch">  @Html.DropDownList("category", new SelectList(Model.Categorys, "Id", "Name"), Html.Translate("/categories/all"), new { @class = "DdlSearch" })</div>
         <div class="tbxSearch"> @Html.TextBox("searchImage", null, new { @class = "txbSearch" })</div>
         <input type="submit" value="Search" class="button" />
