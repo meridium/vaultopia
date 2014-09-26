@@ -52,27 +52,65 @@ namespace Vaultopia.Web.Controllers
             }
             else if (category != 0 && string.IsNullOrEmpty(searchImage))
             {
+<<<<<<< Updated upstream
                 viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
+=======
+
+                viewModel.Images =
+                    _client.Query<GalleryImage>()
+                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category))
+                        .ToList();
+>>>>>>> Stashed changes
             }
 
+
             else if (category == 0 && !string.IsNullOrEmpty(searchImage))
+
             {
+<<<<<<< Updated upstream
                 var derb =
+=======
+                var allImages =
+>>>>>>> Stashed changes
                     _client.Query<GalleryImage>()
                         .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
                         .ToList();
 
+                var res = (from item in allImages
+                    from data in item.Metadata
+                    where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))
+                    select item).ToList();
 
+<<<<<<< Updated upstream
                 var res = (from item in derb from data in item.Metadata where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower())) select item).ToList();
+=======
+>>>>>>> Stashed changes
 
                 viewModel.Images = res;
 
             }
+<<<<<<< Updated upstream
             else
             {
                 var derb  = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
 
                 var res = (from item in derb from data in item.Metadata where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower())) select item).ToList();
+=======
+
+
+            else
+            {
+                var allImages =
+                    _client.Query<GalleryImage>()
+                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category))
+                        .ToList();
+
+                var res = (from item in allImages
+                    from data in item.Metadata
+                    where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))
+                    select item).ToList();
+
+>>>>>>> Stashed changes
 
                 viewModel.Images = res;
             }
@@ -94,12 +132,33 @@ namespace Vaultopia.Web.Controllers
 
             switch (format)
             {
+<<<<<<< Updated upstream
                 case "png":
+=======
+                case "pngdefault":
                     downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
                     break;
+                case "jpgdefault":
+                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
+                    break;
+                case "gifdefault":
+                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
+                    break;
+                case "pngmedium":
+>>>>>>> Stashed changes
+                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
+                    break;
+<<<<<<< Updated upstream
                 case "jpg": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
                     break;
                 case "gif": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
+=======
+                case "jpgmedium":
+                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
+                    break;
+                case "gifmedium":
+                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
+>>>>>>> Stashed changes
                     break;
 
             }
@@ -107,6 +166,19 @@ namespace Vaultopia.Web.Controllers
         }
 
 
+<<<<<<< Updated upstream
+=======
+
+
+
+
+        //var imgUrl = _client.Load<WebMedia>(imageUrl).FirstOrDefault();
+
+        //return imgUrl.Url;
+
+
+
+>>>>>>> Stashed changes
         /// <summary>
         /// Loads the specified current page.
         /// </summary>
@@ -118,7 +190,13 @@ namespace Vaultopia.Web.Controllers
 
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage)
             {
-                Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded).Skip(skip * 32).Take(33).ToList()
+                Images =
+                    _client.Query<GalleryImage>()
+                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
+                        .OrderByDescending(m => m.DateAdded)
+                        .Skip(skip*32)
+                        .Take(33)
+                        .ToList()
             };
 
             return PartialView("_Images", viewModel);
@@ -143,7 +221,10 @@ namespace Vaultopia.Web.Controllers
         {
 
             //Why can't I load the mediaitem with the same id i just saved...?
-            var mediaItem = _client.Load<MediaItem>(Int32.Parse(model.Id)).Include(x => x.Metadata.Where(md => md.DefinitionType == MetadataDefinitionTypes.User)).FirstOrDefault();
+            var mediaItem =
+                _client.Load<MediaItem>(Int32.Parse(model.Id))
+                    .Include(x => x.Metadata.Where(md => md.DefinitionType == MetadataDefinitionTypes.User))
+                    .FirstOrDefault();
 
             if (mediaItem == null)
             {
@@ -154,11 +235,11 @@ namespace Vaultopia.Web.Controllers
 
             var service = _client.CreateChannel<IMediaService>();
 
-            service.Save(new List<MediaItem> { mediaItem }, MediaServiceSaveOptions.MarkAsOrganized);
+            service.Save(new List<MediaItem> {mediaItem}, MediaServiceSaveOptions.MarkAsOrganized);
 
             var image = _client.Load<GalleryImage>(mediaItem.Id).SingleOrDefault();
 
-            
+
 
             if (image != null)
             {
@@ -186,7 +267,9 @@ namespace Vaultopia.Web.Controllers
             var currentPage = pageRouteHelper.Page as GalleryPage;
 
             // If the current page can not be found (no VaultPicker found) use the first available vault
-            var vault = currentPage != null ? _client.Query<Vault>().FirstOrDefault(v => v.Id == int.Parse(currentPage.VaultPicker)) : _client.Query<Vault>().FirstOrDefault();
+            var vault = currentPage != null
+                ? _client.Query<Vault>().FirstOrDefault(v => v.Id == int.Parse(currentPage.VaultPicker))
+                : _client.Query<Vault>().FirstOrDefault();
 
             if (vault == null)
             {
@@ -207,7 +290,11 @@ namespace Vaultopia.Web.Controllers
             MediaItem poll = null;
             while (poll == null)
             {
-                poll = _client.Query<MediaItem>().Where(x => x.Id == mediaId).Where("MediaItemState:" + MediaItemStates.MediaReadyToUse).FirstOrDefault();
+                poll =
+                    _client.Query<MediaItem>()
+                        .Where(x => x.Id == mediaId)
+                        .Where("MediaItemState:" + MediaItemStates.MediaReadyToUse)
+                        .FirstOrDefault();
                 Thread.Sleep(1000);
             }
 
@@ -215,7 +302,7 @@ namespace Vaultopia.Web.Controllers
 
             if (image != null)
             {
-                var response = new { mediaItem.Id, image.Url };
+                var response = new {mediaItem.Id, image.Url};
                 return Json(response);
             }
 
@@ -291,7 +378,7 @@ namespace Vaultopia.Web.Controllers
             //supply the Metadata save option flag to indicate that medatata should be saved as well.
             //as stated above, we cannot delete any metadata. Any metadata passed to the save function will only 
             //be added/modified for now.
-            ms.Save(new List<MediaItem> { item }, MediaServiceSaveOptions.Metadata);
+            ms.Save(new List<MediaItem> {item}, MediaServiceSaveOptions.Metadata);
         }
 
         /// <summary>

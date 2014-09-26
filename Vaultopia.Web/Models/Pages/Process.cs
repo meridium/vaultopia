@@ -75,5 +75,29 @@ namespace Vaultopia.Web.Models.Pages
              Description = "The process describing how we work.",
              GroupName = SystemTabNames.Content)]
         public virtual ProcessMapDataType ProcessMap { get; set; }
+
+        [Editable(true)]
+        [Display(
+             Name = "ProcessMapVerticalLinePostion",
+             GroupName = SystemTabNames.Content)]
+        public virtual int ProcessMapVerticalLinePostion { get; set; }
+
+        [Editable(true)]
+        [Display(
+             Name = "ProcessMapHorizontalLinePostion",
+             GroupName = SystemTabNames.Content)]
+        public virtual int ProcessMapHorizontalLinePostion { get; set; }
+        /// <summary>
+        /// Gets or sets the wide teasers.
+        /// </summary>
+        /// <value>
+        /// The wide teasers.
+        /// </value>
+       
+        [Editable(true)]
+        [Display(
+            GroupName = SystemTabNames.Content)]
+        public virtual ContentArea WideTeasers { get; set; }
+
     }
 }

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Routing;
+using EPiServer.Web;
 using ImageVault.Client;
 using ImageVault.Common.Data;
 using ImageVault.EPiServer;
@@ -145,6 +147,16 @@ namespace Vaultopia.Web.Helpers
                 Alternate
             }
         }
+
+        public static string GetExternalUrl(string input)
+        {
+           
+            var uriBuilder = new UriBuilder(SiteDefinition.Current.SiteUrl) { Path = input };
+
+
+            return uriBuilder.Uri.AbsoluteUri;
+        }
+
 
     }
 
