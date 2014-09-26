@@ -37,14 +37,8 @@ namespace Vaultopia.Web.Controllers
 
         public ActionResult Index(GalleryPage currentPage, int category = 0, string searchImage = null)
         {
-<<<<<<< Updated upstream
-=======
 
-
->>>>>>> Stashed changes
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage);
-
-
 
             if (category == 0 && string.IsNullOrEmpty(searchImage))
             {
@@ -58,91 +52,27 @@ namespace Vaultopia.Web.Controllers
             }
             else if (category != 0 && string.IsNullOrEmpty(searchImage))
             {
-<<<<<<< Updated upstream
                 viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
-            }
-=======
-
-                viewModel.Images =
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category))
-                        .ToList();
-
-
-
             }
 
             else if (category == 0 && !string.IsNullOrEmpty(searchImage))
             {
-                List<GalleryImage> derb =
+                var derb =
                     _client.Query<GalleryImage>()
                         .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
                         .ToList();
 
 
-                List<GalleryImage> res = new List<GalleryImage>();
-
-                foreach (var item in derb)
-                {
-                    foreach (var data in item.Metadata)
-                    {
-                        if ((data.Value != null) &&
-                            (data.Value.ToString().ToLower().Contains(searchImage.ToLower())))
-                        {
-
-
-                            res.Add(item);
-
-                        }
-                    }
-                }
+                var res = (from item in derb from data in item.Metadata where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower())) select item).ToList();
 
                 viewModel.Images = res;
 
             }
-
->>>>>>> Stashed changes
             else
             {
-                //viewModel.Images =
-                // _client.Query<GalleryImage>()
-                //       .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Metadata.ToString().ToLower().Contains(searchImage.ToLower()) && m.Categories.Contains(category)).ToList();
-
-                //viewModel.Images =
-                //    _client.Query<GalleryImage>()
-                //        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
-                //        .Where(m => m.Metadata.ToString() == null).ToList();
-
-
-<<<<<<< Updated upstream
                 var derb  = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
 
                 var res = (from item in derb from data in item.Metadata where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower())) select item).ToList();
-=======
-                List<GalleryImage> derb =
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category))
-                        .ToList();
-
-                List<GalleryImage> res = new List<GalleryImage>();
-
-                foreach (var item in derb)
-                {
-                    foreach (var data in item.Metadata)
-                    {
-                        if ((data.Value != null) &&
-                            (data.Value.ToString().ToLower().Contains(searchImage.ToLower())))
-                        {
-
-
-                            res.Add(item);
-
-                        }
-
-
-                    }
-                }
->>>>>>> Stashed changes
 
                 viewModel.Images = res;
             }
@@ -157,23 +87,19 @@ namespace Vaultopia.Web.Controllers
         [WebMethod]
         public string Download(int imageId, string format, int width)
         {
-            var downloadFormat = new ImageFormat();
+            var downloadFormat = new ImageFormat()
+            {
+                Width = width
+            };
+
             switch (format)
             {
-                case "pngdefault":
+                case "png":
                     downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
                     break;
-                case "jpgdefault": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
+                case "jpg": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
                     break;
-                case "gifdefault": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
-                    break;
-                case "pngmedium": 
-                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
-                    downloadFormat.Width = width;
-                    break;
-                case "jpgmedium": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
-                    break;
-                case "gifmedium": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
+                case "gif": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
                     break;
 
             }
@@ -181,18 +107,6 @@ namespace Vaultopia.Web.Controllers
         }
 
 
-<<<<<<< Updated upstream
-=======
-
-
-
-        
-            //var imgUrl = _client.Load<WebMedia>(imageUrl).FirstOrDefault();
-
-            //return imgUrl.Url;
-
-
->>>>>>> Stashed changes
         /// <summary>
         /// Loads the specified current page.
         /// </summary>

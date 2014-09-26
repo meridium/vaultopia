@@ -13,6 +13,13 @@ namespace Vaultopia.Web.Helpers
 {
     public static class MediaHelpers
     {
+        static readonly Client _client;
+
+        static MediaHelpers()
+        {
+            _client = ClientFactory.GetSdkClient();
+        }
+
         /// <summary>
         ///     Renders the media.
         /// </summary>
@@ -22,7 +29,7 @@ namespace Vaultopia.Web.Helpers
         /// <returns></returns>
         public static MvcHtmlString RenderMedia(this HtmlHelper helper, MediaReference mediaReference, object metaData)
         {
-            var _client = ClientFactory.GetSdkClient();
+
             var settings = new PropertyMediaSettings();
 
             if (metaData != null)
@@ -40,7 +47,6 @@ namespace Vaultopia.Web.Helpers
                         }
                     }
                 }
-
             }
 
             try
