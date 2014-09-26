@@ -52,26 +52,21 @@ namespace Vaultopia.Web.Controllers
             }
             else if (category != 0 && string.IsNullOrEmpty(searchImage))
             {
-<<<<<<< Updated upstream
-                viewModel.Images = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
-=======
 
                 viewModel.Images =
                     _client.Query<GalleryImage>()
                         .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category))
                         .ToList();
->>>>>>> Stashed changes
+
             }
 
 
             else if (category == 0 && !string.IsNullOrEmpty(searchImage))
 
             {
-<<<<<<< Updated upstream
-                var derb =
-=======
+
                 var allImages =
->>>>>>> Stashed changes
+
                     _client.Query<GalleryImage>()
                         .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
                         .ToList();
@@ -81,21 +76,11 @@ namespace Vaultopia.Web.Controllers
                     where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))
                     select item).ToList();
 
-<<<<<<< Updated upstream
-                var res = (from item in derb from data in item.Metadata where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower())) select item).ToList();
-=======
->>>>>>> Stashed changes
 
                 viewModel.Images = res;
 
             }
-<<<<<<< Updated upstream
-            else
-            {
-                var derb  = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category)).ToList();
 
-                var res = (from item in derb from data in item.Metadata where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower())) select item).ToList();
-=======
 
 
             else
@@ -110,7 +95,6 @@ namespace Vaultopia.Web.Controllers
                     where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))
                     select item).ToList();
 
->>>>>>> Stashed changes
 
                 viewModel.Images = res;
             }
@@ -130,55 +114,27 @@ namespace Vaultopia.Web.Controllers
                 Width = width
             };
 
-            switch (format)
-            {
-<<<<<<< Updated upstream
+            switch (format) {
                 case "png":
-=======
-                case "pngdefault":
                     downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
                     break;
-                case "jpgdefault":
+                case "jpg": 
                     downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
                     break;
-                case "gifdefault":
+                case "gif": 
                     downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
                     break;
-                case "pngmedium":
->>>>>>> Stashed changes
-                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
-                    break;
-<<<<<<< Updated upstream
-                case "jpg": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
-                    break;
-                case "gif": downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
-=======
-                case "jpgmedium":
-                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
-                    break;
-                case "gifmedium":
-                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
->>>>>>> Stashed changes
-                    break;
-
+                    
             }
             return _client.Load<WebMedia>(imageId).UseFormat(downloadFormat).FirstOrDefault().Url ?? string.Empty;
         }
 
 
-<<<<<<< Updated upstream
-=======
 
 
 
 
-        //var imgUrl = _client.Load<WebMedia>(imageUrl).FirstOrDefault();
 
-        //return imgUrl.Url;
-
-
-
->>>>>>> Stashed changes
         /// <summary>
         /// Loads the specified current page.
         /// </summary>

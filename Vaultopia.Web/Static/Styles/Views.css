@@ -362,7 +362,7 @@
             padding: 4px 0 0;
         }
 
-<<<<<<< Updated upstream
+
     body.gallery #metadata #map {
         width: 100%;
         height: 125px;
@@ -381,7 +381,7 @@
     body.gallery #metadata #map .gmnoprint a {
             text-decoration: none;
     }
-=======
+
         body.gallery #metadata .exif {
             color: #fcffca;
             margin: 17px 0 0;
@@ -457,7 +457,7 @@
             body.gallery #metadata #map .gmnoprint a {
                 text-decoration: none;
             }
->>>>>>> Stashed changes
+
 
     body.gallery .downloadbtn {
         position: absolute;
@@ -494,20 +494,16 @@
         margin-bottom: 15px;
     }
 
-<<<<<<< Updated upstream
+
     body.gallery ul.formatitem {
         position: relative;
-        list-style:none;
+        list-style: none;
         margin: 0 auto;
-=======
-    body.gallery .innerformatbox img {
->>>>>>> Stashed changes
     }
 
     body.gallery ul.formatitem li {
         background: rgb(77, 77, 77);
         cursor: pointer;
-<<<<<<< Updated upstream
         text-align: center;
         color: rgb(204, 204, 204);
         border-right: 1px solid #3D3D3D;
@@ -524,8 +520,6 @@
 	    transition: color 0.7s;
         background: #444444; /* Old browsers */
         color: white;
-=======
->>>>>>> Stashed changes
     }
 
     body.gallery ul.formatbottom li {
@@ -619,7 +613,7 @@
             float: left;
         }
 
-<<<<<<< Updated upstream
+
     #upload .metadata {
         width: 65%;
         float: left;
@@ -659,7 +653,7 @@
         margin: 0 auto;
         margin: 35px auto 22px auto;
     }
-=======
+
         #upload #droparea {
             background: url(../images/sprite.png) no-repeat 0 -95px;
             background-size: 200px 300px;
@@ -742,7 +736,6 @@
             margin: 0 auto;
             margin: 35px auto 22px auto;
         }
->>>>>>> Stashed changes
 
 
     #slideshow {
@@ -921,18 +914,18 @@
         width: 49.6%;
     }
 
-<<<<<<< Updated upstream
+
      .fancybox-title iframe {
     min-height: 30px;
     vertical-align: middle;
     }
 
-=======
+
     .fancybox-title iframe {
         min-height: 30px;
         vertical-align: middle;
     }
->>>>>>> Stashed changes
+
 }
 
 @media only screen and (max-width : 768px) {
@@ -975,14 +968,14 @@
         width: 100%;
     }
 
-<<<<<<< Updated upstream
+
     body.gallery .formatbox {width: 95%;}
 
-=======
+
         body.article main #primary {
             width: 100%;
         }
->>>>>>> Stashed changes
+
 
         body.article main #secondary {
             float: left;
