@@ -23,11 +23,16 @@ namespace Vaultopia.Web.Models.ViewModels {
         ///     The images.
         /// </value>
         public List<GalleryImage> Images { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the the category
+        /// </summary>
+        /// <value>
+        ///     category
+        /// </value>
         public virtual List<Category> Categorys { get; set; }
 
         public int SelectedCategoryID { get; set; }
-
-        public Url imageUrl { get; set; }
 
         internal object Where(System.Func<T, bool> func)
         {

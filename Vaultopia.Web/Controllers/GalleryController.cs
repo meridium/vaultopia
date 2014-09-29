@@ -40,6 +40,8 @@ namespace Vaultopia.Web.Controllers
 
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage);
 
+
+            //If the search field is empty, show all the pictures, sorted by date
             if (category == 0 && string.IsNullOrEmpty(searchImage))
             {
                 viewModel.Images =
@@ -50,9 +52,11 @@ namespace Vaultopia.Web.Controllers
                         .ToList();
 
             }
+
+            
             else if (category != 0 && string.IsNullOrEmpty(searchImage))
             {
-
+                //get all images that match the category
                 viewModel.Images =
                     _client.Query<GalleryImage>()
                         .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category))
@@ -60,17 +64,18 @@ namespace Vaultopia.Web.Controllers
 
             }
 
-
+              
             else if (category == 0 && !string.IsNullOrEmpty(searchImage))
 
             {
-
+                //get all images
                 var allImages =
 
                     _client.Query<GalleryImage>()
                         .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
                         .ToList();
 
+                //then sorts out those that match the search field
                 var res = (from item in allImages
                     from data in item.Metadata
                     where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))
@@ -82,14 +87,15 @@ namespace Vaultopia.Web.Controllers
             }
 
 
-
+               
             else
             {
+                //get all images that match the category
                 var allImages =
                     _client.Query<GalleryImage>()
                         .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category))
                         .ToList();
-
+                //then sorts out those that match the search field
                 var res = (from item in allImages
                     from data in item.Metadata
                     where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))
@@ -99,6 +105,7 @@ namespace Vaultopia.Web.Controllers
                 viewModel.Images = res;
             }
 
+            //Get te categorys to dropdownlist.
             viewModel.Categorys =
                 _client.Query<Category>().Include(x => x.IsUsed).ToList().Where(x => x.IsUsed.HasValue).ToList();
             viewModel.SelectedCategoryID = category;

@@ -14,7 +14,12 @@ namespace Vaultopia.Web.Models.Blocks
     [ContentType(DisplayName = "ContactBlock", GUID = "8BE0D5B8-8968-47E8-89B1-1B7B6FC807BE", Description = "")]
     public class ContactBlock : BlockData
     {
-
+        /// <summary>
+        /// Name
+        /// </summary> 
+        /// <value>
+        /// the blocks name
+        /// </value>
         [CultureSpecific]
         [Display(
             Name = "Contact",
@@ -30,6 +35,10 @@ namespace Vaultopia.Web.Models.Blocks
         /// Info
         /// </value>
         [CultureSpecific]
+        [Display(
+            Name = "Information",
+            GroupName = SystemTabNames.Content,
+            Order = 2)]
         public virtual XhtmlString ContactInfo { get; set; }
 
         /// <summary>
@@ -39,7 +48,25 @@ namespace Vaultopia.Web.Models.Blocks
         /// image photot
         /// </value>
         [CultureSpecific]
+        [Display(
+            Name = "Image for person one",
+            GroupName = SystemTabNames.Content,
+            Order = 3)]
         public virtual MediaReference ContactImage1 { get; set; }
+
+        /// <summary>
+        /// Contact info for imgae 1
+        /// </summary> 
+        /// <value>
+        /// contact info 
+        /// </value>
+        [CultureSpecific]
+        [Display(
+            Name = "Info for person one",
+            GroupName = SystemTabNames.Content,
+            Order = 4)]
+        public virtual XhtmlString MiniInfo1 { get; set; }
+
 
         /// <summary>
         /// Imagephoto for contact 2
@@ -48,16 +75,12 @@ namespace Vaultopia.Web.Models.Blocks
         /// image photot
         /// </value>
         [CultureSpecific]
+        [Display(
+            Name = "Image for person two",
+            GroupName = SystemTabNames.Content,
+            Order = 5)]
         public virtual MediaReference ContactImage2 { get; set; }
         
-        /// <summary>
-        /// Contact info for imgae 1
-        /// </summary> 
-        /// <value>
-        /// contact info 
-        /// </value>
-        [CultureSpecific]
-        public virtual XhtmlString MiniInfo1 { get; set; }
 
         /// <summary>
         /// Contact info for imgae 2
@@ -66,6 +89,10 @@ namespace Vaultopia.Web.Models.Blocks
         /// contact info 
         /// </value>
         [CultureSpecific]
+        [Display(
+            Name = "Info for person two",
+            GroupName = SystemTabNames.Content,
+            Order = 6)]
         public virtual XhtmlString MiniInfo2 { get; set; }
 
     }
