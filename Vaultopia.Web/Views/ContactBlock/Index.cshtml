@@ -6,7 +6,7 @@
 
 <div class="contactFormBody">
     <h1>@Html.PropertyFor(m => m.Name)</h1> 
-    @Html.PropertyFor(m => m.ContactInfo)
+    @Html.PropertyFor(m => m.ContactInfo)<br/>
     <div class="contactForm">
         @Html.PropertyFor(x => x.ContactImage1, new { PropertySettings = PropertyHelpers.GetPropertySettings<ContactBlock, MediaReference, PropertyMediaSettings>(Model, m => m.ContactImage1) })
         @Html.DisplayFor(m => m.MiniInfo1)
