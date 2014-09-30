@@ -113,7 +113,13 @@ namespace Vaultopia.Web.Controllers
             return View(viewModel);
         }
 
-        //Get properties from Vaultopia.Gallary.DownloadBtn.js and return url of image
+        /// <summary>
+        /// Creating url for image
+        /// </summary>
+        /// <param name="imageId"></param>
+        /// <param name="format"></param>
+        /// <param name="width"></param>
+        /// <returns></returns>
         [WebMethod]
         public string Download(int imageId, string format, int width)
         {
@@ -131,17 +137,10 @@ namespace Vaultopia.Web.Controllers
                     break;
                 case "gif": 
                     downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
-                    break;
-                    
+                    break;  
             }
             return _client.Load<WebMedia>(imageId).UseFormat(downloadFormat).FirstOrDefault().Url ?? string.Empty;
         }
-
-
-
-
-
-
 
         /// <summary>
         /// Loads the specified current page.

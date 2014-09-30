@@ -61,12 +61,13 @@ namespace Vaultopia.Web.Helpers
                     query = query.ApplyEffects(mediaReference.Effects);
                 }
 
-               
+                //Create images for different resolutions
                 var mediaItems = new List<MediaItem>();
                 var standardImage = GetMedia(query, settings.Width, settings.Height, settings.ResizeMode);
                 var mediumImage = GetMedia(query, settings.Width, settings.Height, settings.ResizeMode);
                 var smallImage = GetMedia(query, settings.Width, settings.Height, settings.ResizeMode);
 
+                //Set size for different resolutions if image is specifik size
                 if (standardImage.Width > 800)
                 {
                     mediumImage = GetMedia(query, 800, settings.Height, settings.ResizeMode);
@@ -80,6 +81,7 @@ namespace Vaultopia.Web.Helpers
                 
                 }
 
+                //Add images as mediaitems
                 mediaItems.Add(new MediaItem()
                 {
                     MediaVersion = MediaItem.Version.Alternate,
@@ -99,6 +101,7 @@ namespace Vaultopia.Web.Helpers
                      BreakPoint = string.Empty
                  });
 
+                //Build picturetag and add content
                 var pictureTag = new TagBuilder("picture");
                 foreach (var mediaItem in mediaItems.Where(m => m.MediaVersion == MediaItem.Version.Alternate))
                 {
@@ -117,8 +120,7 @@ namespace Vaultopia.Web.Helpers
 
                 return new MvcHtmlString(pictureTag.ToString(TagRenderMode.Normal));
 
-                //// Videos cannot be cropped so if settings.ResizeMode is ScaleToFill we'll get null
-                //// Execute the query
+                
                 //var media = query.Resize(settings.Width, settings.Height, settings.ResizeMode).SingleOrDefault() ??
                 //                 query.Resize(settings.Width, settings.Height).SingleOrDefault();
                 //return new MvcHtmlString(media == null ? string.Empty : media.Html);
@@ -128,9 +130,18 @@ namespace Vaultopia.Web.Helpers
                 return MvcHtmlString.Empty;
             }
         }
-
+        /// <summary>
+        /// Creating media
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="resizeMode"></param>
+        /// <returns></returns>
         private static WebMedia GetMedia(IIVQueryable<WebMedia> query, int width, int height, ResizeMode resizeMode)
         {
+            //// Videos cannot be cropped so if settings.ResizeMode is ScaleToFill we'll get null
+            //// Execute the query
             var media = query.Resize(width, height, resizeMode).SingleOrDefault() ??
                         query.Resize(width, height).SingleOrDefault();
             return media;
