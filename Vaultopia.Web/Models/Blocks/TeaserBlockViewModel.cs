@@ -30,5 +30,6 @@ namespace Vaultopia.Web.Models.Blocks {
         public WebMedia WebMedia { get; set; }
 
         public WebMedia WebMedia1 { get; set; }
+
     }
 }

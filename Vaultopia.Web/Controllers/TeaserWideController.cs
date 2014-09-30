@@ -1,6 +1,9 @@
-﻿using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Web.Mvc;
+using System.Web.Razor.Parser.SyntaxTree;
 using EPiServer;
+using EPiServer.Configuration;
 using EPiServer.Core;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.ServiceLocation;
@@ -24,12 +27,16 @@ namespace Vaultopia.Web.Controllers {
             _client = ClientFactory.GetSdkClient();
         }
 
+
+ 
         /// <summary>
         /// Indexes the specified current block.
         /// </summary>
         /// <param name="currentBlock">The current block.</param>
         /// <returns></returns>
         public override ActionResult Index(WideTeaserBlock currentBlock) {
+
+          
 
             WebMedia media = null;
             // try to load, apply effects and resize the image
@@ -48,6 +55,9 @@ namespace Vaultopia.Web.Controllers {
                 };
 
             return PartialView(model);
+
         }
+
+      
     }
 }

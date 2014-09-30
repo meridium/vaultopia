@@ -54,7 +54,8 @@ namespace Vaultopia.Web.Models.Pages
         /// </value>
         [CultureSpecific]
         [Required(AllowEmptyStrings = false)]
-        [Display(GroupName = SystemTabNames.Content, Order = 4)]
+        [StringLength(200, MinimumLength = 0)]
+        [Display(GroupName = SystemTabNames.Content, Order = 4, Description = "Max 200 characters")]
         [UIHint(UIHint.Textarea)]
         public virtual String IntroText { get; set; }
 
