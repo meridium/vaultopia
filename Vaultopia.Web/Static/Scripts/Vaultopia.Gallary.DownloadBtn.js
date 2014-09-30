@@ -5,6 +5,8 @@ var originalHeight;
 var mediumWidth = 700;
 var smallWidth = 350;
 var imageResolutions;
+
+//Get ratio for different imagewidths 
 var mediumHeight = function () {
     var newMediumRatio = originalWidth / 700;
     return Math.floor(originalHeight / newMediumRatio);
@@ -15,6 +17,7 @@ var smallHeight = function () {
     return Math.floor(originalHeight / newSmallRatio);
 };
 
+//Get id of current picture and create list of diffrerent imageresolutions for download
 $(".image").click(function() {
     id = $(this).parent("li").attr("data-image-id");
     originalWidth = $(this).parent("li").attr("data-image-width");
@@ -32,6 +35,7 @@ $(".image").click(function() {
     ];
 });
 
+//Add downloadbutton to interface and save original image src
 $(".image").fancybox({
     beforeShow: function () {
         this.title += '<div id="displayformats" class="button downloadbtn">Download</div>';
@@ -46,6 +50,7 @@ $(".image").fancybox({
     }
 });
 
+//Add buttons for each resolution
 var addButtons = function() {
     var buttons = { jpg: ["<li>JPG</li>"], png: ["<li>PNG</li>"], gif: ["<li>GIF</li>"] };
     var format;
@@ -75,6 +80,7 @@ var addButtons = function() {
     return buttons;
 };
 
+//Print interface for download
 $(document).on('click', '#displayformats', function () {
     $.fancybox({
         content: '<div class="formatbox">' +
@@ -88,6 +94,7 @@ $(document).on('click', '#displayformats', function () {
     });
 });
 
+//Send properties for choosen image to controller method
 var getData = function (formatType, width) {
     var myData;
     $.ajax({
@@ -103,6 +110,7 @@ var getData = function (formatType, width) {
     return myData;
 }
 
+//Create link and download image if browser supports download attribute, otherwise open image in a new window
 $(document).on('click', '.formatitems li', function () {
     var formatType = $(this).attr("data-format-type");
     var width = $(this).attr("data-format-width");

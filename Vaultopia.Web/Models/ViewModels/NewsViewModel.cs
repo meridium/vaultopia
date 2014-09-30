@@ -7,13 +7,23 @@ using Vaultopia.Web.Models.Pages;
 
 namespace Vaultopia.Web.Models.ViewModels
 {
-    public class NewsPageViewModel<T> : PageViewModel<T> where T : SitePageData
+    public class NewsViewModel<T> : PageViewModel<T> where T : SitePageData
     {
-        public NewsPageViewModel(T page)
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="NewsViewModel{T}" /> class.
+        /// </summary>
+        /// <param name="page">The page.</param>
+        public NewsViewModel(T page)
             : base(page)
         {
         }
 
-        public WebMedia WebMedia;
+        /// <summary>
+        ///     Gets or sets NewsImage.
+        /// </summary>
+        /// <value>
+        ///     The NewsImage.
+        /// </value>
+        public WebMedia NewsImage;
     }
 }

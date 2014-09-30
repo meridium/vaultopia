@@ -10,8 +10,20 @@ namespace Vaultopia.Web.Controllers {
         /// </value>
         public WebMedia LargeImage { get; set; }
 
+        /// <summary>
+        /// Gets or sets the mobile image.
+        /// </summary>
+        /// <value>
+        /// The mobile image.
+        /// </value>
         public WebMedia MobileImage { get; set; }
 
+        /// <summary>
+        /// Gets or sets the medium image.
+        /// </summary>
+        /// <value>
+        /// The medium image.
+        /// </value>
         public WebMedia MediumImage { get; set; }
         /// <summary>
         /// Gets or sets the small image.

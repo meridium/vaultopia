@@ -69,6 +69,12 @@ namespace Vaultopia.Web.Models.Pages
             Order = 1)]
         public virtual ContentArea Teasers { get; set; }
 
+        /// <summary>
+        /// Gets or sets the processmap.
+        /// </summary>
+        /// <value>
+        /// The processmap.
+        /// </value>
         [Editable(true)]
         [Display(
              Name = "Process",
@@ -76,24 +82,36 @@ namespace Vaultopia.Web.Models.Pages
              GroupName = SystemTabNames.Content)]
         public virtual ProcessMapDataType ProcessMap { get; set; }
 
+        /// <summary>
+        /// Gets or sets the processmap vertical line position.
+        /// </summary>
+        /// <value>
+        /// The processmap vertical line position.
+        /// </value>
         [Editable(true)]
         [Display(
              Name = "ProcessMapVerticalLinePostion",
              GroupName = SystemTabNames.Content)]
         public virtual int ProcessMapVerticalLinePostion { get; set; }
 
+        /// <summary>
+        /// Gets or sets the processmap horizontal line position.
+        /// </summary>
+        /// <value>
+        /// The processmap horizontal line position.
+        /// </value>
         [Editable(true)]
         [Display(
              Name = "ProcessMapHorizontalLinePostion",
              GroupName = SystemTabNames.Content)]
         public virtual int ProcessMapHorizontalLinePostion { get; set; }
+        
         /// <summary>
         /// Gets or sets the wide teasers.
         /// </summary>
         /// <value>
         /// The wide teasers.
         /// </value>
-       
         [Editable(true)]
         [Display(
             GroupName = SystemTabNames.Content)]

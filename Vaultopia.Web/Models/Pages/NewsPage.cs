@@ -92,6 +92,7 @@ namespace Vaultopia.Web.Models.Pages
         [Display(GroupName = SystemTabNames.Content, Order = 6)]
         public virtual int NewsPrice { get; set; }
 
+        //Dont display newspage in menu as default
         public override void SetDefaultValues(ContentType contentType)
         {
             base.SetDefaultValues(contentType);

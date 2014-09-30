@@ -18,8 +18,6 @@ namespace Vaultopia.Web.Models.Formats {
         /// </summary>
         public Image Original { get; set; }
 
-        public WebMedia ForDownload { get; set; }
-
         /// <summary>
         ///     Gets or sets the thumbnail.
         /// </summary>
@@ -29,6 +27,12 @@ namespace Vaultopia.Web.Models.Formats {
         [ResizeEffect(Width = 486)]
         public Thumbnail Thumbnail { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the thumbnail small.
+        /// </summary>
+        /// <value>
+        ///     The thumbnail small.
+        /// </value>
         [ResizeEffect(Width = 250)]
         public Thumbnail ThumbnailSmall { get; set; }
 

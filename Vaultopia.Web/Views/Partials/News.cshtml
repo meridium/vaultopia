@@ -3,7 +3,7 @@
 @using Vaultopia.Web.Helpers
 @using ImageVault.EPiServer
 @using Vaultopia.Web.Models.Pages
-@model Vaultopia.Web.Models.ViewModels.NewsPageViewModel<NewsPage>
+@model Vaultopia.Web.Models.ViewModels.NewsViewModel<NewsPage>
 
 @{
     Layout = "";
@@ -11,10 +11,10 @@
 
 <article>
     <h2><a href="@Url.PageUrl(Model.CurrentPage.LinkURL)">@Html.PropertyFor(m => m.CurrentPage.NewsHeading)</a></h2>
-    @*@Html.PropertyFor(x => x.CurrentPage.PartialImage, new { PropertySettings = PropertyHelpers.GetPropertySettings<NewsPage, MediaReference, PropertyMediaSettings>(Model.CurrentPage, m => m.PartialImage) })*@
-    @if (Model.WebMedia != null)
+    @*Html.PropertyFor(x => x.CurrentPage.PartialImage, new { PropertySettings = PropertyHelpers.GetPropertySettings<NewsPage, MediaReference, PropertyMediaSettings>(Model.CurrentPage, m => m.PartialImage) })*@
+    @if (Model.NewsImage != null)
     {
-        <img src="@Model.WebMedia.Url" alt="" />
+        <img src="@Model.NewsImage.Url" alt="" />
     }
     <p>@Html.PropertyFor(m => m.CurrentPage.IntroText)</p>
     <p class="location"><strong class="icon">Location: </strong>@Html.PropertyFor(m => m.CurrentPage.NewsLocation)</p>

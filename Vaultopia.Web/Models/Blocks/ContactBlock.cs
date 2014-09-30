@@ -1,13 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
-using EPiServer.UI;
-using EPiServer.XForms;
 using ImageVault.EPiServer;
-using Vaultopia.Web.Models.Formats;
 
 namespace Vaultopia.Web.Models.Blocks
 {

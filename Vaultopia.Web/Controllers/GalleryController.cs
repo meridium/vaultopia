@@ -113,6 +113,7 @@ namespace Vaultopia.Web.Controllers
             return View(viewModel);
         }
 
+        //Get properties from Vaultopia.Gallary.DownloadBtn.js and return url of image
         [WebMethod]
         public string Download(int imageId, string format, int width)
         {

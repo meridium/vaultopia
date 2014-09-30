@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using EPiServer;
 using EPiServer.Core;
@@ -26,6 +25,7 @@ namespace Vaultopia.Web.Controllers
             //Get current contentarea for rendering
             var currentContentArea = ControllerContext.ParentActionViewContext.ViewData.Model as ContentArea;
 
+            //Scale image different for different contentareas
             WebMedia media = null;
             if (currentPage.PartialImage != null)
             {
@@ -45,9 +45,9 @@ namespace Vaultopia.Web.Controllers
                 }
             }
 
-            var viewModel = new NewsPageViewModel<NewsPage>(currentPage)
+            var viewModel = new NewsViewModel<NewsPage>(currentPage)
             {
-                WebMedia = media
+                NewsImage = media
             };
             return View("~/Views/Partials/News.cshtml", viewModel);
         }
