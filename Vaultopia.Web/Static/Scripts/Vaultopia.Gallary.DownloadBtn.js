@@ -6,13 +6,13 @@ var mediumWidth = 700;
 var smallWidth = 350;
 var imageResolutions;
 var mediumHeight = function () {
-    var newSizeRatio = originalWidth / 700;
-    return Math.floor(originalHeight / newSizeRatio);
+    var newMediumRatio = originalWidth / 700;
+    return Math.floor(originalHeight / newMediumRatio);
 };
 
 var smallHeight = function () {
-    var newSizeRatio = originalWidth / 350;
-    return Math.floor(originalHeight / newSizeRatio);
+    var newSmallRatio = originalWidth / 350;
+    return Math.floor(originalHeight / newSmallRatio);
 };
 
 $(".image").click(function() {
@@ -52,7 +52,10 @@ var addButtons = function() {
     for (var i = 0; i < imageResolutions.length;) {
         if (originalWidth > imageResolutions[i].width || originalWidth === imageResolutions[i].width) { 
             format = imageResolutions[i].format;
-            var listItem = '<li data-format-width="' + imageResolutions[i].width + '" data-format-type="' + imageResolutions[i].format + '">' + imageResolutions[i].linkName + ' (' + imageResolutions[i].width.toString() + 'x'+ imageResolutions[i].height.toString() + ')</li>';
+            var listItem = '<li data-format-width="' + imageResolutions[i].width +
+                '" data-format-type="' + imageResolutions[i].format + '">' +
+                imageResolutions[i].linkName + ' (' + imageResolutions[i].width.toString()
+                + 'x' + imageResolutions[i].height.toString() + ')</li>';
             switch (format) {
                 case "jpg":
                     buttons.jpg.push(listItem);
@@ -85,28 +88,36 @@ $(document).on('click', '#displayformats', function () {
     });
 });
 
-$(document).on('click', '.formatitems li', function (e) {
-    e.preventDefault();
+var getData = function (formatType, width) {
+    var myData;
+    $.ajax({
+        async: false,
+        url: 'Download',
+        type: 'GET',
+        data: ("imageId=" + id + "&format=" + formatType + "&width=" + width),
+        datatype: 'string',
+        success: function(response) {
+            myData = response;
+        }
+    });
+    return myData;
+}
+
+$(document).on('click', '.formatitems li', function () {
     var formatType = $(this).attr("data-format-type");
-    var formatWidth = $(this).attr("data-format-width");
-        $.ajax({
-            url: 'Download',
-            type: 'GET',
-            data: ("imageId=" + id + "&format=" + formatType + "&width=" + formatWidth),
-            datatype: "string",
-            success: function(data) {
-                var myUrl = encodeURI(data);
-                var a = document.createElement('a');
-                if (typeof a.download != "undefined") {
-                    a.setAttribute('href', myUrl);
-                    a.setAttribute('download', id);
-                    a.click();
-                }
-                else {;
-                    window.open(myUrl, '_blank');
-                }
-            }
-        });
+    var width = $(this).attr("data-format-width");
+    var link = getData(formatType, width);
+    var fileName = link.split('/').pop();
+    var a = document.createElement('a');
+
+    //Download attribute not supported in IE and Safari, In Firefox this attribute is only honored for links to resources with the same-origin
+    if (typeof a.download === 'undefined' || typeof InstallTrigger !== 'undefined') {
+        window.open(link, '_blank');
+    } else {
+        a.href = link;
+        a.download = fileName;
+        a.click();
+    }
 });
 
 

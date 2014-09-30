@@ -13,8 +13,6 @@
         <p class="introduction">Browse through memories from trips made by various Vaultopia travelers and seek inspiration to your next trip, or contribute with your own memories and inspire others.</p>
         <a class="button" id="upload-action" href="@Url.Action("Upload")">Upload your photos!</a>
 
-
-
         <section id="categories" style="display: none;">
             <ul>
                 <li><a href="/">Summer</a></li>
@@ -33,7 +31,7 @@
 
         <section id="gallery">
             <ul>
-                 @Html.Partial("_Images", Model)
+                @Html.Partial("_Images", Model)
             </ul>
             <a href="/" id="gallery-paging-action" class="button">Show more awesome photos</a>
         </section>

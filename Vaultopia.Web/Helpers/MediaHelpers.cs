@@ -80,7 +80,6 @@ namespace Vaultopia.Web.Helpers
                 
                 }
 
-
                 mediaItems.Add(new MediaItem()
                 {
                     MediaVersion = MediaItem.Version.Alternate,
