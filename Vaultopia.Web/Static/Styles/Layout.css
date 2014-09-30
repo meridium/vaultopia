@@ -7,7 +7,7 @@
         background: #2eb2ab;
     }
 
-    
+
 
     .wrap {
         max-width: 1000px;
@@ -344,11 +344,10 @@
         padding: 30px;
     }
 
-       .Search {
+    #Search {
         width: 1000px;
         margin-top: 10px;
-   
-         }
+    }
 
     .tbxSearch, .ddlSearch {
         height: 45px;
@@ -356,43 +355,36 @@
         display: block;
     }
 
-.ddlSearch {
-    width: 200px;
-    padding-right: 13px;
-}
+    .ddlSearch {
+        width: 200px;
+        padding-right: 13px;
+    }
 
 
-.DdlSearch {
-    height: 41px;
-    width: 100%;
-    border: 0px;
-    outline: 0px;
-    font-size: 15px;
-    font: 130%/1.5 'Avenir LT W02 55 Roman', 'helvetica neue', arial, sans-serif;
-    color: #505050;
-    font-weight: bolder;
-}
+    .DdlSearch {
+        height: 41px;
+        width: 100%;
+        border: 0px;
+        outline: 0px;
+        font-size: 15px;
+        font: 130%/1.5 'Avenir LT W02 55 Roman', 'helvetica neue', arial, sans-serif;
+        color: #505050;
+        font-weight: bolder;
+    }
 
 
-.txbSearch {
-    height: 42px;
-    width: 100%;
-}
-
-.DdlSearch, .txbSearch {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-}
+    .txbSearch {
+        height: 42px;
+        width: 100%;
+    }
 
 
-.tbxSearch {
-    margin-top: -1px;
-    padding-right: 10px;
-     width: 52%;
-    margin-right: 5%;
-}
-
-
-
+    .tbxSearch {
+        margin-top: -1px;
+        padding-right: 10px;
+        width: 52%;
+        margin-right: 5%;
+    }
 }
 
 
@@ -402,22 +394,17 @@
     }
 
 
+    #Search {
+        width: 100%;
+    }
 
-.txbSearch {
-    height: 42px;
-    width: 200px; 
+    .txbSearch {
+        width: 200px;
+    }
 
-}
-
-.tbxSearch {
-       width: 200px; 
-}
-
-.Search {
-    width: 700px;
-}
-
-    
+    .tbxSearch {
+        width: 200px;
+    }
 
     #push .wrap > div {
         top: 208px;
@@ -643,17 +630,17 @@
             margin-right: 0;
         }
 
-        .txbSearch {
-    height: 42px;
-    width: 200px; 
+     #Search {
+        width: 100%;
+    }
 
-}
+    .txbSearch {
+        width: 200px;
+    }
 
-.tbxSearch {
-       width: 200px; 
-}
+    .tbxSearch {
+        width: 200px;
+    }
 
-.Search {
-    width: 100%;
-}
+  
 }

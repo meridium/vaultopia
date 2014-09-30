@@ -5,9 +5,9 @@
 @model Vaultopia.Web.Models.ViewModels.GalleryViewModel<Vaultopia.Web.Models.Pages.GalleryPage>
 
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm( new {id="Search"}))
 {
-    <div class="Search">
+    
         
         <div class="ddlSearch">
               @Html.DropDownList("category", new SelectList(Model.Categorys, "Id", "Name"), Html.Translate("/categories/all"), new { @class = "DdlSearch" })
@@ -16,7 +16,7 @@
              @Html.TextBox("searchImage", null, new { @class = "txbSearch" })
         </div>
         <input type="submit" value="Search" class="button" />
-    </div>
+   
 
 }
 
