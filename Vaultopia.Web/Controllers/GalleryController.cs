@@ -35,75 +35,24 @@ namespace Vaultopia.Web.Controllers
         /// <returns></returns>
         /// 
 
+
         public ActionResult Index(GalleryPage currentPage, int category = 0, string searchImage = null)
         {
 
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage);
+            var allImages = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded);
 
 
-            //If the search field is empty, show all the pictures, sorted by date
-            if (category == 0 && string.IsNullOrEmpty(searchImage))
+            if (category > 0)
             {
-                viewModel.Images =
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
-                        .OrderByDescending(m => m.DateAdded)
-                        .Take(32)
-                        .ToList();
-
+                allImages = allImages.Where(m => m.Categories.Contains(category));
             }
-
-            
-            else if (category != 0 && string.IsNullOrEmpty(searchImage))
+            if (!string.IsNullOrEmpty(searchImage))
             {
-                //get all images that match the category
-                viewModel.Images =
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category))
-                        .ToList();
-
+                allImages = allImages.SearchFor(searchImage);
+                
             }
-
-              
-            else if (category == 0 && !string.IsNullOrEmpty(searchImage))
-
-            {
-                //get all images
-                var allImages =
-
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
-                        .ToList();
-
-                //then sorts out those that match the search field
-                var res = (from item in allImages
-                    from data in item.Metadata
-                    where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))
-                    select item).ToList();
-
-
-                viewModel.Images = res;
-
-            }
-
-
-               
-            else
-            {
-                //get all images that match the category
-                var allImages =
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category))
-                        .ToList();
-                //then sorts out those that match the search field
-                var res = (from item in allImages
-                    from data in item.Metadata
-                    where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))
-                    select item).ToList();
-
-
-                viewModel.Images = res;
-            }
+            viewModel.Images = allImages.ToList();
 
             //Get te categorys to dropdownlist.
             viewModel.Categorys =
@@ -128,16 +77,17 @@ namespace Vaultopia.Web.Controllers
                 Width = width
             };
 
-            switch (format) {
+            switch (format)
+            {
                 case "png":
                     downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
                     break;
-                case "jpg": 
+                case "jpg":
                     downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
                     break;
-                case "gif": 
+                case "gif":
                     downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
-                    break;  
+                    break;
             }
             return _client.Load<WebMedia>(imageId).UseFormat(downloadFormat).FirstOrDefault().Url ?? string.Empty;
         }
