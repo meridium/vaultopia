@@ -11,6 +11,9 @@ using ImageVault.Common.Data;
 using ImageVault.EPiServer;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
+using ImageVault.Common.Services;
+using ImageVault.Common.Data.Query;
+using ImageVault.Common.Data.Effects;
 
 namespace Vaultopia.Web.Controllers {
     public class ArticleController : PageController<Article> {
@@ -24,92 +27,75 @@ namespace Vaultopia.Web.Controllers {
         public ActionResult Index(Article currentPage) {
 
             var slides = new List<Slide>();
-
+            var mediaService = _client.CreateChannel<IMediaService>();
             var viewModel = new ArticleViewModel<Article>(currentPage);
+            
+            var smallFormat = new ImageFormat();
+            var mobileFormat = new ImageFormat();
+            var mediumFormat = new ImageFormat();
+            var largeFormat = new ImageFormat();
 
+            smallFormat.Effects.Add(new ResizeEffect(280, 184, ResizeMode.ScaleToFill));
+            mobileFormat.Effects.Add(new ResizeEffect(426, 226, ResizeMode.ScaleToFill));
+            mediumFormat.Effects.Add(new ResizeEffect(852, 452, ResizeMode.ScaleToFill));
+            largeFormat.Effects.Add(new ResizeEffect(1420, 754, ResizeMode.ScaleToFill));
+            
             if (currentPage.SlideMediaList != null && currentPage.SlideMediaList.Count > 0) {
 
                 var mediaReferences = currentPage.SlideMediaList.Take(5);
+                var imageSlides = new List<int>();
 
-                foreach (var mediaReference in mediaReferences) {
-                    var slide = new Slide
-                        {
-                            SmallImage =
-                                _client.Load<WebMedia>(mediaReference.Id)
-                                       .ApplyEffects(mediaReference.Effects)
-                                       .Resize(280, 184, ResizeMode.ScaleToFill)
-                                       .SingleOrDefault(),
-                            MobileImage =
-                                _client.Load<WebMedia>(mediaReference.Id)
-                                       .ApplyEffects(mediaReference.Effects)
-                                       .Resize(426, 226, ResizeMode.ScaleToFill)
-                                       .SingleOrDefault(),
-                            MediumImage =
-                                _client.Load<WebMedia>(mediaReference.Id)
-                                        .ApplyEffects(mediaReference.Effects)
-                                        .Resize(852, 452, ResizeMode.ScaleToFill)
-                                        .SingleOrDefault(),
-                            LargeImage =
-                                _client.Load<WebMedia>(mediaReference.Id)
-                                       .ApplyEffects(mediaReference.Effects)
-                                       .Resize(1420, 754, ResizeMode.ScaleToFill)
-                                       .SingleOrDefault()
+                foreach (var mediaReference in mediaReferences)
+                {
+                    imageSlides.Add(mediaReference.Id);
+                }
 
-                        };
-                    if (slide.LargeImage == null || slide.SmallImage == null) {
+                var query = new MediaItemQuery
+                {
+                    Filter = { Id = imageSlides},
+                    Populate =
+                    {
+                        MediaFormats = { smallFormat, mobileFormat, mediumFormat, largeFormat },
+                        PublishIdentifier = _client.PublishIdentifier
+                    }
+                };
+
+                var mediaItems = mediaService.Find(query).ToList();
+                foreach (var mediaItem in mediaItems)
+                {
+                    if (mediaItem == null)
+                    {
                         continue;
                     }
-                    slides.Add(slide);
-                }
+                    var slide = new Slide();
+                    foreach (var media in mediaItem.MediaConversions) {
 
+                        var image = media as Image;
+
+                        switch (image.Width)
+                        {
+                            case 280:
+                                slide.SmallImage = media;
+                                break;
+                            case 426:
+                                slide.MobileImage = media;
+                                break;
+                            case 852:
+                                slide.MediumImage = media;
+                                break;
+                            case 1420:
+                                slide.LargeImage = media;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    slides.Add(slide);
+                  
+                }
                 viewModel.Slides = slides;
             }
-
             return View(viewModel);
-        }
-
-        /// <summary>
-        ///     Renders the media.
-        /// </summary>
-        /// <param name="mediaReference">The media reference.</param>
-        /// <returns></returns>
-        public string RenderMedia(MediaReference mediaReference)
-        {
-            // Fetch the current page
-            var pageRouteHelper = ServiceLocator.Current.GetInstance<PageRouteHelper>();
-            var currentPage = pageRouteHelper.Page;
-
-            // Load the property settings for the media reference
-            var propertyData = currentPage.Property["Media2"];
-            if (propertyData == null)
-            {
-                return string.Empty;
-            }
-            var settings = (PropertyMediaSettings)propertyData.GetSetting(typeof(PropertyMediaSettings));
-
-
-            try
-            {
-                // Start building the query for the specific media
-                var query = _client.Load<WebMedia>(mediaReference.Id);
-
-                // Apply editorial effects
-                if (mediaReference.Effects.Count > 0)
-                {
-                    query = query.ApplyEffects(mediaReference.Effects);
-                }
-
-                // Videos cannot be cropped so if settings.ResizeMode is ScaleToFill we'll get null
-                // Execute the query
-                var media = query.Resize(settings.Width, settings.Height, settings.ResizeMode).SingleOrDefault() ??
-                                 query.Resize(settings.Width, settings.Height).SingleOrDefault();
-                return media == null ? string.Empty : media.Html;
-            }
-            catch
-            {
-                // Handle error with some kind of placeholder thingy
-                return string.Empty;
-            }
         }
 
         /// <summary>
@@ -125,9 +111,7 @@ namespace Vaultopia.Web.Controllers {
             return
                 Content(
                     "");
-
         }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ArticleController" /> class.
         /// </summary>

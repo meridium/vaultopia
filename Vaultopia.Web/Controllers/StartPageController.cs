@@ -11,6 +11,7 @@ using ImageVault.Client;
 using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
+using ImageVault.Common.Data;
 
 namespace Vaultopia.Web.Controllers {
     public class StartPageController : PageControllerBase<StartPage> {
@@ -67,7 +68,6 @@ namespace Vaultopia.Web.Controllers {
 
             var viewModel = new StartPageViewModel<StartPage>(currentPage)
                 {
-
                     FirstSlideUrl = ImageSlides != null ? ImageSlides.FirstOrDefault().Where(x => x.Key == "large").Select(x => x.Value.ToString()).FirstOrDefault() : null,
                     Slides = new JavaScriptSerializer().Serialize(ImageSlides)
                 };

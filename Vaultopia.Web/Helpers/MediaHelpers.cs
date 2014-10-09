@@ -8,8 +8,10 @@ using ImageVault.Common.Data;
 using ImageVault.EPiServer;
 using System.Linq;
 using ImageVault.Client.Query;
-
 using System.Web.Script.Serialization;
+using ImageVault.Common.Data.Query;
+using ImageVault.Common.Data.Effects;
+using ImageVault.Common.Services;
 
 namespace Vaultopia.Web.Helpers
 {
@@ -52,52 +54,52 @@ namespace Vaultopia.Web.Helpers
 
             try
             {
-                // Start building the query for the specific media
-                var query = _client.Load<WebMedia>(mediaReference.Id);
-
-                // Apply editorial effects
-                if (mediaReference.Effects.Count > 0)
-                {
-                    query = query.ApplyEffects(mediaReference.Effects);
-                }
-
-                //Create images for different resolutions
                 var mediaItems = new List<MediaItem>();
-                var standardImage = GetMedia(query, settings.Width, settings.Height, settings.ResizeMode);
-                var mediumImage = GetMedia(query, settings.Width, settings.Height, settings.ResizeMode);
-                var smallImage = GetMedia(query, settings.Width, settings.Height, settings.ResizeMode);
+                var standardFormat = new ImageFormat();
+                var mediumFormat = new ImageFormat();
+                var smallFormat = new ImageFormat();
 
-                //Set size for different resolutions if image is specifik size
-                if (standardImage.Width > 800)
+                foreach (var effect in mediaReference.Effects)
                 {
-                    mediumImage = GetMedia(query, 800, settings.Height, settings.ResizeMode);
-                    smallImage = GetMedia(query, 400, settings.Height, settings.ResizeMode);
-                
-                }
-                else if (standardImage.Width > 400)
-                {
-                    smallImage = GetMedia(query, 400, settings.Height, settings.ResizeMode);
-                
-                
+                    standardFormat.Effects.Add(effect);
+                    mediumFormat.Effects.Add(effect);
+                    smallFormat.Effects.Add(effect);
                 }
 
+                standardFormat.Effects.Add(new ResizeEffect(settings.Width, settings.Height, settings.ResizeMode));
+                mediumFormat.Effects.Add(new ResizeEffect(800, settings.Height, settings.ResizeMode));
+                smallFormat.Effects.Add(new ResizeEffect(400, settings.Height, settings.ResizeMode));
+
+                var mediaQuery = new MediaItemQuery
+                {
+                    Filter = { Id = new List<int> { mediaReference.Id } },
+                    Populate =
+                    {
+                        MediaFormats = { smallFormat, mediumFormat, standardFormat },
+                        PublishIdentifier = _client.PublishIdentifier
+                    }
+                };
+                
+                var mediaService = _client.CreateChannel<IMediaService>();
+                var media = mediaService.Find(mediaQuery).Single();
+            
                 //Add images as mediaitems
                 mediaItems.Add(new MediaItem()
                 {
                     MediaVersion = MediaItem.Version.Alternate,
-                    MediaSource = standardImage.Url,
+                    MediaSource = media.MediaConversions[2].Url,
                     BreakPoint = "(min-width: 768px)"
                 });
                 mediaItems.Add(new MediaItem()
                 {
                     MediaVersion = MediaItem.Version.Alternate,
-                    MediaSource = mediumImage.Url,
+                    MediaSource = media.MediaConversions[1].Url,
                     BreakPoint = "(min-width: 400px)"
                 });
                 mediaItems.Add(new MediaItem()
                  {
                      MediaVersion = MediaItem.Version.Default,
-                     MediaSource = smallImage.Url,
+                     MediaSource = media.MediaConversions[0].Url,
                      BreakPoint = string.Empty
                  });
 
@@ -138,14 +140,14 @@ namespace Vaultopia.Web.Helpers
         /// <param name="height"></param>
         /// <param name="resizeMode"></param>
         /// <returns></returns>
-        private static WebMedia GetMedia(IIVQueryable<WebMedia> query, int width, int height, ResizeMode resizeMode)
-        {
-            //// Videos cannot be cropped so if settings.ResizeMode is ScaleToFill we'll get null
-            //// Execute the query
-            var media = query.Resize(width, height, resizeMode).SingleOrDefault() ??
-                        query.Resize(width, height).SingleOrDefault();
-            return media;
-        }
+        //private static WebMedia GetMedia(IIVQueryable<WebMedia> query, int width, int height, ResizeMode resizeMode)
+        //{
+        //    //// Videos cannot be cropped so if settings.ResizeMode is ScaleToFill we'll get null
+        //    //// Execute the query
+        //    var media = query.Resize(width, height, resizeMode).SingleOrDefault() ??
+        //                query.Resize(width, height).SingleOrDefault();
+        //    return media;
+        //}
 
         private class MediaItem
         {

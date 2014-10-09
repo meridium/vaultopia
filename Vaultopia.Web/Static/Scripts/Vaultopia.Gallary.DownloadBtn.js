@@ -5,34 +5,40 @@ var originalHeight;
 var mediumWidth = 700;
 var smallWidth = 350;
 var imageResolutions;
+var imageSettings;
 
-//Get ratio for different imagewidths 
-var mediumHeight = function () {
-    var newMediumRatio = originalWidth / 700;
-    return Math.floor(originalHeight / newMediumRatio);
-};
-
-var smallHeight = function () {
-    var newSmallRatio = originalWidth / 350;
-    return Math.floor(originalHeight / newSmallRatio);
-};
+var getData = function () {
+    var myData;
+    $.ajax({
+        async: false,
+        url: 'Download',
+        type: 'GET',
+        datatype: 'json',
+        data: ("imageResolutions=" + JSON.stringify(imageResolutions) + "&id=" + id),
+        success: function (response) {
+            myData = response;
+        }
+    });
+    return myData;
+}
 
 //Get id of current picture and create list of diffrerent imageresolutions for download
 $(".image").click(function() {
     id = $(this).parent("li").attr("data-image-id");
-    originalWidth = $(this).parent("li").attr("data-image-width");
-    originalHeight = $(this).parent("li").attr("data-image-height");
+    originalWidth = parseInt($(this).parent("li").attr("data-image-width"));
+    originalHeight = parseInt($(this).parent("li").attr("data-image-height"));
     imageResolutions = [
-        { linkName: "Original Size", format: "jpg", width: originalWidth, height: originalHeight },
-        { linkName: "Medium Size", format: "jpg", width: mediumWidth, height: mediumHeight() },
-        { linkName: "Small Size", format: "jpg", width: smallWidth, height: smallHeight() },
-        { linkName: "Original Size", format: "png", width: originalWidth, height: originalHeight },
-        { linkName: "Medium Size", format: "png", width: mediumWidth, height: mediumHeight() },
-        { linkName: "Small Size", format: "png", width: smallWidth, height: smallHeight() },
-        { linkName: "Original Size", format: "gif", width: originalWidth, height: originalHeight },
-        { linkName: "Medium Size", format: "gif", width: mediumWidth, height: mediumHeight() },
-        { linkName: "Small Size", format: "gif", width: smallWidth, height: smallHeight() }
+        { linkName: "Original Size", format: "Jpeg", width: originalWidth },
+        { linkName: "Medium Size", format: "Jpeg", width: mediumWidth },
+        { linkName: "Small Size", format: "Jpeg", width: smallWidth },
+        { linkName: "Original Size", format: "Png", width: originalWidth },
+        { linkName: "Medium Size", format: "Png", width: mediumWidth },
+        { linkName: "Small Size", format: "Png", width: smallWidth },
+        { linkName: "Original Size", format: "Gif", width: originalWidth },
+        { linkName: "Medium Size", format: "Gif", width: mediumWidth },
+        { linkName: "Small Size", format: "Gif", width: smallWidth }
     ];
+    
 });
 
 //Add downloadbutton to interface and save original image src
@@ -42,6 +48,7 @@ $(".image").fancybox({
     },
     afterShow: function () {
         img = this.href;
+        imageSettings = JSON.parse(getData());
     },
     helpers: {
         title: {
@@ -50,25 +57,24 @@ $(".image").fancybox({
     }
 });
 
+//Send properties for choosen image to controller method
+
+
 //Add buttons for each resolution
 var addButtons = function() {
     var buttons = { jpg: ["<li>JPG</li>"], png: ["<li>PNG</li>"], gif: ["<li>GIF</li>"] };
-    var format;
-    for (var i = 0; i < imageResolutions.length;) {
-        if (originalWidth > imageResolutions[i].width || originalWidth === imageResolutions[i].width) { 
-            format = imageResolutions[i].format;
-            var listItem = '<li data-format-width="' + imageResolutions[i].width +
-                '" data-format-type="' + imageResolutions[i].format + '">' +
-                imageResolutions[i].linkName + ' (' + imageResolutions[i].width.toString()
-                + 'x' + imageResolutions[i].height.toString() + ')</li>';
+    for (var i = 0; i < imageSettings.length;) {
+        if (originalWidth > imageSettings[i].Width || originalWidth === imageSettings[i].Width) {
+            format = imageSettings[i].Format;
+            var listItem = '<li>' + '<a href="' + imageSettings[i].Url + '">' + imageSettings[i].LinkName + ' (' + imageSettings[i].Width + 'x' + imageSettings[i].Height + ')</a></li>';
             switch (format) {
-                case "jpg":
+                case "Jpeg":
                     buttons.jpg.push(listItem);
                     break;
-                case "png":
+                case "Png":
                     buttons.png.push(listItem);
                     break;
-                case "gif":
+                case "Gif":
                     buttons.gif.push(listItem);
                     break;
                 default:
@@ -94,39 +100,23 @@ $(document).on('click', '#displayformats', function () {
     });
 });
 
-//Send properties for choosen image to controller method
-var getData = function (formatType, width) {
-    var myData;
-    $.ajax({
-        async: false,
-        url: 'Download',
-        type: 'GET',
-        data: ("imageId=" + id + "&format=" + formatType + "&width=" + width),
-        datatype: 'string',
-        success: function(response) {
-            myData = response;
-        }
-    });
-    return myData;
-}
-
 //Create link and download image if browser supports download attribute, otherwise open image in a new window
-$(document).on('click', '.formatitems li', function () {
-    var formatType = $(this).attr("data-format-type");
-    var width = $(this).attr("data-format-width");
-    var link = getData(formatType, width);
-    var fileName = link.split('/').pop();
-    var a = document.createElement('a');
+//$(document).on('click', '.formatitems li', function () {
+//    var formatType = $(this).attr("data-format-type");
+//    var width = $(this).attr("data-format-width");
+//    var link = getData(formatType, width);
+//    var fileName = link.split('/').pop();
+//    var a = document.createElement('a');
 
-    //Download attribute not supported in IE and Safari, In Firefox this attribute is only honored for links to resources with the same-origin
-    if (typeof a.download === 'undefined' || typeof InstallTrigger !== 'undefined') {
-        window.open(link, '_blank');
-    } else {
-        a.href = link;
-        a.download = fileName;
-        a.click();
-    }
-});
+//    //Download attribute not supported in IE and Safari, In Firefox this attribute is only honored for links to resources with the same-origin
+//    if (typeof a.download === 'undefined' || typeof InstallTrigger !== 'undefined') {
+//        window.open(link, '_blank');
+//    } else {
+//        a.href = link;
+//        a.download = fileName;
+//        a.click();
+//    }
+//});
 
 
 

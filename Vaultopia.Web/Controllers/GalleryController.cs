@@ -20,6 +20,9 @@ using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.Web.Script.Serialization;
 
 
 namespace Vaultopia.Web.Controllers
@@ -53,7 +56,6 @@ namespace Vaultopia.Web.Controllers
 
             }
 
-            
             else if (category != 0 && string.IsNullOrEmpty(searchImage))
             {
                 //get all images that match the category
@@ -85,9 +87,7 @@ namespace Vaultopia.Web.Controllers
                 viewModel.Images = res;
 
             }
-
-
-               
+ 
             else
             {
                 //get all images that match the category
@@ -100,7 +100,6 @@ namespace Vaultopia.Web.Controllers
                     from data in item.Metadata
                     where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))
                     select item).ToList();
-
 
                 viewModel.Images = res;
             }
@@ -121,25 +120,80 @@ namespace Vaultopia.Web.Controllers
         /// <param name="width"></param>
         /// <returns></returns>
         [WebMethod]
-        public string Download(int imageId, string format, int width)
+        public string Download(string imageResolutions, int id)
         {
-            var downloadFormat = new ImageFormat()
+            var downloadFormat = new ImageFormat();
+            var mediaService = _client.CreateChannel<IMediaService>();
+            var formats = new List<ImageFormat>();
+            var resolutions = JsonConvert.DeserializeObject<List<Download>>(imageResolutions);
+            var query = new MediaItemQuery
             {
-                Width = width
+                Filter = { Id = new List<int> { id } },
+                Populate =
+                {
+                    PublishIdentifier = _client.PublishIdentifier
+                }
             };
 
-            switch (format) {
-                case "png":
-                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
-                    break;
-                case "jpg": 
-                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
-                    break;
-                case "gif": 
-                    downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
-                    break;  
+            foreach (var resolution in resolutions)
+            {
+                switch (resolution.Format) {
+                    case "Png":
+                        downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
+                        break;
+                    case "Jpeg":
+                        downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
+                        break;
+                    case "Gif":
+                        downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
+                        break;
+                    default:
+                        break;
+                }
+
+                formats.Add(
+                    new ImageFormat()
+                    {
+                        Width = resolution.Width,
+                        MediaFormatOutputType = downloadFormat.MediaFormatOutputType
+                    }
+                    );
             }
-            return _client.Load<WebMedia>(imageId).UseFormat(downloadFormat).FirstOrDefault().Url ?? string.Empty;
+         
+            foreach (var format in formats)
+            {
+                query.Populate.MediaFormats.Add(format);
+            }
+
+            var mediaItem = mediaService.Find(query).Single();
+            
+            if (mediaItem == null) {
+                return null;
+            }
+
+            //var conversions = mediaItem.MediaConversions.Select(x => new { url = x.Url + "?download=1", width = x.Width, outputType = x.MediaFormatOutputType });
+            var downloadReturns = new List<Download>();
+
+            foreach (var resolution in resolutions)
+            {
+                foreach (var media in mediaItem.MediaConversions)
+                {
+                    var image = media as Image;
+
+                    if (resolution.Width == image.Width && image.ContentType.Contains(resolution.Format.ToLower()))
+                    {
+                        var downloadItem = new Download();
+                        downloadItem.Format = resolution.Format;
+                        downloadItem.LinkName = resolution.LinkName;
+                        downloadItem.Width = image.Width;
+                        downloadItem.Height = image.Height;
+                        downloadItem.Url = media.Url + "?download=1";
+                        downloadReturns.Add(downloadItem);
+                        break;
+                    }
+                }
+            }
+            return new JavaScriptSerializer().Serialize(downloadReturns);
         }
 
         /// <summary>
@@ -212,8 +266,6 @@ namespace Vaultopia.Web.Controllers
             return new EmptyResult();
 
         }
-
-
 
         /// <summary>
         /// Uploads the file.

@@ -311,6 +311,8 @@
     <Compile Include="Models\Blocks\TeaserBlock.cs" />
     <Compile Include="Models\Blocks\TeaserBlockViewModel.cs" />
     <Compile Include="Models\Blocks\WideTeaserBlock.cs" />
+    <Compile Include="Models\Formats\Download.cs" />
+    <Compile Include="Models\Formats\DownloadJson.cs" />
     <Compile Include="Models\Formats\GalleryImage.cs" />
     <Compile Include="Models\Formats\InspirationImage.cs" />
     <Compile Include="Models\Formats\PushImage.cs" />

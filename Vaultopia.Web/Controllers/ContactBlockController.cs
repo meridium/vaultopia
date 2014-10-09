@@ -17,11 +17,8 @@ namespace Vaultopia.Web.Controllers
 
         public override ActionResult Index(ContactBlock currentBlock)
         {
-            
                 return PartialView(currentBlock);
-           
         }
-
 
         public ContactBlockController()
         {
