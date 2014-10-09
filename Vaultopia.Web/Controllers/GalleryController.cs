@@ -51,13 +51,9 @@ namespace Vaultopia.Web.Controllers
                 allImages = allImages.Where(m => m.Categories.Contains(category));
             }
 
- 
-          
            if (!string.IsNullOrEmpty(searchImage))
             {
                 allImages = allImages.SearchFor(searchImage);
-                
-
             }
             viewModel.Images = allImages.ToList();
 
@@ -92,7 +88,6 @@ namespace Vaultopia.Web.Controllers
                 }
             };
 
-
             foreach (var resolution in resolutions)
             {
                 switch (resolution.Format)
@@ -119,37 +114,42 @@ namespace Vaultopia.Web.Controllers
                     );
             }
 
-                var mediaItem = mediaService.Find(query).Single();
+            foreach (var format in formats)
+            {
+                query.Populate.MediaFormats.Add(format);
+            }
 
-                if (mediaItem == null)
+            var mediaItem = mediaService.Find(query).Single();
+
+            if (mediaItem == null)
+            {
+                return null;
+            }
+
+            //var conversions = mediaItem.MediaConversions.Select(x => new { url = x.Url + "?download=1", width = x.Width, outputType = x.MediaFormatOutputType });
+            var downloadReturns = new List<Download>();
+
+            foreach (var resolution in resolutions)
+            {
+                foreach (var media in mediaItem.MediaConversions)
                 {
-                    return null;
-                }
+                    var image = media as Image;
 
-                //var conversions = mediaItem.MediaConversions.Select(x => new { url = x.Url + "?download=1", width = x.Width, outputType = x.MediaFormatOutputType });
-                var downloadReturns = new List<Download>();
-
-                foreach (var resolution in resolutions)
-                {
-                    foreach (var media in mediaItem.MediaConversions)
+                    if (resolution.Width == image.Width && image.ContentType.Contains(resolution.Format.ToLower()))
                     {
-                        var image = media as Image;
-
-                        if (resolution.Width == image.Width && image.ContentType.Contains(resolution.Format.ToLower()))
-                        {
-                            var downloadItem = new Download();
-                            downloadItem.Format = resolution.Format;
-                            downloadItem.LinkName = resolution.LinkName;
-                            downloadItem.Width = image.Width;
-                            downloadItem.Height = image.Height;
-                            downloadItem.Url = media.Url + "?download=1";
-                            downloadReturns.Add(downloadItem);
-                            break;
-                        }
+                        var downloadItem = new Download();
+                        downloadItem.Format = resolution.Format;
+                        downloadItem.LinkName = resolution.LinkName;
+                        downloadItem.Width = image.Width;
+                        downloadItem.Height = image.Height;
+                        downloadItem.Url = media.Url + "?download=1";
+                        downloadReturns.Add(downloadItem);
+                        break;
                     }
                 }
-                return new JavaScriptSerializer().Serialize(downloadReturns);
             }
+            return new JavaScriptSerializer().Serialize(downloadReturns);
+        }
         
 
         /// <summary>
