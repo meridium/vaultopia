@@ -38,71 +38,28 @@ namespace Vaultopia.Web.Controllers
         /// <returns></returns>
         /// 
 
+
         public ActionResult Index(GalleryPage currentPage, int category = 0, string searchImage = null)
         {
 
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage);
+            var allImages = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded);
 
-
-            //If the search field is empty, show all the pictures, sorted by date
-            if (category == 0 && string.IsNullOrEmpty(searchImage))
-            {
-                viewModel.Images =
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
-                        .OrderByDescending(m => m.DateAdded)
-                        .Take(32)
-                        .ToList();
-
-            }
-
-            else if (category != 0 && string.IsNullOrEmpty(searchImage))
-            {
-                //get all images that match the category
-                viewModel.Images =
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category))
-                        .ToList();
-
-            }
-
-              
-            else if (category == 0 && !string.IsNullOrEmpty(searchImage))
+            if (category > 0)
 
             {
-                //get all images
-                var allImages =
-
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
-                        .ToList();
-
-                //then sorts out those that match the search field
-                var res = (from item in allImages
-                    from data in item.Metadata
-                    where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))
-                    select item).ToList();
-
-
-                viewModel.Images = res;
-
+                allImages = allImages.Where(m => m.Categories.Contains(category));
             }
+
  
-            else
+          
+           if (!string.IsNullOrEmpty(searchImage))
             {
-                //get all images that match the category
-                var allImages =
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker) && m.Categories.Contains(category))
-                        .ToList();
-                //then sorts out those that match the search field
-                var res = (from item in allImages
-                    from data in item.Metadata
-                    where (data.Value != null) && (data.Value.ToString().ToLower().Contains(searchImage.ToLower()))
-                    select item).ToList();
+                allImages = allImages.SearchFor(searchImage);
+                
 
-                viewModel.Images = res;
             }
+            viewModel.Images = allImages.ToList();
 
             //Get te categorys to dropdownlist.
             viewModel.Categorys =
@@ -135,9 +92,11 @@ namespace Vaultopia.Web.Controllers
                 }
             };
 
+
             foreach (var resolution in resolutions)
             {
-                switch (resolution.Format) {
+                switch (resolution.Format)
+                {
                     case "Png":
                         downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
                         break;
@@ -159,42 +118,39 @@ namespace Vaultopia.Web.Controllers
                     }
                     );
             }
-         
-            foreach (var format in formats)
-            {
-                query.Populate.MediaFormats.Add(format);
-            }
 
-            var mediaItem = mediaService.Find(query).Single();
-            
-            if (mediaItem == null) {
-                return null;
-            }
+                var mediaItem = mediaService.Find(query).Single();
 
-            //var conversions = mediaItem.MediaConversions.Select(x => new { url = x.Url + "?download=1", width = x.Width, outputType = x.MediaFormatOutputType });
-            var downloadReturns = new List<Download>();
-
-            foreach (var resolution in resolutions)
-            {
-                foreach (var media in mediaItem.MediaConversions)
+                if (mediaItem == null)
                 {
-                    var image = media as Image;
+                    return null;
+                }
 
-                    if (resolution.Width == image.Width && image.ContentType.Contains(resolution.Format.ToLower()))
+                //var conversions = mediaItem.MediaConversions.Select(x => new { url = x.Url + "?download=1", width = x.Width, outputType = x.MediaFormatOutputType });
+                var downloadReturns = new List<Download>();
+
+                foreach (var resolution in resolutions)
+                {
+                    foreach (var media in mediaItem.MediaConversions)
                     {
-                        var downloadItem = new Download();
-                        downloadItem.Format = resolution.Format;
-                        downloadItem.LinkName = resolution.LinkName;
-                        downloadItem.Width = image.Width;
-                        downloadItem.Height = image.Height;
-                        downloadItem.Url = media.Url + "?download=1";
-                        downloadReturns.Add(downloadItem);
-                        break;
+                        var image = media as Image;
+
+                        if (resolution.Width == image.Width && image.ContentType.Contains(resolution.Format.ToLower()))
+                        {
+                            var downloadItem = new Download();
+                            downloadItem.Format = resolution.Format;
+                            downloadItem.LinkName = resolution.LinkName;
+                            downloadItem.Width = image.Width;
+                            downloadItem.Height = image.Height;
+                            downloadItem.Url = media.Url + "?download=1";
+                            downloadReturns.Add(downloadItem);
+                            break;
+                        }
                     }
                 }
+                return new JavaScriptSerializer().Serialize(downloadReturns);
             }
-            return new JavaScriptSerializer().Serialize(downloadReturns);
-        }
+        
 
         /// <summary>
         /// Loads the specified current page.
