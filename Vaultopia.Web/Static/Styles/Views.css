@@ -500,17 +500,22 @@
         margin: 0 auto;
     }
 
-    body.gallery ul.formatitems li {
-        background: rgb(77, 77, 77);
+    body.gallery ul.formatitems  li {
         cursor: pointer;
         text-align: center;
-        color: rgb(204, 204, 204);
         border-right: 1px solid #3D3D3D;
         padding-left: 5px;
         padding-right: 5px;
         display: inline-block;
         border-top: 1px solid #3D3D3D;
         position: relative;
+        background: rgb(77, 77, 77);
+    }
+
+    body.gallery ul.formatitems  li, body.gallery ul.formatitems a {
+        
+        color: rgb(204, 204, 204);
+  
     }
 
     body.gallery ul.formatitems li:not(:first-child):hover {
@@ -523,8 +528,8 @@
         position: relative;
     }
 
-    body.gallery ul.formatbottom li {
-        border-bottom: 1px solid #3D3D3D;
+    body.gallery .downloadformats a {
+        text-decoration: none;
     }
     body.gallery .downloadformats ul:last-child li:first-child {
         border-bottom-left-radius: 3px;

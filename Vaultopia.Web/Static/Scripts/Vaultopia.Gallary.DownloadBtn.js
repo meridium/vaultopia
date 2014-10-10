@@ -7,6 +7,7 @@ var smallWidth = 350;
 var imageResolutions;
 var imageSettings;
 
+//Sends properties for choosen image to controller method
 var getData = function () {
     var myData;
     $.ajax({
@@ -38,10 +39,9 @@ $(".image").click(function() {
         { linkName: "Medium Size", format: "Gif", width: mediumWidth },
         { linkName: "Small Size", format: "Gif", width: smallWidth }
     ];
-    
 });
 
-//Add downloadbutton to interface and save original image src
+//Add downloadbutton to interface and save original image src, also set returnvalue of getData to variable imageSettings
 $(".image").fancybox({
     beforeShow: function () {
         this.title += '<div id="displayformats" class="button downloadbtn">Download</div>';
@@ -56,9 +56,6 @@ $(".image").fancybox({
         }
     }
 });
-
-//Send properties for choosen image to controller method
-
 
 //Add buttons for each resolution
 var addButtons = function() {
@@ -99,24 +96,6 @@ $(document).on('click', '#displayformats', function () {
             '</div>'
     });
 });
-
-//Create link and download image if browser supports download attribute, otherwise open image in a new window
-//$(document).on('click', '.formatitems li', function () {
-//    var formatType = $(this).attr("data-format-type");
-//    var width = $(this).attr("data-format-width");
-//    var link = getData(formatType, width);
-//    var fileName = link.split('/').pop();
-//    var a = document.createElement('a');
-
-//    //Download attribute not supported in IE and Safari, In Firefox this attribute is only honored for links to resources with the same-origin
-//    if (typeof a.download === 'undefined' || typeof InstallTrigger !== 'undefined') {
-//        window.open(link, '_blank');
-//    } else {
-//        a.href = link;
-//        a.download = fileName;
-//        a.click();
-//    }
-//});
 
 
 

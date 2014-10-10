@@ -241,3 +241,4 @@ C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.Server.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.Server.Common.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.EpiserverX.Common.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.EPiServer7.dll
+C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.csprojResolveAssemblyReference.cache

@@ -43,12 +43,7 @@ namespace Vaultopia.Web.Controllers {
             if (currentPage.SlideMediaList != null && currentPage.SlideMediaList.Count > 0) {
 
                 var mediaReferences = currentPage.SlideMediaList.Take(5);
-                var imageSlides = new List<int>();
-
-                foreach (var mediaReference in mediaReferences)
-                {
-                    imageSlides.Add(mediaReference.Id);
-                }
+                var imageSlides = mediaReferences.Select(mediaReference => mediaReference.Id).ToList();
 
                 var query = new MediaItemQuery
                 {
@@ -70,6 +65,7 @@ namespace Vaultopia.Web.Controllers {
                     var slide = new Slide();
                     foreach (var media in mediaItem.MediaConversions) {
 
+                        //Create variable as Image to get width
                         var image = media as Image;
 
                         switch (image.Width)

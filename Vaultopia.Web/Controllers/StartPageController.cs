@@ -34,9 +34,9 @@ namespace Vaultopia.Web.Controllers {
                     var currentPage = pageRouteHelper.Page as StartPage;
                     if (currentPage != null && currentPage.PushMediaList != null && currentPage.PushMediaList.Count > 0)
                     {
-                        var numOfSlides = _client.Load<PushImage>(currentPage.PushMediaList.Select(x => x.Id)).ToList();
+                        var slideImages = _client.Load<PushImage>(currentPage.PushMediaList.Select(x => x.Id)).ToList();
 
-                        foreach (var slide in numOfSlides)
+                        foreach (var slide in slideImages)
                         {
                             var dict = new Dictionary<string, string>
                             {

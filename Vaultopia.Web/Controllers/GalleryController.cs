@@ -34,11 +34,10 @@ namespace Vaultopia.Web.Controllers
         /// <summary>
         /// Indexes the specified current page.
         /// </summary>
-        /// <param name="currentPage">The current page.</param>
+        /// <param name="currentPage"></param>
+        /// <param name="category"></param>
+        /// <param name="searchImage"></param>
         /// <returns></returns>
-        /// 
-
-
         public ActionResult Index(GalleryPage currentPage, int category = 0, string searchImage = null)
         {
 
@@ -65,20 +64,19 @@ namespace Vaultopia.Web.Controllers
             return View(viewModel);
         }
 
-        /// <summary>
-        /// Creating url for image
-        /// </summary>
-        /// <param name="imageId"></param>
-        /// <param name="format"></param>
-        /// <param name="width"></param>
-        /// <returns></returns>
+         /// <summary>
+         /// Creates images to be downloaded
+         /// </summary>
+         /// <param name="imageResolutions"></param>
+         /// <param name="id"></param>
+         /// <returns></returns>
         [WebMethod]
         public string Download(string imageResolutions, int id)
         {
-            var downloadFormat = new ImageFormat();
             var mediaService = _client.CreateChannel<IMediaService>();
             var formats = new List<ImageFormat>();
-            var resolutions = JsonConvert.DeserializeObject<List<Download>>(imageResolutions);
+            var downloadFormat = new ImageFormat();
+            var downloadSettings = JsonConvert.DeserializeObject<List<Download>>(imageResolutions);
             var query = new MediaItemQuery
             {
                 Filter = { Id = new List<int> { id } },
@@ -88,9 +86,9 @@ namespace Vaultopia.Web.Controllers
                 }
             };
 
-            foreach (var resolution in resolutions)
+            foreach (var setting in downloadSettings)
             {
-                switch (resolution.Format)
+                switch (setting.Format)
                 {
                     case "Png":
                         downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
@@ -108,7 +106,7 @@ namespace Vaultopia.Web.Controllers
                 formats.Add(
                     new ImageFormat()
                     {
-                        Width = resolution.Width,
+                        Width = setting.Width,
                         MediaFormatOutputType = downloadFormat.MediaFormatOutputType
                     }
                     );
@@ -123,29 +121,31 @@ namespace Vaultopia.Web.Controllers
 
             if (mediaItem == null)
             {
-                return null;
+                return string.Empty;
             }
 
             //var conversions = mediaItem.MediaConversions.Select(x => new { url = x.Url + "?download=1", width = x.Width, outputType = x.MediaFormatOutputType });
             var downloadReturns = new List<Download>();
 
-            foreach (var resolution in resolutions)
+            foreach (var setting in downloadSettings)
             {
                 foreach (var media in mediaItem.MediaConversions)
                 {
+                    //Create variable as Image to get width
                     var image = media as Image;
 
-                    if (resolution.Width == image.Width && image.ContentType.Contains(resolution.Format.ToLower()))
+                    if (setting.Width != image.Width || !image.ContentType.Contains(setting.Format.ToLower()))
+                        continue;
+                    var downloadItem = new Download
                     {
-                        var downloadItem = new Download();
-                        downloadItem.Format = resolution.Format;
-                        downloadItem.LinkName = resolution.LinkName;
-                        downloadItem.Width = image.Width;
-                        downloadItem.Height = image.Height;
-                        downloadItem.Url = media.Url + "?download=1";
-                        downloadReturns.Add(downloadItem);
-                        break;
-                    }
+                        Format = setting.Format,
+                        LinkName = setting.LinkName,
+                        Width = image.Width,
+                        Height = image.Height,
+                        Url = media.Url + "?download=1"
+                    };
+                    downloadReturns.Add(downloadItem);
+                    break;
                 }
             }
             return new JavaScriptSerializer().Serialize(downloadReturns);
@@ -160,7 +160,6 @@ namespace Vaultopia.Web.Controllers
         /// <returns></returns>
         public ActionResult Load(GalleryPage currentPage, int skip)
         {
-
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage)
             {
                 Images =
@@ -192,7 +191,6 @@ namespace Vaultopia.Web.Controllers
         [HttpPost]
         public ActionResult Save(UploadModel model)
         {
-
             //Why can't I load the mediaitem with the same id i just saved...?
             var mediaItem =
                 _client.Load<MediaItem>(Int32.Parse(model.Id))
@@ -211,8 +209,6 @@ namespace Vaultopia.Web.Controllers
             service.Save(new List<MediaItem> {mediaItem}, MediaServiceSaveOptions.MarkAsOrganized);
 
             var image = _client.Load<GalleryImage>(mediaItem.Id).SingleOrDefault();
-
-
 
             if (image != null)
             {
@@ -254,8 +250,6 @@ namespace Vaultopia.Web.Controllers
             var contentservice = _client.CreateChannel<IMediaContentService>();
             var mediaItem = contentservice.StoreContentInVault(id, file.FileName, file.ContentType, vault.Id);
 
-
-
             var mediaId = mediaItem.Id;
 
             MediaItem poll = null;
@@ -279,7 +273,6 @@ namespace Vaultopia.Web.Controllers
 
             return null;
         }
-
 
         /// <summary>
         /// Shows the meta data.
