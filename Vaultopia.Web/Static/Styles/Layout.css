@@ -393,17 +393,23 @@
         height: 400px;
     }
 
-
+    #space {
+        width: 100%;
+        height:10px;
+    }
     #Search {
         width: 100%;
+        margin: 0px 20px;
     }
 
     .txbSearch {
         width: 200px;
+          margin: 0px 20px;
     }
 
     .tbxSearch {
         width: 200px;
+      
     }
 
     #push .wrap > div {
@@ -630,8 +636,9 @@
             margin-right: 0;
         }
 
-     #Search {
+    #Search {
         width: 100%;
+        margin: 0px 20px;
     }
 
     .txbSearch {
@@ -641,6 +648,4 @@
     .tbxSearch {
         width: 200px;
     }
-
-  
 }

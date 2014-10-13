@@ -211,6 +211,36 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ProcessMap\ProcessMapEditor.Data.dll</HintPath>
     </Reference>
+    <Reference Include="ProcessMap.EPiServer7.Common">
+      <HintPath>..\lib\ProcessMap\ProcessMap.EPiServer7.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcessMap.EPiServerX.Common">
+      <HintPath>..\lib\ProcessMap\ProcessMap.EPiServerX.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcessMap.Server">
+      <HintPath>..\lib\ProcessMap\ProcessMap.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcessMap.Server.Common">
+      <HintPath>..\lib\ProcessMap\ProcessMap.Server.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcessMapEditor.Data">
+      <HintPath>..\lib\ProcessMap\ProcessMapEditor.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcessMap.EPiServer7.Common">
+      <HintPath>..\lib\ProcessMap\ProcessMap.EPiServer7.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcessMap.EPiServerX.Common">
+      <HintPath>..\lib\ProcessMap\ProcessMap.EPiServerX.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcessMap.Server">
+      <HintPath>..\lib\ProcessMap\ProcessMap.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcessMap.Server.Common">
+      <HintPath>..\lib\ProcessMap\ProcessMap.Server.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcessMapEditor.Data">
+      <HintPath>..\lib\ProcessMap\ProcessMapEditor.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Shell, Version=3.1.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPiServer.CMS.UI.Core.7.13.0\lib\net40\Shell.dll</HintPath>
