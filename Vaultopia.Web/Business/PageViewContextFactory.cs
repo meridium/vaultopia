@@ -37,6 +37,8 @@ namespace Vaultopia.Web.Business {
         /// </value>
         protected List<InspirationImage> InspirationImages {
             get {
+             
+          
                 var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
                     _inspirationImages = new List<InspirationImage>();
   
@@ -46,7 +48,8 @@ namespace Vaultopia.Web.Business {
                             continue;
                         }
                         _inspirationImages.Add(media);
-                    } 
+                    }     
+                
                 return _inspirationImages;
             }
         }

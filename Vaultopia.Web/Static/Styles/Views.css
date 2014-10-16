@@ -510,23 +510,11 @@
         background: rgb(77, 77, 77);
     }
 
-<<<<<<< Updated upstream
     body.gallery ul.formatitems  li, body.gallery ul.formatitems a {
         
         color: rgb(204, 204, 204);
   
     }
-=======
-        body.gallery ul.formatitems li:not(:first-child):hover {
-            -webkit-transition: background 1s;
-            transition: background 1s;
-            -webkit-transition: color 0.7s;
-            transition: color 0.7s;
-            background: #444444; /* Old browsers */
-            color: white;
-            position: relative;
-        }
->>>>>>> Stashed changes
 
         body.gallery ul.formatitems li:not(:first-child):hover {
             -webkit-transition: background 1s;
