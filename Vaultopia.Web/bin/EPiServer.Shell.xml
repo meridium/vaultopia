@@ -636,7 +636,12 @@
         </member>
         <member name="P:EPiServer.Shell.UI.DojoConfig.IoPublish">
             <summary>
-            Gets of sets whether to publish IO.
+            Gets or sets whether to publish IO.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Shell.UI.DojoConfig.Has">
+            <summary>
+            Gets the has configuration options.
             </summary>
         </member>
         <member name="T:EPiServer.Shell.Gadgets.DuplicateGadgetNameException">
@@ -1232,6 +1237,17 @@
             <param name="modelType">Type of the requested model.</param>
             <returns>An instance of <see cref="T:EPiServer.Shell.Services.Rest.JsonDictionaryModelBinder"/> if the model type inherits <see cref="T:EPiServer.Shell.Services.Rest.JsonDictionary"/>; otherwise null.</returns>
         </member>
+        <member name="T:EPiServer.Shell.UIDescriptorProvider">
+            <summary>
+            Base class for providing <see cref="T:EPiServer.Shell.UIDescriptor"/>s to the <see cref="T:EPiServer.Shell.UIDescriptorRegistry"/> 
+            </summary>
+        </member>
+        <member name="M:EPiServer.Shell.UIDescriptorProvider.GetDescriptors">
+            <summary>
+            Implement this method to provide custom ui descriptors
+            </summary>
+            <returns>A collection of ui descriptors</returns>
+        </member>
         <member name="T:EPiServer.Shell.ViewComposition.ILocalizedHeadingComponent">
             <summary>
             Defines a component that has a localization key for the heading.
@@ -1756,6 +1772,11 @@
             Html helper for writing the dojo configuration to the html page
             </summary>
         </member>
+        <member name="M:EPiServer.Shell.Web.Mvc.Html.DojoConfigurationHelper.ConfigureDojo(System.Web.UI.Page,EPiServer.Shell.UI.DojoConfig)">
+            <summary>
+            Returns a script tag containing a dojoConfig object.
+            </summary>
+        </member>
         <member name="M:EPiServer.Shell.Web.Mvc.Html.DojoConfigurationHelper.ConfigureDojo(System.Web.UI.Page,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
             Returns a script tag containing a dojoConfig object.
@@ -1767,6 +1788,11 @@
             <returns>
             A string containing dojoConfig object. var dojoConfig =  { ... };
             </returns>
+        </member>
+        <member name="M:EPiServer.Shell.Web.Mvc.Html.DojoConfigurationHelper.ConfigureDojo(System.Web.UI.Page,EPiServer.Shell.UI.DojoConfig,System.Boolean)">
+            <summary>
+            Returns a script tag containing a dojoConfig object.
+            </summary>
         </member>
         <member name="T:EPiServer.Shell.Configuration.DojoPackage">
             <summary>
@@ -2332,22 +2358,34 @@
             <param name="uiDescriptors">The UI descriptors.</param>
             <param name="initializers">The UI descriptor initializers</param>
         </member>
+        <member name="M:EPiServer.Shell.UIDescriptorRegistry.#ctor(EPiServer.Shell.UIDescriptor[],EPiServer.Shell.IUIDescriptorInitializer[],EPiServer.Shell.UIDescriptorProvider[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Shell.UIDescriptorRegistry"/> class.
+            </summary>
+            <param name="uiDescriptors">The UI descriptors.</param>
+            <param name="initializers">The UI descriptor initializers</param>
+            <param name="descriptorProviders">A collection of providers queried for additiona descriptors</param>
+        </member>
         <member name="M:EPiServer.Shell.UIDescriptorRegistry.GetTypeIdentifiers(System.Type)">
             <summary>
             Gets the type identifiers.
             </summary>
-            <param name="type">The type.</param>
-            <returns></returns>
+            <param name="type">The type to find .</param>
+            <returns>A sorted list with the most specific matching type first.</returns>
+        </member>
+        <member name="M:EPiServer.Shell.UIDescriptorRegistry.GetDescriptorsForType(System.Type)">
+            <summary>
+            Gets a list of ui descriptors registered for a type and its base types.
+            </summary>
+            <param name="type"></param>
+            <returns>A sorted list with the most specific matching type first.</returns>
         </member>
         <member name="M:EPiServer.Shell.UIDescriptorRegistry.HasMatchedTypeIdentifier(System.Type,System.Collections.Generic.IEnumerable{System.String})">
             <summary>
-            Determines whether [has type identifier] [the specified type].
+            Determines whether any ui descriptor matching the type has any matching type identifiers in the provided collection.
             </summary>
-            <param name="type">The type.</param>
-            <param name="typeIdentifiers">The type identifiers.</param>
-            <returns>
-              <c>true</c> if [has type identifier] [the specified type]; otherwise, <c>false</c>.
-            </returns>
+            <param name="type">The type to get ui descriptors for.</param>
+            <param name="typeIdentifiers">A collection of type identifier for matching.</param>
         </member>
         <member name="M:EPiServer.Shell.UIDescriptorRegistry.GetAllRegisteredUIDescriptors">
             <summary>
@@ -2360,8 +2398,31 @@
             Adds the specified descriptor.
             </summary>
             <param name="descriptor">The descriptor.</param>
+            <remarks>This method is not thread safe. Implement <see cref="T:EPiServer.Shell.UIDescriptorProvider"/> instead to add ui descriptors.</remarks>
         </member>
-        <member name="M:EPiServer.Shell.UIDescriptorRegistry.TypeCompareer.Compare(System.Type,System.Type)">
+        <member name="M:EPiServer.Shell.UIDescriptorRegistry.SetBaseTypeIdentifier(EPiServer.Shell.UIDescriptor,System.Collections.Generic.IEnumerable{EPiServer.Shell.UIDescriptor})">
+            <summary>
+            Set the <see cref="P:EPiServer.Shell.UIDescriptor.BaseTypeIdentifier"/> property on the descriptors in the supplied collection.
+            The base type identifier is resolved from the other types in the descriptors collection.
+            </summary>
+            <param name="descriptor">The descriptor to set base type on</param>
+            <param name="descriptors">A collection of available descriptors</param>
+        </member>
+        <member name="M:EPiServer.Shell.UIDescriptorRegistry.GetDescriptorsForType(System.Type,System.Collections.Generic.IEnumerable{EPiServer.Shell.UIDescriptor})">
+            <summary>
+            Gets an ordered list of any descriptors for a particular type or any of its base types.
+            The list is ordered by inheritance with the most specific first.
+            </summary>
+            <param name="type">The type to look for</param>
+            <param name="descriptors">A collection of descriptors to search</param>
+            <returns>An ordered list of matching descriptors</returns>
+        </member>
+        <member name="P:EPiServer.Shell.UIDescriptorRegistry.UIDescriptors">
+            <summary>
+            A collection of the <see cref="T:EPiServer.Shell.UIDescriptor"/>s registered for available content types
+            </summary>
+        </member>
+        <member name="M:EPiServer.Shell.UIDescriptorRegistry.TypeComparer.Compare(System.Type,System.Type)">
             <summary>
             Compares two type instances. X greater than Y if X's instances are assignable from Y's instances
             </summary>
@@ -9751,6 +9812,21 @@
         <member name="P:EPiServer.Shell.Configuration.ShellModuleManifest.LoadFromBin">
             <summary>
             Indicates whether the application will look in all bin folders for modules.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Shell.Configuration.ShellModuleManifest.Description">
+            <summary>
+            The description of the module
+            </summary>
+        </member>
+        <member name="P:EPiServer.Shell.Configuration.ShellModuleManifest.Tags">
+            <summary>
+            Modules tag 
+            </summary>
+        </member>
+        <member name="P:EPiServer.Shell.Configuration.ShellModuleManifest.Version">
+            <summary>
+            Gets or sets the version for the shell module.
             </summary>
         </member>
         <member name="P:EPiServer.Shell.Configuration.ShellModuleManifest.ClientResources">

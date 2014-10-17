@@ -2299,24 +2299,5 @@
             Configuration section for Udp. 
             </summary>
         </member>
-        <member name="T:EPiServer.Events.TaskEx">
-            <summary>
-            For internal use until .NET 4.5
-            </summary>
-        </member>
-        <member name="M:EPiServer.Events.TaskEx.FromResult``1(``0)">
-            <summary>
-            Creates a pre-completed task with a given result.
-            </summary>
-            <typeparam name="T">Type of the result</typeparam>
-            <param name="value">The result value.</param>
-            <returns>A pre-completed task</returns>
-        </member>
-        <member name="M:EPiServer.Events.TaskEx.FromResult">
-            <summary>
-            Creates a pre-completed task.
-            </summary>
-            <returns>A pre-completed task.</returns>
-        </member>
     </members>
 </doc>
