@@ -16,11 +16,7 @@ namespace Vaultopia.Web.Controllers
         /// <returns></returns>
         public ActionResult Index(Process currentPage)
         {
-
-
             var viewModel = new PageViewModel<Process>(currentPage);
-
-
             return View(viewModel);
         }
 
@@ -35,11 +31,7 @@ namespace Vaultopia.Web.Controllers
             {
                 return new EmptyResult();
             }
-
-            return
-                Content(
-                    "");
-
+            return Content("");
         }
     }
 }

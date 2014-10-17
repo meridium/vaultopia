@@ -5,25 +5,19 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services;
-using EPiServer.Cms.Shell.UI.Models.ExternalLinks;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
-using EPiServer.XForms.WebControls;
 using ImageVault.Client;
 using ImageVault.Client.Query;
 using ImageVault.Common.Data;
 using ImageVault.Common.Data.Query;
 using ImageVault.Common.Services;
-using ImageVault.EPiServer;
 using Vaultopia.Web.Models;
 using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
+using Vaultopia.Web.Business.Media;
 using System.Web.Script.Serialization;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System.Web.Script.Serialization;
-
 
 namespace Vaultopia.Web.Controllers
 {
@@ -67,16 +61,13 @@ namespace Vaultopia.Web.Controllers
          /// <summary>
          /// Creates images to be downloaded
          /// </summary>
-         /// <param name="imageResolutions"></param>
          /// <param name="id"></param>
          /// <returns></returns>
         [WebMethod]
-        public string Download(string imageResolutions, int id)
+        public string Download(int id)
         {
             var mediaService = _client.CreateChannel<IMediaService>();
-            var formats = new List<ImageFormat>();
-            var downloadFormat = new ImageFormat();
-            var downloadSettings = JsonConvert.DeserializeObject<List<Download>>(imageResolutions);
+            var formats = Formats();
             var query = new MediaItemQuery
             {
                 Filter = { Id = new List<int> { id } },
@@ -85,32 +76,6 @@ namespace Vaultopia.Web.Controllers
                     PublishIdentifier = _client.PublishIdentifier
                 }
             };
-
-            foreach (var setting in downloadSettings)
-            {
-                switch (setting.Format)
-                {
-                    case "Png":
-                        downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Png;
-                        break;
-                    case "Jpeg":
-                        downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Jpeg;
-                        break;
-                    case "Gif":
-                        downloadFormat.MediaFormatOutputType = MediaFormatOutputTypes.Gif;
-                        break;
-                    default:
-                        break;
-                }
-
-                formats.Add(
-                    new ImageFormat()
-                    {
-                        Width = setting.Width,
-                        MediaFormatOutputType = downloadFormat.MediaFormatOutputType
-                    }
-                    );
-            }
 
             foreach (var format in formats)
             {
@@ -124,33 +89,84 @@ namespace Vaultopia.Web.Controllers
                 return string.Empty;
             }
 
-            //var conversions = mediaItem.MediaConversions.Select(x => new { url = x.Url + "?download=1", width = x.Width, outputType = x.MediaFormatOutputType });
-            var downloadReturns = new List<Download>();
+             var downloadList = DownloadList(mediaItem);
 
-            foreach (var setting in downloadSettings)
+            return new JavaScriptSerializer().Serialize(downloadList);
+        }
+
+        /// <summary>
+        /// Create list of image formats
+        /// </summary>
+        /// <returns></returns>
+        private static IEnumerable<ImageFormat> Formats()
+        {
+            var formats = new List<ImageFormat>()
             {
-                foreach (var media in mediaItem.MediaConversions)
-                {
-                    //Create variable as Image to get width
-                    var image = media as Image;
+               {new ImageFormat(){MediaFormatOutputType = MediaFormatOutputTypes.Gif}},
+               {new ImageFormat(){MediaFormatOutputType = MediaFormatOutputTypes.Jpeg}},
+               {new ImageFormat(){MediaFormatOutputType = MediaFormatOutputTypes.Png}}
+            };
 
-                    if (setting.Width != image.Width || !image.ContentType.Contains(setting.Format.ToLower()))
-                        continue;
-                    var downloadItem = new Download
+            foreach (var fileType in formats.ToList())
+            {
+                formats.Add(new ImageFormat()
+                {
+                    MediaFormatOutputType = fileType.MediaFormatOutputType,
+                    Width = ImageSizes.MediumImage.Width
+                });
+                formats.Add(new ImageFormat()
+                {
+                    MediaFormatOutputType = fileType.MediaFormatOutputType,
+                    Width = ImageSizes.MobileImage.Width
+                });
+            }
+            return formats;
+        }
+
+        /// <summary>
+        /// creates list of Download
+        /// </summary>
+        /// <param name="mediaItem"></param>
+        /// <returns></returns>
+        private static IEnumerable<Download> DownloadList(MediaItem mediaItem)
+        {
+            var downloadList = new List<Download>();
+            string[] formats = {"Jpeg", "Png", "Gif"};
+            foreach (var format in formats)
+            {
+                foreach (var conversion in mediaItem.MediaConversions)
+                {
+                    var image = conversion as Image;
+                    if (image == null || !conversion.ContentType.Contains(format.ToLower()))
                     {
-                        Format = setting.Format,
-                        LinkName = setting.LinkName,
-                        Width = image.Width,
+                        continue;
+                    }
+                    string linkName;
+                    switch (image.FormatWidth)
+                    {
+                        case ImageSizes.MobileImage.Width:
+                            linkName = "Small Size";
+                            break;
+                        case ImageSizes.MediumImage.Width:
+                            linkName = "Medium Size";
+                            break;
+                        default:
+                            linkName = "Original Size";
+                            image.FormatWidth = image.Width;
+                            break;
+                    }
+                    downloadList.Add(new Download
+                    {
+                        Format = format,
+                        LinkName = linkName,
+                        Width = image.FormatWidth,
                         Height = image.Height,
-                        Url = media.Url + "?download=1"
-                    };
-                    downloadReturns.Add(downloadItem);
-                    break;
+                        Url = conversion.Url + "?download=1"
+                    });
                 }
             }
-            return new JavaScriptSerializer().Serialize(downloadReturns);
+            return downloadList;
         }
-        
 
         /// <summary>
         /// Loads the specified current page.

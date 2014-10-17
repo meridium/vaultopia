@@ -2,13 +2,11 @@
 using System.Linq;
 using System.Web.Mvc;
 using EPiServer.Editor;
-using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc;
-using EPiServer.Web.Routing;
 using ImageVault.Client;
-using ImageVault.Client.Query;
 using ImageVault.Common.Data;
-using ImageVault.EPiServer;
+using Vaultopia.Web.Business.Media;
+using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 using ImageVault.Common.Services;
@@ -25,20 +23,11 @@ namespace Vaultopia.Web.Controllers {
         /// <param name="currentPage">The current page.</param>
         /// <returns></returns>
         public ActionResult Index(Article currentPage) {
-
+          
             var slides = new List<Slide>();
             var mediaService = _client.CreateChannel<IMediaService>();
             var viewModel = new ArticleViewModel<Article>(currentPage);
-            
-            var smallFormat = new ImageFormat();
-            var mobileFormat = new ImageFormat();
-            var mediumFormat = new ImageFormat();
-            var largeFormat = new ImageFormat();
-
-            smallFormat.Effects.Add(new ResizeEffect(280, 184, ResizeMode.ScaleToFill));
-            mobileFormat.Effects.Add(new ResizeEffect(426, 226, ResizeMode.ScaleToFill));
-            mediumFormat.Effects.Add(new ResizeEffect(852, 452, ResizeMode.ScaleToFill));
-            largeFormat.Effects.Add(new ResizeEffect(1420, 754, ResizeMode.ScaleToFill));
+            var formats = Formats();
             
             if (currentPage.SlideMediaList != null && currentPage.SlideMediaList.Count > 0) {
 
@@ -50,10 +39,14 @@ namespace Vaultopia.Web.Controllers {
                     Filter = { Id = imageSlides},
                     Populate =
                     {
-                        MediaFormats = { smallFormat, mobileFormat, mediumFormat, largeFormat },
                         PublishIdentifier = _client.PublishIdentifier
                     }
                 };
+
+                foreach (var imageFormat in formats)
+                {
+                    query.Populate.MediaFormats.Add(imageFormat.Value);
+                }
 
                 var mediaItems = mediaService.Find(query).ToList();
                 foreach (var mediaItem in mediaItems)
@@ -63,35 +56,69 @@ namespace Vaultopia.Web.Controllers {
                         continue;
                     }
                     var slide = new Slide();
-                    foreach (var media in mediaItem.MediaConversions) {
+                    for (var i = 0; i < mediaItem.MediaConversions.Count; i++)
+                    {
+                        var media = mediaItem.MediaConversions[i];
 
-                        //Create variable as Image to get width
-                        var image = media as Image;
-
-                        switch (image.Width)
+                        if (media == null)
                         {
-                            case 280:
+                            continue;
+                        }
+
+                        switch (i)
+                        {
+                            case 0:
                                 slide.SmallImage = media;
                                 break;
-                            case 426:
+                            case 1:
                                 slide.MobileImage = media;
                                 break;
-                            case 852:
+                            case 2:
                                 slide.MediumImage = media;
                                 break;
-                            case 1420:
+                            case 3:
                                 slide.LargeImage = media;
-                                break;
-                            default:
                                 break;
                         }
                     }
                     slides.Add(slide);
-                  
                 }
                 viewModel.Slides = slides;
             }
             return View(viewModel);
+        }
+
+        public Dictionary<ImageConversions.ImageFormats, ImageFormat> Formats()
+        {
+            var formats = new Dictionary<ImageConversions.ImageFormats, ImageFormat>
+            {
+                {ImageConversions.ImageFormats.SmallFormat, new ImageFormat()},
+                {ImageConversions.ImageFormats.MobileFormat, new ImageFormat()},
+                {ImageConversions.ImageFormats.MediumFormat, new ImageFormat()},
+                {ImageConversions.ImageFormats.LargeFormat, new ImageFormat()}
+            };
+
+            foreach (var format in formats)
+            {
+                var version = format.Key;
+                switch (version)
+                {
+                    case ImageConversions.ImageFormats.SmallFormat:
+                        format.Value.Effects.Add(new ResizeEffect(ImageSizes.SmallImage.Width, ImageSizes.SmallImage.Height, ResizeMode.ScaleToFill));
+                        break;
+                    case ImageConversions.ImageFormats.MobileFormat:
+                        format.Value.Effects.Add(new ResizeEffect(ImageSizes.MobileImage.Width, ImageSizes.MobileImage.Height, ResizeMode.ScaleToFill));
+                        break;
+                    case ImageConversions.ImageFormats.MediumFormat:
+                        format.Value.Effects.Add(new ResizeEffect(ImageSizes.MediumImage.Width, ImageSizes.MediumImage.Height, ResizeMode.ScaleToFill));
+                        break;
+                    case ImageConversions.ImageFormats.LargeFormat:
+                        format.Value.Effects.Add(new ResizeEffect(ImageSizes.LargeImage.Width, ImageSizes.LargeImage.Height, ResizeMode.ScaleToFill));
+                        break;
+                }
+            }
+
+            return formats;
         }
 
         /// <summary>

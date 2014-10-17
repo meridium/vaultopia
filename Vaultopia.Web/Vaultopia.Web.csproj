@@ -327,8 +327,8 @@
     <Content Include="Static\Scripts\Lib\jquery.hoverIntent.js" />
     <Content Include="Static\Scripts\Lib\jquery.masonry.js" />
     <Content Include="Static\Scripts\Vaultopia.ArticleSlideshow.js" />
-    <Content Include="Static\Scripts\Vaultopia.Gallary.DownloadBtn.js" />
     <Content Include="Static\Scripts\Vaultopia.Gallery.js" />
+    <Content Include="Static\Scripts\Vaultopia.GalleryDownloadBtn.js" />
     <Content Include="Static\Scripts\Vaultopia.ArticleSlideResponsive.js" />
     <Content Include="Static\Scripts\Vaultopia.Slideshow.js" />
     <Content Include="Static\Scripts\Vaultopia.Upload.js" />
@@ -352,6 +352,7 @@
     <Compile Include="Business\IModifyLayout.cs" />
     <Compile Include="Business\Initialization\FilterConfig.cs" />
     <Compile Include="Business\Initialization\PageContextActionFilter.cs" />
+    <Compile Include="Business\Media\ImageSizes.cs" />
     <Compile Include="Business\PageViewContextFactory.cs" />
     <Compile Include="Controllers\ContactBlockController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -381,6 +382,7 @@
     <Compile Include="Models\Blocks\WideTeaserBlock.cs" />
     <Compile Include="Models\Formats\Download.cs" />
     <Compile Include="Models\Formats\GalleryImage.cs" />
+    <Compile Include="Models\Formats\ImageConversions.cs" />
     <Compile Include="Models\Formats\InspirationImage.cs" />
     <Compile Include="Models\Formats\PushImage.cs" />
     <Compile Include="Models\Pages\Article.cs" />
@@ -479,7 +481,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63689</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -106,7 +106,6 @@ C:\Projects\vaultopia\Vaultopia.Web\bin\Newtonsoft.Json.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\Shell.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\StructureMap.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Helpers.dll
-C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Mvc.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Razor.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Webpages.Deployment.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Webpages.dll
@@ -139,7 +138,6 @@ C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Webpages.xml
 C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Webpages.Deployment.xml
 C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Webpages.Razor.xml
 C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Helpers.xml
-C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Mvc.xml
 C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.dll
 C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.pdb
 C:\Projects\VaultTopia\vaultopia\Vaultopia.Web\bin\Vaultopia.Web.dll.config

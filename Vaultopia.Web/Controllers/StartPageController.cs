@@ -36,16 +36,10 @@ namespace Vaultopia.Web.Controllers {
                     {
                         var slideImages = _client.Load<PushImage>(currentPage.PushMediaList.Select(x => x.Id)).ToList();
 
-                        foreach (var slide in slideImages)
+                        slides.AddRange(slideImages.Select(slide => new Dictionary<string, string>
                         {
-                            var dict = new Dictionary<string, string>
-                            {
-                                {"large", slide.Slide.Url},
-                                {"medium", slide.MediumSlide.Url},
-                                {"small", slide.SmallSlide.Url}
-                            };
-                            slides.Add(dict);
-                        }
+                            {"large", slide.Slide.Url}, {"medium", slide.MediumSlide.Url}, {"small", slide.SmallSlide.Url}
+                        }));
                         _imageSlides = slides;
                     }
                 }
