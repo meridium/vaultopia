@@ -421,9 +421,11 @@
     <Content Include="EPiServerFramework.config" />
     <Content Include="connectionStrings.UAT.config">
       <DependentUpon>connectionStrings.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="connectionStrings.QA.config">
       <DependentUpon>connectionStrings.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="connectionStrings.config" />
     <Content Include="EPiServerLog.config" />
