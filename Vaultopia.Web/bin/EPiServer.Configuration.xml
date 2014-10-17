@@ -1479,6 +1479,11 @@
             Workflow host configuration element, not mandatory. 
             </summary>
         </member>
+        <member name="P:EPiServer.Configuration.WorkflowSettingsElement.Disable">
+            <summary>
+            Gets or sets a value indicating if the whole workflow system should be disabled.
+            </summary>
+        </member>
         <member name="P:EPiServer.Configuration.WorkflowSettingsElement.WorkflowDelayedLoading">
             <summary>
             Value to set the if delayed loading should be used. If so instances and definitions are not
