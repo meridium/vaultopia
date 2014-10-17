@@ -2553,9 +2553,53 @@
             <param name="httpContext">The HTTP context.</param>
             <returns></returns>
         </member>
-        <member name="T:EPiServer.Security.ClaimTypes">
+        <member name="T:EPiServer.Security.VirtualRoleAuthorizationSession">
             <summary>
-            This class exist in .NET 4.5 and is temporary added until we go up to 4.5
+            Runtime class to check if a principal is part of a virtual role
+            </summary>
+            <remarks>
+            <para>Implements a cache for lookups that can be disabled per virtual role using the <see cref="P:EPiServer.Security.VirtualRoleProviderBase.EnableIsInRoleCache"/>.</para>
+            <para>Since the class is scoped per request or per thread to get session caching it should never be stored in singleton instances</para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Security.VirtualRoleAuthorizationSession.IsInVirtualRole(System.Security.Principal.IPrincipal,System.String,EPiServer.Security.SecurityEntityType,System.Object)">
+            <summary>
+            Determines whether the current principal belongs to the specified virtual role.
+            </summary>
+            <param name="principal">The principal that will be forwarded to the provider</param>
+            <param name="role">The name of the role for which to check membership.</param>
+            <param name="type">The security type of the role you want to check</param>
+            <param name="context">The context under which the query is being performed</param>
+            <returns>
+            true if the current principal is a member of the specified role; otherwise, false.
+            </returns>
+        </member>
+        <member name="T:EPiServer.Security.VirtualRoleEventHandler">
+            <summary>
+            Implementations for hooking into different HTTP events for virtual roles
+            </summary>
+        </member>
+        <member name="M:EPiServer.Security.VirtualRoleEventHandler.WrappingVirtualRolePrincipal_PostAuthenticateRequest(System.Object,System.EventArgs)">
+            <summary>
+            Handles the PostAuthenticateRequest event to replace the current principal with a VirtualRolePrincipal.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:EPiServer.Security.VirtualRoleEventHandler.WrappingVirtualRolePrincipal_EndRequest(System.Object,System.EventArgs)">
+            <summary>
+            Handles the EndRequest event to add the current user (if authenticated) rolelist to cookie if System.Web.Security.Roles.CacheRolesInCookie
+            is enabled.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+            <remarks>
+            Assumes that Roles are enabled and that CacheRolesInCookie is enabled.
+            </remarks>
+        </member>
+        <member name="T:EPiServer.Security.VirtualRoleToClaimConverter">
+            <summary>
+            Responsible for converting virtual roles into claims
             </summary>
         </member>
         <member name="T:EPiServer.Framework.Security.ISiteSecret">
@@ -3241,6 +3285,13 @@
             <param name="maxRows">The maximum number of rows returned</param>
             <param name="totalCount">The total amount of matched entites. Return -1 if provider does not support paging.</param>
             <returns>A list of all matching entities or an empty list if no matches.</returns>
+        </member>
+        <member name="M:EPiServer.Security.SecurityEntityProvider.GetRolesForUser(System.String)">
+            <summary>
+            Retrieves all roles for user with given userName.
+            </summary>
+            <param name="userName">The name of the user.</param>
+            <returns>A list of all roles for the user.</returns>
         </member>
         <member name="T:EPiServer.Security.SecurityEntityProviderExtensions">
             <summary>
@@ -7024,6 +7075,14 @@
             </summary>
             <remarks>The response from the first call to IsInRole will be cached per request or thread if no request is available</remarks>
         </member>
+        <member name="P:EPiServer.Security.VirtualRoleProviderBase.SupportsClaims">
+            <summary>
+            Determines if the response from IsInRole can be added as a Role claim
+            </summary>
+            <remarks>
+            <para>Claims are only added when the 'addClaims' configuration setting has been enabled on the 'virtualRoles' element.</para>
+            </remarks>
+        </member>
         <member name="P:EPiServer.Security.VirtualRoleProviderBase.SecurityEntityType">
             <summary>
             The security entity type is primarily used when checking role membership for page access rights
@@ -7299,6 +7358,13 @@
             <param name="repository">The virtual role repository</param>
             <param name="cache">Used to cache role lookups</param>
         </member>
+        <member name="M:EPiServer.Security.VirtualRolePrincipal.#ctor(System.Security.Principal.IPrincipal,EPiServer.Security.VirtualRoleAuthorizationSession)">
+            <summary>
+            This constructor supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+            <param name="principal">The principal to be wrapped</param>
+            <param name="authorization">The virtual role authorization</param>
+        </member>
         <member name="M:EPiServer.Security.VirtualRolePrincipal.CreateWrapper(System.Security.Principal.IPrincipal)">
             <summary>
             Creates the wrapper.
@@ -7324,12 +7390,11 @@
             to the principal object.
             </remarks>
         </member>
-        <member name="M:EPiServer.Security.VirtualRolePrincipal.InitCache(System.Security.Principal.IIdentity)">
+        <member name="M:EPiServer.Security.VirtualRolePrincipal.Unwrap(System.Security.Principal.IPrincipal)">
             <summary>
-            Inits the per-request cache
+            Unwraps a wrapped principal
             </summary>
-            <param name="id"></param>
-            <returns></returns>
+            <param name="principal">The principal.</param>
         </member>
         <member name="M:EPiServer.Security.VirtualRolePrincipal.IsInRole(System.String)">
             <summary>
@@ -7350,6 +7415,17 @@
             true if the current principal is a member of the specified role; otherwise, false.
             </returns>
         </member>
+        <member name="M:EPiServer.Security.VirtualRolePrincipal.IsInRole(System.String,EPiServer.Security.SecurityEntityType,System.Object)">
+            <summary>
+            Determines whether the current principal belongs to the specified role.
+            </summary>
+            <param name="role">The name of the role for which to check membership.</param>
+            <param name="type">Only check virtual roles of this security type</param>
+            <param name="context">The context where the virtual role is queried (ie access control lists)</param>
+            <returns>
+            true if the current principal is a member of the specified role; otherwise, false.
+            </returns>
+        </member>
         <member name="M:EPiServer.Security.VirtualRolePrincipal.IsInVirtualRole(System.String,EPiServer.Security.SecurityEntityType)">
             <summary>
             Determines whether the current principal belongs to the specified virtual role.
@@ -7360,30 +7436,16 @@
             true if the current principal is a member of the specified role; otherwise, false.
             </returns>
         </member>
-        <member name="M:EPiServer.Security.VirtualRolePrincipal.VirtualRolePrincipal_AuthorizeRequest(System.Object,System.EventArgs)">
+        <member name="M:EPiServer.Security.VirtualRolePrincipal.IsInVirtualRole(System.String,EPiServer.Security.SecurityEntityType,System.Object)">
             <summary>
-            Obsolete method - delegates to VirtualRolePrincipal_PostAuthenticateRequest
+            Determines whether the current principal belongs to the specified virtual role.
             </summary>
-            <param name="sender">The source of the event.</param>
-            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
-        </member>
-        <member name="M:EPiServer.Security.VirtualRolePrincipal.VirtualRolePrincipal_PostAuthenticateRequest(System.Object,System.EventArgs)">
-            <summary>
-            Handles the PostAuthenticateRequest event to replace the current principal with a VirtualRolePrincipal.
-            </summary>
-            <param name="sender">The source of the event.</param>
-            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
-        </member>
-        <member name="M:EPiServer.Security.VirtualRolePrincipal.VirtualRolePrincipal_EndRequest(System.Object,System.EventArgs)">
-            <summary>
-            Handles the EndRequest event to add the current user (if authenticated) rolelist to cookie if System.Web.Security.Roles.CacheRolesInCookie
-            is enabled.
-            </summary>
-            <param name="sender">The source of the event.</param>
-            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
-            <remarks>
-            Assumes that Roles are enabled and that CacheRolesInCookie is enabled.
-            </remarks>
+            <param name="role">The name of the role for which to check membership.</param>
+            <param name="type">The security type of the role you want to check</param>
+            <param name="context">The context where the virtual role is queried (ie access control lists)</param>
+            <returns>
+            true if the current principal is a member of the specified role; otherwise, false.
+            </returns>
         </member>
         <member name="P:EPiServer.Security.VirtualRolePrincipal.FailSafeIsInRole">
             <summary>
@@ -7563,7 +7625,7 @@
             <remarks>
             This virtual role is a bit special, it is intended for Windows operating systems that have localized the
             name of the Administrators group. This virtual role will do a name-independent check for the Windows Administrators
-            group if the current principal is a WindowsPrincipal.
+            group. If the principal is not authenticated this role will always return <c>false</c>.
             </remarks>
         </member>
         <member name="M:EPiServer.Security.WindowsAdministratorsRole.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
@@ -7840,7 +7902,7 @@
         </member>
         <member name="P:EPiServer.ServiceLocation.ServiceConfigurationAttribute.FactoryMember">
             <summary>
-            Gets or sets the name of a static property on the attributed class from which the service instance is retrieved.
+            Gets or sets the name of a static property or method on the attributed class from which the service instance is retrieved.
             </summary>
         </member>
         <member name="P:EPiServer.ServiceLocation.ServiceConfigurationAttribute.FactoryType">
