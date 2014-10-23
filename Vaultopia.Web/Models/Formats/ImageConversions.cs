@@ -10,7 +10,8 @@
             MobileFormat,
             StandardFormat,
             MediumFormat,
-            LargeFormat
+            LargeFormat,
+            VideoFormat
         }
     }
 }

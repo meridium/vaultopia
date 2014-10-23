@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Routing;
 using EPiServer.Web;
+using EPiServer.WorkflowFoundation.Activities;
 using ImageVault.Client;
 using ImageVault.Common.Data;
 using ImageVault.EPiServer;
 using System.Linq;
+using MindFusion.Graphs;
 using Vaultopia.Web.Models.Formats;
 using System.Web.Script.Serialization;
 using ImageVault.Common.Data.Query;
 using ImageVault.Common.Data.Effects;
 using ImageVault.Common.Services;
 using Vaultopia.Web.Business.Media;
+using Convert = MindFusion.Convert;
 
 namespace Vaultopia.Web.Helpers
 {
@@ -55,31 +59,36 @@ namespace Vaultopia.Web.Helpers
 
             try
             {
+
                 var mediaService = _client.CreateChannel<IMediaService>();
                 var formats = Formats(settings, mediaReference);
 
                 var query = new MediaItemQuery
                 {
-                    Filter = { Id = new List<int> { mediaReference.Id } },
+                    Filter = {Id = new List<int> {mediaReference.Id}},
                     Populate =
                     {
-                        PublishIdentifier = _client.PublishIdentifier
-                    }
-                };
+                        PublishIdentifier = _client.PublishIdentifier,
+                        PublishInformation = true,
+                }
+            };
 
                 foreach (var imageFormat in formats)
                 {
                     query.Populate.MediaFormats.Add(imageFormat.Value);
                 }
-                
+
                 var media = mediaService.Find(query).Single();
-                var mediaItems = MediaItems(media);
+
+                if(media.MediaConversions.Last().ContentType.Contains("video"))
+                {
+                    return new MvcHtmlString(media.MediaConversions.Last().Html);
+                }
+        
+                var mediaItems = MediaItems(media, settings);
                 var pictureTag = PictureTag(mediaItems);
                 return new MvcHtmlString(pictureTag.ToString(TagRenderMode.Normal));
-
-                //var media = query.Resize(settings.Width, settings.Height, settings.ResizeMode).SingleOrDefault() ??
-                //                 query.Resize(settings.Width, settings.Height).SingleOrDefault();
-                //return new MvcHtmlString(media == null ? string.Empty : media.Html);
+                 
             }
             catch
             {
@@ -88,18 +97,19 @@ namespace Vaultopia.Web.Helpers
         }
 
         /// <summary>
-        /// Create list of imageformats and set values
+        /// Create dictionary of imageformats and set values
         /// </summary>
         /// <param name="settings"></param>
         /// <param name="mediaReference"></param>
         /// <returns></returns>
-        private static Dictionary<ImageConversions.ImageFormats, ImageFormat> Formats(PropertyMediaSettings settings, MediaReference mediaReference)
+        private static Dictionary<ImageConversions.ImageFormats, WebMediaFormat> Formats(PropertyMediaSettings settings, MediaReference mediaReference)
         {
-            var formats = new Dictionary<ImageConversions.ImageFormats, ImageFormat>
+            var formats = new Dictionary<ImageConversions.ImageFormats, WebMediaFormat>
             {
-                {ImageConversions.ImageFormats.MobileFormat, new ImageFormat()},
-                {ImageConversions.ImageFormats.MediumFormat, new ImageFormat()},
-                {ImageConversions.ImageFormats.StandardFormat, new ImageFormat()}
+                {ImageConversions.ImageFormats.MobileFormat, new WebMediaFormat()},
+                {ImageConversions.ImageFormats.MediumFormat, new WebMediaFormat()},
+                {ImageConversions.ImageFormats.StandardFormat, new WebMediaFormat()},
+                {ImageConversions.ImageFormats.VideoFormat, new WebMediaFormat()}
             };
 
             foreach (var effect in mediaReference.Effects)
@@ -116,13 +126,16 @@ namespace Vaultopia.Web.Helpers
                 switch (version)
                 {
                     case ImageConversions.ImageFormats.MobileFormat:
-                        format.Value.Effects.Add(new ResizeEffect(ImageSizes.MobileImage.Width, settings.Height, settings.ResizeMode));
+                        format.Value.Effects.Add(new ResizeEffect(ImageSizes.SmallImage.Width, GetHeight(settings, ImageSizes.SmallImage.Width), settings.ResizeMode));
                         break;
                     case ImageConversions.ImageFormats.MediumFormat:
-                        format.Value.Effects.Add(new ResizeEffect(ImageSizes.MediumImage.Width, settings.Height, settings.ResizeMode));
+                        format.Value.Effects.Add(new ResizeEffect(ImageSizes.MediumImage.Width, GetHeight(settings, ImageSizes.MediumImage.Width), settings.ResizeMode));
                         break;
                     case ImageConversions.ImageFormats.StandardFormat:
                         format.Value.Effects.Add(new ResizeEffect(settings.Width, settings.Height, settings.ResizeMode));
+                        break;
+                    case ImageConversions.ImageFormats.VideoFormat:
+                        format.Value.Effects.Add(new ResizeEffect(settings.Width, settings.Height));
                         break;
                 }
             }
@@ -133,31 +146,52 @@ namespace Vaultopia.Web.Helpers
         /// Create list of mymedia
         /// </summary>
         /// <param name="media"></param>
+        /// <param name="settings"></param>
         /// <returns></returns>
-        private static List<MyMedia> MediaItems(MediaItem media)
+        private static List<MyMedia> MediaItems(MediaItem media, PropertyMediaSettings settings)
         {
+           
             //Add images as mediaitems
-            var mediaItems = new List<MyMedia>
-            {
-                new MyMedia()
+            var mediaItems = new List<MyMedia>();
+            
+            var myMediaOriginal = new MyMedia()
                 {
                     MediaVersionType = MyMedia.VersionType.Alternate,
                     MediaSource = media.MediaConversions[2].Url,
-                    BreakPoint = "(min-width: 768px)"
-                },
-                new MyMedia()
+                    BreakPoint = "(min-width: 768px)",
+                };
+            var myMediaMedium = new MyMedia()
                 {
                     MediaVersionType = MyMedia.VersionType.Alternate,
                     MediaSource = media.MediaConversions[1].Url,
-                    BreakPoint = "(min-width: 400px)"
-                },
-                new MyMedia()
+                    BreakPoint = "(min-width: 400px)",
+                };
+            var myMediaSmall = new MyMedia()
                 {
                     MediaVersionType = MyMedia.VersionType.Default,
                     MediaSource = media.MediaConversions[0].Url,
-                    BreakPoint = string.Empty
-                }
-            };
+                    BreakPoint = string.Empty,
+                };
+
+            //Check if it is usefull to render formats for mediaquerys
+            if (settings.Width >= ImageSizes.SmallImage.Width && settings.Width >= ImageSizes.MediumImage.Width || settings.Width == 0)
+            {
+                mediaItems.Add(myMediaSmall);
+                mediaItems.Add(myMediaMedium);
+                mediaItems.Add(myMediaOriginal);
+            }
+            else if (settings.Width >= ImageSizes.SmallImage.Width)
+            {
+                mediaItems.Add(myMediaSmall);
+                myMediaOriginal.BreakPoint = "(min-width: 400px)";
+                mediaItems.Add(myMediaOriginal);
+            }
+            else
+            {
+                myMediaOriginal.MediaVersionType = MyMedia.VersionType.Default;
+                myMediaOriginal.BreakPoint = string.Empty;
+                mediaItems.Add(myMediaOriginal);
+            }
 
             return mediaItems;
         }
@@ -175,6 +209,8 @@ namespace Vaultopia.Web.Helpers
                 var sourceTag = new TagBuilder("source");
                 sourceTag.Attributes.Add("media", mediaItem.BreakPoint);
                 sourceTag.Attributes.Add("srcset", mediaItem.MediaSource);
+
+
                 pictureTag.InnerHtml += sourceTag.ToString(TagRenderMode.Normal);
             }
             foreach (var mediaItem in mediaItemList.Where(m => m.MediaVersionType == MyMedia.VersionType.Default))
@@ -186,6 +222,21 @@ namespace Vaultopia.Web.Helpers
             }
 
             return pictureTag;
+        }
+
+        /// <summary>
+        /// get height of image
+        /// </summary>
+        /// <param name="settings"></param>
+        /// <param name="width"></param>
+        /// <returns></returns>
+        public static int GetHeight(PropertyMediaSettings settings, int width)
+        {
+            if (settings.Width == 0) return 0;
+            var ratio = decimal.Parse(settings.Width.ToString(CultureInfo.InvariantCulture)) / decimal.Parse(width.ToString(CultureInfo.InvariantCulture));
+            var height = settings.Height / ratio;
+            var convertedHeight = Convert.ToInt32(Math.Round(height).ToString(CultureInfo.InvariantCulture));
+            return convertedHeight;
         }
 
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿namespace Vaultopia.Web.Business.Media
 {
-    public static class ImageSizes
+    public class ImageSizes
     {
         public static class SmallImage
         {

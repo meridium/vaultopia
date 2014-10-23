@@ -8,10 +8,9 @@
 
 <article>
     <h2><a href="@Url.PageUrl(Model.CurrentPage.LinkURL)">@Html.PropertyFor(m => m.CurrentPage.NewsHeading)</a></h2>
-    @*Html.PropertyFor(x => x.CurrentPage.PartialImage, new { PropertySettings = PropertyHelpers.GetPropertySettings<NewsPage, MediaReference, PropertyMediaSettings>(Model.CurrentPage, m => m.PartialImage) })*@
     @if (Model.NewsImage != null)
     {
-        <img src="@Model.NewsImage.Url" alt="" />
+        @Html.Raw(@Model.NewsImage.Html)
     }
     <p>@Html.PropertyFor(m => m.CurrentPage.IntroText)</p>
     <p class="location"><strong class="icon">Location: </strong>@Html.PropertyFor(m => m.CurrentPage.NewsLocation)</p>
