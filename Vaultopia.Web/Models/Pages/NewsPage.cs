@@ -66,8 +66,10 @@ namespace Vaultopia.Web.Models.Pages
         /// The newstext
         /// </value> 
         [CultureSpecific]
-        [Display(GroupName = SystemTabNames.Content, Order = 5)]
-        [UIHint(UIHint.Textarea)]
+        [Editable(true)]
+        [Display(
+            GroupName = SystemTabNames.Content,
+            Order = 3)]
         public virtual XhtmlString NewsText { get; set; }
 
         /// <summary>

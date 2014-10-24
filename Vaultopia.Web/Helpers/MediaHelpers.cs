@@ -126,7 +126,7 @@ namespace Vaultopia.Web.Helpers
                 switch (version)
                 {
                     case ImageConversions.ImageFormats.MobileFormat:
-                        format.Value.Effects.Add(new ResizeEffect(ImageSizes.SmallImage.Width, GetHeight(settings, ImageSizes.SmallImage.Width), settings.ResizeMode));
+                        format.Value.Effects.Add(new ResizeEffect(ImageSizes.MobileImage.Width, GetHeight(settings, ImageSizes.MobileImage.Width), settings.ResizeMode));
                         break;
                     case ImageConversions.ImageFormats.MediumFormat:
                         format.Value.Effects.Add(new ResizeEffect(ImageSizes.MediumImage.Width, GetHeight(settings, ImageSizes.MediumImage.Width), settings.ResizeMode));
@@ -154,43 +154,36 @@ namespace Vaultopia.Web.Helpers
             //Add images as mediaitems
             var mediaItems = new List<MyMedia>();
             
-            var myMediaOriginal = new MyMedia()
+            var myMediaStandard = new MyMedia()
                 {
-                    MediaVersionType = MyMedia.VersionType.Alternate,
+                    MediaVersionType = MyMedia.VersionType.Default,
                     MediaSource = media.MediaConversions[2].Url,
-                    BreakPoint = "(min-width: 768px)",
+                    BreakPoint = string.Empty,
                 };
             var myMediaMedium = new MyMedia()
                 {
                     MediaVersionType = MyMedia.VersionType.Alternate,
                     MediaSource = media.MediaConversions[1].Url,
-                    BreakPoint = "(min-width: 400px)",
+                    BreakPoint = "(max-width: 768px)",
                 };
             var myMediaSmall = new MyMedia()
                 {
-                    MediaVersionType = MyMedia.VersionType.Default,
+                    MediaVersionType = MyMedia.VersionType.Alternate,
                     MediaSource = media.MediaConversions[0].Url,
-                    BreakPoint = string.Empty,
+                    BreakPoint = "(max-width: 400px)",
                 };
+
+            mediaItems.Add(myMediaStandard);
 
             //Check if it is usefull to render formats for mediaquerys
             if (settings.Width >= ImageSizes.SmallImage.Width && settings.Width >= ImageSizes.MediumImage.Width || settings.Width == 0)
             {
                 mediaItems.Add(myMediaSmall);
                 mediaItems.Add(myMediaMedium);
-                mediaItems.Add(myMediaOriginal);
             }
             else if (settings.Width >= ImageSizes.SmallImage.Width)
             {
                 mediaItems.Add(myMediaSmall);
-                myMediaOriginal.BreakPoint = "(min-width: 400px)";
-                mediaItems.Add(myMediaOriginal);
-            }
-            else
-            {
-                myMediaOriginal.MediaVersionType = MyMedia.VersionType.Default;
-                myMediaOriginal.BreakPoint = string.Empty;
-                mediaItems.Add(myMediaOriginal);
             }
 
             return mediaItems;

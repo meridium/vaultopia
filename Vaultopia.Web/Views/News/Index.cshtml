@@ -8,26 +8,26 @@
 @model Vaultopia.Web.Models.ViewModels.NewsViewModel<NewsPage>
 @{
     ViewBag.BodyClass = "news";
-    PageReference startPageReference = PageReference.StartPage;
-    PageData startPage = DataFactory.Instance.GetPage(startPageReference);
+    var startPageReference = ContentReference.StartPage;
+    var startPage = DataFactory.Instance.GetPage(startPageReference);
 }
 
 <main>
     <div class="wrap">
         <div class="innerwrap">
+            <h1>@Html.PropertyFor(x => x.CurrentPage.NewsHeading)</h1>
+            <p class="newsintro">
+                @Html.PropertyFor(x => x.CurrentPage.IntroText)
+            </p>
             <div class="newstop">
                 @Html.PropertyFor(x => x.CurrentPage.MainImage, new { PropertySettings = PropertyHelpers.GetPropertySettings<NewsPage, MediaReference, PropertyMediaSettings>(Model.CurrentPage, m => m.MainImage) })
             </div>
-            <div class="NewsInfo">
-                <h1>@Html.PropertyFor(x => x.CurrentPage.NewsHeading)</h1>
-                <p class="introduction">
-                    @Html.PropertyFor(x => x.CurrentPage.IntroText)
-                </p>
-                <p>
-                    @Html.PropertyFor(x => x.CurrentPage.NewsText)
-                </p>
-                <a href="@Url.PageUrl(startPage.LinkURL)" class="button">Return to startpage</a>
+            
+            <div class="newsinfo">
+                @Html.PropertyFor(x => x.CurrentPage.NewsText)
             </div>
+            <a href="@Url.PageUrl(startPage.LinkURL)" class="button">Return to startpage</a>
+           
         </div>
     </div>
 

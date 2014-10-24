@@ -6,9 +6,9 @@
     <a title="" href="@Model.Thumbnail.Url" class="image">
         <span class="enlarge sprite"></span>
         <picture>
-            <source media="(min-width: 400px)" srcset="@Model.Thumbnail.Url" />
+            <source media="(max-width: 400px)" srcset="@Model.ThumbnailSmall.Url" />
 
-            <img src="@Model.ThumbnailSmall.Url" alt="" />
+            <img src="@Model.Thumbnail.Url" alt="" />
         </picture>
     </a>
     <a href="#" class="metadata-anchor icon">View image metadata</a>
