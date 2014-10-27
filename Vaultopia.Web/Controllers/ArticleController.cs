@@ -86,7 +86,7 @@ namespace Vaultopia.Web.Controllers {
                 }
                 viewModel.Slides = slides;
             }
-            if (currentPage.SharedFile != null || Request.Url != null)
+            if (currentPage.SharedFile != null && Request.Url != null)
             {
                 var shared = new MediaShare()
                 {
