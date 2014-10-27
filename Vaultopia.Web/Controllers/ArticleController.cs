@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using EPiServer.Editor;
@@ -85,7 +86,7 @@ namespace Vaultopia.Web.Controllers {
                 }
                 viewModel.Slides = slides;
             }
-            if (currentPage.SharedFile != null)
+            if (currentPage.SharedFile != null || Request.Url != null)
             {
                 var shared = new MediaShare()
                 {
@@ -94,7 +95,8 @@ namespace Vaultopia.Web.Controllers {
                     Items = new List<MediaItem>() {new MediaItem() {Id = currentPage.SharedFile.Id}}
                 };
                 _client.Store(shared);
-                viewModel.FileShare = "http://vaultopia.local/imagevault/shares/" + shared.Id;
+                var baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
+                viewModel.FileShare = baseUrl + "/imagevault/shares/" + shared.Id;
             }
             else
             {
