@@ -90,7 +90,7 @@ namespace Vaultopia.Web.Controllers {
                 var shared = new MediaShare()
                 {
                     MediaFormatId = 1,
-                    Name = "My Shared File",
+                    Name = "Shared Files",
                     Items = new List<MediaItem>() {new MediaItem() {Id = currentPage.SharedFile.Id}}
                 };
                 _client.Store(shared);
