@@ -85,6 +85,21 @@ namespace Vaultopia.Web.Controllers {
                 }
                 viewModel.Slides = slides;
             }
+            if (currentPage.SharedFile != null)
+            {
+                var shared = new MediaShare()
+                {
+                    MediaFormatId = 1,
+                    Name = "My Shared File",
+                    Items = new List<MediaItem>() {new MediaItem() {Id = currentPage.SharedFile.Id}}
+                };
+                _client.Store(shared);
+                viewModel.FileShare = "http://vaultopia.local/imagevault/shares/" + shared.Id;
+            }
+            else
+            {
+                viewModel.FileShare = string.Empty;
+            }
             return View(viewModel);
         }
 

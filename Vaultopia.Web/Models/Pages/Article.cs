@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
@@ -114,5 +115,11 @@ namespace Vaultopia.Web.Models.Pages
         [Display(GroupName = SystemTabNames.Content)]
         [BackingType(typeof(PropertyMediaList))]
         public virtual MediaReferenceList<MediaReference> SlideMediaList { get; set; }
+
+        [Display(
+            Name = "Travelers guide",
+            GroupName = "Shared Files",
+            Description = "Add something you'd like to share")]
+        public virtual MediaReference SharedFile { get; set; }
     }
 }

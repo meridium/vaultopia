@@ -16,5 +16,7 @@ namespace Vaultopia.Web.Models.ViewModels {
         /// </value>
         public List<Slide> Slides { get; set; }
 
+        public string FileShare { get; set; }
+
     }
 }
