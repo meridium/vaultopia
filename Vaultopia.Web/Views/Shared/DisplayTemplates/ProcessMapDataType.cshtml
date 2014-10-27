@@ -1,0 +1,16 @@
+﻿@**********************************************************************************************
+ * This template is installed by ProcessMap and will be overwritten when upgrading ProcessMap.
+ * If you apply changes to this template, make sure to back them up before upgrading ProcessMap.
+ **********************************************************************************************@
+@using EPiServer.Editor
+@model ProcessMap.EPiServer7.Common.ProcessMapDataType
+
+@*Make sure we only draw the placeholder if we are in edit mode*@
+
+@{
+var propertyIsEmpty = (Model == null) || String.IsNullOrEmpty(Model.Filename);
+}
+@if ((propertyIsEmpty && PageEditing.PageIsInEditMode) || !propertyIsEmpty) {
+    var x = Model ?? new ProcessMap.EPiServer7.Common.ProcessMapDataType();
+    @Html.Raw(x.ToHtml())
+}

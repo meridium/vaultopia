@@ -21,6 +21,7 @@
         $container.find('.image').fancybox();
     };
 
+
     var registerEvents = function() {
 
         $(window).resize(function() {
@@ -137,6 +138,8 @@
             }
         });
     };
+
+
 
     var showMetaData = function(e) {
         e.preventDefault();

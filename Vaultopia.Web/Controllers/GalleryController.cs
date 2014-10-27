@@ -54,11 +54,11 @@ namespace Vaultopia.Web.Controllers
             viewModel.Categorys =
                 _client.Query<Category>().Include(x => x.IsUsed).ToList().Where(x => x.IsUsed.HasValue).ToList();
             viewModel.SelectedCategoryID = category;
-
+      
             return View(viewModel);
         }
 
-         /// <summary>
+        /// <summary>
          /// Creates images to be downloaded
          /// </summary>
          /// <param name="id"></param>
