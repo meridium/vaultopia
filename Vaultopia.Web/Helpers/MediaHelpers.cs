@@ -9,6 +9,7 @@ using ImageVault.Client;
 using ImageVault.Common.Data;
 using ImageVault.EPiServer;
 using System.Linq;
+using ImageVault.EPiServer.Common;
 using MindFusion.Graphs;
 using Vaultopia.Web.Models.Formats;
 using System.Web.Script.Serialization;
@@ -102,7 +103,7 @@ namespace Vaultopia.Web.Helpers
         /// <param name="settings"></param>
         /// <param name="mediaReference"></param>
         /// <returns></returns>
-        private static Dictionary<ImageConversions.ImageFormats, WebMediaFormat> Formats(PropertyMediaSettings settings, MediaReference mediaReference)
+        private static Dictionary<ImageConversions.ImageFormats, WebMediaFormat> Formats(PropertyMediaSettings settings, MediaReferenceBase mediaReference)
         {
             var formats = new Dictionary<ImageConversions.ImageFormats, WebMediaFormat>
             {
@@ -122,8 +123,7 @@ namespace Vaultopia.Web.Helpers
 
             foreach (var format in formats)
             {
-                var version = format.Key;
-                switch (version)
+                switch (format.Key)
                 {
                     case ImageConversions.ImageFormats.MobileFormat:
                         format.Value.Effects.Add(new ResizeEffect(ImageSizes.MobileImage.Width, GetHeight(settings, ImageSizes.MobileImage.Width), settings.ResizeMode));

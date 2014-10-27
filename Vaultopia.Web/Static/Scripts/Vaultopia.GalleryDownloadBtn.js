@@ -41,7 +41,8 @@
             beforeShow: function() {
                 this.title += '<div id="displayformats" class="button downloadbtn">Download</div>';
             },
-            afterShow: function() {
+            afterShow: function () {
+                
                 img = this.href;
                 imageSettings = JSON.parse(getData());
             },

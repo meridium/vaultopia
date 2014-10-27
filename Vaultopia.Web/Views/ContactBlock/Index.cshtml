@@ -4,16 +4,28 @@
 @using Vaultopia.Web.Models.Blocks
 @model ContactBlock
 
-<div class="contactFormBody">
+<article>
+    
     <h1>@Html.PropertyFor(m => m.Name)</h1> 
     @Html.PropertyFor(m => m.ContactInfo)<br/>
-    <div class="contactForm">
-        @Html.PropertyFor(x => x.ContactImage1, new { PropertySettings = PropertyHelpers.GetPropertySettings<ContactBlock, MediaReference, PropertyMediaSettings>(Model, m => m.ContactImage1) })
-        @Html.DisplayFor(m => m.MiniInfo1)
+    
+    <div class="contactcontent">
+        <div class="contactimage">
+            @Html.PropertyFor(x => x.ContactImage1, new { PropertySettings = PropertyHelpers.GetPropertySettings<ContactBlock, MediaReference, PropertyMediaSettings>(Model, m => m.ContactImage1) })
+        </div>
+        <div class="contactinfo">
+            @Html.DisplayFor(m => m.MiniInfo1)
+        </div>
     </div>
+   
     <br />
-    <div class="contactForm">
-        @Html.PropertyFor(x => x.ContactImage2, new { PropertySettings = PropertyHelpers.GetPropertySettings<ContactBlock, MediaReference, PropertyMediaSettings>(Model, m => m.ContactImage2) })
+    
+    <div class="contactcontent">
+        <div class="contactimage">
+            @Html.PropertyFor(x => x.ContactImage2, new { PropertySettings = PropertyHelpers.GetPropertySettings<ContactBlock, MediaReference, PropertyMediaSettings>(Model, m => m.ContactImage2) })
+        </div>
+    <div class="contactinfo">
         @Html.DisplayFor(m => m.MiniInfo2)
     </div>
-</div>
+        </div>
+</article>

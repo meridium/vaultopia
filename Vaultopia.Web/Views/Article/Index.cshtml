@@ -42,14 +42,12 @@
                 </div>
                 <br />
                 @Html.PropertyFor(x => x.CurrentPage.MyMediaList, new { PropertySettings = PropertyHelpers.GetPropertySettings<Vaultopia.Web.Models.Pages.Article, MediaReferenceList<MediaReference>, PropertyMediaSettings>(Model.CurrentPage, m => m.MyMediaList) })
+                @Html.PropertyFor(m => m.CurrentPage.Contact)
             </div>
             <div id="secondary">
                 <ul>
-                    <li><span></span><a href="#">Travelers guide</a></li>
+                    <li><span></span><a target="_blank" href="http://standalone.imagevault.se/shares/thizef2sos">Travelers guide</a></li>
                 </ul>
-
-                @Html.PropertyFor(m => m.CurrentPage.Contact)
-
             </div>
         </main>
             <aside>
@@ -58,15 +56,10 @@
         
     </div>
 </div>
-<script src="~/Static/Scripts/Vaultopia.ArticleSlideResponsive.js"></script>
+
 @section ExternalScripts {
     <script type="text/javascript">
         Vaultopia.ArticleSlideShow.init();
     </script>
-@*<script type="text/javascript">
-    Vaultopia.ArticleSlideResponsive();
-</script>*@
-
-
-
+    <script src="~/Static/Scripts/Vaultopia.ArticleSlideResponsive.js"></script>
 }
