@@ -133,7 +133,7 @@
                     $('#gallery-paging-action').removeClass('loading');
 
                     registerHoverEvents();
-                    $container.find('.image').fancybox();
+                    //$container.find('.image').fancybox();
                 });
             }
         });
