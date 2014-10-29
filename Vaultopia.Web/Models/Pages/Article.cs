@@ -24,7 +24,7 @@ namespace Vaultopia.Web.Models.Pages
             Name = "Heading",
             Description = "",
             GroupName = SystemTabNames.Content,
-            Order = 1)]
+            Order = 2)]
         public virtual string Heading { get; set; }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Vaultopia.Web.Models.Pages
             Name = "Introduction",
             Description = "",
             GroupName = SystemTabNames.Content,
-            Order = 2)]
+            Order = 3)]
         public virtual string Introduction { get; set; }
 
         /// <summary>
@@ -53,17 +53,8 @@ namespace Vaultopia.Web.Models.Pages
             Name = "Main body",
             Description = "The main body will be shown in the main content area of the page, using the XHTML-editor you can insert for example text, images and tables.",
             GroupName = SystemTabNames.Content,
-            Order = 3)]
-        public virtual XhtmlString MainBody { get; set; }
-
-        [CultureSpecific]
-        [Editable(true)]
-        [Display(
-            Name = "Media",
-            Description = "",
-            GroupName = SystemTabNames.Content,
             Order = 4)]
-        public virtual MediaReference Media { get; set; }
+        public virtual XhtmlString MainBody { get; set; }
 
         /// <summary>
         /// Gets or sets the media.
@@ -74,22 +65,11 @@ namespace Vaultopia.Web.Models.Pages
         [CultureSpecific]
         [Editable(true)]
         [Display(
-            Name = "MyMedia",
+            Name = "Media",
             Description = "",
             GroupName = SystemTabNames.Content,
-            Order = 4)]        
-        public virtual MediaReference MyMedia { get; set; }
-
-        [CultureSpecific]
-        [Editable(true)]
-        [Display(
-            Name = "MyMediaList",
-            Description = "",
-            GroupName = SystemTabNames.Content,
-            Order = 4)]        
-        //[UIHint("MediaReferenceList", PresentationLayer.Edit)]
-        [BackingType(typeof(PropertyMediaList))]
-        public virtual MediaReferenceList<MediaReference> MyMediaList { get; set; }
+            Order = 5)]        
+        public virtual MediaReference Media { get; set; }
 
         /// <summary>
         /// Gets or sets the teasers.
@@ -104,22 +84,35 @@ namespace Vaultopia.Web.Models.Pages
             Order = 1)]
         public virtual ContentArea Teasers { get; set; }
 
-
+        /// <summary>
+        /// Gets or sets contact
+        /// </summary>
+        ///<value>
+        /// The contact
+        /// </value>
         public virtual ContentArea Contact { get; set; }
+        
         /// <summary>
         /// Gets or sets the slide media list.
         /// </summary>
         /// <value>
         /// The slide media list.
         /// </value>
-        [Display(GroupName = SystemTabNames.Content)]
+        [Display(GroupName = SystemTabNames.Content,
+            Order = 1)]
         [BackingType(typeof(PropertyMediaList))]
         public virtual MediaReferenceList<MediaReference> SlideMediaList { get; set; }
 
+        /// <summary>
+        /// Gets or sets the shared file
+        /// </summary>
+        /// <value>
+        /// The shared file
+        /// </value>
         [Display(
-            Name = "Travelers guide",
-            GroupName = "Shared Files",
-            Description = "Add something you'd like to share")]
+        Name = "Travelers guide",
+        GroupName = "Shared Files",
+        Description = "Add something you'd like to share")]
         public virtual MediaReference SharedFile { get; set; }
     }
 }

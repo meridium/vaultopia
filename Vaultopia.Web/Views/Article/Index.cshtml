@@ -38,10 +38,9 @@
             <div id="primary">
                 @Html.PropertyFor(x => x.CurrentPage.MainBody)
                 <div class="medialist">
-                    @Html.PropertyFor(x => x.CurrentPage.MyMedia, new { PropertySettings = PropertyHelpers.GetPropertySettings<Vaultopia.Web.Models.Pages.Article, MediaReference, PropertyMediaSettings>(Model.CurrentPage, m => m.MyMedia) })
+                    @Html.PropertyFor(x => x.CurrentPage.Media, new { PropertySettings = PropertyHelpers.GetPropertySettings<Vaultopia.Web.Models.Pages.Article, MediaReference, PropertyMediaSettings>(Model.CurrentPage, m => m.Media) })
                 </div>
                 <br />
-                @Html.PropertyFor(x => x.CurrentPage.MyMediaList, new { PropertySettings = PropertyHelpers.GetPropertySettings<Vaultopia.Web.Models.Pages.Article, MediaReferenceList<MediaReference>, PropertyMediaSettings>(Model.CurrentPage, m => m.MyMediaList) })
                 @Html.PropertyFor(m => m.CurrentPage.Contact)
             </div>
             <div id="secondary">

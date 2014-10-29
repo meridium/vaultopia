@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using EPiServer.Data;
 using EPiServer.Editor;
 using EPiServer.Web.Mvc;
 using ImageVault.Client;
 using ImageVault.Common.Data;
+using ImageVault.EPiServer;
+using Ionic.Zip;
+using StructureMap.Configuration.DSL;
 using Vaultopia.Web.Business.Media;
 using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
@@ -86,14 +90,29 @@ namespace Vaultopia.Web.Controllers {
                 }
                 viewModel.Slides = slides;
             }
+
+
+            var mediaShareService = _client.CreateChannel<IMediaShareService>();
+
             if (currentPage.SharedFile != null && Request.Url != null)
-            {
-                var shared = new MediaShare()
+            {   
+                var mediaShares = mediaShareService.FindShareByMediaItemId(currentPage.SharedFile.Id);
+                var shares = mediaShares as MediaShare[] ?? mediaShares.ToArray();
+                var shared = new MediaShare();
+                var foundShare = shares.FirstOrDefault(x => x.Items.Count == 1);
+       
+
+                if (foundShare == null)
                 {
-                    MediaFormatId = 1,
-                    Name = "Shared Files",
-                    Items = new List<MediaItem>() {new MediaItem() {Id = currentPage.SharedFile.Id}}
-                };
+                    shared.MediaFormatId = 1;
+                    shared.Name = "Shared Files";
+                    shared.Items = new List<MediaItem>() { new MediaItem() { Id = currentPage.SharedFile.Id } };
+                }
+                else
+                {
+                    shared = foundShare;
+                }
+
                 _client.Store(shared);
                 var baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
                 viewModel.FileShare = baseUrl + "/imagevault/shares/" + shared.Id;
