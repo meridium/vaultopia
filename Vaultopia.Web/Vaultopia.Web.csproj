@@ -167,51 +167,63 @@
     </Reference>
     <Reference Include="MindFusion.Common, Version=1.3.0.20523, Culture=neutral, PublicKeyToken=7fed53ada5b92263, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\MindFusion.Common.dll</HintPath>
+      <HintPath>..\lib\MindFusion.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="MindFusion.Diagramming, Version=5.8.0.19036, Culture=neutral, PublicKeyToken=a0d18338041985ba, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MindFusion.Diagramming.dll</HintPath>
     </Reference>
     <Reference Include="MindFusion.Graphs, Version=2.2.0.13651, Culture=neutral, PublicKeyToken=0d09f0b4914ade28, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\MindFusion.Graphs.dll</HintPath>
+      <HintPath>..\lib\MindFusion.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="MindFusion.Scripting, Version=1.0.0.0, Culture=neutral, PublicKeyToken=73f9512fb02f1209, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MindFusion.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="MindFusion.Svg, Version=1.2.0.26696, Culture=neutral, PublicKeyToken=cb2acc0bcf38be91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MindFusion.Svg.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ProcessMap.EPiServer7.Common">
+      <HintPath>..\lib\ProcessMap\ProcessMap.EPiServer7.Common.dll</HintPath>
+    </Reference>
     <Reference Include="ProcessMap.EPiServer7.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=01f4840270d48493, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\ProcessMap.EPiServer7.Common.dll</HintPath>
+      <HintPath>..\lib\ProcessMap.EPiServer7.Common.dll</HintPath>
     </Reference>
     <Reference Include="ProcessMap.EPiServer75, Version=3.3.0.0, Culture=neutral, PublicKeyToken=01f4840270d48493, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\ProcessMap.EPiServer75.dll</HintPath>
-    </Reference>
-    <Reference Include="ProcessMap.EPiServerX.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=01f4840270d48493, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\ProcessMap.EPiServerX.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="ProcessMap.Server, Version=3.3.0.0, Culture=neutral, PublicKeyToken=01f4840270d48493, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\ProcessMap.Server.dll</HintPath>
-    </Reference>
-    <Reference Include="ProcessMap.Server.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=01f4840270d48493, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\ProcessMap.Server.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="ProcessMap.EPiServer7.Common">
-      <HintPath>..\lib\ProcessMap\ProcessMap.EPiServer7.Common.dll</HintPath>
+      <HintPath>..\lib\ProcessMap.EPiServer75.dll</HintPath>
     </Reference>
     <Reference Include="ProcessMap.EPiServerX.Common">
       <HintPath>..\lib\ProcessMap\ProcessMap.EPiServerX.Common.dll</HintPath>
     </Reference>
+    <Reference Include="ProcessMap.EPiServerX.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=01f4840270d48493, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ProcessMap.EPiServerX.Common.dll</HintPath>
+    </Reference>
     <Reference Include="ProcessMap.Server">
       <HintPath>..\lib\ProcessMap\ProcessMap.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcessMap.Server, Version=3.3.0.0, Culture=neutral, PublicKeyToken=01f4840270d48493, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ProcessMap.Server.dll</HintPath>
     </Reference>
     <Reference Include="ProcessMap.Server.Common">
       <HintPath>..\lib\ProcessMap\ProcessMap.Server.Common.dll</HintPath>
     </Reference>
+    <Reference Include="ProcessMap.Server.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=01f4840270d48493, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ProcessMap.Server.Common.dll</HintPath>
+    </Reference>
     <Reference Include="ProcessMapEditor.Data, Version=3.3.0.0, Culture=neutral, PublicKeyToken=01f4840270d48493, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\ProcessMapEditor.Data.dll</HintPath>
+      <HintPath>..\lib\ProcessMapEditor.Data.dll</HintPath>
     </Reference>
     <Reference Include="Shell, Version=3.1.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

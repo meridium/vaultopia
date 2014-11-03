@@ -230,3 +230,11 @@ C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Helpers.xml
 C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.dll
 C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.pdb
 C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.csprojResolveAssemblyReference.cache
+C:\Projects\vaultopia\Vaultopia.Web\bin\MindFusion.Common.dll
+C:\Projects\vaultopia\Vaultopia.Web\bin\MindFusion.Graphs.dll
+C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.EPiServer7.Common.dll
+C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.EPiServer75.dll
+C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.EPiServerX.Common.dll
+C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.Server.Common.dll
+C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.Server.dll
+C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMapEditor.Data.dll
