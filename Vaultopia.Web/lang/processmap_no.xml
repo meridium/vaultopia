@@ -14,5 +14,13 @@
 				<Delete>Slett</Delete>
 			</Edit>
 		</ProcessMapExtension>
-	</language>
+    <ProcessMap>
+      <Scheduler>
+        <ProcessMapBrokenLinkReporter>
+          <DisplayName>Processmap - Rapport av brutte linker</DisplayName>
+          <Description>Rapporterer brutte linker i ProcessMap</Description>
+        </ProcessMapBrokenLinkReporter>
+      </Scheduler>
+    </ProcessMap>
+  </language>
 </languages>

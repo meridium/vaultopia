@@ -4,8 +4,8 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Web;
 using ImageVault.EPiServer;
-using ProcessMap.EPiServer7.Property;
-
+using ProcessMap.EPiServer7.Common;
+using ProcessMap.EPiServer75.Property;
 namespace Vaultopia.Web.Models.Pages
 {
     [ContentType(DisplayName = "Process", GUID = "a3aa5699-abdd-4c99-a5d3-066676125b3c", Description = "")]

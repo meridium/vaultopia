@@ -14,5 +14,13 @@
 				<Delete>Ta bort</Delete>
 			</Edit>
 		</ProcessMapExtension>
-	</language>
+    <ProcessMap>
+      <Scheduler>
+        <ProcessMapBrokenLinkReporter>
+          <DisplayName>Processmap - Rapport över brutna länkar</DisplayName>
+          <Description>Rapporterar brutna länkar i Processmap</Description>
+        </ProcessMapBrokenLinkReporter>
+      </Scheduler>
+    </ProcessMap>
+  </language>
 </languages>

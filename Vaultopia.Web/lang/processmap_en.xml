@@ -14,5 +14,13 @@
 				<Delete>Delete</Delete>
 			</Edit>
 		</ProcessMapExtension>
-	</language>
+    <ProcessMap>
+      <Scheduler>
+        <ProcessMapBrokenLinkReporter>
+          <DisplayName>Processmap - Broken link reporter</DisplayName>
+          <Description>Reports broken links in ProcessMap</Description>
+        </ProcessMapBrokenLinkReporter>
+      </Scheduler>
+    </ProcessMap>
+  </language>
 </languages>

@@ -13,7 +13,7 @@
               @Html.DropDownList("category", new SelectList(Model.Categorys, "Id", "Name"), Html.Translate("/categories/all"), new { @class = "DdlSearch", onchange = "this.form.submit();" })
           </div>
             <div class="tbxSearch">
-                @Html.TextBox("searchImage", null, new { @class = "txbSearch"})
+                @Html.TextBox("searchImage")
             </div>
       </div>
         

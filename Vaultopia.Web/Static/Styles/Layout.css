@@ -363,7 +363,7 @@
    }
 
     .tbxSearch, .ddlSearch {
-        height: 45px;
+        height: 32px;
         float: left;
         display: block;
     }
@@ -386,10 +386,15 @@
     }
 
 
-    .txbSearch {
-        height: 32px;
+    #search form input:not([type=submit])
+     {
         width: 100%;
         min-width: 190px;
+        padding: 0 0 0 5px;
+        height: 100%;
+        display: block;
+        box-sizing: border-box;
+
     }
 
 
