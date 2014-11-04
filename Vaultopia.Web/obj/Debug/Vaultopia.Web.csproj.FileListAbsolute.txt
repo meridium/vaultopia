@@ -188,9 +188,6 @@ C:\Projects\vaultopia\Vaultopia.Web\bin\Ionic.Zip.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\log4net.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\Meridium.Lib.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\Microsoft.Web.Infrastructure.dll
-C:\Projects\vaultopia\Vaultopia.Web\bin\MindFusion.Diagramming.dll
-C:\Projects\vaultopia\Vaultopia.Web\bin\MindFusion.Scripting.dll
-C:\Projects\vaultopia\Vaultopia.Web\bin\MindFusion.Svg.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\Newtonsoft.Json.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\Shell.dll
 C:\Projects\vaultopia\Vaultopia.Web\bin\StructureMap.dll
@@ -230,11 +227,3 @@ C:\Projects\vaultopia\Vaultopia.Web\bin\System.Web.Helpers.xml
 C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.dll
 C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.pdb
 C:\Projects\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.csprojResolveAssemblyReference.cache
-C:\Projects\vaultopia\Vaultopia.Web\bin\MindFusion.Common.dll
-C:\Projects\vaultopia\Vaultopia.Web\bin\MindFusion.Graphs.dll
-C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.EPiServer7.Common.dll
-C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.EPiServer75.dll
-C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.EPiServerX.Common.dll
-C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.Server.Common.dll
-C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMap.Server.dll
-C:\Projects\vaultopia\Vaultopia.Web\bin\ProcessMapEditor.Data.dll
