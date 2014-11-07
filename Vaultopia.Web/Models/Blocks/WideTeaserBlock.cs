@@ -43,25 +43,26 @@ namespace Vaultopia.Web.Models.Blocks {
         [Required]
         public virtual MediaReference WideTeaserImage { get; set; }
 
-        [CultureSpecific]
-        [Display(GroupName = SystemTabNames.Content, Order = 4)]
-        [Required]
-        public virtual MediaReference WideTeaserImage1 { get; set; }
+        //[CultureSpecific]
+        //[Display(GroupName = SystemTabNames.Content, Order = 4)]
+        //[Required]
+        //public virtual MediaReference WideTeaserImage1 { get; set; }
 
-        [CultureSpecific]
-        [Display(GroupName = SystemTabNames.Content, Order = 4)]
-        [Required]
-        public virtual MediaReference Ecke { get; set; }
+        //[CultureSpecific]
+        //[Display(Name = "",GroupName = SystemTabNames.Content, Order = 4)]
+        //[Required]
+        //public virtual MediaReference Ecke { get; set; }
 
         /// <summary>
         /// Gets or sets the teaser text.
         /// </summary>
         /// <value>
-        /// The teaser text.
+        /// The teaser text. Max 200 charecters to write with.
         /// </value>
         [CultureSpecific]
         [Required(AllowEmptyStrings = false)]
-        [Display(GroupName = SystemTabNames.Content, Order = 5)]
+        [StringLength(200, MinimumLength = 0)]
+        [Display(GroupName = SystemTabNames.Content, Order = 5, Description = "Max 200 characters")]
         [UIHint(UIHint.Textarea)]
         public virtual String WideTeaserText { get; set; }
 
@@ -86,5 +87,7 @@ namespace Vaultopia.Web.Models.Blocks {
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 6)]
         public virtual int WideTeaserPrice { get; set; }
+
+        
     }
 }

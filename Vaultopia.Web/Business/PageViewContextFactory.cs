@@ -37,17 +37,19 @@ namespace Vaultopia.Web.Business {
         /// </value>
         protected List<InspirationImage> InspirationImages {
             get {
-                if (_inspirationImages == null) {
-                    var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
+             
+          
+                var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
                     _inspirationImages = new List<InspirationImage>();
+  
                     foreach (MediaReference mediaReference in startPage.SiteInspiration.MediaList) {
                         InspirationImage media = _client.Load<InspirationImage>(mediaReference.Id).SingleOrDefault();
                         if (media == null) {
                             continue;
                         }
                         _inspirationImages.Add(media);
-                    }
-                }
+                    }     
+                
                 return _inspirationImages;
             }
         }

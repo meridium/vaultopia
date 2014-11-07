@@ -953,6 +953,70 @@
             </summary>
             <value></value>
         </member>
+        <member name="T:ImageVault.Common.Data.MediaShare">
+            <summary>
+            The MediaShare class defines a media share
+            </summary>
+            <remarks>
+            The media share defines a set of media items and a specific format that these items should be shared under.
+            
+            2014-05-08 dan: Created
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Data.MediaShare.#ctor">
+            <summary>
+            Initializes a new instance of the <b>MediaShare</b> class.
+            </summary>
+        </member>
+        <member name="M:ImageVault.Common.Data.MediaShare.#ctor(ImageVault.Common.Data.MediaShare)">
+            <summary>
+            Initializes a new instance of the <b>MediaShare</b> class and copies the data from the supplied MediaShare.
+            </summary>
+            <param name="mediaShare">The <see cref="T:ImageVault.Common.Data.MediaShare"/> to copy the information from</param>
+        </member>
+        <member name="M:ImageVault.Common.Data.MediaShare.CopyFrom(ImageVault.Common.Data.MediaShare)">
+            <summary>
+            Copies the data from another media share.
+            </summary>
+            <remarks>No references to the copied object is kept. Reference values are cloned.</remarks>
+            <param name="mediaShare">The <see cref="T:ImageVault.Common.Data.MediaShare"/> to copy the information from</param>
+        </member>
+        <member name="P:ImageVault.Common.Data.MediaShare.Id">
+            <summary>
+            Get/Sets the Id of the MediaShare
+            </summary>
+            <value>This id is part of the url for retrieving the share</value>
+        </member>
+        <member name="P:ImageVault.Common.Data.MediaShare.Name">
+            <summary>
+            Get/Sets the Name of the MediaShare
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Common.Data.MediaShare.Created">
+            <summary>
+            Get/Sets the Created of the MediaShare
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Common.Data.MediaShare.CreatedBy">
+            <summary>
+            Get/Sets the CreatedBy of the MediaShare
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Common.Data.MediaShare.MediaFormatId">
+            <summary>
+            Get/Sets the MediaFormatId of the MediaShare
+            </summary>
+            <value>The id of the MediaFormat that is selected for the share</value>
+        </member>
+        <member name="P:ImageVault.Common.Data.MediaShare.Items">
+            <summary>
+            Get/Sets the Items of the MediaShare
+            </summary>
+            <value>The set of media items that the share consists of. When creating the share, only the Id of the MediaItem is necessary.</value>
+        </member>
         <member name="T:ImageVault.Common.Data.Query.GlobalRoleIdentityFilter">
             <summary>
             Defines the filter for the GlobalRoleIdentityFilter
@@ -1512,6 +1576,50 @@
             Gets the IsEmpty of the TransformableFormat
             </summary>
             <value></value>
+        </member>
+        <member name="T:ImageVault.Common.Data.UserInfo">
+            <summary>
+            Summary description for UserInfo.
+            </summary>
+            <remarks>
+            2014-03-26 dan: Created
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Data.UserInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <b>UserInfo</b> class.
+            </summary>
+        </member>
+        <member name="M:ImageVault.Common.Data.UserInfo.#ctor(ImageVault.Common.Data.User)">
+            <summary>
+            Initializes a new instance of the <b>UserInfo</b> class.
+            </summary>
+            <param name="user"></param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="user"/> is null.</exception>
+        </member>
+        <member name="M:ImageVault.Common.Data.UserInfo.#ctor(ImageVault.Common.Data.UserInfo)">
+            <summary>
+            Initializes a new instance of the <b>UserInfo</b> class.
+            </summary>
+            <param name="userInfo"></param>
+        </member>
+        <member name="P:ImageVault.Common.Data.UserInfo.Username">
+            <summary>
+            Get/Sets the Username of the UserInfo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Common.Data.UserInfo.Roles">
+            <summary>
+            Get/Sets the Roles of the UserInfo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Common.Data.UserInfo.ImpersonatingClient">
+            <summary>
+            Get/Sets the ImpersonatingClient of the UserInfo
+            </summary>
+            <value>If impersonating, the client that allowed the impersonate is contained here</value>
         </member>
         <member name="T:ImageVault.Common.Data.VaultStatistics">
             <summary>
@@ -2200,6 +2308,12 @@
             </summary>
             <value>True if the Access property of the <see cref="T:ImageVault.Common.Data.MediaItem"/> should be populated</value>
         </member>
+        <member name="P:ImageVault.Common.Data.Query.MediaItemPopulationQuery.Shared">
+            <summary>
+            Get/Sets the Shared of the MediaItemPopulationQuery
+            </summary>
+            <value>True if share information should be included</value>
+        </member>
         <member name="T:ImageVault.Common.Data.Query.MediaItemQuery">
             <summary>
             </summary>
@@ -2749,6 +2863,12 @@
             Get/Sets the AddedBy of the MediaItem
             </summary>
             <value>The name of the user that added the image</value>
+        </member>
+        <member name="P:ImageVault.Common.Data.MediaItem.Shared">
+            <summary>
+            Get/Sets the Shared of the MediaItem
+            </summary>
+            <value>If populated, contains the information if the file is shared or not</value>
         </member>
         <member name="T:ImageVault.Common.Data.MediaItemSortOrders">
             <summary>
@@ -3731,6 +3851,11 @@
             Populates the <see cref="P:ImageVault.Common.Data.MediaItem.Access"/> field
             </summary>
         </member>
+        <member name="F:ImageVault.Common.Data.PopulateFields.Shared">
+            <summary>
+            Populates the <see cref="P:ImageVault.Common.Data.MediaItem.Shared"/> field
+            </summary>
+        </member>
         <member name="T:ImageVault.Common.Data.PublishInformation">
             <summary>
             The Publishing source information for a specific media item
@@ -4032,6 +4157,16 @@
         <member name="F:ImageVault.Common.Data.VaultRoles.None">
             <summary>
             User has no access to the vault
+            </summary>
+        </member>
+        <member name="F:ImageVault.Common.Data.VaultRoles.AccessRightsWrite">
+            <summary>
+            AccessRightsWrite
+            </summary>
+        </member>
+        <member name="F:ImageVault.Common.Data.VaultRoles.AccessRightsAdmin">
+            <summary>
+            AccessRightsAdmin
             </summary>
         </member>
         <member name="T:ImageVault.Common.Data.VaultServiceSaveOptions">
@@ -5543,6 +5678,12 @@
             </summary>
             <value></value>
         </member>
+        <member name="P:ImageVault.Common.Security.AccessToken.RefreshToken">
+            <summary>
+            Get/Sets the RefreshToken of the AccessToken
+            </summary>
+            <value></value>
+        </member>
         <member name="T:ImageVault.Common.Security.AuthToken">
             <summary>
             Summary description for AuthToken.
@@ -5753,6 +5894,20 @@
             Get/Sets the TotalRecords of the <see cref="T:ImageVault.Common.Security.FindUsersByNameResult"/>
             </summary>
         </member>
+        <member name="T:ImageVault.Common.Security.IImpersonatingPrincipal">
+            <summary>
+            Indicates that a IPrincipal can be
+            </summary>
+            <remarks>
+            2014-04-04 dan: Created 
+            </remarks>
+        </member>
+        <member name="P:ImageVault.Common.Security.IImpersonatingPrincipal.ImpersonatingClient">
+            <summary>
+            Get/Sets the ImpersonatingClient of the IvPrincipal
+            </summary>
+            <value>If impersonating, the client that allowed the impersonate is contained here</value>
+        </member>
         <member name="T:ImageVault.Common.Security.ImageVaultForbiddenException">
             <summary>
             Summary description for ImageVaultForbiddenException.
@@ -5923,6 +6078,12 @@
             2011-02-02 dan: Created
             </remarks>
         </member>
+        <member name="M:ImageVault.Common.Services.IClientIdentityService.CurrentUserInfo">
+            <summary>
+            Gets User information about the current user 
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ImageVault.Common.Services.IGlobalRoleIdentityService">
             <summary>
             The IGlobalRoleIdentityService interface 
@@ -5991,6 +6152,52 @@
             Gets the OriginalFormat of the MediaFormatService
             </summary>
             <value></value>
+        </member>
+        <member name="T:ImageVault.Common.Services.IMediaShareService">
+            <summary>
+            The IMediaShareService defines the methods used for working with <see cref="T:ImageVault.Common.Data.MediaShare"/> instances.
+            </summary>
+            <remarks>
+            2014-05-08 dan: Created 
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Services.IMediaShareService.Save(ImageVault.Common.Data.MediaShare)">
+            <summary>
+            Saves the supplied mediaShare
+            </summary>
+            <param name="mediaShare"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Common.Services.IMediaShareService.Get(System.String,ImageVault.Common.Data.Query.MediaItemQuery)">
+            <summary>
+            Gets the media share with the supplied id using extra formats and information from the supplied query
+            </summary>
+            <param name="id">The id of the Media share to get</param>
+            <param name="query">The query to use to retrieve extra information. Filter.Id, Populate.PublishIdentifier, Populate.MediaFormats[0] will be set as stated 
+            for the share. Is optional.</param>
+            <returns>The found <see cref="T:ImageVault.Common.Data.MediaShare"/> or null if no matching share is found.</returns>
+            <remarks>If you specify MediaFormats in the MediaItemQuery, these will be found in the MediaItem from MediaConversions[1] and forwards. MediaConversions[0]
+            will contain the conversion for the format specified in the <see cref="T:ImageVault.Common.Data.MediaShare"/>.</remarks>
+        </member>
+        <member name="M:ImageVault.Common.Services.IMediaShareService.GetShares(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Gets a list of media shares with the supplied ids
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Common.Services.IMediaShareService.FindShareByMediaItemId(System.Int32)">
+            <summary>
+            Find all shares, containing the given mediaItemId.
+            </summary>
+            <param name="mediaItemId">The Id to search for</param>
+            <returns>Enumerable set of MediaShares</returns>
+        </member>
+        <member name="M:ImageVault.Common.Services.IMediaShareService.Delete(System.String)">
+            <summary>
+            Deletes the share with the given id.
+            </summary>
+            <param name="shareId">Id of share to delete</param>
         </member>
         <member name="T:ImageVault.Common.Services.IMediaStreamService">
             <summary>

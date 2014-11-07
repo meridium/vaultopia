@@ -24,7 +24,8 @@
         border: none;
         display: block;
     }
-    header, section, article, aside {
+    header, section, 
+    , aside {
         display: block;
     }
 
@@ -65,7 +66,7 @@
         padding: 12px 10px;
         box-sizing: border-box;
         -moz-box-sizing: border-box;
-        width: 100%;
+        /*width: 100%;*/
         margin: 0 0 15px;
     }
 

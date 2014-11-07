@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Policy;
+using ImageVault.Common.Data;
+using System.Collections.Generic;
 using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 
@@ -18,5 +23,21 @@ namespace Vaultopia.Web.Models.ViewModels {
         ///     The images.
         /// </value>
         public List<GalleryImage> Images { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the the category
+        /// </summary>
+        /// <value>
+        ///     category
+        /// </value>
+        public virtual List<Category> Categorys { get; set; }
+
+        public int SelectedCategoryID { get; set; }
+
+        internal object Where(System.Func<T, bool> func)
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
 }

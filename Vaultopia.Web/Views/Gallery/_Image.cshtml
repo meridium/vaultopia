@@ -1,9 +1,15 @@
-﻿@model Vaultopia.Web.Models.Formats.GalleryImage
+﻿@using Vaultopia.Web.Helpers
+@model Vaultopia.Web.Models.Formats.GalleryImage
 
-<li data-image-id="@Model.Id">
-    <a href="@Model.Thumbnail.Url" class="image">
+<li data-image-id="@Model.Id" data-image-width="@Model.Original.Width" data-image-height="@Model.Original.Height">
+
+    <a title="" href="@Model.Thumbnail.Url" class="image">
         <span class="enlarge sprite"></span>
-        <img src="@Model.Thumbnail.Url" alt=""/>
+        <picture>
+            <source media="(max-width: 400px)" srcset="@Model.ThumbnailSmall.Url" />
+
+            <img src="@Model.Thumbnail.Url" alt="" />
+        </picture>
     </a>
     <a href="#" class="metadata-anchor icon">View image metadata</a>
 </li>

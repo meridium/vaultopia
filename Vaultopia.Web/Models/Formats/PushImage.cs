@@ -1,5 +1,9 @@
-﻿using ImageVault.Client.Descriptors.Effects;
+﻿using System;
+using EPiServer.Shell.Web.Mvc;
+using ImageVault.Client.Descriptors.Effects;
 using ImageVault.Common.Data;
+using Ionic.Zlib;
+
 
 namespace Vaultopia.Web.Models.Formats {
     /// <summary>
@@ -14,5 +18,23 @@ namespace Vaultopia.Web.Models.Formats {
         /// </value>
         [ResizeEffect(Width = 2400)]
         public Image Slide { get; set; }
+
+        /// <summary>
+        /// Gets or sets the medium slide.
+        /// </summary>
+        /// <value>
+        /// The medium slide.
+        /// </value>
+        [ResizeEffect(Width = 1400)]
+        public Image MediumSlide { get; set; }
+
+        /// <summary>
+        /// Gets or sets the small slide.
+        /// </summary>
+        /// <value>
+        /// The small slide.
+        /// </value>
+        [ResizeEffect(Width = 400)]
+        public Image SmallSlide { get; set; }
     }
 }

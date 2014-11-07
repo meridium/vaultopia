@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<languages>
+  <language name="English" id="en">
+    <categories>
+      <all>All categories</all>
+     </categories>
+  </language>
+  <language name="Swedish" id="sv">
+    <categories>
+      <all>Alla kategorier</all>
+    </categories>
+  </language>
+</languages>

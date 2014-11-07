@@ -1,4 +1,4 @@
-﻿#README
+﻿!#README
 See the documentation at <http://imagevault.se/doc> for more information.
 
 ##EPiServer CMS integration

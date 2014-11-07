@@ -421,6 +421,45 @@
             A collection of <see cref="T:EPiServer.Data.Configuration.SupportedTypeElement"/>
             </summary>
         </member>
+        <member name="T:EPiServer.Data.DatabaseVersionValidator">
+            <summary>
+            Validates the database version against the supported assembly version.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Data.DatabaseVersionValidator.#ctor(EPiServer.Data.IDatabaseHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Data.DatabaseVersionValidator"/> class.
+            </summary>
+            <param name="databaseHandler">The database handler.</param>
+        </member>
+        <member name="M:EPiServer.Data.DatabaseVersionValidator.ValidateDatabaseVersion(System.Version)">
+            <summary>
+            Validates the database version.
+            </summary>
+            <exception cref="T:System.NotSupportedException">
+            Will be thrown if the database version not maches the supported version.
+            </exception>
+        </member>
+        <member name="M:EPiServer.Data.DatabaseVersionValidator.ThrowUpdateDatabaseException(System.Version,System.Version)">
+            <summary>
+            Throws an NotSupportedException exception saying that database needs to be updated.
+            </summary>
+            <param name="databaseVersion">The database version</param>
+            <param name="codeVersion">The .NET code version</param>
+        </member>
+        <member name="M:EPiServer.Data.DatabaseVersionValidator.ThrowUpdateCodeException(System.Version,System.Version)">
+            <summary>
+            Throws an NotSupportedException exception saying that packages needs to be updated.
+            </summary>
+            <param name="databaseVersion">The database version</param>
+            <param name="codeVersion">The .NET code version</param>
+        </member>
+        <member name="M:EPiServer.Data.DatabaseVersionValidator.GetDatabaseVersion">
+            <summary>
+            Gets the database version.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:EPiServer.Data.Dynamic.TypeToStoreMapper">
             <summary>
             Delegate to map a property on a type to a specific store
@@ -4832,12 +4871,6 @@
             </summary>
             <param name="parameters">The parameters collection to add to</param>
             <param name="resultSetCount">The number of parameters that should be added</param>
-        </member>
-        <member name="M:EPiServer.Data.Dynamic.Providers.DbDataStoreProvider.ValidateVersion">
-            <summary>
-            This function ensures that old/new versions of EPiServer is not reused
-            with an other database as of the new GAC era.
-            </summary>
         </member>
         <member name="M:EPiServer.Data.Dynamic.Providers.DbDataStoreProvider.SaveCollection(EPiServer.Data.Identity,System.String,System.Collections.IEnumerable,System.Boolean,System.Type,EPiServer.Data.Dynamic.Providers.ProviderCallContext,EPiServer.Data.Dynamic.PropertyMapType)">
             <summary>

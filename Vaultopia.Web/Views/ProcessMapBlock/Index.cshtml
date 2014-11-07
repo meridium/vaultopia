@@ -1,0 +1,11 @@
+﻿@using EPiServer.Web.Mvc.Html
+@model Vaultopia.Web.Models.Blocks.ProcessMapBlock
+
+<article>
+    <a href="" class="test">
+        @Html.PropertyFor(x => x.ProcessMap)
+    </a>
+ <h2><a href="/">@Html.PropertyFor(m => m.TeaserHeading)</a></h2>
+    <p>@Html.PropertyFor(m => m.TeaserText)</p>
+    <p class="location"><strong class="icon">Location: </strong>@Html.PropertyFor(m => m.TeaserLocation)</p>
+</article>

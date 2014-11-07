@@ -21,6 +21,7 @@
         $container.find('.image').fancybox();
     };
 
+
     var registerEvents = function() {
 
         $(window).resize(function() {
@@ -132,11 +133,13 @@
                     $('#gallery-paging-action').removeClass('loading');
 
                     registerHoverEvents();
-                    $container.find('.image').fancybox();
+                    //$container.find('.image').fancybox();
                 });
             }
         });
     };
+
+
 
     var showMetaData = function(e) {
         e.preventDefault();

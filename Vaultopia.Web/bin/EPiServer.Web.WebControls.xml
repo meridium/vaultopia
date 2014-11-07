@@ -1696,7 +1696,7 @@
             </code>
             <note>
             <b>Note:</b>  If you do not want automatic retrieval of translated values you can turn this off by setting 
-            the AutomaticTranslation property in your template to false.
+            the <see cref="P:EPiServer.Web.PageExtensions.PageTranslation.TranslateType"/> property in the code behind of your template to <see cref="F:EPiServer.TranslateType.None"/>. See <see cref="T:EPiServer.PageBase"/> where this property is defined.
             </note>
             </example>
         </member>

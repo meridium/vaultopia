@@ -1,0 +1,19 @@
+﻿@using Vaultopia.Web.Helpers
+@model Vaultopia.Web.Models.Formats.GalleryImage
+
+<li data-image-id="@Model.Id">
+    
+        <a title="" href="@Model.Thumbnail.Url" class="image">
+            <span class="enlarge sprite"></span>
+            <picture>
+<<<<<<< Updated upstream
+                <source media="(min-width: 500px)" srcset="@Model.Thumbnail.Url"/>
+
+=======
+                <source media="(min-width: 400px)" srcset="@Model.Thumbnail.Url"/>
+>>>>>>> Stashed changes
+                <img src="@Model.ThumbnailSmall.Url" alt="" />
+            </picture>
+    </a>
+    <a href="#" class="metadata-anchor icon">View image metadata</a>
+</li>

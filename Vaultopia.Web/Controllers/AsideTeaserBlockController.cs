@@ -8,6 +8,7 @@ using EPiServer.Web.Mvc;
 using ImageVault.Client;
 using ImageVault.Client.Query;
 using ImageVault.Common.Data;
+using ImageVault.EPiServer;
 using Vaultopia.Web.Models.Blocks;
 
 namespace Vaultopia.Web.Controllers {

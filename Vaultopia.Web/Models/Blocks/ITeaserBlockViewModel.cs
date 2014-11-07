@@ -1,4 +1,5 @@
 ﻿using EPiServer.Core;
+using ImageVault.Client.Descriptors.Effects;
 using ImageVault.Common.Data;
 
 namespace Vaultopia.Web.Models.Blocks {

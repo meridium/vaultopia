@@ -197,7 +197,6 @@
         <member name="T:EPiServer.Configuration.Settings">
             <summary>
             Holds the instances of all Site Settings configurations which are in the WebConfig file.
-            <img src="Icons/CSharp.gif" alt="Source included" border="0"/>
             </summary>
             <remarks>
             	<para>
@@ -207,7 +206,6 @@
             	<para>
             		The <b>Settings</b> class has the fallback host, which is indicates with "*" in the web.config file for an enterprise solution.
             </para>
-            	<code source="../EPiServer.Configuration/Settings.cs" lang="cs"/>
             </remarks>
         </member>
         <member name="F:EPiServer.Configuration.Settings._indexingTextRegExpDefaultValue">
@@ -802,6 +800,20 @@
             <summary>
             The amount of time before a contents expiration date that the expiration warning should become visible.
             </summary>
+        </member>
+        <member name="P:EPiServer.Configuration.Settings.MonitoredTaskTruncateLimit">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            The amount of time before a monitored task will be removed.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Configuration.Settings.UseStartPublishForDelayedPublishUntil">
+            <summary>
+            Set to false to disable the use of the start publish field to store the date the publishing of a content item should be delayed until.
+            </summary>
+            <remarks>
+            This member supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </remarks>
         </member>
         <member name="T:EPiServer.Configuration.LinkValidator.ExcludePattern">
             <summary>
@@ -1465,6 +1477,11 @@
         <member name="P:EPiServer.Configuration.WorkflowSettingsElement.WorkflowHost">
             <summary>
             Workflow host configuration element, not mandatory. 
+            </summary>
+        </member>
+        <member name="P:EPiServer.Configuration.WorkflowSettingsElement.Disable">
+            <summary>
+            Gets or sets a value indicating if the whole workflow system should be disabled.
             </summary>
         </member>
         <member name="P:EPiServer.Configuration.WorkflowSettingsElement.WorkflowDelayedLoading">

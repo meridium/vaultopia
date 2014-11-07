@@ -346,12 +346,6 @@
             If input stream should be closed automatically after the import/export method has been called.
             </summary>
         </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.SaveAction">
-            <summary>
-            Gets or sets the <see cref="T:EPiServer.DataAccess.SaveAction"/> used when publishing the imported pages.
-            </summary>
-            <value>The save action.</value>
-        </member>
         <member name="P:EPiServer.Enterprise.ExportImportBase.PackageDefinitionName">
             <summary>
             Gets the name of the file to store the definition of content (content type def, category def and etc).
@@ -411,22 +405,6 @@
             The stream that should be used to write or read the actual package.
             </summary>
         </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.ContentLanguages">
-            <summary>
-            Gets the page languages to transfer, if no list of languages is in the list all languages is transfered.
-            </summary>
-            <value>The page languages to be transfered.</value>
-        </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.KeepIdentity">
-            <summary>
-            Allow pages to be synchronized using the PageLookup during import operation.
-            </summary>
-        </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.DestinationRoot">
-            <summary>
-            The destination root where new pages should created.
-            </summary>
-        </member>
         <member name="P:EPiServer.Enterprise.ExportImportBase.DeleteContent">
             <summary>
             Gets or sets the page collection for pages to delete.
@@ -458,27 +436,6 @@
             Gets or sets the pages identies to move.
             </summary>
             <value>A dictionary of pages identities to move to a new parent identity.</value>
-        </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.IncludeImplicitContentDependencies">
-            <summary>
-            Gets or sets a value indicating whether to implicitly include referenced global blocks.
-            </summary>
-            <value>
-            	<c>true</c> if referenced global blocks should be implicitly included; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.IncludeImplicitContentTypeDependencies">
-            <summary>
-            Gets or sets a value indicating whether to implicitly include referenced content types.
-            </summary>
-            <value>
-            	<c>true</c> if referenced content types should be implicitly included; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.ContentTypes">
-            <summary>
-            Content types that should be exported or has been imported.
-            </summary>
         </member>
         <member name="P:EPiServer.Enterprise.ExportImportBase.PageTypes">
             <summary>
@@ -523,57 +480,11 @@
             Access the current export/import context without access to the original class.
             </summary>
         </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.Log">
-            <summary>
-            Gets the log handler for the transfer functionality.
-            </summary>
-            <value>The log handler.</value>
-        </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.CopiedContentLink">
-            <summary>
-            Gets or sets the first copied page link.
-            </summary>
-            <value>The copied page link.</value>
-        </member>
         <member name="P:EPiServer.Enterprise.ExportImportBase.FileTransfer">
             <summary>
             Gets the file transfer object, that holds the functionality to transfer files..
             </summary>
             <value>The file transfer object.</value>
-        </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.LinkGuidMap">
-            <summary>
-            Gets the look up table between incoming Guids (page / files) and outgoing links.
-            </summary>
-            <value>The map old GUID new link.</value>
-        </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.ContentTypesMap">
-            <summary>
-            Gets the look up table between incoming page type names and existing page type GUIDs.
-            </summary>
-            <value>The map page type name from package and existing page type GUID.</value>
-        </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.SourceRoots">
-            <summary>
-            Gets the source roots for the transfered content.
-            </summary>
-            <value>The source roots for the transfered content.</value>
-        </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.ImplicitContents">
-            <summary>
-            Gets the contents that have been implicitly added to package.
-            </summary>
-            <remarks>
-            The typical case for an implicitly added content is when a page references a global block. In that case
-            the global block is implicitly added to the export package.
-            </remarks>
-            <value>The implicit contents.</value>
-        </member>
-        <member name="P:EPiServer.Enterprise.ExportImportBase.ForceNewIdentitiesOnExport">
-            <summary>
-            Gets or sets a value indicating whether to force new page identifiers for the mirrored pages.
-            </summary>
-            <value><c>true</c> if [force new identities]; otherwise, <c>false</c>.</value>
         </member>
         <member name="F:EPiServer.Enterprise.DataExporter.ExporterVersion">
             <summary>
@@ -726,12 +637,6 @@
             Gets or sets the culture to use.
             </summary>
             <value>The culture.</value>
-        </member>
-        <member name="P:EPiServer.Enterprise.DataExporter.ExcludeFiles">
-            <summary>
-            Gets or sets a value indicating whether to exclude refered files.
-            </summary>
-            <value><c>true</c> if [exclude files]; otherwise, <c>false</c>.</value>
         </member>
         <member name="P:EPiServer.Enterprise.DataExporter.RequiredSourceAccess">
             <summary>
