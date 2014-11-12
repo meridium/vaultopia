@@ -45,7 +45,10 @@
             </div>
             <div id="secondary">
                 <ul>
-                    <li><span></span><a target="_blank" href="@Model.FileShare">Travelers guide</a></li>
+                    @if (@Model.FileShare != null)
+                    {
+                        <li><span></span><a target="_blank" href="@Model.FileShare">Travelers guide</a></li>
+                    }
                 </ul>
             </div>
         </main>
