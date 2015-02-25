@@ -301,7 +301,7 @@
         </member>
         <member name="P:EPiServer.XForms.Parsing.SubmitFragment.UniqueName">
             <summary>
-            The name of the fragment. This are the same as the Action property and can be used as Id for buttons
+            The name of the fragment. This is a SHA256 hash of the Label and Action property and can be used as unique Id for buttons.
             </summary>
         </member>
         <member name="P:EPiServer.XForms.Parsing.SubmitFragment.Value">
@@ -496,14 +496,6 @@
             <summary>
             Used to convert XHTML to an XForm.
             </summary>
-        </member>
-        <member name="M:EPiServer.XForms.Util.XFormConvert.Parse(System.Xml.XmlDocument,System.Boolean)">
-            <summary>
-            Transform the content of an XmlDocument to a string representation of an XForm.
-            </summary>
-            <param name="xhtml">The XmlDocument to parse.</param>
-            <param name="autoCorrect">If set to true, form elements that have the same name, no name or names including invalid characters will be corrected. Otherwise an exception will be thrown for invalid names.</param>
-            <returns>A string representation of an XForm.</returns>
         </member>
         <member name="M:EPiServer.XForms.Util.XFormConvert.Parse(System.Xml.XmlDocument)">
             <summary>
@@ -1153,14 +1145,6 @@
             The definition for the form. 
             </summary>
         </member>
-        <member name="E:EPiServer.XForms.WebControls.XFormControl.BeforeReadingPostedData">
-            <summary>
-            EventHandler that is triggered before reading and validating posted data. 
-            If an event listener sets CancelSubmit=true an Static Validator with the 
-            ErrorMessage will be added to the page and the form does not continue reading 
-            and validating input values. 
-            </summary>
-        </member>
         <member name="E:EPiServer.XForms.WebControls.XFormControl.BeforeLoadingForm">
             <summary>
             This event is triggered when loading the form before the form controls are parsed.
@@ -1414,15 +1398,6 @@
             <param name="take">The number of posts to read</param>
             <returns>An IList containing XFormData objects</returns>
         </member>
-        <member name="M:EPiServer.XForms.XForm.GetPostedData(System.Guid,System.DateTime,System.DateTime)">
-            <summary>
-            Get all data posted to the database for this form between the given dates for a certain page.
-            </summary>
-            <param name="pageGuid">Only return posted data for this page. The parameter is ignored if it equals <see cref="F:System.Guid.Empty"/>.</param>
-            <param name="beginDate">The start date for the search. This will be ignored if set to DateTime.MinValue</param>
-            <param name="endDate">The end date for the search. This will be ignored if set to DateTime.MinValue or DateTime.MaxValue</param>
-            <returns>An IList containing XFormData objects</returns>
-        </member>
         <member name="M:EPiServer.XForms.XForm.GetPostedData(System.DateTime,System.DateTime,System.Guid)">
             <summary>
             Get all data posted to the database for this form between the given dates for a certain page.
@@ -1486,11 +1461,6 @@
             Saves the form.
             </summary>
         </member>
-        <member name="M:EPiServer.XForms.XForm.Delete">
-            <summary>
-            Deletes the form.
-            </summary>
-        </member>
         <member name="M:EPiServer.XForms.XForm.CreateHtmlFragments">
             <summary>
             Parses the HTML part of the XForm and returns a collection of HTML fragments
@@ -1522,14 +1492,6 @@
             <summary>
             The time the form was last changed.
             </summary>
-        </member>
-        <member name="P:EPiServer.XForms.XForm.PageAfterPost">
-            <summary>
-            Set this value to indicate that the user should be redirected to the following page after the form has been successfully posted.
-            </summary>
-            <remarks>
-            This property is obsolete, use property PageGuidAfterPost instead.
-            </remarks>
         </member>
         <member name="P:EPiServer.XForms.XForm.PageGuidAfterPost">
             <summary>
@@ -1576,11 +1538,6 @@
         <member name="P:EPiServer.XForms.XForm.InstanceRoot">
             <summary>
             A pointer to the XForm instance node.
-            </summary>
-        </member>
-        <member name="P:EPiServer.XForms.XForm.PageId">
-            <summary>
-            The page id that the form belongs to.
             </summary>
         </member>
         <member name="P:EPiServer.XForms.XForm.PageGuid">
@@ -1739,13 +1696,6 @@
             The unique name that is used when sending form data. 
             </summary>
         </member>
-        <member name="M:EPiServer.XForms.XFormData.CreateInstance(System.Guid)">
-            <summary>
-            Loads an XFormData object.
-            </summary>
-            <param name="formDataId">The id for the XFormData to load.</param>
-            <returns>The loaded XFormData object.</returns>
-        </member>
         <member name="M:EPiServer.XForms.XFormData.CreateInstance(System.Guid,System.Guid)">
             <summary>
             Loads an XFormData object.
@@ -1886,12 +1836,6 @@
             </summary>
             <remarks>This can be used when searching through form data.</remarks>
         </member>
-        <member name="P:EPiServer.XForms.XFormData.PageId">
-            <summary>
-            The page id that the form is posted from.
-            </summary>
-            <remarks>This can be used when searching through form data.</remarks>
-        </member>
         <member name="P:EPiServer.XForms.XFormData.UserName">
             <summary>
             The name of the user that is posting the form.
@@ -1906,7 +1850,6 @@
             <summary>
             The xml node containing the form data.
             </summary>
-            <remarks>To insert any custom data use <see cref="P:EPiServer.XForms.XFormData.CustomData"/> property</remarks>
         </member>
         <member name="P:EPiServer.XForms.XFormData.ChannelOptions">
             <summary>

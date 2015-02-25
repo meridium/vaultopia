@@ -363,11 +363,6 @@
             E-mail address that error messages should be sent to
             </summary>
         </member>
-        <member name="P:EPiServer.Configuration.Settings.CategoryId">
-            <summary>
-            Defines ID for the root Category
-            </summary>
-        </member>
         <member name="P:EPiServer.Configuration.Settings.RootPageResolver">
             <summary>
             Gets or sets the root page resolver.
@@ -406,12 +401,6 @@
             Defines from where the Office plug-in should display the site tree
             </summary>
         </member>
-        <member name="P:EPiServer.Configuration.Settings.SiteShortName">
-            <summary>
-            The site name that is used when communicating with other EPiServer sites.
-            RegExp Pattern for validation: "^([a-zA-Z0-9\.-]{0,256})$".
-            </summary>
-        </member>
         <member name="P:EPiServer.Configuration.Settings.SiteUrlResolver">
             <summary>
             Gets or sets the SiteUrl resolver.
@@ -446,24 +435,6 @@
             Gets or sets the error mail handler.
             </summary>
             <value>The error mail handler.</value>
-        </member>
-        <member name="P:EPiServer.Configuration.Settings.EnableEvents">
-            <summary>
-            Gets or sets a value indicating whether events are enabled.
-            </summary>
-            <value><c>true</c> if events are enabled; otherwise, <c>false</c>.</value>
-            <remarks>
-            The event system is no longer controlled by EPiServer CMS and this setting is ignored.
-            </remarks>
-        </member>
-        <member name="P:EPiServer.Configuration.Settings.EnableRemoteEvents">
-            <summary>
-            Gets or sets a value indicating whether remote event is enabled.
-            </summary>
-            <value><c>true</c> if remote events are enabled; otherwise, <c>false</c>.</value>
-            <remarks>
-            The event system is no longer controlled by EPiServer CMS and this setting is ignored.
-            </remarks>
         </member>
         <member name="P:EPiServer.Configuration.Settings.AutoSaveInterval">
             <summary>
@@ -755,6 +726,13 @@
         <member name="P:EPiServer.Configuration.Settings.UseLegacyFileManagerMode">
             <summary>
             Gets or sets the useLegacyFileManagerMode for determining which file manager is set to  run
+            </summary>
+        </member>
+        <member name="P:EPiServer.Configuration.Settings.UseLegacyShortcutRouting">
+            <summary>
+            Gets or sets the useLegacyShortcutRouting that determines how request for pages with a shortcut should be handled.
+            If value is true then the request will be redirected to the page it shorcuts to. If setting is false
+            no redirection is done while data is fetched from shortcut page.
             </summary>
         </member>
         <member name="P:EPiServer.Configuration.Settings.PageFolderVirtualPathProviderName">
@@ -1357,20 +1335,6 @@
             <summary>
             
             </summary>
-        </member>
-        <member name="P:EPiServer.Configuration.VirtualRolesElement.FailSafeIsInRole">
-            <summary>
-            Gets or sets a value indicating whether IsInRole on VirtualRolePrincipal may throw an exception.
-            </summary>
-            <value><c>true</c> if IsInRole is fail safe (cannot throw exception); otherwise, <c>false</c>.</value>
-            <remarks>
-            This setting can be useful to emulate the behavior of IsInRole as it worked in .NET Framework 1.0 / 1.1
-            In these versions any exceptions thrown by code executing beneath IsInRole were caught and ignored. The IsInRole
-            for a WindowsPrincipal in .NET 2.0 may throw an exception if a domain controller is unavailable - this may be
-            undesired behavior since it could prevent the logon process, thus preventing any user from logging on. By setting
-            this property to True you will cause any exceptions thrown by IsInRole to be caught and ignored. The IsInRole
-            call will be interpreted as returning False on throw.
-            </remarks>
         </member>
         <member name="M:EPiServer.Configuration.WorkflowFoundation.DefinitionCollection.RemoveDefinition(System.String)">
             <summary>

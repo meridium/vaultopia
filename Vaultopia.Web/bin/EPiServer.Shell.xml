@@ -1148,6 +1148,11 @@
             Used to forbid access when modules are stored in the "_Protected" folder inside public modules
             </summary>
         </member>
+        <member name="T:EPiServer.Shell.Modules.ShellZipArchiveSecurity">
+            <summary>
+            Used to restrict requests to ZIP archives containing a shell module.
+            </summary>
+        </member>
         <member name="T:EPiServer.Shell.ObjectEditing.DefaultDragAndDropTargetAttribute">
             <summary>
             Set this to define which property that should accept drag and drop operations for a complex object in the overlay.
@@ -1247,6 +1252,23 @@
             Implement this method to provide custom ui descriptors
             </summary>
             <returns>A collection of ui descriptors</returns>
+        </member>
+        <member name="T:EPiServer.Shell.LicensedExtendedDataService">
+            <summary>
+            Integrates the modules concept into the licensing system
+            </summary>
+        </member>
+        <member name="M:EPiServer.Shell.LicensedExtendedDataService.#ctor(EPiServer.ServiceLocation.IServiceLocator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Shell.LicensedExtendedDataService"/> class.
+            <param name="serviceLocator"></param>
+            </summary>
+        </member>
+        <member name="M:EPiServer.Shell.LicensedExtendedDataService.Get">
+            <summary>
+            Get licensed extended data such as modules name
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:EPiServer.Shell.ViewComposition.ILocalizedHeadingComponent">
             <summary>
@@ -1547,44 +1569,6 @@
             Gets or sets the dojo maps
             </summary>
         </member>
-        <member name="T:EPiServer.Shell.ObjectEditing.AllowedTypesAttribute">
-            <summary>
-            Assigns types that the property accepts adding.
-            </summary>
-        </member>
-        <member name="M:EPiServer.Shell.ObjectEditing.AllowedTypesAttribute.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:EPiServer.Shell.ObjectEditing.AllowedTypesAttribute"/> class.
-            </summary>
-        </member>
-        <member name="M:EPiServer.Shell.ObjectEditing.AllowedTypesAttribute.#ctor(System.Type[])">
-            <summary>
-            Initializes a new instance of the <see cref="T:EPiServer.Shell.ObjectEditing.AllowedTypesAttribute"/> class.
-            </summary>
-            <param name="allowedTypes">The allowed types.</param>
-        </member>
-        <member name="M:EPiServer.Shell.ObjectEditing.AllowedTypesAttribute.OnMetadataCreated(System.Web.Mvc.ModelMetadata)">
-            <summary>
-            Adds the allowed types to the metadata.
-            </summary>
-            <param name="metadata">The model metadata.</param>
-        </member>
-        <member name="P:EPiServer.Shell.ObjectEditing.AllowedTypesAttribute.AllowedTypes">
-            <summary>
-            Gets the allowed types.
-            </summary>
-            <value>
-            The allowed types.
-            </value>
-        </member>
-        <member name="P:EPiServer.Shell.ObjectEditing.AllowedTypesAttribute.AllowedTypesFormatSuffix">
-            <summary>
-            Gets or sets the allowed types format suffix.
-            </summary>
-            <value>
-            The allowed types format suffix.
-            </value>
-        </member>
         <member name="T:EPiServer.Shell.ObjectEditing.SelectionFactoryRegistrationAttribute">
             <summary>
             Register a <see cref="T:EPiServer.Shell.ObjectEditing.ISelectionFactory"/> instance to IOC container.
@@ -1766,6 +1750,36 @@
             <summary>
             The component categories.
             </summary>
+        </member>
+        <member name="T:EPiServer.Shell.Modules.ShellZipArchiveVirtualPathProviderModule">
+            <summary>
+            Handles convention based registration of <see cref="T:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider"/> for modules.
+            </summary>
+            <remarks>
+            <para>
+                If a module contains a .zip archive file with the same name as the directory it will be registered 
+                and the content of the archive exposed through a <see cref="T:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider"/>.
+            </para>
+            <para>
+                This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Shell.Modules.ShellZipArchiveVirtualPathProviderModule.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Shell.Modules.ShellZipArchiveVirtualPathProviderModule"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Shell.Modules.ShellZipArchiveVirtualPathProviderModule.CreateProviders(EPiServer.Framework.Initialization.InitializationEngine)">
+            <inheritdoc />
+        </member>
+        <member name="M:EPiServer.Shell.Modules.ZipArchiveFinder.Find(System.String)">
+            <summary>
+            Finds all directories directly under the provided <paramref name="rootPath"/> that contains a 
+            ZIP archive with the same name as the directory.
+            </summary>
+            <param name="rootPath">The root path under where to look for directories with archives.</param>
+            <returns>A dictionary where the key is the name of the directory and the value is the relative path to the archive.</returns>
         </member>
         <member name="T:EPiServer.Shell.Web.Mvc.Html.DojoConfigurationHelper">
             <summary>
@@ -2206,15 +2220,6 @@
             <param name="viewConfigurations">All view configurations</param>
             <remarks>Only use this overload if you want to specifically register custom drag and drop types.</remarks>
         </member>
-        <member name="M:EPiServer.Shell.UIDescriptor.#ctor(System.Type,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Initializes a new instance of the <see cref="T:EPiServer.Shell.UIDescriptor"/> class.
-            </summary>
-            <param name="forType">The described CLR type.</param>
-            <param name="typeIdentifier">Type's identifier. Used to replace CLR type's fully qualified name.</param>
-            <param name="iconClass">Represents CSS class name which will be used to display an icon for the type.</param>
-            <param name="dndTypes">An array with the drag and drop types that the item type represents.</param>
-        </member>
         <member name="M:EPiServer.Shell.UIDescriptor.#ctor(System.Type,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{EPiServer.Shell.ViewConfiguration})">
             <summary>
             Initializes a new instance of the <see cref="T:EPiServer.Shell.UIDescriptor"/> class.
@@ -2335,6 +2340,11 @@
             Flag indicates creating content is primary type or not
             </summary>
         </member>
+        <member name="P:EPiServer.Shell.UIDescriptor.BaseTypes">
+            <summary>
+            Gets or sets a list of the base types and interfaces that the item type directly inherited from.
+            </summary>
+        </member>
         <member name="M:EPiServer.Shell.UIDescriptor`1.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:EPiServer.Shell.UIDescriptor`1"/> class.
@@ -2400,14 +2410,6 @@
             <param name="descriptor">The descriptor.</param>
             <remarks>This method is not thread safe. Implement <see cref="T:EPiServer.Shell.UIDescriptorProvider"/> instead to add ui descriptors.</remarks>
         </member>
-        <member name="M:EPiServer.Shell.UIDescriptorRegistry.SetBaseTypeIdentifier(EPiServer.Shell.UIDescriptor,System.Collections.Generic.IEnumerable{EPiServer.Shell.UIDescriptor})">
-            <summary>
-            Set the <see cref="P:EPiServer.Shell.UIDescriptor.BaseTypeIdentifier"/> property on the descriptors in the supplied collection.
-            The base type identifier is resolved from the other types in the descriptors collection.
-            </summary>
-            <param name="descriptor">The descriptor to set base type on</param>
-            <param name="descriptors">A collection of available descriptors</param>
-        </member>
         <member name="M:EPiServer.Shell.UIDescriptorRegistry.GetDescriptorsForType(System.Type,System.Collections.Generic.IEnumerable{EPiServer.Shell.UIDescriptor})">
             <summary>
             Gets an ordered list of any descriptors for a particular type or any of its base types.
@@ -2422,12 +2424,12 @@
             A collection of the <see cref="T:EPiServer.Shell.UIDescriptor"/>s registered for available content types
             </summary>
         </member>
-        <member name="M:EPiServer.Shell.UIDescriptorRegistry.TypeComparer.Compare(System.Type,System.Type)">
+        <member name="M:EPiServer.Shell.UIDescriptorRegistry.TypeComparer.Compare(EPiServer.Shell.UIDescriptor,EPiServer.Shell.UIDescriptor)">
             <summary>
-            Compares two type instances. X greater than Y if X's instances are assignable from Y's instances
+            Compares two UIDescriptors based on their connected type. X is greater than Y if X's instances are assignable from Y's instances
             </summary>
-            <param name="x">The first type instance.</param>
-            <param name="y">The second type instance.</param>
+            <param name="x">The first UIDescriptor instance.</param>
+            <param name="y">The second UIDescriptor instance.</param>
             <returns></returns>
         </member>
         <member name="T:EPiServer.Shell.UIDescriptorRegistrationAttribute">
@@ -3313,6 +3315,54 @@
             resulting range of items as well as a new <see cref="T:EPiServer.Shell.Services.Rest.ItemRange"/>
             instance describing the actual range (including total).</returns>
         </member>
+        <member name="M:EPiServer.Shell.Services.Rest.ItemRange.ApplyTo``1(System.Linq.IQueryable{``0})">
+            <summary>
+            Applies the range (start, end) and returns the items in the range together
+            with the actual range (start, end, total). Utilizes the query engine of the
+            IQueryable to avoid fetching all items unless needed.
+            </summary>
+            <typeparam name="T">The type of items to apply range to.</typeparam>
+            <param name="items">The full item collection to get the range from.</param>
+            <returns>A <see cref="T:EPiServer.Shell.Services.Rest.RangedItems`1"/> instance containing the
+            resulting range of items as well as a new <see cref="T:EPiServer.Shell.Services.Rest.ItemRange"/>
+            instance describing the actual range (including total).</returns>
+        </member>
+        <member name="M:EPiServer.Shell.Services.Rest.ItemRange.ApplyTo``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32})">
+            <summary>
+            Applies the range (start, end) and returns the items in the range together
+            with the actual range (start, end, total), using a supplied total count
+            which means that <paramref name="items"/> don't have to be enumerated to 
+            get the count.
+            </summary>
+            <typeparam name="T">The type of items to apply range to.</typeparam>
+            <param name="items">The full item collection to get the range from.</param>
+            <param name="totalItemCount">The total item count, or null if it should be
+            reported as unknown. To get the actual total count by enumerating <paramref name="items"/>,
+            use the overload without the <paramref name="totalItemCount"/> parameter.</param>
+            <returns>
+            A <see cref="T:EPiServer.Shell.Services.Rest.RangedItems`1"/> instance containing the
+            resulting range of items as well as a new <see cref="T:EPiServer.Shell.Services.Rest.ItemRange"/>
+            instance describing the actual range (including total).
+            </returns>
+        </member>
+        <member name="M:EPiServer.Shell.Services.Rest.ItemRange.ApplyTo``1(System.Linq.IQueryable{``0},System.Nullable{System.Int32})">
+            <summary>
+            Applies the range (start, end) and returns the items in the range together
+            with the actual range (start, end, total), using a supplied total count
+            which means that <paramref name="items"/> don't have to be enumerated to 
+            get the count.
+            </summary>
+            <typeparam name="T">The type of items to apply range to.</typeparam>
+            <param name="items">The full item collection to get the range from.</param>
+            <param name="totalItemCount">The total item count, or null if it should be
+            reported as unknown. To get the actual total count by enumerating <paramref name="items"/>,
+            use the overload without the <paramref name="totalItemCount"/> parameter.</param>
+            <returns>
+            A <see cref="T:EPiServer.Shell.Services.Rest.RangedItems`1"/> instance containing the
+            resulting range of items as well as a new <see cref="T:EPiServer.Shell.Services.Rest.ItemRange"/>
+            instance describing the actual range (including total).
+            </returns>
+        </member>
         <member name="P:EPiServer.Shell.Services.Rest.ItemRange.Start">
             <summary>
             Gets or sets the start index of the requested or returned range of items.
@@ -3379,6 +3429,59 @@
             resulting range of items as well as a new <see cref="T:EPiServer.Shell.Services.Rest.ItemRange"/>
             instance describing the actual range (including total).</returns>
         </member>
+        <member name="M:EPiServer.Shell.Services.Rest.CollectionExtensions.ApplyRange``1(System.Linq.IQueryable{``0},EPiServer.Shell.Services.Rest.ItemRange)">
+            <summary>
+            Applies the specified range (start, end) and returns the items
+            in the range together with the actual range (start, end, total).
+            </summary>
+            <typeparam name="T">The type of items to apply range to.</typeparam>
+            <param name="items">The full item collection to get the range from.</param>
+            <param name="requestedRange">The requested range with start and/or end set.
+            Null or not defined (neither start nor end set) to return the full range.</param>
+            <returns>A <see cref="T:EPiServer.Shell.Services.Rest.RangedItems`1"/> instance containing the
+            resulting range of items as well as a new <see cref="T:EPiServer.Shell.Services.Rest.ItemRange"/>
+            instance describing the actual range (including total).</returns>
+        </member>
+        <member name="M:EPiServer.Shell.Services.Rest.CollectionExtensions.ApplyRange``1(System.Collections.Generic.IEnumerable{``0},EPiServer.Shell.Services.Rest.ItemRange,System.Nullable{System.Int32})">
+            <summary>
+            Applies the specified range (start, end) and returns the items
+            in the range together with the actual range (start, end, total), using a
+            supplied total count which means that <paramref name="items"/> don't have to
+            be enumerated to get the count.
+            </summary>
+            <typeparam name="T">The type of items to apply range to.</typeparam>
+            <param name="items">The full item collection to get the range from.</param>
+            <param name="requestedRange">The requested range with start and/or end set.
+            Null or not defined (neither start nor end set) to return the full range.</param>
+            <param name="totalItemCount">The total item count, or null if it should be
+            reported as unknown. To get the actual total count by enumerating <paramref name="items"/>,
+            use the overload without the <paramref name="totalItemCount"/> parameter.</param>
+            <returns>
+            A <see cref="T:EPiServer.Shell.Services.Rest.RangedItems`1"/> instance containing the
+            resulting range of items as well as a new <see cref="T:EPiServer.Shell.Services.Rest.ItemRange"/>
+            instance describing the actual range (including total).
+            </returns>
+        </member>
+        <member name="M:EPiServer.Shell.Services.Rest.CollectionExtensions.ApplyRange``1(System.Linq.IQueryable{``0},EPiServer.Shell.Services.Rest.ItemRange,System.Nullable{System.Int32})">
+            <summary>
+            Applies the specified range (start, end) and returns the items
+            in the range together with the actual range (start, end, total), using a
+            supplied total count which means that <paramref name="items"/> don't have to
+            be enumerated to get the count.
+            </summary>
+            <typeparam name="T">The type of items to apply range to.</typeparam>
+            <param name="items">The full item collection to get the range from.</param>
+            <param name="requestedRange">The requested range with start and/or end set.
+            Null or not defined (neither start nor end set) to return the full range.</param>
+            <param name="totalItemCount">The total item count, or null if it should be
+            reported as unknown. To get the actual total count by enumerating <paramref name="items"/>,
+            use the overload without the <paramref name="totalItemCount"/> parameter.</param>
+            <returns>
+            A <see cref="T:EPiServer.Shell.Services.Rest.RangedItems`1"/> instance containing the
+            resulting range of items as well as a new <see cref="T:EPiServer.Shell.Services.Rest.ItemRange"/>
+            instance describing the actual range (including total).
+            </returns>
+        </member>
         <member name="T:EPiServer.Shell.Services.Rest.RestControllerActionInvoker">
             <summary>
             A class for invoking action methods on controllers inheriting from <see cref="T:EPiServer.Shell.Services.Rest.RestControllerBase"/>
@@ -3421,13 +3524,6 @@
             <summary>
             Initializes a new instance of the <see cref="T:EPiServer.Shell.Services.Rest.RestControllerBase"/> class.
             </summary>
-        </member>
-        <member name="M:EPiServer.Shell.Services.Rest.RestControllerBase.#ctor(System.Collections.Generic.IEnumerable{EPiServer.Shell.Services.Rest.IRestControllerValueProvider},EPiServer.Framework.Serialization.IObjectSerializerFactory)">
-            <summary>
-            Initializes a new instance of the <see cref="T:EPiServer.Shell.Services.Rest.RestControllerBase"/> class.
-            </summary>
-            <param name="valueProviders">The value providers used to resolve parameters values.</param>
-            <param name="serializerFactory">The serializer factory that is used to get content serializers.</param>
         </member>
         <member name="M:EPiServer.Shell.Services.Rest.RestControllerBase.ExecuteCore">
             <summary>
@@ -5370,12 +5466,6 @@
             </summary>
             <param name="context">The context.</param>
         </member>
-        <member name="M:EPiServer.Shell.ShellInitialization.Preload(System.String[])">
-            <summary>
-            Preloads the module.
-            </summary>
-            <param name="parameters">The parameters.</param>
-        </member>
         <member name="M:EPiServer.Shell.ShellInitialization.Dispose(System.Boolean)">
             <summary>
             Releases unmanaged and - optionally - managed resources
@@ -6027,6 +6117,13 @@
             </summary>
             <param name="localizationService">The localization service.</param>
         </member>
+        <member name="M:EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider.#ctor(EPiServer.Framework.Localization.LocalizationService,System.Web.HttpContextBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider"/> class.
+            </summary>
+            <param name="localizationService">The localization service.</param>
+            <param name="httpContextBase">HttpContextBase</param>B
+        </member>
         <member name="M:EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider.CreateMetadata(System.Collections.Generic.IEnumerable{System.Attribute},System.Type,System.Func{System.Object},System.Type,System.String)">
             <summary>
             Gets the metadata for the specified property.
@@ -6129,6 +6226,19 @@
             <param name="displayColumnAttribute">The display column attribute.</param>
             <param name="provider">The provider.</param>
             <param name="localizationService">The localization service.</param>
+        </member>
+        <member name="M:EPiServer.Shell.ObjectEditing.ExtendedMetadata.#ctor(System.Type,System.Func{System.Object},System.Type,System.String,System.ComponentModel.DataAnnotations.DisplayColumnAttribute,EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider,EPiServer.Framework.Localization.LocalizationService,System.Web.HttpContextBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Shell.ObjectEditing.ExtendedMetadata"/> class.
+            </summary>
+            <param name="containerType">Type of the container.</param>
+            <param name="modelAccessor">The model accessor.</param>
+            <param name="modelType">Type of the model.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="displayColumnAttribute">The display column attribute.</param>
+            <param name="provider">The provider.</param>
+            <param name="localizationService">The localization service.</param>
+            <param name="httpContextBase">HttpContextBase</param>
         </member>
         <member name="M:EPiServer.Shell.ObjectEditing.ExtendedMetadata.GetEditorSettings(EPiServer.Framework.Localization.LocalizationService)">
             <summary>
@@ -6492,6 +6602,14 @@
             </summary>
             <param name="metadataHandlerRegistry">The metadata registry.</param>
             <param name="localizationService">The localization service.</param>
+        </member>
+        <member name="M:EPiServer.Shell.ObjectEditing.ExtensibleMetadataProvider.#ctor(EPiServer.Shell.ObjectEditing.MetadataHandlerRegistry,EPiServer.Framework.Localization.LocalizationService,System.Web.HttpContextBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Shell.ObjectEditing.ExtensibleMetadataProvider"/> class.
+            </summary>
+            <param name="metadataHandlerRegistry">The metadata registry.</param>
+            <param name="localizationService">The localization service.</param>
+            <param name="httpContextBase">HttpContextBase</param>
         </member>
         <member name="M:EPiServer.Shell.ObjectEditing.ExtensibleMetadataProvider.CreateMetadata(System.Collections.Generic.IEnumerable{System.Attribute},System.Type,System.Func{System.Object},System.Type,System.String)">
             <summary>
@@ -10002,6 +10120,13 @@
             <summary>
             Ensures that the manifest has at least one route; if it doesn't the default is added.
             </summary>
+        </member>
+        <member name="M:EPiServer.Shell.Modules.ModuleExtensions.ResolveVersion(EPiServer.Shell.Modules.ShellModule)">
+            <summary>
+            Resolve version for shell module
+            </summary>
+            <param name="module"></param>
+            <returns></returns>
         </member>
         <member name="T:EPiServer.Shell.Modules.ConfigModuleProvider">
             <summary>

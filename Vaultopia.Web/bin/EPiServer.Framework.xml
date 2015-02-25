@@ -4,32 +4,6 @@
         <name>EPiServer.Framework</name>
     </assembly>
     <members>
-        <member name="T:EPiServer.Framework.AllowAssemblyScanAttribute">
-            <summary>
-            Attribute to selectively include the assembly in plugin / module / composition scenarios.
-            </summary>
-        </member>
-        <member name="M:EPiServer.Framework.AllowAssemblyScanAttribute.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:EPiServer.Framework.AllowAssemblyScanAttribute"/> class.
-            </summary>
-            <param name="productName">Name of the product.</param>
-        </member>
-        <member name="M:EPiServer.Framework.AllowAssemblyScanAttribute.IsMatch(System.String)">
-            <summary>
-            Determines whether the specified product name matches this instance.
-            </summary>
-            <param name="productName">Name of the product.</param>
-            <returns>
-            	<c>true</c> if the specified product name is a match; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="P:EPiServer.Framework.AllowAssemblyScanAttribute.ProductName">
-            <summary>
-            Gets or sets the name of the product.
-            </summary>
-            <value>The name of the product.</value>
-        </member>
         <member name="T:EPiServer.Framework.AsyncResult">
             <summary>
             Dummy async result which uses in the noop processing, It uses internally 
@@ -61,6 +35,488 @@
             <summary>
             Indicate if it is competed or nott
             </summary>
+        </member>
+        <member name="T:EPiServer.Async.TaskEventArgs">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Event arguments used in events exposed by <see cref="T:EPiServer.Async.TaskExecutor"/>. 
+            </summary>
+        </member>
+        <member name="M:EPiServer.Async.TaskEventArgs.#ctor(EPiServer.Async.TaskInformation)">
+            <summary>
+            Creates a new instance of <see cref="T:EPiServer.Async.TaskEventArgs"/>.
+            </summary>
+            <param name="information">The associated <see cref="T:EPiServer.Async.TaskInformation"/> instance.</param>
+        </member>
+        <member name="P:EPiServer.Async.TaskEventArgs.Task">
+            <summary>
+            The associated <see cref="P:EPiServer.Async.TaskEventArgs.Task"/>.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Async.TaskEventArgs.Info">
+            <summary>
+            The associated <see cref="T:EPiServer.Async.TaskInformation"/>.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Async.TaskExecutor">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Manages execution of asynchronus work using <see cref="T:System.Threading.Tasks.Task"/> API. If the task is associated with a <see cref="T:EPiServer.Async.TrackingToken"/> then
+            the task will be monitored by <see cref="T:EPiServer.Async.TaskMonitor"/> and the outcome/status of the task can be retrieved from <see cref="T:EPiServer.Async.TaskMonitor"/>.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.Start(System.Action)">
+            <summary>
+            Starts the specified work using an asynchronous task.
+            </summary>
+            <param name="work">The work that should be executed asynchronously.</param>
+            <returns>An activated task</returns>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.Start(System.Action,EPiServer.Async.TrackingToken)">
+            <summary>
+            Starts the specified work using an asynchronous task and option to specify if outcome should be tracked.
+            </summary>
+            <param name="work">The work that should be executed asynchronously.</param>
+            <param name="trackingToken">The trackingtoken that will be associated with the task so it can be tracked.</param>
+            <returns>An activated task</returns>
+            <remarks>
+             <para>
+                The <paramref name="trackingToken"/> parameter can be used to specify a token that will be associated with the task. 
+                That can then be used to get progress or outcome of task from <see cref="T:EPiServer.Async.TaskMonitor"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.Start``1(System.Func{``0},EPiServer.Async.TrackingToken)">
+            <summary>
+            Starts the specified work using an asynchronous task and option to specify if outcome should be tracked.
+            </summary>
+            <param name="work">The work that should be executed asynchronously.</param>
+            <param name="trackingToken">The trackingtoken that will be associated with the task so it can be tracked.</param>
+            <returns>An activated task of type <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+            <remarks>
+             <para>
+                The <paramref name="trackingToken"/> parameter can be used to specify a token that will be associated with the task. 
+                That can then be used to get progress or outcome of task from <see cref="T:EPiServer.Async.TaskMonitor"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.Start(System.Action{System.Threading.CancellationToken})">
+            <summary>
+            Starts the specified cancelable work using an asynchronous task.
+            </summary>
+            <param name="work">The work that should be executed asynchronously.</param>
+            <returns>An activated task</returns>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.Start(System.Action{System.Threading.CancellationToken},EPiServer.Async.TrackingToken)">
+            <summary>
+            Starts the specified cancelable work using an asynchronous task and option to specify if outcome should be tracked.
+            </summary>
+            <param name="work">The work that should be executed asynchronously.</param>
+            <param name="trackingToken">The trackingtoken that will be associated with the task so it can be tracked.</param>
+            <returns>An activated task</returns>
+            <remarks>
+             <para>
+                The <paramref name="trackingToken"/> parameter can be used to specify a token that will be associated with the task. 
+                That can then be used to get progress or outcome of task from <see cref="T:EPiServer.Async.TaskMonitor"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.Start``1(System.Func{System.Threading.CancellationToken,``0},EPiServer.Async.TrackingToken)">
+            <summary>
+            Starts the specified cancelable work using an asynchronous task and option to specify if outcome should be tracked.
+            </summary>
+            <param name="work">The work that should be executed asynchronously.</param>
+            <param name="trackingToken">The trackingtoken that will be associated with the task so it can be tracked.</param>
+            <returns>An activated task of type <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+            <remarks>
+             <para>
+                The <paramref name="trackingToken"/> parameter can be used to specify a token that will be associated with the task. 
+                That can then be used to get progress or outcome of task from <see cref="T:EPiServer.Async.TaskMonitor"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.Start(System.Action{System.Threading.CancellationToken},System.Threading.CancellationToken)">
+            <summary>
+            Starts the specified work using an asynchronous task with the option to cancel the work prematurely.
+            </summary>
+            <param name="work">The work that should be executed asynchronously.</param>
+            <param name="cancellationToken">The cancellation token that can be used to cancel the task.</param>
+            <returns>An activated task</returns>
+            <remarks>
+            <para>
+                The <paramref name="cancellationToken"/> parameter can be used to cancel the task externally, but it will not signal if
+                the task is cancelled using the <see cref="M:EPiServer.Async.TaskExecutor.Cancel(System.Guid)"/> method. To listen to cancellation from either token, 
+                use the optional <see cref="T:System.Threading.CancellationToken"/> passed as an argument to the <paramref name="work"/> action.
+            </para>
+            <para>
+                Note that a task only is marked as cancelled if the <paramref name="work"/> method responds to the cancellation by throwing
+                the correct exception, normally using the <see cref="M:System.Threading.CancellationToken.ThrowIfCancellationRequested"/> method. If this does 
+                not happen, the task status will be set to <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.Start(System.Action{System.Threading.CancellationToken},EPiServer.Async.TrackingToken,System.Threading.CancellationToken)">
+            <summary>
+            Starts the specified work using an asynchronous task with the option to cancel the work prematurely and to specify if outcome should be tracked.
+            </summary>
+            <param name="work">The work that should be executed asynchronously.</param>
+            <param name="trackingToken">The trackingtoken that will be associated with the task so it can be tracked.</param>
+            <param name="cancellationToken">The cancellation token that can be used to cancel the task.</param>
+            <returns>An activated task</returns>
+            <remarks>
+            <para>
+                The <paramref name="cancellationToken"/> parameter can be used to cancel the task externally, but it will not signal if
+                the task is cancelled using the <see cref="M:EPiServer.Async.TaskExecutor.Cancel(System.Guid)"/> method. To listen to cancellation from either token, 
+                use the optional <see cref="T:System.Threading.CancellationToken"/> passed as an argument to the <paramref name="work"/> action.
+            </para>
+             <para>
+                The <paramref name="trackingToken"/> parameter can be used to specify a token that will be associated with the task. 
+                That can then be used to get progress or outcome of task from <see cref="T:EPiServer.Async.TaskMonitor"/>.
+            </para>
+            <para>
+                Note that a task only is marked as cancelled if the <paramref name="work"/> method responds to the cancellation by throwing
+                the correct exception, normally using the <see cref="M:System.Threading.CancellationToken.ThrowIfCancellationRequested"/> method. If this does 
+                not happen, the task status will be set to <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.Start``1(System.Func{System.Threading.CancellationToken,``0},EPiServer.Async.TrackingToken,System.Threading.CancellationToken)">
+            <summary>
+            Starts the specified work using an asynchronous task with the option to cancel the work prematurely and to specify if outcome should be tracked.
+            </summary>
+            <param name="work">The work that should be executed asynchronously.</param>
+            <param name="trackingToken">The trackingtoken that will be associated with the task so it can be tracked.</param>
+            <param name="cancellationToken">The cancellation token that can be used to cancel the task.</param>
+            <returns>An activated task of type <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+            <remarks>
+            <para>
+                The <paramref name="cancellationToken"/> parameter can be used to cancel the task externally, but it will not signal if
+                the task is cancelled using the <see cref="M:EPiServer.Async.TaskExecutor.Cancel(System.Guid)"/> method. To listen to cancellation from either token, 
+                use the optional <see cref="T:System.Threading.CancellationToken"/> passed as an argument to the <paramref name="work"/> action.
+            </para>
+             <para>
+                The <paramref name="trackingToken"/> parameter can be used to specify a token that will be associated with the task. 
+                That can then be used to get progress or outcome of task from <see cref="T:EPiServer.Async.TaskMonitor"/>.
+            </para>
+            <para>
+                Note that a task only is marked as cancelled if the <paramref name="work"/> method responds to the cancellation by throwing
+                the correct exception, normally using the <see cref="M:System.Threading.CancellationToken.ThrowIfCancellationRequested"/> method. If this does 
+                not happen, the task status will be set to <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.Cancel(System.Guid)">
+            <summary>
+            Cancels the task with the specified identifier.
+            </summary>
+            <param name="taskId">The task identifier.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/> object if the task is still running and can be cancelled; otherwise null.</returns>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.OnTaskStarting(EPiServer.Async.TaskEventArgs)">
+            <summary>
+            Call to raise <see cref="E:EPiServer.Async.TaskExecutor.TaskStarting"/> event.
+            </summary>
+            <param name="e">The event argument</param>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.OnTaskStarted(EPiServer.Async.TaskEventArgs)">
+            <summary>
+            Call to raise <see cref="E:EPiServer.Async.TaskExecutor.TaskStarted"/> event.
+            </summary>
+            <param name="e">The event argument</param>
+        </member>
+        <member name="M:EPiServer.Async.TaskExecutor.OnTaskCompleted(EPiServer.Async.TaskEventArgs)">
+            <summary>
+            Call to raise <see cref="E:EPiServer.Async.TaskExecutor.TaskCompleted"/> event.
+            </summary>
+            <param name="e">The event argument</param>
+        </member>
+        <member name="E:EPiServer.Async.TaskExecutor.TaskStarting">
+            <summary>
+            Occurs when a new task is starting.
+            </summary>
+            <remarks>
+            The task itself will not be started until all event handlers has been completed.
+            </remarks>
+        </member>
+        <member name="E:EPiServer.Async.TaskExecutor.TaskStarted">
+            <summary>
+            Occurs when a task has started.
+            </summary>
+            <remarks>
+            The task work is run on a separate thread to any event handlers.
+            Attached event handlers will also not affect the <see cref="E:EPiServer.Async.TaskExecutor.TaskCompleted"/> event.
+            </remarks>
+        </member>
+        <member name="E:EPiServer.Async.TaskExecutor.TaskCompleted">
+            <summary>
+            Occurs when a task has completed regardless of status.
+            </summary>
+            <remarks>
+            The <see cref="E:EPiServer.Async.TaskExecutor.TaskCompleted"/> event will not be raised until all event handlers attached to either <see cref="E:EPiServer.Async.TaskExecutor.TaskStarted"/> and/or have completed.
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Async.DefaultTaskExecutor.CreateWorkAction``1(System.Func{System.Threading.CancellationToken,``0},System.Threading.CancellationToken)">
+            <summary>
+            Decorates the work method to pass in cancellation token and progress and wraps the method in a try/catch to ensure that the linked token is used for the cancellation
+            exception. This is required if the task should be marked as cancelled.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Async.TaskInformation">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Contains information such as status and result (if the asynchronus job returned a result) associated with a task.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Async.TaskInformation.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:EPiServer.Async.TaskInformation.#ctor(System.Guid)">
+            <summary>
+            Constructor to create status with specific id.
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="P:EPiServer.Async.TaskInformation.IsTrackable">
+            <summary>
+            Indicates if the task was created with an associated <see cref="T:EPiServer.Async.TrackingToken"/>
+            </summary>
+        </member>
+        <member name="P:EPiServer.Async.TaskInformation.Id">
+            <summary>
+            The unique identifier associated with the task.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Async.TaskInformation.CompletedStatus">
+            <summary>
+            Contains the status of the task when it was completed. Before completion value is <see cref="F:System.Threading.Tasks.TaskStatus.Created"/>
+            </summary>
+        </member>
+        <member name="P:EPiServer.Async.TaskInformation.User">
+            <summary>
+            The user under which the context the task was created.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Async.TaskInformation.Created">
+            <summary>
+            Time (in UTC) for when the task was created.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Async.TaskInformation.Completed">
+            <summary>
+            Time (in UTC) for when the task was completed.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Async.TaskInformation.Exception">
+            <summary>
+            In case a task is faulting, this contains the exception message.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Async.TaskInformation.Result">
+            <summary>
+            In case the asyncronus task had a return value this is the outcome of the task.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Async.TaskInformation.ResultType">
+            <summary>
+            Gets or sets the <see cref="T:System.Type"/> for <see cref="P:EPiServer.Async.TaskInformation.Result"/>. This is used to be able to query for result of specific type.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Async.TaskInformation`1">
+            <summary>
+            Contains information about a task where status is an typed instance with information specific to the task type.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Async.TaskInformation`1.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:EPiServer.Async.TaskInformation`1.#ctor(System.Guid)">
+            <summary>
+            Constructor to create status with specific id.
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="P:EPiServer.Async.TaskInformation`1.Result">
+            <summary>
+            Contains the result from the job, given that job returned <see cref="T:System.Threading.Tasks.Task`1"/>.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Async.TaskInformationStorage">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Component that manages persistance of <see cref="T:EPiServer.Async.TaskInformation"/>.
+            </summary>
+            <remarks>
+            The implementation is not guaranteed to be thread safe, so if used from singleton instances recommendation is to access instance through usage of <see cref="T:EPiServer.ServiceLocation.ServiceAccessor`1"/>.
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Async.TaskInformationStorage.Save(EPiServer.Async.TaskInformation)">
+            <summary>
+            Persists a <see cref="T:EPiServer.Async.TaskInformation"/> instance.
+            </summary>
+            <param name="task">The <see cref="T:EPiServer.Async.TaskInformation"/> to persist.</param>
+        </member>
+        <member name="M:EPiServer.Async.TaskInformationStorage.Delete(System.Guid)">
+            <summary>
+            Deletes the <see cref="T:EPiServer.Async.TaskInformation"/> entry with specified id.
+            </summary>
+            <param name="taskInformationId"></param>
+        </member>
+        <member name="M:EPiServer.Async.TaskInformationStorage.Load(System.Guid)">
+            <summary>
+            Loads a persisted <see cref="T:EPiServer.Async.TaskInformation"/> instance.
+            </summary>
+            <param name="taskInformationId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Async.TaskInformationStorage.List``1">
+            <summary>
+            Lists all <see cref="T:EPiServer.Async.TaskInformation`1"/>.
+            </summary>
+            <typeparam name="T">The typed argument that matches <see cref="T:EPiServer.Async.TaskInformation`1"/></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Async.TaskInformationStorage.Tasks">
+            <summary>
+            Returns a queryable where Linq can be used to get a filtered result.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EPiServer.Async.TaskMonitor">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Component that monitors task that are trackable (that is associated with a <see cref="T:EPiServer.Async.TrackingToken"/>). 
+            </summary>
+        </member>
+        <member name="M:EPiServer.Async.TaskMonitor.GetStatus``1(EPiServer.Async.TrackingToken)">
+            <summary>
+            Retrieves a the specific <see cref="T:EPiServer.Async.TaskInformation`1"/> that is associated with <paramref name="trackingToken"/>.
+            </summary>
+            <remarks>
+            The persisting of task information is done asynchronusly meaning there is no guarantee that status has been persisted when task is completed.
+            </remarks>
+            <typeparam name="TResult">The type of result from the task created from <see cref="T:EPiServer.Async.TaskExecutor"/>.</typeparam>
+            <param name="trackingToken">The <see cref="T:EPiServer.Async.TrackingToken"/> used when creating the task.</param>
+            <returns>Information and result about the task.</returns>
+        </member>
+        <member name="M:EPiServer.Async.TaskMonitor.GetStatus(EPiServer.Async.TrackingToken)">
+            <summary>
+            Retrieves a the specific <see cref="T:EPiServer.Async.TaskInformation"/> that is associated with <paramref name="trackingToken"/>.
+            </summary>
+            <remarks>
+            The persisting of task information is done asynchronusly meaning there is no guarantee that status has been persisted when task is completed.
+            </remarks>
+            <param name="trackingToken">The <see cref="T:EPiServer.Async.TrackingToken"/> used when creating the task.</param>
+            <returns>Information and outcome about the task.</returns>
+        </member>
+        <member name="M:EPiServer.Async.TaskMonitor.ListStatuses``1">
+            <summary>
+            Lists information about all tasks with specified result type.
+            </summary>
+            <typeparam name="TResult">The type of result from the task created from <see cref="T:EPiServer.Async.TaskExecutor"/>.</typeparam>
+            <returns>A list of all statuses for given type.</returns>
+        </member>
+        <member name="M:EPiServer.Async.TaskMonitor.QueryStatuses">
+            <summary>
+            A queryable that can be used with Linq to get a filtered list of statuses.
+            </summary>
+            <returns>A Linq Queryable</returns>
+        </member>
+        <member name="P:EPiServer.Async.DefaultTaskMonitor.IsTasksRunning">
+            <summary>
+            Used from test to determine if task are completed and persisted.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Async.TrackingToken">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Used to define a token that will be associated with a <see cref="T:System.Threading.Tasks.Task"/>. Can be used to retrieve status about the task using <see cref="T:EPiServer.Async.TaskMonitor"/>.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Async.TrackingToken.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Async.TrackingToken"/> class with a new identifier.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Async.TrackingToken.#ctor(System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Async.TrackingToken"/> class with a specific identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="M:EPiServer.Async.TrackingToken.Equals(EPiServer.Async.TrackingToken)">
+            <summary>
+            Determines if <paramref name="other"/> is considered equal with this instance.
+            </summary>
+            <param name="other">The other <see cref="T:EPiServer.Async.TrackingToken"/> to compare with.</param>
+            <returns>true if the tokens are considered equal else false.</returns>
+        </member>
+        <member name="M:EPiServer.Async.TrackingToken.Equals(System.Object)">
+            <summary>
+            Determines if <paramref name="obj"/> is considered equal with this instance.
+            </summary>
+            <param name="obj">The other <see cref="T:EPiServer.Async.TrackingToken"/> to compare with.</param>
+            <returns>true if the tokens are considered equal else false.</returns>
+        </member>
+        <member name="M:EPiServer.Async.TrackingToken.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:EPiServer.Async.TrackingToken.Parse(System.String)">
+            <summary>
+            Parses <paramref name="value"/> to a <see cref="T:EPiServer.Async.TrackingToken"/>.
+            </summary>
+            <param name="value">The string to parse.</param>
+            <returns>A tracking token</returns>
+            <exception cref="T:System.ArgumentException">In case the string is not in expected format.</exception>
+        </member>
+        <member name="M:EPiServer.Async.TrackingToken.TryParse(System.String,EPiServer.Async.TrackingToken@)">
+            <summary>
+            Tries to parses <paramref name="value"/> to a <see cref="T:EPiServer.Async.TrackingToken"/>.
+            </summary>
+            <param name="value">The string to parse.</param>
+            <param name="token">The parsed token or null if <paramref name="value"/> could not be parsed.</param>
+            <returns>true if <paramref name="value"/> could be parsed else false.</returns>
+        </member>
+        <member name="M:EPiServer.Async.TrackingToken.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:EPiServer.Async.TrackingToken.None">
+             <summary>
+            Returns an empty TrackingToken value. 
+             </summary>
+        </member>
+        <member name="P:EPiServer.Async.TrackingToken.Id">
+            <summary>
+            The identifier for the token used to track progress.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Async.TrackingTokenExtensions">
+            <summary>
+            Extends <see cref="T:EPiServer.Async.TrackingToken"/> with convenience methods.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Async.TrackingTokenExtensions.IsTrackable(EPiServer.Async.TrackingToken)">
+            <summary>
+            Determines if <paramref name="trackingToken"/> is assigned so it is trackable.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Async.TrackingTokenJsonConverter">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            A JSON converter for <see cref="T:EPiServer.Async.TrackingToken"/>.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Async.TrackingTokenJsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:EPiServer.Async.TrackingTokenJsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:EPiServer.Async.TrackingTokenJsonConverter.CanConvert(System.Type)">
+            <inheritdoc/>
         </member>
         <member name="T:EPiServer.Framework.Blobs.Blob">
             <summary>
@@ -2294,16 +2750,6 @@
             </para>
             </remarks>
         </member>
-        <member name="M:EPiServer.Framework.IInitializableModule.Preload(System.String[])">
-            <summary>
-            Preloads the module.
-            </summary>
-            <param name="parameters">The parameters.</param>
-            <remarks>
-            This method is only available to be compatible with "AlwaysRunning" applications in .NET 4 / IIS 7.
-            It currently serves no purpose.
-            </remarks>
-        </member>
         <member name="M:EPiServer.ServiceLocation.IConfigurableModule.ConfigureContainer(EPiServer.ServiceLocation.ServiceConfigurationContext)">
             <summary>
             Configure the IoC container before initialization.
@@ -2379,9 +2825,69 @@
             This method should only be called by ASP.NET via the <see cref="T:System.Web.PreApplicationStartMethodAttribute"/> attribute defined in EPiServer.Framework
             </summary>
         </member>
+        <member name="T:EPiServer.Framework.Initialization.InitializationEngineTypeScanner">
+            <summary>
+            Type scanning logic for <see cref="T:EPiServer.Framework.Initialization.InitializationEngine"/>
+            </summary>
+        </member>
+        <member name="T:EPiServer.Framework.Initialization.InitializationException">
+            <summary>
+            Thrown by the initialization engine and contains references to one or more initialization modules causing the exception
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.Initialization.InitializationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Framework.Initialization.InitializationException"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.Initialization.InitializationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Framework.Initialization.InitializationException"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.Initialization.InitializationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Framework.Initialization.InitializationException"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.Initialization.InitializationException.#ctor(System.String,System.Exception,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Framework.Initialization.InitializationException"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.Initialization.InitializationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Framework.Initialization.InitializationException"/> class.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Framework.Initialization.InitializationException.ModuleTypes">
+            <summary>
+            List of initialization modules
+            </summary>
+        </member>
         <member name="T:EPiServer.Framework.Initialization.ShutdownTracker">
             <summary>
             Purpose of this class is just to log shutdown reason right now, but could be expanded to do more.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Framework.Initialization.InitializationExceptionHelper">
+            <summary>
+            Helper class to throw developer friendly exceptions during initialization
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.Initialization.InitializationExceptionHelper.ThrowIfAddonSystemIsOld(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            In 7.5 the add-on system itself was an add-on and customers will not get the updated version unless we force them to install via NuGet
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.Initialization.InitializationExceptionHelper.ThrowFriendlyAddonException(System.Exception,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Wrap exception to present information on how to disable add-ons or convert to NuGet add-ons
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.Initialization.InitializationExceptionHelper.ThrowFriendlyTypeScannerException(System.Collections.Generic.IEnumerable{EPiServer.Framework.TypeScanner.TypeScannerReflectionException},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Rethrow reflection errors in a more readable approach with support on how to disable add-ons
             </summary>
         </member>
         <member name="T:EPiServer.Framework.Initialization.TimeMeters">
@@ -2540,6 +3046,299 @@
             </summary>
             <param name="helper">The service helper.</param>
             <returns>The currently registered <see cref="M:EPiServer.Framework.Localization.ServiceLocationHelperExtensions.LocalizationService(EPiServer.ServiceLocation.ServiceLocationHelper)"/>.</returns>
+        </member>
+        <member name="T:EPiServer.Logging.ILogger">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Describes an object that can be used to write log messages through.
+            </summary>
+            <preliminary />
+        </member>
+        <member name="M:EPiServer.Logging.ILogger.IsEnabled(EPiServer.Logging.Level)">
+            <summary>
+            Determines whether logging at the specified level is enabled.
+            </summary>
+            <param name="level">The level to check.</param>
+            <returns><c>true</c> if logging on the provided level is enabled; otherwise <c>false</c></returns>
+        </member>
+        <member name="M:EPiServer.Logging.ILogger.Log``2(EPiServer.Logging.Level,``0,``1,System.Func{``0,``1,System.String})">
+            <summary>
+            Logs the provided <paramref name="state" /> with the specified level.
+            </summary>
+            <typeparam name="TState">The type of the state object.</typeparam>
+            <typeparam name="TException">The type of the exception.</typeparam>
+            <param name="level">The criticality level of the log message.</param>
+            <param name="state">The state that should be logged.</param>
+            <param name="exception">The exception that should be logged.</param>
+            <param name="messageFormatter">The message formatter used to write the state to the log provider.</param>
+        </member>
+        <member name="T:EPiServer.Logging.ILoggerFactory">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Represents a factory that can be used to create new <see cref="T:EPiServer.Logging.ILogger"/> instances.
+            </summary>
+            <remarks>
+            If implemented, register through <see cref="M:LogManager.Instance.AddProvider"/> to activate.
+            </remarks>
+            <preliminary/>
+        </member>
+        <member name="M:EPiServer.Logging.ILoggerFactory.Create(System.String)">
+            <summary>
+            Creates a <see cref="T:EPiServer.Logging.ILogger"/> with the provided name.
+            </summary>
+            <param name="name">The name of the logger to create.</param>
+            <returns>An <see cref="T:EPiServer.Logging.ILogger"/> instance with the provided name.</returns>
+        </member>
+        <member name="T:EPiServer.Logging.Compatibility.ILog">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Compatibility interface that mimics the ILog interface in log4net.
+            </summary>
+            <remarks>
+            This class is provided to ease the transitioning from log4net. 
+            It is recommended to use the <see cref="T:EPiServer.Logging.ILogger"/>
+            for new code.
+            </remarks>
+            <preliminary/>
+        </member>
+        <member name="T:EPiServer.Logging.Compatibility.LogManager">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Compatibility class that mimics some aspects of the LogManager class in log4net.
+            Responsible for creating new <see cref="T:EPiServer.Logging.Compatibility.ILog"/> instances that can be used for logging.
+            </summary>
+            <remarks>
+            This class is provided to ease the transitioning from log4net. 
+            It is recommended to use the <see cref="T:EPiServer.Logging.LogManager"/>
+            for new code.
+            </remarks>
+            <preliminary/>
+        </member>
+        <member name="M:EPiServer.Logging.Compatibility.LogManager.GetLogger(System.Type)">
+            <summary>
+            Gets a <see cref="T:EPiServer.Logging.Compatibility.ILog"/> instance for the provided type. 
+            </summary>
+            <param name="type">The type that the logger should be created for.</param>
+            <returns>A new <see cref="T:EPiServer.Logging.Compatibility.ILog"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">type</exception>
+            <remarks>
+            This class is provided to ease the transitioning from log4net. 
+            It is recommended to use the <see cref="M:EPiServer.Logging.LogManager.GetLogger"/>
+            for new code.
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Logging.Compatibility.LogManager.GetLogger(System.String)">
+            <summary>
+            Gets a <see cref="T:EPiServer.Logging.Compatibility.ILog"/> instance for the provided type. 
+            </summary>
+            <param name="name">The name of the logger.</param>
+            <returns>A new <see cref="T:EPiServer.Logging.Compatibility.ILog"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">name</exception>
+            <remarks>
+            This class is provided to ease the transitioning from EPiServer.Logging.Compatibility. 
+            It is recommended to use the <see cref="M:EPiServer.Logging.LogManager.GetLogger"/>
+            for new code.
+            </remarks>
+        </member>
+        <member name="T:EPiServer.Logging.LoggerExtensions">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Provides standard methods for logging messages at different levels.
+            </summary>
+            <preliminary />
+        </member>
+        <member name="M:EPiServer.Logging.LoggerExtensions.Log(EPiServer.Logging.ILogger,EPiServer.Logging.Level,System.String)">
+            <summary>
+            Logs the specified message with the provided level.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="level">The level at which to log the message.</param>
+            <param name="message">The message that should be logged.</param>
+            <exception cref="T:System.ArgumentNullException">
+            logger
+            or
+            message
+            </exception>
+        </member>
+        <member name="M:EPiServer.Logging.LoggerExtensions.Log(EPiServer.Logging.ILogger,EPiServer.Logging.Level,System.String,System.Exception)">
+            <summary>
+            Logs the specified message and exception with the provided level.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="level">The level at which to log the message.</param>
+            <param name="message">The message that should be logged.</param>
+            <param name="exception">The exception that should be logged.</param>
+            <exception cref="T:System.ArgumentNullException">
+            logger
+            or
+            message
+            or
+            exception
+            </exception>
+        </member>
+        <member name="M:EPiServer.Logging.LoggerExtensions.Log(EPiServer.Logging.ILogger,EPiServer.Logging.Level,System.String,System.Object[])">
+            <summary>
+            Logs a message with the provided level using the supplied format and arguments.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="level">The level at which to log the message.</param>
+            <param name="messageFormat">The message format string.</param>
+            <param name="args">The arguments.</param>
+            <exception cref="T:System.ArgumentNullException">
+            logger
+            or
+            messageFormat
+            </exception>
+        </member>
+        <member name="T:EPiServer.Logging.Level">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Represent the severity level that a log message should be created at.
+            </summary>
+            <preliminary />
+        </member>
+        <member name="F:EPiServer.Logging.Level.Trace">
+            <summary>
+            Designates very fine-grained information potentially useful when debugging an application. Can be very verbose.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Logging.Level.Debug">
+            <summary>
+            Designates fine-grained information useful when debugging an application
+            </summary>
+        </member>
+        <member name="F:EPiServer.Logging.Level.Information">
+            <summary>
+            Designates information about non-harmful events in the an application
+            </summary>
+        </member>
+        <member name="F:EPiServer.Logging.Level.Warning">
+            <summary>
+            Designates information about potentially harmful events in the an application
+            </summary>
+        </member>
+        <member name="F:EPiServer.Logging.Level.Error">
+            <summary>
+            Designates information about errors in an application that won't prevent it from continuing to execute.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Logging.Level.Critical">
+            <summary>
+            Designates information about severe error events in an application that will prevents it from continuing to execute.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Logging.LoggerFactoryAttribute">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Attribute that defines a type of <see cref="T:EPiServer.Logging.ILoggerFactory"/> that should be used by the 
+            <see cref="T:EPiServer.Logging.LogManager"/> to create logger instances in the system.
+            </summary>
+            <remarks>
+            The standard <see cref="T:EPiServer.Logging.LogManager"/> currently only supports one <see cref="T:EPiServer.Logging.ILoggerFactory"/>
+            instance and will use the type from the first <see cref="T:EPiServer.Logging.LoggerFactoryAttribute"/> that is found.
+            </remarks>
+            <preliminary/>
+        </member>
+        <member name="M:EPiServer.Logging.LoggerFactoryAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Logging.LoggerFactoryAttribute"/> class.
+            </summary>
+            <param name="loggerFactoryType">Type that should be used to create logger instances. Must implement <see cref="T:EPiServer.Logging.ILoggerFactory"/>.</param>
+            <exception cref="T:System.ArgumentNullException">loggerFactoryType</exception>
+            <exception cref="T:System.ArgumentException">Type must implement ILoggerFactory interface;loggerFactoryType</exception>
+        </member>
+        <member name="P:EPiServer.Logging.LoggerFactoryAttribute.LoggerFactoryType">
+            <summary>
+            Gets the type of <see cref="T:EPiServer.Logging.ILoggerFactory"/> that should be used by the <see cref="T:EPiServer.Logging.LogManager"/> to create logger instances in the system.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Logging.LogManager">
+            <summary>
+            NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
+            Class responsible for creating new <see cref="T:EPiServer.Logging.ILogger"/> instances.
+            </summary>
+            <preliminary/>
+        </member>
+        <member name="M:EPiServer.Logging.LogManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Logging.LogManager"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Logging.LogManager.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Logging.LogManager"/> class.
+            </summary>
+            <param name="scanForFactory">if set to <c>true</c> assemblies will be scanned to find a factory.</param>
+        </member>
+        <member name="F:EPiServer.Logging.LogManager.BoundaryType">
+            <summary>
+            Gets the type of the class that represents the boundary of the logging system.
+            </summary>
+            <remarks>
+            This can be used by certain logging framework to find and log the correct stack information.
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Logging.LogManager.AddFactory(EPiServer.Logging.ILoggerFactory)">
+            <summary>
+            Adds a <see cref="T:EPiServer.Logging.ILoggerFactory"/> to the current <see cref="T:EPiServer.Logging.LogManager"/>.
+            </summary>
+            <param name="factory">The factory that should be used.</param>
+            <exception cref="T:System.ArgumentNullException">factory</exception>
+            <remarks>
+            <para>
+                The basic <see cref="T:EPiServer.Logging.LogManager"/> implementation currently only supports
+                the use of one single <see cref="T:EPiServer.Logging.ILoggerFactory"/> and will only use the instance
+                last registered. This behavior is subject to change in future releases.
+            </para>
+            <para>
+                Adding a new factory will not affect any <see cref="T:EPiServer.Logging.ILogger"/> instances
+                that has been created and used already.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Logging.LogManager.GetLogger(System.String)">
+            <summary>
+            Gets a <see cref="T:EPiServer.Logging.ILogger"/> instance for the provided name.
+            </summary>
+            <param name="name">The name of the logger to get.</param>
+            <returns>A new <see cref="T:EPiServer.Logging.ILogger"/> instance</returns>
+            <remarks>
+            This method is guaranteed to always return an instance.
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Logging.LogManager.GetLogger(System.Type)">
+            <summary>
+            Gets a <see cref="T:EPiServer.Logging.ILogger"/> instance from the current <see cref="P:EPiServer.Logging.LogManager.Instance"/> for a give type.
+            </summary>
+            <param name="type">The type that the logger should be created for.</param>
+            <returns>A new <see cref="T:EPiServer.Logging.ILogger"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">type</exception>
+        </member>
+        <member name="M:EPiServer.Logging.LogManager.GetLogger">
+            <summary>
+            Gets a <see cref="T:EPiServer.Logging.ILogger"/> instance from the current <see cref="P:EPiServer.Logging.LogManager.Instance"/> configured
+            for the calling class.
+            </summary>
+            <returns>A new <see cref="T:EPiServer.Logging.ILogger"/> instance.</returns>
+            <remarks>
+            As this method uses the stack and some reflection it is not recommended to use this from
+            other than initializing static fields.
+            </remarks>
+        </member>
+        <member name="P:EPiServer.Logging.LogManager.Instance">
+            <summary>
+            Gets or sets the current <see cref="T:EPiServer.Logging.LogManager"/> instance.
+            </summary>
+            <remarks>
+            This property is guaranteed to always return a <see cref="T:EPiServer.Logging.LogManager"/> object.
+            If set to null, all logging will be cancelled.
+            </remarks>
+        </member>
+        <member name="P:EPiServer.Logging.LogManager.Factory">
+            <summary>
+            Gets or sets the factory that should be used. If not explicitly set, all current 
+            loaded assemblies will be scanned to find a factory.
+            </summary>
         </member>
         <member name="T:EPiServer.Personalization.IClientIPAddressResolver">
             <summary>
@@ -3391,13 +4190,6 @@
             </summary>
             <param name="contentType">The content type.</param>
             <returns>An <see cref="T:EPiServer.Framework.Serialization.IObjectSerializer"/> for the given content type or null if no serializer is registered for the content type.</returns>
-        </member>
-        <member name="M:EPiServer.Framework.Serialization.IObjectSerializerFactory.RegisterSerializer(System.String,EPiServer.Framework.Serialization.IObjectSerializer)">
-            <summary>
-            Registers an <see cref="T:EPiServer.Framework.Serialization.IObjectSerializer"/> for a given content type.
-            </summary>
-            <param name="contentType">The content type to handle.</param>
-            <param name="serializer">The serializer.</param>
         </member>
         <member name="M:EPiServer.Framework.Serialization.IObjectSerializerFactory.RegisterSerializer(System.String,EPiServer.ServiceLocation.ServiceAccessor{EPiServer.Framework.Serialization.IObjectSerializer})">
             <summary>
@@ -5040,12 +5832,6 @@
             Resets the global service locator.
             </summary>
             <param name="context">The context to use.</param>
-        </member>
-        <member name="M:EPiServer.ServiceLocation.ServiceContainerInitialization.Preload(System.String[])">
-            <summary>
-            Unused.
-            </summary>
-            <param name="parameters">Unused.</param>
         </member>
         <member name="T:EPiServer.ServiceLocation.ServiceContainerInitialization.ServiceConfigurationScanner">
             <summary>
@@ -6752,17 +7538,6 @@
             based on the &lt;scanAssembly&gt; configuration section.
             </remarks>
         </member>
-        <member name="M:EPiServer.Framework.Initialization.AssemblyList.AllowedAssembliesForProduct(System.String)">
-            <summary>
-            Gets the allowed assemblies for a specific product.
-            </summary>
-            <param name="productName">Name of the product.</param>
-            <returns>The assemblies that you are allowed to scan for a specific product.</returns>
-            <remarks>
-            The assemblies returned from this method will be a subset of <see cref="P:EPiServer.Framework.Initialization.AssemblyList.AllowedAssemblies"/>, based
-            on filtering on the AllowAssemblyScan attribute.
-            </remarks>
-        </member>
         <member name="M:EPiServer.Framework.Initialization.AssemblyList.AllScannableAssemblies(System.Boolean,System.String)">
             <summary>
             Loads and returns the list of alls the scannable assemblies.
@@ -6897,14 +7672,14 @@
         </member>
         <member name="M:EPiServer.Framework.Initialization.InitializationEngine.#ctor(System.Collections.Generic.IEnumerable{EPiServer.Framework.IInitializableModule},EPiServer.Framework.Initialization.HostType)">
             <summary>
-            Constructor used for testing and outisde-the-web purposes.
+            Constructor used for testing and outside-the-web purposes.
             </summary>
             <param name="modules">The list of modules to initialize using this engine.</param>
             <param name="hostType">The type of host this engine initializes.</param>
         </member>
         <member name="M:EPiServer.Framework.Initialization.InitializationEngine.#ctor(System.Collections.Generic.IEnumerable{EPiServer.Framework.IInitializableModule},EPiServer.Framework.Initialization.HostType,System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
             <summary>
-            Constructor used for testing and outisde-the-web purposes.
+            Constructor used for testing and outside-the-web purposes.
             </summary>
             <param name="modules">The list of modules to initialize using this engine.</param>
             <param name="hostType">The type of host this engine initializes.</param>
@@ -6948,8 +7723,8 @@
             </summary>
             <remarks>
             The invocation of the InitComplete event is a bit special. In order to support the same kind of "retry on
-            exception" sematics as for the <see cref="M:EPiServer.Framework.IInitializableModule.Initialize(EPiServer.Framework.Initialization.InitializationEngine)"/> method, we simply remove the
-            delegate from the event handler once it has executed successfully (i e without throwing an exception).
+            exception" semantics as for the <see cref="M:EPiServer.Framework.IInitializableModule.Initialize(EPiServer.Framework.Initialization.InitializationEngine)"/> method, we simply remove the
+            delegate from the event handler once it has executed successfully (i.e. without throwing an exception).
             </remarks>
         </member>
         <member name="M:EPiServer.Framework.Initialization.InitializationEngine.IsInitialized(EPiServer.Framework.IInitializableModule)">
@@ -8439,6 +9214,46 @@
             All scanned types matching types defined in <see cref="T:EPiServer.Framework.TypeScanner.TypeScannerRegistrationAttribute"/>
             </summary>
         </member>
+        <member name="T:EPiServer.Framework.TypeScanner.TypeScannerReflectionException">
+            <summary>
+            Thrown by type scanner when reflecting a given assembly
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.TypeScanner.TypeScannerReflectionException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Framework.TypeScanner.TypeScannerReflectionException"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.TypeScanner.TypeScannerReflectionException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Framework.TypeScanner.TypeScannerReflectionException"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.TypeScanner.TypeScannerReflectionException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Framework.TypeScanner.TypeScannerReflectionException"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.TypeScanner.TypeScannerReflectionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Framework.TypeScanner.TypeScannerReflectionException"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Framework.TypeScanner.TypeScannerReflectionException.#ctor(System.String,System.Exception,System.Reflection.Assembly,System.Collections.Generic.IEnumerable{System.Exception})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Framework.TypeScanner.TypeScannerReflectionException"/> class.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Framework.TypeScanner.TypeScannerReflectionException.Assembly">
+            <summary>
+            The assembly causing the problem
+            </summary>
+        </member>
+        <member name="P:EPiServer.Framework.TypeScanner.TypeScannerReflectionException.LoaderExceptions">
+            <summary>
+            Exceptions durings loading of typed from assembly
+            </summary>
+        </member>
         <member name="T:EPiServer.Framework.TypeScanner.TypeScannerRegistrationAttribute">
             <summary>
             Marks a type that should be automatically picked up and added to a centrally managed repository
@@ -8702,16 +9517,6 @@
             	<para>
             Any work done by <see cref="M:EPiServer.Framework.IInitializableModule.Initialize(EPiServer.Framework.Initialization.InitializationEngine)"/> as well as any code executing on <see cref="E:EPiServer.Framework.Initialization.InitializationEngine.InitComplete"/> should be reversed.
             </para>
-            </remarks>
-        </member>
-        <member name="M:EPiServer.Validation.ValidationService.Preload(System.String[])">
-            <summary>
-            Preloads the module.
-            </summary>
-            <param name="parameters">The parameters.</param>
-            <remarks>
-            This method is only available to be compatible with "AlwaysRunning" applications in .NET 4 / IIS 7.
-            It currently serves no purpose.
             </remarks>
         </member>
         <member name="P:EPiServer.Validation.ValidationService.RegisteredValidators">
@@ -9014,6 +9819,45 @@
             The name of the header.
             </value>
         </member>
+        <member name="T:EPiServer.Web.Hosting.DelegatingVirtualFile">
+            <summary>
+            Virtual file that delegates all member access to the creator.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Web.Hosting.VirtualFileEx">
+            <summary>
+            Extends the <see cref="T:System.Web.Hosting.VirtualFile"/> implemetation with properties enabling efficient transmission by the <see cref="T:EPiServer.Web.StaticFileHandler"/>.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.VirtualFileEx.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Web.Hosting.VirtualFileEx"/> class.
+            </summary>
+            <param name="virtualPath">The virtual path to the resource represented by this instance.</param>
+        </member>
+        <member name="P:EPiServer.Web.Hosting.VirtualFileEx.Changed">
+            <summary>
+            Base class implementation of interface. Throws NotImplementedException.
+            </summary>
+            <value>The changed.</value>        
+        </member>
+        <member name="P:EPiServer.Web.Hosting.VirtualFileEx.LocalPath">
+            <summary>
+            Gets the local path. Base class returns null
+            </summary>
+            <value>The local path.</value>
+        </member>
+        <member name="P:EPiServer.Web.Hosting.VirtualFileEx.Extension">
+            <summary>
+            Gets the UnifiedFiles extension, for example '.doc'.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.DelegatingVirtualFile.Open">
+            <inheritdoc />
+        </member>
+        <member name="P:EPiServer.Web.Hosting.DelegatingVirtualFile.Changed">
+            <inheritdoc />
+        </member>
         <member name="T:EPiServer.Web.Hosting.IVirtualPathProviderModule">
             <summary>
             Can be implemented by a class to create a list of virtual path providers available early when EPiServer Framework initializes
@@ -9025,6 +9869,157 @@
             </summary>
             <param name="context">The context</param>
             <returns>A list of providers</returns>
+        </member>
+        <member name="T:EPiServer.Web.Hosting.ZipArchiveReader">
+            <summary>
+            Represents a class responsible for reading ZipArchives and provide notification if the underlying archive 
+            source has been modified.
+            </summary>
+            <remarks>
+            This class should not be made public without removing the exposure of CaseInsensitiveZipArchive. This can be done
+            if ZipArchive starts supporting case insensitive entries, or by replacing OpenArchive with GetEntry and GetDirectoryEntries.
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveReader.OpenArchive">
+            <summary>
+            Opens the archive that this reader was created for.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveReader.GetArchiveHash">
+            <summary>
+            Gets a hash code representing the archive.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveReader.GetCacheDependency(System.Web.Caching.CacheDependency,System.DateTime)">
+            <summary>
+            Gets a cache dependency to the ZipArchive source.
+            </summary>
+            <param name="baseDependency">The base dependency.</param>
+            <param name="utcStart">The UTC start.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveReader.OnArchiveModified">
+            <summary>
+            Called when the underlying archive source has been modified.
+            </summary>
+        </member>
+        <member name="E:EPiServer.Web.Hosting.ZipArchiveReader.ArchiveModified">
+            <summary>
+            Occurs when the underlying archive source has been modified.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider">
+            <summary>
+            A <see cref="T:System.Web.Hosting.VirtualPathProvider"/> that will serve the contents of a zip archive as a virtual file system.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider"/> class.
+            </summary>
+            <param name="virtualPath">The virtual path that should be mapped by the provider</param>
+            <param name="archivePath">Relative or absolute path to the zip archive file</param>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider"/> class.
+            </summary>
+            <param name="virtualPath">The virtual path that should be mapped by the provider</param>
+            <param name="archivePath">Relative or absolute path to the zip archive file</param>
+            <param name="archiveBasePath">The base path inside the zip archive that should be use. e.g. if you want to make any subfolder as the base path</param>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.DirectoryExists(System.String)">
+            <summary>
+            Returns true if the given virtual path exists as a Folder inside the zip
+            </summary>
+            <param name="virtualDir">The virtual path</param>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.GetDirectory(System.String)">
+            <summary>
+            Returns the virtual folder by given virtual directory path
+            </summary>
+            <param name="virtualDir">The virtual path to the directory</param>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.FileExists(System.String)">
+            <summary>
+            Checks if a file exists in the mapped path, otherwise fall back to the base implementation.
+            </summary>
+            <param name="virtualPath">The virtual path</param>
+            <returns>True if the file exists; otherwise false</returns>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.GetFile(System.String)">
+            <summary>
+            Returns the mapped file if there is one; otherwise fall back to the base implementation
+            </summary>
+            <param name="virtualPath">Path to the file</param>
+            <returns>A virtual file if one exists; otherwise null</returns>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.GetCacheDependency(System.String,System.Collections.IEnumerable,System.DateTime)">
+            <summary>
+            Creates a cache dependency based on the specified virtual paths.
+            </summary>
+            <param name="virtualPath">The path to the primary virtual resource.</param>
+            <param name="virtualPathDependencies">An array of paths to other resources required by the primary virtual resource.</param>
+            <param name="utcStart">The UTC time at which the virtual resources were read.</param>
+            <returns>
+            A <see cref="T:System.Web.Caching.CacheDependency" /> object for the specified virtual resources.
+            </returns>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.GetCacheKey(System.String)">
+            <summary>
+            Returns a cache key to use for the specified virtual path.
+            </summary>
+            <param name="virtualPath">The path to the virtual resource.</param>
+            <returns>
+            A cache key for the specified virtual resource.
+            </returns>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.GetFileHash(System.String,System.Collections.IEnumerable)">
+            <summary>
+            Returns the computed hash based on zipped file's name, creation time, modified time and uncompressed size
+            </summary>
+            <param name="virtualPath">The virtual path of the file</param>
+            <param name="virtualPathDependencies">List of dependant file paths</param>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.GetDirectoryEntry(System.String)">
+            <summary>
+            Returns the zip entry by given virtual directory path. 
+            </summary>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.GetFileEntry(System.String)">
+            <summary>
+            Returns the zip entry by given virtual file path. 
+            </summary>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.ContainsFileEntry(System.String)">
+            <summary>
+            Only returns true if the ZipEntry exists inside the zip file for given path
+            </summary>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.GetEntry(System.String)">
+            <summary>
+            Returns the zip file entry for the given path.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.TryToMapped(System.String,System.String@)">
+            <summary>
+            Try to check whether a given virtualPath is mapped to current provider.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.ClearResources">
+            <summary>
+            Empties the in-memory data and loaded archive
+            </summary>
+        </member>
+        <member name="P:EPiServer.Web.Hosting.ZipArchiveVirtualPathProvider.Archive">
+            <summary>
+             Gets the zip file as lazily loaded
+            </summary>
         </member>
         <member name="T:EPiServer.Web.MediaHandlerBase">
             <summary>
@@ -9216,34 +10211,6 @@
             </summary>
             <value></value>
             <returns>Always false. </returns>
-        </member>
-        <member name="T:EPiServer.Web.Hosting.VirtualFileEx">
-            <summary>
-            Extends the <see cref="T:System.Web.Hosting.VirtualFile"/> implemetation with properties enabling efficient transmission by the <see cref="T:EPiServer.Web.StaticFileHandler"/>.
-            </summary>
-        </member>
-        <member name="M:EPiServer.Web.Hosting.VirtualFileEx.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:EPiServer.Web.Hosting.VirtualFileEx"/> class.
-            </summary>
-            <param name="virtualPath">The virtual path to the resource represented by this instance.</param>
-        </member>
-        <member name="P:EPiServer.Web.Hosting.VirtualFileEx.Changed">
-            <summary>
-            Base class implementation of interface. Throws NotImplementedException.
-            </summary>
-            <value>The changed.</value>        
-        </member>
-        <member name="P:EPiServer.Web.Hosting.VirtualFileEx.LocalPath">
-            <summary>
-            Gets the local path. Base class returns null
-            </summary>
-            <value>The local path.</value>
-        </member>
-        <member name="P:EPiServer.Web.Hosting.VirtualFileEx.Extension">
-            <summary>
-            Gets the UnifiedFiles extension, for example '.doc'.
-            </summary>
         </member>
         <member name="T:EPiServer.Web.Hosting.VirtualPathEventArgs">
             <summary>
@@ -9991,12 +10958,6 @@
             Initialize any events on <see c="System.Web.HttpApplication"/> instances created by ASP.NET
             </summary>
             <param name="application">The instance to initialize</param>
-        </member>
-        <member name="M:EPiServer.Framework.Web.Resources.ClientResourceInitialization.Preload(System.String[])">
-            <summary>
-            Preloads the module.
-            </summary>
-            <param name="parameters">The parameters.</param>
         </member>
         <member name="T:EPiServer.Framework.Web.Resources.ClientResourceProviderAttribute">
             <summary>
@@ -11057,6 +12018,11 @@
             <value>
             The area.
             </value>
+        </member>
+        <member name="T:EPiServer.Web.Hosting.CaseInsensitiveZipArchive">
+            <summary>
+            Wrapper for <see cref="T:System.IO.Compression.ZipArchive"/> providing case insensitive (read-only) entry lookup.
+            </summary>
         </member>
     </members>
 </doc>

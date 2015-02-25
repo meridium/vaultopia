@@ -673,16 +673,6 @@
             Initialize lookup table.
             </summary>
         </member>
-        <member name="M:EPiServer.BaseLibrary.IO.Compression.Zip.ZipFile.Read(System.String)">
-            <summary>
-            This will throw if the zipfile does not exist. 
-            </summary>
-        </member>
-        <member name="M:EPiServer.BaseLibrary.IO.Compression.Zip.ZipFile.Read(System.String,System.Boolean)">
-            <summary>
-            This will throw if the zipfile does not exist. 
-            </summary>
-        </member>
         <member name="T:EPiServer.BaseLibrary.IO.PooledMemoryBufferStream">
             <summary>
             Readable and writeable stream implementation backed by a pooled memory area

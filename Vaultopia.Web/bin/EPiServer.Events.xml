@@ -954,12 +954,6 @@
         <member name="P:EPiServer.Events.LimitedConcurrencyLevelTaskScheduler.MaximumConcurrencyLevel">
             <summary>Gets the maximum concurrency level supported by this scheduler.</summary> 
         </member>
-        <member name="M:EPiServer.Events.EventsInitialization.InitializeEvents(System.Boolean)">
-            <summary>
-            Ensures that the EPiServer.RemoteEvents system is initialized (even when there are no client/service-endpoints registered in web.config)
-            </summary>
-            <param name="forcePublisher">When true, ensures that the site is registered as Publisher even if there are no client-endpoints registered in web.config</param>
-        </member>
         <member name="T:EPiServer.Events.EventsServiceKnownTypeAttribute">
             <summary>
             Attribute to indicate that this type should be treated as a known type by the EPiServer Events service
@@ -1097,6 +1091,14 @@
             Raises the <see cref="E:MessageReceived"/> event.
             </summary>
             <param name="args">The <see cref="T:EPiServer.Events.EventMessageEventArgs"/> instance containing the event data.</param>
+            <remarks>Any exceptions thrown by an event listener will be suppressed by this method, use another overload to control behaviour of exceptions from the provider</remarks>
+        </member>
+        <member name="M:EPiServer.Events.Providers.EventProvider.OnMessageReceived(EPiServer.Events.EventMessageEventArgs,System.Boolean)">
+            <summary>
+            Raises the <see cref="E:MessageReceived"/> event.
+            </summary>
+            <param name="args">The <see cref="T:EPiServer.Events.EventMessageEventArgs"/> instance containing the event data.</param>
+            <param name="suppressExceptions"><c>true</c> exceptions should be suppressed and logged or <c>false</c> if the exceptions should be forwared to the caller of this method.</param>
         </member>
         <member name="E:EPiServer.Events.Providers.EventProvider.MessageReceived">
             <summary>
@@ -1694,35 +1696,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:EPiServer.Events.Remote.EventReplicationWCFProviders.RaiseEvent(System.Guid,System.String,System.Int32,System.Byte[],System.Guid,System.Object)">
-            <summary>
-            Raises the event.
-            </summary>
-            <param name="raiserId">The raiser id.</param>
-            <param name="siteId">The site id.</param>
-            <param name="sequenceNumber">The sequence number.</param>
-            <param name="verificationData">The verification data.</param>
-            <param name="eventId">The event id.</param>
-            <param name="param">The param.</param>
-        </member>
         <member name="M:EPiServer.Events.Remote.EventReplicationWCFProviders.RaiseEvent(EPiServer.Events.EventMessage)">
             <summary>
             Raises the event.
             </summary>
             <param name="message">The message.</param>
-        </member>
-        <member name="M:EPiServer.Events.Remote.EventReplicationWCFProviders.TryRaiseEvent(EPiServer.Events.Remote.EventReplicationProvider,System.Guid,System.String,System.Int32,System.Byte[],System.Guid,System.Object)">
-            <summary>
-            Tries the raise event. Return false if occurs CommunicationException when try to raise event by proxy.  
-            </summary>
-            <param name="eventReplProvider">The event repl provider.</param>
-            <param name="raiserId">The raiser id.</param>
-            <param name="siteId">The site id.</param>
-            <param name="sequenceNumber">The sequence number.</param>
-            <param name="verificationData">The verification data.</param>
-            <param name="eventId">The event id.</param>
-            <param name="param">The param.</param>
-            <returns></returns>
         </member>
         <member name="M:EPiServer.Events.Remote.EventReplicationWCFProviders.TryRaiseEvent(EPiServer.Events.Remote.EventReplicationProvider,EPiServer.Events.EventMessage)">
             <summary>
@@ -1805,107 +1783,10 @@
             </summary>
             <param name="wcfProvider">The WCF provider.</param>
         </member>
-        <member name="T:EPiServer.Events.Remote.RemoteEventsManager">
-            <summary>
-            The RemoteEventsManager class is to send and receive remote events
-            The Event class should be used by user code to raise and subscribe to events.
-            </summary>
-        </member>
-        <member name="M:EPiServer.Events.Remote.RemoteEventsManager.RegisterSite(System.String,System.Byte[],EPiServer.Events.Clients.RegistrationType)">
-            <summary>
-            Registers the site with the RemoteEventsManager.
-            Only one site per application domain can be registered with the RegistrationType.EventPublisher value. It is this site's identity that is used
-            when an instance of an Event uses this class to raise a remote event.
-            An exception is thrown if a site is already registered as an event raiser for this application domain.
-            </summary>
-            <param name="siteId">The site id.</param>
-            <param name="siteSecret">The site secret.</param>
-            <param name="regType">The reg type.</param>
-            <returns>A unique id representing the registration.</returns>
-        </member>
-        <member name="M:EPiServer.Events.Remote.RemoteEventsManager.DeRegisterSite(System.Guid)">
-            <summary>
-            Deregisters the site with the RemoteEventsManager.
-            </summary>
-            <param name="uniqueId">The unique id representing the remote site as returned by <see cref="M:EPiServer.Events.Remote.RemoteEventsManager.RegisterSite(System.String,System.Byte[],EPiServer.Events.Clients.RegistrationType)"/>.</param>
-        </member>
-        <member name="M:EPiServer.Events.Remote.RemoteEventsManager.Reset">
-            <summary>
-            Removes all registered sites that were previously registered. Avoid using this.
-            </summary>
-        </member>
-        <member name="M:EPiServer.Events.Remote.RemoteEventsManager.GetSentCount(System.Guid)">
-            <summary>
-            Returns the number of event messages sent for the event identified by <paramref name="eventId"/>
-            </summary>
-            <param name="eventId">The id of the event</param>
-            <returns>A <see cref="T:System.Int64"/>value</returns>
-        </member>
-        <member name="M:EPiServer.Events.Remote.RemoteEventsManager.GetReceivedCount(System.Guid)">
-            <summary>
-            Returns the number of event messages received for the event identified by <paramref name="eventId"/>
-            </summary>
-            <param name="eventId">The id of the event</param>
-            <returns>A <see cref="T:System.Int64"/>value</returns>
-        </member>
-        <member name="P:EPiServer.Events.Remote.RemoteEventsManager.Broker">
-            <summary>
-            Internal accessor to be able to maintain backward compability with static members.
-            </summary>
-        </member>
-        <member name="P:EPiServer.Events.Remote.RemoteEventsManager.Enabled">
-            <summary>
-            Gets or sets a value indicating whether the RemoteEventsManager is enabled or not
-            </summary>
-            <value><c>true</c> if RemoteEventsManager is enabled otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:EPiServer.Events.Remote.RemoteEventsManager.IsEventClientConfigured">
-            <summary>
-            Gets the is event client configured.
-            </summary>
-        </member>
-        <member name="P:EPiServer.Events.Remote.RemoteEventsManager.EventMissingAfterMilliseconds">
-            <summary>
-            Gets or sets the amount of time in milliseconds that need to elapse for an event to be considered missing.
-            A missing event can only be detected when an event comes out of sequence (i.e. the sequence number
-            is greater that the last plus one)
-            </summary>
-        </member>
-        <member name="P:EPiServer.Events.Remote.RemoteEventsManager.EventReplicationProviders">
-            <summary>
-            Get and sets the provider for event replication
-            </summary>
-        </member>
-        <member name="P:EPiServer.Events.Remote.RemoteEventsManager.HasEventRaiserSite">
-            <summary>
-            Gets a value indicating whether this instance has event raiser site.
-            </summary>
-            <value>
-            	<c>true</c> if this instance has event raiser site; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="P:EPiServer.Events.Remote.RemoteEventsManager.SiteCount">
-            <summary>
-            Gets the number of sites registered with the RemoteEventManager
-            </summary>
-        </member>
-        <member name="P:EPiServer.Events.Remote.RemoteEventsManager.SyncRoot">
-            <summary>
-            Gets the sync root.
-            The sync root can be used by client code to synchronise thread access to the public members of the class
-            </summary>
-            <value>The sync root.</value>
-        </member>
         <member name="T:EPiServer.Events.Clients.Event">
             <summary>
             The Event class is used to raise and receive events in EPiServer
             </summary>
-        </member>
-        <member name="M:EPiServer.Events.Clients.Event.#ctor(System.Guid)">
-            <summary>
-            This constructor is not intended for public use; Create Event objects using Event.Get or IEventService.Get.
-            </summary>
-            <param name="id">The id of the event that is instantiated.</param>
         </member>
         <member name="M:EPiServer.Events.Clients.Event.#ctor(System.Guid,EPiServer.Events.Providers.IEventBroker,System.Func{System.Boolean})">
             <summary>
@@ -2063,13 +1944,6 @@
             This class is not for public use.
             </summary>
         </member>
-        <member name="T:EPiServer.Events.Clients.IEventHandler">
-            <summary>
-            Defines the interface that classes should implement to receive events from the event service via the EventServiceClient.
-            The Event class should be used to by user code receive events under normal circumstances. Only implement a class based on
-            this interface and use it directly with the EventServiceClient for specialized behaviour.
-            </summary>
-        </member>
         <member name="M:EPiServer.Events.ActiveServerCalculator.ActiveServers">
             <summary>
             Gives an indication of how many servers are currently active in the system.
@@ -2088,7 +1962,7 @@
             Get the currently active servers
             </summary>
             <param name="inactiveTimeLimit">The time limit after which a server is considered inactive.</param>
-            <returns></returns>
+            <returns>A list of servers, the first server is always the local server</returns>
         </member>
         <member name="M:EPiServer.Events.ActiveServerCalculator.VerifyServerCount(System.Int32)">
             <summary>

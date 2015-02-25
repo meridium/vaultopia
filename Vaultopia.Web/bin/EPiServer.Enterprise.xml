@@ -2075,7 +2075,7 @@
             Base class for object transfer
             </summary>
         </member>
-        <member name="M:EPiServer.Enterprise.Transfer.AllowedContentTypesTransfer.#ctor(EPiServer.Enterprise.Transfer.ITransferContext,EPiServer.DataAbstraction.IAvailableContentTypes,EPiServer.DataAbstraction.IAvailableSettingsRepository,EPiServer.DataAbstraction.IContentTypeRepository)">
+        <member name="M:EPiServer.Enterprise.Transfer.AllowedContentTypesTransfer.#ctor(EPiServer.Enterprise.Transfer.ITransferContext,EPiServer.DataAbstraction.ContentTypeAvailabilityService,EPiServer.DataAbstraction.IAvailableSettingsRepository,EPiServer.DataAbstraction.IContentTypeRepository)">
             <summary>
             Initializes a new instance of the <see cref="T:EPiServer.Enterprise.Transfer.AllowedContentTypesTransfer"/> class.
             </summary>

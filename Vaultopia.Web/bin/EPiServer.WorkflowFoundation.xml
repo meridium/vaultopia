@@ -5554,15 +5554,6 @@
             Occurs when an instances was deleted, for example when it is completed or terminated.
             </summary>
         </member>
-        <member name="M:EPiServer.WorkflowFoundation.InstanceHandler.#ctor(EPiServer.WorkflowFoundation.Interfaces.IStorageProvider,EPiServer.WorkflowFoundation.Interfaces.IBroadcastHandler,System.Workflow.Runtime.WorkflowRuntime)">
-            <summary>
-            Do not create an instance of this object, use <see cref="P:EPiServer.WorkflowFoundation.WorkflowSystem.InstanceHandler"/> to get
-            the singelton instance instead.
-            </summary>
-            <param name="storageProvider">A handle to the storage provider</param>
-            <param name="broadcastHandler">The broadcast handler.</param>
-            <param name="runtime">A handle to runtime</param>
-        </member>
         <member name="M:EPiServer.WorkflowFoundation.InstanceHandler.#ctor(EPiServer.WorkflowFoundation.Interfaces.IStorageProvider,EPiServer.WorkflowFoundation.Interfaces.IBroadcastHandler,System.Workflow.Runtime.WorkflowRuntime,EPiServer.Framework.Localization.LocalizationService)">
             <summary>
             Do not create an instance of this object, use <see cref="P:EPiServer.WorkflowFoundation.WorkflowSystem.InstanceHandler"/> to get
@@ -7148,12 +7139,6 @@
             IInitializableModule.Initialize
             </summary>
             <param name="context">InitializationEngine context</param>
-        </member>
-        <member name="M:EPiServer.WorkflowFoundation.WorkflowSystem.Preload(System.String[])">
-            <summary>
-             IInitializableModule.Preload
-            <param name="parameters">parameters</param>
-            </summary>
         </member>
         <member name="M:EPiServer.WorkflowFoundation.WorkflowSystem.Uninitialize(EPiServer.Framework.Initialization.InitializationEngine)">
             <summary>
