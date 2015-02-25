@@ -297,7 +297,11 @@ D:\git\Meriworks\vaultopia\Vaultopia.Web\bin\System.Web.Webpages.Deployment.xml
 D:\git\Meriworks\vaultopia\Vaultopia.Web\bin\System.Web.Webpages.Razor.xml
 D:\git\Meriworks\vaultopia\Vaultopia.Web\bin\System.Web.Helpers.xml
 D:\git\Meriworks\vaultopia\Vaultopia.Web\bin\System.Web.Mvc.xml
-D:\git\Meriworks\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.csprojResolveAssemblyReference.cache
 D:\git\Meriworks\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.dll
 D:\git\Meriworks\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.pdb
 D:\git\Meriworks\vaultopia\Vaultopia.Web\bin\EPiServer.Logging.Log4Net.dll
+D:\git\Meriworks\vaultopia\Vaultopia.Web\bin\EPiServer.Packaging.CmdAPI.dll
+D:\git\Meriworks\vaultopia\Vaultopia.Web\bin\EPiServer.Packaging.dll
+D:\git\Meriworks\vaultopia\Vaultopia.Web\bin\NuGet.Core.dll
+D:\git\Meriworks\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.csprojResolveAssemblyReference.cache
+D:\git\Meriworks\vaultopia\Vaultopia.Web\bin\EPiServer.Packaging.UI.dll
