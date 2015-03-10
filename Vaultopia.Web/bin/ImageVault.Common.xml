@@ -439,6 +439,11 @@
             Should the attribute be rendered if empty
             </summary>
         </member>
+        <member name="M:ImageVault.Common.Data.Display.AttributeValue.#ctor">
+            <summary>
+            Initializes a new instance of the <b>AttributeValue</b> class.
+            </summary>
+        </member>
         <member name="M:ImageVault.Common.Data.Display.AttributeValue.#ctor(ImageVault.Common.Data.Display.AttributeBindName,System.String,System.Boolean,System.Boolean)">
             <summary>
             Initializes a new instance of the <b>AttributeValue</b> class.
@@ -447,6 +452,39 @@
             <param name="defaultValue">the value of the attribute</param>
             <param name="required">if the attribute is requierd</param>
             <param name="displayIfEmpty">if the attribute should be rendered if empty</param>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.AttributeValue.#ctor(ImageVault.Common.Data.Display.AttributeValue)">
+            <summary>
+            Initializes a new instance of the <b>AttributeValue</b> class.
+            </summary>
+            <param name="attributeValue"></param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="attributeValue"/> is null.</exception>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.AttributeValue.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>A new object that is a copy of this instance.</returns>
+        </member>
+        <member name="T:ImageVault.Common.Data.Display.ElementCloseMode">
+            <summary>
+            Defines the different Close modes for an HTML element.
+            </summary>
+        </member>
+        <member name="F:ImageVault.Common.Data.Display.ElementCloseMode.ClosingTag">
+            <summary>
+            An element with a closing tag
+            </summary>
+        </member>
+        <member name="F:ImageVault.Common.Data.Display.ElementCloseMode.SelfClosing">
+            <summary>
+            A self closing element 
+            </summary>
+        </member>
+        <member name="F:ImageVault.Common.Data.Display.ElementCloseMode.None">
+            <summary>
+            None indicates a simple tag without close.
+            </summary>
         </member>
         <member name="T:ImageVault.Common.Data.Display.HtmlElement">
             <summary>
@@ -463,6 +501,17 @@
             <remarks>
             2012-08-21 dan: Created
             </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.Node.#ctor">
+            <summary>
+            Initializes a new instance of the <b>Node</b> class.
+            </summary>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.Node.#ctor(ImageVault.Common.Data.Display.Node)">
+            <summary>
+            Initializes a new instance of the <b>Node</b> class.
+            </summary>
+            <param name="node"></param>
         </member>
         <member name="M:ImageVault.Common.Data.Display.Node.BindAttribute(System.String,ImageVault.Common.Data.Display.AttributeBindName)">
             <summary>
@@ -483,6 +532,19 @@
             </summary>
             <returns>A new object that is a copy of this instance.</returns>
         </member>
+        <member name="M:ImageVault.Common.Data.Display.Node.Bind(ImageVault.Common.Data.Media,ImageVault.Common.Data.MediaItem)">
+            <summary>
+            Binds the Node to the supplied mediaItem
+            </summary>
+            <param name="info"></param>
+            <param name="mediaItem"></param>
+        </member>
+        <member name="P:ImageVault.Common.Data.Display.Node.Disabled">
+            <summary>
+            Get/Sets the Disabled of the Node
+            </summary>
+            <value>If false (default) the node is active and will be rendered, if true it will not be rendered (or any of it's content)</value>
+        </member>
         <member name="F:ImageVault.Common.Data.Display.HtmlElement.Attributes">
             <summary>
             the attributes of the element
@@ -498,6 +560,13 @@
             Initializes a new instance of the <b>HtmlElement</b> class.
             </summary>
             <param name="htmlElement"></param>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.HtmlElement.Bind(ImageVault.Common.Data.Media,ImageVault.Common.Data.MediaItem)">
+            <summary>
+            Binds the HtmlElement and all its children to the supplied mediaItem
+            </summary>
+            <param name="info"></param>
+            <param name="mediaItem"></param>
         </member>
         <member name="M:ImageVault.Common.Data.Display.HtmlElement.IsValidName(System.String)">
             <summary>
@@ -534,6 +603,18 @@
         <member name="P:ImageVault.Common.Data.Display.HtmlElement.SelfClosing">
             <summary>
             If the element should be self closing.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Common.Data.Display.HtmlElement.SelfClosingAlternateSetting">
+            <summary>
+            Sets the SelfClosingAlternateSetting of the HtmlElement
+            </summary>
+            <value>Only used to read legacy serialize info</value>
+        </member>
+        <member name="P:ImageVault.Common.Data.Display.HtmlElement.ClosingMode">
+            <summary>
+            Get/Sets the ClosingMode of the HtmlElement
             </summary>
             <value></value>
         </member>
@@ -637,12 +718,80 @@
             </summary>
             <value></value>
         </member>
-        <member name="T:ImageVault.Common.Data.Effects.CropEffect">
+        <member name="T:ImageVault.Common.Data.Display.VideoSourceElement">
             <summary>
-            Crop effect
+            This class will represent a source tag if the request includes a conversion for the specified source type.
             </summary>
-            <remarks></remarks>
-            <example></example>
+            <remarks>By specifying the <see cref="P:ImageVault.Common.Data.Display.VideoSourceElement.Type"/> of the ImageVault content and the <see cref="P:ImageVault.Common.Data.Display.VideoSourceElement.MediaKeyAndName"/> for the content reference (internal or published)
+            that it represents, a correct source html element will be displayed.</remarks>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.VideoSourceElement.#ctor">
+            <summary>
+            Initializes a new instance of the <b>VideoSourceElement</b> class.
+            </summary>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.VideoSourceElement.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <b>VideoSourceElement</b> class.
+            </summary>
+            <param name="type"></param>
+            <param name="mediaKeyAndName"></param>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.VideoSourceElement.#ctor(ImageVault.Common.Data.Display.VideoSourceElement)">
+            <summary>
+            Initializes a new instance of the <b>VideoSourceElement</b> class.
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.VideoSourceElement.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>A new object that is a copy of this instance.</returns>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.VideoSourceElement.Bind(ImageVault.Common.Data.Media,ImageVault.Common.Data.MediaItem)">
+            <summary>
+            Binds the mediaItem to the element
+            </summary>
+            <param name="info"></param>
+            <param name="mediaItem"></param>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.VideoSourceElement.GetBaseUrl(System.String)">
+            <summary>
+            Gets the media base url including trailing /
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Common.Data.Display.VideoSourceElement.GetMatchingPathSegment(System.String,System.String)">
+            <summary>
+            searches for the supplied segment in the supplied url and returns the string up to and including the matched segment (and trailing url path separator /)
+            </summary>
+            <param name="url">The <see cref="T:System.String"/> to search in</param>
+            <param name="segment">The path segment to look for</param>
+            <returns>The matching path segment or null if no match was found</returns>
+        </member>
+        <member name="P:ImageVault.Common.Data.Display.VideoSourceElement.Type">
+            <summary>
+            Get/Sets the Type of the VideoSourceElement
+            </summary>
+            <value>The content-type of the data that the source element points to</value>
+        </member>
+        <member name="P:ImageVault.Common.Data.Display.VideoSourceElement.MediaKeyAndName">
+            <summary>
+            Get/Sets the MediaKeyAndName of the VideoSourceElement
+            </summary>
+            <value>Contains the MediaKeyAndName for the ImageVault content. MediaKeyAndName is the MediaKey and MediaName separated by a path separator (/).
+            MediaKey is the MediaContentReferenceId for internal media and the PublishedMediaContentReferenceId for publishedMedia.
+            MediaName is the Name of the MediaContentReference (like the filename).</value>
+        </member>
+        <member name="T:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect">
+            <summary>
+            The ChangeOutputFormatEffect allows the format to change the output format for the media
+            </summary>
+            <remarks>
+            2014-07-18 dan: Created
+            </remarks>
         </member>
         <member name="T:ImageVault.Common.Data.Effects.Effect">
             <summary>
@@ -657,6 +806,66 @@
             </summary>
             <returns>A new object that is a copy of this instance.</returns>
         </member>
+        <member name="M:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect.#ctor">
+            <summary>
+            Initializes a new instance of the <b>ChangeOutputFormatEffect</b> class.
+            </summary>
+        </member>
+        <member name="M:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <b>ChangeOutputFormatEffect</b> class.
+            </summary>
+            <param name="contentType"></param>
+        </member>
+        <member name="M:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>A new object that is a copy of this instance.</returns>
+        </member>
+        <member name="M:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current 
+            <b>ChangeOutputFormatEffect</b>.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect"/>.</param>
+            <returns>true if the specified <see cref="T:System.Object"/> is equal to the current <b>ChangeOutputFormatEffect</b>;
+            otherwise, false.</returns>
+        </member>
+        <member name="M:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type, suitable for use in hashing algorithms and data structures like a hash table.
+            </summary>
+            <returns>A hash code for the current <see cref="T:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect"/>.</returns>
+        </member>
+        <member name="M:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect.Equals(ImageVault.Common.Data.Effects.ChangeOutputFormatEffect)">
+            <summary>
+            Determines whether the specified <see cref="T:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect"/> is equal to the current 
+            <b>ChangeOutputFormatEffect</b>.
+            </summary>
+            <param name="other">The <see cref="T:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect"/> to compare with the current <see cref="T:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect"/>.</param>
+            <returns>true if the specified <see cref="T:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect"/> is equal to the current <b>ChangeOutputFormatEffect</b>;
+            otherwise, false.</returns>
+        </member>
+        <member name="M:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect"/>.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents the current <see cref="T:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect"/>.</returns>
+        </member>
+        <member name="P:ImageVault.Common.Data.Effects.ChangeOutputFormatEffect.ContentType">
+            <summary>
+            Get/Sets the ContentType of the ChangeOutputFormatEffect
+            </summary>
+            <value>The content type that the output should be changed to.</value>
+        </member>
+        <member name="T:ImageVault.Common.Data.Effects.CropEffect">
+            <summary>
+            Crop effect
+            </summary>
+            <remarks></remarks>
+            <example></example>
+        </member>
         <member name="M:ImageVault.Common.Data.Effects.CropEffect.#ctor">
             <summary>
             Initializes a new instance of the <b>CropEffect</b> class.
@@ -670,6 +879,12 @@
             <param name="y"></param>
             <param name="width"></param>
             <param name="height"></param>
+        </member>
+        <member name="M:ImageVault.Common.Data.Effects.CropEffect.#ctor(System.Drawing.Rectangle)">
+            <summary>
+            Initializes a new instance of the <b>CropEffect</b> class.
+            </summary>
+            <param name="rectangle"></param>
         </member>
         <member name="M:ImageVault.Common.Data.Effects.CropEffect.Clone">
             <summary>
@@ -751,6 +966,13 @@
             <param name="height">The height of the resizeEffect.</param>
             <param name="resizeMode">The <see cref="T:ImageVault.Common.Data.ResizeMode"/>. Default is <see cref="F:ImageVault.Common.Data.ResizeMode.ScaleToFit"/>.</param>
         </member>
+        <member name="M:ImageVault.Common.Data.Effects.ResizeEffect.#ctor(System.Drawing.Size,ImageVault.Common.Data.ResizeMode)">
+            <summary>
+            Initializes a new instance of the <b>ResizeEffect</b> class.
+            </summary>
+            <param name="size"></param>
+            <param name="resizeMode"></param>
+        </member>
         <member name="M:ImageVault.Common.Data.Effects.ResizeEffect.Clone">
             <summary>
             Creates a new object that is a copy of the current instance.
@@ -780,6 +1002,12 @@
             <param name="other">The <see cref="T:ImageVault.Common.Data.Effects.ResizeEffect"/> to compare with the current <see cref="T:ImageVault.Common.Data.Effects.ResizeEffect"/>.</param>
             <returns>true if the specified <see cref="T:ImageVault.Common.Data.Effects.ResizeEffect"/> is equal to the current <b>ResizeEffect</b>;
             otherwise, false.</returns>
+        </member>
+        <member name="M:ImageVault.Common.Data.Effects.ResizeEffect.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:ImageVault.Common.Data.Effects.ResizeEffect"/>.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents the current <see cref="T:ImageVault.Common.Data.Effects.ResizeEffect"/>.</returns>
         </member>
         <member name="P:ImageVault.Common.Data.Effects.ResizeEffect.Width">
             <summary>
@@ -818,17 +1046,11 @@
             Initializes a new instance of the <b>GlobalRoleIdentity</b> class.
             </summary>
         </member>
-        <member name="M:ImageVault.Common.Data.GlobalRoleIdentity.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <b>GlobalRoleIdentity</b> class.
-            </summary>
-            <param name="name"></param>
-        </member>
         <member name="M:ImageVault.Common.Data.GlobalRoleIdentity.#ctor(System.String,ImageVault.Common.Data.GlobalRoles)">
             <summary>
             Initializes a new instance of the <b>GlobalRoleIdentity</b> class.
             </summary>
-            <param name="name"></param>
+            <param name="identity"></param>
             <param name="roles"></param>
         </member>
         <member name="M:ImageVault.Common.Data.GlobalRoleIdentity.#ctor(ImageVault.Common.Data.GlobalRoleIdentity)">
@@ -843,9 +1065,21 @@
             </summary>
             <value>The name of the identity</value>
         </member>
+        <member name="P:ImageVault.Common.Data.GlobalRoleIdentity.Identity">
+            <summary>
+            Get/Sets the Identity of the GlobalRoleIdentity
+            </summary>
+            <value></value>
+        </member>
         <member name="P:ImageVault.Common.Data.GlobalRoleIdentity.Roles">
             <summary>
             Get/Sets the Roles of the GlobalRoleIdentity
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Common.Data.GlobalRoleIdentity.DisplayName">
+            <summary>
+            Get/Sets the DisplayName of the GlobalRoleIdentity
             </summary>
             <value></value>
         </member>
@@ -1101,6 +1335,12 @@
         <member name="P:ImageVault.Common.Data.Query.GlobalRoleIdentityFilter.Name">
             <summary>
             Get/Sets the Name of the IdentityFilter
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Common.Data.Query.GlobalRoleIdentityFilter.Identity">
+            <summary>
+            Get/Sets the Identity of the GlobalRoleIdentityFilter
             </summary>
             <value></value>
         </member>
@@ -2330,7 +2570,8 @@
             <summary>
             Get/Sets the MediaUrlBase of the MediaItemQuery
             </summary>
-            <value></value>
+            <value>If null the <see cref="P:ImageVault.Common.Data.Query.MediaItemQuery.DefaultMediaUrlBase"/> will be used. If <see cref="F:System.String.Empty"/> is used, the core address will be used.
+            All other values will use the supplied value.</value>
         </member>
         <member name="P:ImageVault.Common.Data.Query.MediaItemQuery.DefaultMediaUrlBase">
             <summary>
@@ -4093,6 +4334,12 @@
             </summary>
             <value>The name of the user/group who has the access</value>
         </member>
+        <member name="P:ImageVault.Common.Data.VaultAccess.DisplayName">
+            <summary>
+            Get/Sets the DisplayName of the VaultAccess
+            </summary>
+            <value></value>
+        </member>
         <member name="P:ImageVault.Common.Data.VaultAccess.Role">
             <summary>
             Get/Sets the Role of the VaultAccess
@@ -4236,6 +4483,24 @@
             <param name="format">A <see cref="T:System.String"/> containing zero or more format items. </param>
             <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects to format.</param>
         </member>
+        <member name="T:ImageVault.Common.Lib.ActivatorUtil">
+            <summary>
+            Summary description for ActivatorUtil.
+            </summary>
+            <remarks>
+            2015-02-12 dan: Created
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Lib.ActivatorUtil.CreateInstance``1(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="typeName"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+            <exception cref="T:System.ApplicationException">If cannot find type named 
+             or if error instancing type .</exception>
+        </member>
         <member name="T:ImageVault.Common.Lib.Collections.Generic.EnumerableExtensions">
             <summary>
             Extension methods for the IEnumerable of T class
@@ -4358,6 +4623,41 @@
             </summary>
             <value></value>
         </member>
+        <member name="T:ImageVault.Common.Lib.Collections.Specialized.NameVauleCollectionExtensions">
+            <summary>
+            Summary description for NameVauleCollectionExtensions.
+            </summary>
+            <remarks>
+            2015-02-09 dan: Created
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Collections.Specialized.NameVauleCollectionExtensions.GetAsInt(System.Collections.Specialized.NameValueCollection,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="appSettings"></param>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Collections.Specialized.NameVauleCollectionExtensions.GetAsBool(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Gets an appsettings as a boolean value
+            </summary>
+            <param name="appSettings">The <see cref="T:System.Collections.Specialized.NameValueCollection"/> to use</param>
+            <param name="key">The key of the appsettings value to get</param>
+            <returns>The value as a booelan. False is anything that isn't true. True is (true, yes, on, 1 (ignoring case)).</returns>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Collections.Specialized.NameVauleCollectionExtensions.GetAsTimeSpan(System.Collections.Specialized.NameValueCollection,System.String,System.Nullable{System.TimeSpan})">
+            <summary>
+            Gets an appsettings value as a TimeSpan
+            </summary>
+            <remarks>If an integer is found, this is interpreted as the number of minutes.</remarks>
+            <param name="appSettings">The <see cref="T:System.Collections.Specialized.NameValueCollection"/> to use</param>
+            <param name="key">The key of the appsettings value to get</param>
+            <param name="defaultValue">The default value to return if the value is unparseable or missing. If no default value, <see cref="F:System.TimeSpan.Zero"/> will be used</param>
+            <returns>The parsed value</returns>
+        </member>
         <member name="T:ImageVault.Common.Lib.Configuration.ClientConfigurationWithAppSettingsExtensions">
             <summary>
             Summary description for ClientConfigurationWithAppSettingsExtensions.
@@ -4373,6 +4673,25 @@
             <param name="config">The <see cref="T:Meridium.Lib.Configuration.ConfigurationSectionWithAppSettingsBase"/> to use</param>
             <param name="key">The key of the appsettings value to get</param>
             <returns>The value as a booelan. False is anything that isn't true. True is (true, yes, on, 1 (ignoring case)).</returns>
+        </member>
+        <member name="T:ImageVault.Common.Lib.Drawing.SizeUtil">
+            <summary>
+            Size calculating functions
+            </summary>
+            <remarks>
+            2014-11-14 dan: Created
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Drawing.SizeUtil.FitInsideBounds(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Calculates the size that the oringinal image needs to be to fit inside the supplied bounds while retaining it's original aspect ratio.
+            </summary>
+            <param name="imageWidth">The width of the original image</param>
+            <param name="imageHeight">The height of the original image</param>
+            <param name="boundsWidth">The width of the outer bounds to fit inside</param>
+            <param name="boundsHeight">The height of the outer bounds to fit inside</param>
+            <param name="allowGrowth">True if we allow expanding the image to fit inside the bounds, false if we only allow shrink</param>
+            <returns>The resulting size<see cref="T:System.Drawing.Size"/> </returns>
         </member>
         <member name="T:ImageVault.Common.Lib.EnumExtensions">
             <summary>
@@ -4534,6 +4853,240 @@
             <exception cref="T:System.ArgumentNullException">If <paramref name="source"/> is null
              or if <paramref name="hashMethod"/> is null.</exception>
         </member>
+        <member name="T:ImageVault.Common.Lib.Logging.ILog">
+            <summary>
+            Summary description for ILog.
+            </summary>
+            <remarks>
+            2011-03-16 dan: Created
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.ILog.Debug(System.Object)">
+            <summary>
+            Log a message object with the Debug level. 
+            </summary>
+            <param name="message">The message object to log.</param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.ILog.Debug(System.Object,System.Exception)">
+            <summary>
+            Log a message object with the Debug level. 
+            </summary>
+            <param name="message">The message object to log.</param>
+            <param name="exception">The <see cref="T:System.Exception"/> to log</param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.ILog.Warn(System.Object)">
+            <summary>
+            Log a message object with the Warn level. 
+            </summary>
+            <param name="message">The message object to log.</param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.ILog.Warn(System.Object,System.Exception)">
+            <summary>
+            Log a message object with the Warn level including the stack trace of the Exception passed as a parameter. 
+            </summary>
+            <param name="message">The message object to log.</param>
+            <param name="exception">The exception to log, including its stack trace.</param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.ILog.Error(System.Object,System.Exception)">
+            <summary>
+            Log a message object with the Error level. 
+            </summary>
+            <param name="message">The message object to log.</param>
+            <param name="exception">The <see cref="T:System.Exception"/> to log</param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.ILog.Error(System.Object)">
+            <summary>
+            Log a message object with the Error level. 
+            </summary>
+            <param name="message">The message object to log.</param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.ILog.DebugVerbose(System.Object)">
+            <summary>
+            Logs a message with verbose debug option
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.ILog.DebugVerbose(System.Object,System.Exception)">
+            <summary>
+            Logs a message with verbose debug option
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="T:ImageVault.Common.Lib.Logging.ILogManager">
+            <summary>
+            Summary description for ILogManager.
+            </summary>
+            <remarks>
+            2011-03-29 dan: Created
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.ILogManager.GetLogger(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.ILogManager.GetLogger(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ImageVault.Common.Lib.Logging.Log4NetLog">
+            <summary>
+            A wrapper class for implementing log4net logging
+            </summary>
+            <remarks>
+            2011-03-16 dan: Created
+            </remarks>
+            <example></example>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLog.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <b>Log4NetLog</b> class.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLog.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <b>Log4NetLog</b> class.
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLog.Debug(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLog.Warn(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLog.Error(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLog.DebugVerbose(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLog.DebugVerbose(System.Object,System.Exception)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLog.Debug(System.Object,System.Exception)">
+            <summary>
+            Log a message object with the Debug level. 
+            </summary>
+            <param name="message">The message object to log.</param>
+            <param name="exception">The <see cref="T:System.Exception"/> to log</param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLog.Warn(System.Object,System.Exception)">
+            <summary>
+            Log a message object with the Warn level including the stack trace of the Exception passed as a parameter. 
+            </summary>
+            <param name="message">The message object to log.</param>
+            <param name="exception">The exception to log, including its stack trace.</param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLog.Error(System.Object,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLog.Log(log4net.Core.Level,System.Object,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="level"></param>
+            <param name="message"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="T:ImageVault.Common.Lib.Logging.Log4NetLogManager">
+            <summary>
+            
+            </summary>
+            <remarks></remarks>
+            <example></example>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLogManager.#ctor">
+            <summary>
+            Initializes a new instance of the <b>Log4NetLogManager</b> class.
+            </summary>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLogManager.GetLogger(System.Type)">
+            <summary>
+            Gets a logger for the specified type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.Log4NetLogManager.GetLogger(System.String)">
+            <summary>
+            Gets a logger for the specified name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ImageVault.Common.Lib.Logging.LogManager">
+            <summary>
+            Summary description for LogManager.
+            </summary>
+            <remarks>
+            2011-03-29 dan: Created
+            </remarks>
+            <example></example>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.LogManager.GetLogger(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.LogManager.GetLogger(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ImageVault.Common.Lib.Logging.LogManager.SystemLogManager">
+            <summary>
+            Get/Sets the SystemLogManager of the LogManager
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:ImageVault.Common.Lib.Logging.LogManagerConfigurationSection">
+            <summary>
+            Summary description for LogManagerConfigurationSection.
+            </summary>
+            <remarks>
+            2011-03-29 dan: Created
+            </remarks>
+            <example></example>
+        </member>
+        <member name="M:ImageVault.Common.Lib.Logging.LogManagerConfigurationSection.#ctor">
+            <summary>
+            Initializes a new instance of the <b>LogManagerConfigurationSection</b> class.
+            </summary>
+        </member>
+        <member name="P:ImageVault.Common.Lib.Logging.LogManagerConfigurationSection.Instance">
+            <summary>
+            Returns the singleton instance of the <see cref="T:ImageVault.Common.Lib.Logging.LogManagerConfigurationSection"/> class.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Common.Lib.Logging.LogManagerConfigurationSection.LogManagerType">
+            <summary>
+            Get/Sets the LogManagerType of the ClientConfigurationSection
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ImageVault.Common.Lib.Logging.LogManagerConfigurationSection.DebugVerbose">
+            <summary>
+            Gets the DebugVerbose of the LogManagerConfigurationSection
+            </summary>
+            <value></value>
+        </member>
         <member name="T:ImageVault.Common.Lib.MacAddressUtil">
             <summary>
             Summary description for MacAddressUtil.
@@ -4555,7 +5108,38 @@
             <param name="macAddress"></param>
             <returns></returns>
         </member>
-        <member name="T:ImageVault.Common.Lib.Wcf.ErrorHandlerBeavior">
+        <member name="T:ImageVault.Common.Lib.StringConverterUtil">
+            <summary>
+            Summary description for StringConverterUtil.
+            </summary>
+            <remarks>
+            2015-03-05 dan: Created
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Lib.StringConverterUtil.ConvertToBool(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Common.Lib.StringConverterUtil.ConvertToTimeSpan(System.String,System.Nullable{System.TimeSpan})">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Common.Lib.StringConverterUtil.ConvertToInt(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ImageVault.Common.Lib.Wcf.ErrorHandlerBehavior">
             <summary>
             Summary description for ErrorHandlerBeavior.
             </summary>
@@ -4564,78 +5148,83 @@
             </remarks>
             <example></example>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBeavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
             <summary>
             
             </summary>
             <param name="endpoint"></param>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBeavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
             <summary>
             
             </summary>
             <param name="endpoint"></param>
             <param name="bindingParameters"></param>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBeavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
             <summary>
             
             </summary>
             <param name="endpoint"></param>
             <param name="endpointDispatcher"></param>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBeavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
             <summary>
             
             </summary>
             <param name="endpoint"></param>
             <param name="clientRuntime"></param>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBeavior.Validate(System.ServiceModel.Description.OperationDescription)">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBehavior.Validate(System.ServiceModel.Description.OperationDescription)">
             <summary>
             
             </summary>
             <param name="operationDescription"></param>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBeavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.DispatchOperation)">
             <summary>
             
             </summary>
             <param name="operationDescription"></param>
             <param name="dispatchOperation"></param>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBeavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Dispatcher.ClientOperation)">
             <summary>
             
             </summary>
             <param name="operationDescription"></param>
             <param name="clientOperation"></param>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBeavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription,System.ServiceModel.Channels.BindingParameterCollection)">
             <summary>
             
             </summary>
             <param name="operationDescription"></param>
             <param name="bindingParameters"></param>
         </member>
-        <member name="T:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInpector">
+        <member name="T:ImageVault.Common.Lib.Wcf.ErrorHandlerBeavior">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInspector">
             <summary>
             
             </summary>
             <remarks></remarks>
             <example></example>
         </member>
-        <member name="F:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInpector.Serializer">
+        <member name="F:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInspector.Serializer">
             <summary>
             Gets the Serializer of the <see cref="T:ImageVault.Common.Lib.Wcf.NewtonsoftJsonClientFormatter"/>
             </summary>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInpector.#cctor">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInspector.#cctor">
             <summary>
             Initializes a new instance of the <b>ErrorHandlerClientInpector</b> class.
             </summary>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInpector.BeforeSendRequest(System.ServiceModel.Channels.Message@,System.ServiceModel.IClientChannel)">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInspector.BeforeSendRequest(System.ServiceModel.Channels.Message@,System.ServiceModel.IClientChannel)">
             <summary>
             
             </summary>
@@ -4643,20 +5232,27 @@
             <param name="channel"></param>
             <returns></returns>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInpector.AfterReceiveReply(System.ServiceModel.Channels.Message@,System.Object)">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInspector.AfterReceiveReply(System.ServiceModel.Channels.Message@,System.Object)">
             <summary>
             
             </summary>
             <param name="reply"></param>
             <param name="correlationState"></param>
         </member>
-        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInpector.ReadFaultDetail(System.ServiceModel.Channels.Message)">
+        <member name="M:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInspector.ReadFaultDetail(System.ServiceModel.Channels.Message)">
             <summary>
             Used to locate the FaultDeail of the reply message which will be used to generate the 
             new Exception
             </summary>
             <param name="reply"></param>
             <returns></returns>
+        </member>
+        <member name="T:ImageVault.Common.Lib.Wcf.ErrorHandlerClientInpector">
+            <summary>
+            
+            </summary>
+            <remarks></remarks>
+            <example></example>
         </member>
         <member name="T:ImageVault.Common.Lib.Wcf.ErrorHandlerInvoker">
             <summary>
@@ -5635,6 +6231,11 @@
               Looks up a localized string similar to Scale to fit.
             </summary>
         </member>
+        <member name="P:ImageVault.Common.Properties.Resources.ResizeMode_Skew">
+            <summary>
+              Looks up a localized string similar to Scale to skew.
+            </summary>
+        </member>
         <member name="T:ImageVault.Common.Lib.Wcf.EndPointType">
             <summary>
             Defines different types of endpoints
@@ -5817,6 +6418,50 @@
             <param name="parameters"></param>
             <returns></returns>
         </member>
+        <member name="T:ImageVault.Common.Security.ClaimsUtil">
+            <summary>
+            Summary description for ClaimsUtil.
+            </summary>
+            <remarks>
+            2015-02-13 dan: Created
+            </remarks>
+        </member>
+        <member name="F:ImageVault.Common.Security.ClaimsUtil.GroupClaimType">
+            <summary>
+            A constant for the Group claim type (http://schemas.microsoft.com/ws/2008/06/identity/claims/groups)
+            </summary>
+        </member>
+        <member name="M:ImageVault.Common.Security.ClaimsUtil.GetClaims(System.Security.Principal.IPrincipal)">
+            <summary>
+            
+            </summary>
+            <param name="principal"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ImageVault.Common.Security.ClientSecurityManagerFactory">
+            <summary>
+            Factory class for retrieving <see cref="T:ImageVault.Common.Security.IClientSecurityManager"/> instances.
+            </summary>
+            <remarks>
+            2015-02-24 dan: Created
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Security.ClientSecurityManagerFactory.#ctor">
+            <summary>
+            Initializes a new instance of the <b>ClientSecurityManagerFactory</b> class.
+            </summary>
+        </member>
+        <member name="P:ImageVault.Common.Security.ClientSecurityManagerFactory.Instance">
+            <summary>
+            Returns the singleton instance of the <see cref="T:ImageVault.Common.Security.ClientSecurityManagerFactory"/> class.
+            </summary>
+        </member>
+        <member name="P:ImageVault.Common.Security.ClientSecurityManagerFactory.ClientSecurityManager">
+            <summary>
+            Get/Sets the ClientSecurityManager of the ClientSecurityManagerFactory
+            </summary>
+            <value></value>
+        </member>
         <member name="T:ImageVault.Common.Security.HttpBasicAuthUtil">
             <summary>
             Summary description for HttpBasicAuthUtil.
@@ -5876,6 +6521,28 @@
             <summary>
             Defines that a registered token is supplied
             </summary>
+        </member>
+        <member name="T:ImageVault.Common.Security.IClientSecurityManager">
+            <summary>
+            An interface for extracting user and role identities
+            </summary>
+            <remarks>
+            2015-02-24 dan: Created 
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Security.IClientSecurityManager.GetRoleIdentities(System.Security.Principal.IPrincipal)">
+            <summary>
+            Gets the role identities for the supplied principal
+            </summary>
+            <param name="principal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageVault.Common.Security.IClientSecurityManager.GetUserIdentity(System.Security.Principal.IPrincipal)">
+            <summary>
+            Gets the user identity for the principal
+            </summary>
+            <param name="principal"></param>
+            <returns></returns>
         </member>
         <member name="T:ImageVault.Common.Security.FindUsersByNameResult">
             <summary>
@@ -5960,6 +6627,52 @@
             <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual 
             information about the source or destination.</param>
         </member>
+        <member name="T:ImageVault.Common.Security.MembershipClientSecurityManager">
+            <summary>
+            A client security manager for Membership and role providers
+            </summary>
+            <remarks>
+            2015-02-24 dan: Created
+            </remarks>
+            <example></example>
+        </member>
+        <member name="M:ImageVault.Common.Security.MembershipClientSecurityManager.GetRoleIdentities(System.Security.Principal.IPrincipal)">
+            <inheritdoc/>
+        </member>
+        <member name="M:ImageVault.Common.Security.MembershipClientSecurityManager.GetUserIdentity(System.Security.Principal.IPrincipal)">
+            <inheritdoc/>
+        </member>
+        <member name="T:ImageVault.Common.Security.ServicePointManagerHelper">
+            <summary>
+            Setup a disposable ServerCertificateValidationCallback
+            </summary>
+            <remarks>
+            2015-01-12 dan: Created
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Common.Security.ServicePointManagerHelper.#ctor(System.Func{System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors,System.Boolean})">
+            <summary>
+            Setup <see cref="P:System.Net.ServicePointManager.ServerCertificateValidationCallback"/> to allow all valid certificates
+            </summary>
+            <param name="callback"></param>
+        </member>
+        <member name="M:ImageVault.Common.Security.ServicePointManagerHelper.Finalize">
+            <summary>
+            Releases unmanaged resources and performs other cleanup operations before 
+            the <b>ServicePointManagerHelper</b> is reclaimed by garbage collection.
+            </summary>
+        </member>
+        <member name="M:ImageVault.Common.Security.ServicePointManagerHelper.Dispose">
+            <summary>
+            Releases the resources used by the <b>ServicePointManagerHelper</b>.
+            </summary>
+        </member>
+        <member name="M:ImageVault.Common.Security.ServicePointManagerHelper.Dispose(System.Boolean)">
+            <summary>
+            Releases the resources used by the <b>ServicePointManagerHelper</b>.
+            </summary>
+            <param name="disposing">Set to <b>true</b> to release both managed and unmanaged resources; <b>false</b> to release only unmanaged resources.</param>
+        </member>
         <member name="T:ImageVault.Common.Security.TicketEntry">
             <summary>
             Defines a cached Authentication ticket entry for the TicketRepository
@@ -6022,6 +6735,7 @@
             </summary>
             <remarks></remarks>
             <example></example>
+            TODO:Move to Core? Why is it in Common anyway?
         </member>
         <member name="M:ImageVault.Common.Security.TicketStore.AddTicket(ImageVault.Common.Security.TicketEntry)">
             <summary>
@@ -6119,6 +6833,14 @@
             </summary>
             <returns>The <see cref="T:ImageVault.Common.Data.GlobalRoles"/> containing all roles that the current user belongs to</returns>
         </member>
+        <member name="T:ImageVault.Common.Services.IMediaAnalyserService">
+            <summary>
+            Summary description for IMediaAnalyserService.
+            </summary>
+            <remarks>
+            2015-01-29 dan: Created 
+            </remarks>
+        </member>
         <member name="T:ImageVault.Common.Services.IMediaFormatService">
             <summary>
             Summary description for IMediaFormatService.
@@ -6204,17 +6926,19 @@
             Defines the operations needed for streamed requests. Will deliver all types of content to the client.
             </summary>
             <remarks>
-            2011-07-18 dan: Created 
+            Ordinary HTTP requests should be used to access the methods of this service. See each method for more details.
             </remarks>
         </member>
         <member name="M:ImageVault.Common.Services.IMediaStreamService.GetMediaStreamById(System.String,System.String)">
             <summary>
-            Gets the internal MediaContent from the specified reference
+            Gets the internal MediaContent from the specified reference.
             </summary>
             <param name="mediaContentReferenceId">The mediaContentReferenceId</param>
             <param name="name">The name of the requested item. This can be omitted (null)</param>
             <returns>The <see cref="T:System.IO.Stream"/> containing the contents of the requested media</returns>
-            <remarks>This method is also responsible for setting the http headers for the response.</remarks>
+            <remarks>This method is also responsible for setting the http headers for the response.
+            <p>Access this method with the following URI: /media/{mediaContentReferenceId}/{name=null\}</p>
+            </remarks>
         </member>
         <member name="M:ImageVault.Common.Services.IMediaStreamService.GetPublishedMediaStreamById(System.String,System.String)">
             <summary>
@@ -6223,7 +6947,9 @@
             <param name="mediaContentReferenceId">The published mediaContentReferenceId</param>
             <param name="name">The name of the requested item. This can be omitted (null)</param>
             <returns>The <see cref="T:System.IO.Stream"/> containing the contents of the requested media</returns>
-            <remarks>This method is also responsible for setting the http headers for the response.</remarks>
+            <remarks>This method is also responsible for setting the http headers for the response.
+            <p>Access this method with the following URI: /publishedmedia/{mediaContentReferenceId}/{name=null}</p>
+            </remarks>
         </member>
         <member name="M:ImageVault.Common.Services.IMediaStreamService.GetZipArchiveById(System.String,System.String)">
             <summary>
@@ -6232,7 +6958,9 @@
             <param name="key">The key of the zip archive to get</param>
             <param name="name">The name of the archive. This can be omitted (null)</param>
             <returns>The <see cref="T:System.IO.Stream"/> containing the archive contents</returns>
-            <remarks>This method is also responsible for setting the http headers for the response.</remarks>
+            <remarks>This method is also responsible for setting the http headers for the response.
+            <p>Access this method with the following URI: /Archive/{key}/{name=null}</p>
+            </remarks>
         </member>
         <member name="T:ImageVault.Common.Services.IServiceFactory">
             <summary>

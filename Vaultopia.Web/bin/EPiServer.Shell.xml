@@ -3907,6 +3907,12 @@
             <param name="attributedType">The <see cref="T:System.Type"/> of the component.</param>
             <returns>A new instance of a <see cref="T:EPiServer.Shell.ViewComposition.DefaultComponentDefinition"/>.</returns>
         </member>
+        <member name="P:EPiServer.Shell.ViewComposition.ComponentAttribute.AllowedRoles">
+            <summary>
+            Gets or sets the list of roles that are allowed to use this component.
+            </summary>
+            <value>The role list .</value>
+        </member>
         <member name="P:EPiServer.Shell.ViewComposition.ComponentAttribute.WidgetType">
             <summary>
             Name of the widget type to use for displaying the component.
@@ -5905,12 +5911,12 @@
         </member>
         <member name="T:EPiServer.Shell.Modules.ModuleInitializer">
             <summary>
-            This class whole purpose in life is to initializes modules while beeing internally used by EPiServer.
+            This class whole purpose in life is to initializes modules while being internally used by EPiServer.
             </summary>
         </member>
         <member name="M:EPiServer.Shell.Modules.ModuleInitializer.#ctor(System.Web.Routing.IRouteHandler,System.Web.Routing.RouteCollection,System.Web.Mvc.ViewEngineCollection,System.Web.Hosting.VirtualPathProvider,EPiServer.Shell.Configuration.EPiServerShellSection)">
             <summary>
-            Creates a new instnace of the <see cref="T:EPiServer.Shell.Modules.ModuleInitializer"/> class.
+            Creates a new instance of the <see cref="T:EPiServer.Shell.Modules.ModuleInitializer"/> class.
             </summary>
             <param name="routeHandler">The route handler</param>
             <param name="routes">The route collection</param>
@@ -6122,7 +6128,14 @@
             Initializes a new instance of the <see cref="T:EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider"/> class.
             </summary>
             <param name="localizationService">The localization service.</param>
-            <param name="httpContextBase">HttpContextBase</param>B
+            <param name="httpContextBase">HttpContextBase</param>
+        </member>
+        <member name="M:EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider.#ctor(EPiServer.Framework.Localization.LocalizationService,EPiServer.ServiceLocation.ServiceAccessor{System.Web.HttpContextBase})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider"/> class.
+            </summary>
+            <param name="localizationService">The localization service.</param>
+            <param name="httpContext">Access to the current HTTP context</param>
         </member>
         <member name="M:EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider.CreateMetadata(System.Collections.Generic.IEnumerable{System.Attribute},System.Type,System.Func{System.Object},System.Type,System.String)">
             <summary>
@@ -6610,6 +6623,14 @@
             <param name="metadataHandlerRegistry">The metadata registry.</param>
             <param name="localizationService">The localization service.</param>
             <param name="httpContextBase">HttpContextBase</param>
+        </member>
+        <member name="M:EPiServer.Shell.ObjectEditing.ExtensibleMetadataProvider.#ctor(EPiServer.Shell.ObjectEditing.MetadataHandlerRegistry,EPiServer.Framework.Localization.LocalizationService,EPiServer.ServiceLocation.ServiceAccessor{System.Web.HttpContextBase})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Shell.ObjectEditing.ExtensibleMetadataProvider"/> class.
+            </summary>
+            <param name="metadataHandlerRegistry">The metadata registry.</param>
+            <param name="localizationService">The localization service.</param>
+            <param name="httpContext">Access to the current HTTP context</param>
         </member>
         <member name="M:EPiServer.Shell.ObjectEditing.ExtensibleMetadataProvider.CreateMetadata(System.Collections.Generic.IEnumerable{System.Attribute},System.Type,System.Func{System.Object},System.Type,System.String)">
             <summary>

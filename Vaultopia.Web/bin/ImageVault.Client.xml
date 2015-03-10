@@ -118,6 +118,37 @@
             <param name="forceRenew"></param>
             <returns></returns>
         </member>
+        <member name="M:ImageVault.Client.Authentication.IvOAuthTokenUtil.ClearAuthToken">
+            <summary>
+            Clears the current auth token
+            </summary>
+        </member>
+        <member name="M:ImageVault.Client.Authentication.IvOAuthTokenUtil.RequestAccessToken">
+            <summary>
+            Requests an access token
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.ApplicationException">If cannot create request for .</exception>
+            <exception cref="T:ImageVault.Common.ImageVaultException">If no configured SdkIdentity was found
+             or if request access token failed: 
+             or if cannot get response stream from response
+             or if unable to request access token @ .</exception>
+        </member>
+        <member name="M:ImageVault.Client.Authentication.IvOAuthTokenUtil.GetFormUrlEncodedContent(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            
+            </summary>
+            <param name="nameValueCollection"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="nameValueCollection"/> is null.</exception>
+        </member>
+        <member name="M:ImageVault.Client.Authentication.IvOAuthTokenUtil.Encode(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
         <member name="P:ImageVault.Client.Authentication.IvOAuthTokenUtil.TokenExpires">
             <summary>
             Gets the TokenExpires of the IvOAuthTokenUtil
@@ -1111,6 +1142,56 @@
             Gets the StatusDescription of the HttpWebResponseWrapper
             </summary>
             <value></value>
+        </member>
+        <member name="T:ImageVault.Client.Rest.CoreRestProxyHandler">
+            <summary>
+            Summary description for CoreRestProxyHandler.
+            </summary>
+            <remarks>
+            2015-02-02 dan: Created
+            </remarks>
+        </member>
+        <member name="M:ImageVault.Client.Rest.CoreRestProxyHandler.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <b>CoreRestProxyHandler</b> class.
+            </summary>
+            <param name="path"></param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="path"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">If the supplied path cannot start with any of the following characters; .</exception>
+        </member>
+        <member name="M:ImageVault.Client.Rest.CoreRestProxyHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>
+            Processes the request and redirects it to the Core service.
+            </summary>
+            <param name="context"></param>
+            <exception cref="T:System.ApplicationException">If cannot create request for .</exception>
+        </member>
+        <member name="M:ImageVault.Client.Rest.CoreRestProxyHandler.PerformRealRequest(System.String,System.String,System.Web.HttpRequest,System.Web.HttpResponse,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="coreUrl"></param>
+            <param name="content"></param>
+            <param name="sourceRequest"></param>
+            <param name="destResponse"></param>
+            <param name="forceNewAuthToken"></param>
+            <exception cref="T:System.ApplicationException">If cannot create request for .</exception>
+        </member>
+        <member name="M:ImageVault.Client.Rest.CoreRestProxyHandler.CopyRequestHeaders(System.Web.HttpRequestBase,System.Net.HttpWebRequest,System.Boolean)">
+            <summary>
+            Copies the headers from one request to another
+            </summary>
+            <param name="source"></param>
+            <param name="dest"></param>
+            <param name="forceNewAuthToken"></param>
+            <exception cref="T:System.ApplicationException">If error setting header .</exception>
+        </member>
+        <member name="M:ImageVault.Client.Rest.CoreRestProxyHandler.CopyResponseHeaders(System.Net.HttpWebResponse,System.Web.HttpResponseBase)">
+            <summary>
+            Copies the headers from one response to another
+            </summary>
+            <param name="source"></param>
+            <param name="dest"></param>
         </member>
         <member name="M:ImageVault.Client.Rest.DemoServiceClientProxy.#ctor(ImageVault.Client.Configuration.ClientConfigurationSection,ImageVault.Client.Authentication.IvOAuthTokenUtil)">
             <summary>
@@ -2510,11 +2591,6 @@
             2011-06-13 dan: Created
             </remarks>
         </member>
-        <member name="M:ImageVault.Client.Client.#cctor">
-            <summary>
-            Initializes a new instance of the <b>Client</b> class.
-            </summary>
-        </member>
         <member name="M:ImageVault.Client.Client.#ctor(ImageVault.Client.IClientChannelFactory)">
             <summary>
             Initializes a new instance of the <b>Client</b> class.
@@ -2692,11 +2768,6 @@
             <remarks>Will take precedence over the <see cref="P:ImageVault.Client.ClientFactory.SdkPublishIdentifier"/>. This must be set to null if the value in the
             <see cref="P:ImageVault.Client.ClientFactory.SdkPublishIdentifier"/> should work.</remarks>
         </member>
-        <member name="T:ImageVault.Client.ClientFactory.FormsAuthClientKey">
-            <summary>
-            Client key to identify a FormsAuth client
-            </summary>
-        </member>
         <member name="M:ImageVault.Client.ClientFactory.ClientKey.#ctor(System.String,System.String,System.DateTime)">
             <summary>
             Initializes a new instance of the <b>ClientKey</b> class.
@@ -2734,6 +2805,17 @@
             Gets the Expires of the ClientKey
             </summary>
             <value></value>
+        </member>
+        <member name="M:ImageVault.Client.ClientFactory.ClientSecurityManagerClientKey.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <b>ClientSecurityManagerClientKey</b> class.
+            </summary>
+            <param name="userIdentity"></param>
+        </member>
+        <member name="T:ImageVault.Client.ClientFactory.FormsAuthClientKey">
+            <summary>
+            Client key to identify a FormsAuth client
+            </summary>
         </member>
         <member name="T:ImageVault.Client.Query.InvalidQueryException">
             <summary>
@@ -3271,6 +3353,13 @@
             <param name="configuration"></param>
             <param name="authUtil"></param>
         </member>
+        <member name="M:ImageVault.Client.Rest.MediaAnalyserServiceClientProxy.#ctor(ImageVault.Client.Configuration.ClientConfigurationSection,ImageVault.Client.Authentication.IvOAuthTokenUtil)">
+            <summary>
+            Initializes a new instance of the <b>MediaAnalyserServiceClientProxy</b> class.
+            </summary>
+            <param name="configuration"></param>
+            <param name="authUtil"></param>
+        </member>
         <member name="M:ImageVault.Client.Rest.MediaConversionServiceClientProxy.#ctor(ImageVault.Client.Configuration.ClientConfigurationSection,ImageVault.Client.Authentication.IvOAuthTokenUtil)">
             <summary>
             Initializes a new instance of the <b>MediaConversionServiceClientProxy</b> class.
@@ -3350,6 +3439,18 @@
             Gets the ContentType of the StreamRequestContent
             </summary>
             <value></value>
+        </member>
+        <member name="T:ImageVault.Client.Security.ImageVaultRootCertificateServicePointManager">
+            <summary>
+            Allows certificates issued by ImageVault root certificates
+            </summary>
+            <remarks></remarks>
+            <example></example>
+        </member>
+        <member name="M:ImageVault.Client.Security.ImageVaultRootCertificateServicePointManager.#ctor">
+            <summary>
+            Initializes a new instance of the <b>ImageVaultRootCertificateServicePointManager</b> class.
+            </summary>
         </member>
         <member name="T:ImageVault.Client.Web.MediaProxyHandler">
             <summary>
