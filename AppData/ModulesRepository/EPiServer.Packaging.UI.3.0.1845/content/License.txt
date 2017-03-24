@@ -1,0 +1,404 @@
+﻿END USER LICENSE AGREEMENT FOR EPiSERVER 7 CMS, COMMERCE, RELATE, FIND AND SUPPLEMENTAL 
+PRODUCTS
+
+IMPORTANT - PLEASE READ THROUGH THE FOLLOWING TERMS AND CONDITIONS OF THE END USER LICENSE 
+AGREEMENT ("AGREEMENT") BELOW BEFORE LICENSEE INSTALLS AND/OR USES THE SOFTWARE IN ANY 
+WAY. BY INSTALLING, COPYING, DOWNLOADING, OR IN ANY OTHER WAY USING THE SOFTWARE, LICENSEE 
+ACCEPTS THE CONDITIONS BELOW AND THIS AGREEMENT BECOMES A BINDING OBLIGATION ON LICENSEE. 
+BY SIGNING BELOW, LICENSEE HAS AGREED THAT THIS AGREEMENT IS THE COMPLETE AND EXCLUSIVE 
+STATEMENT OF THE AGREEMENT BETWEEN THE PARTIES AND SUPERSEDES ALL OTHER PROPOSALS AND 
+PRIOR AGREEMENTS, ORAL OR WRITTEN, BETWEEN THE PARTIES RELATING TO THE SUBJECT MATTER 
+HEREIN.  IF LICENSEE DOES NOT AGREE TO THESE TERMS AND CONDITIONS, DO NOT INSTALL, COPY, 
+DOWNLOAD, IN ANY OTHER WAY USE THE SOFTWARE, OR OTHERWISE INDICATE REFUSAL, AND MAKE NO 
+FURTHER USE OF THE SOFTWARE. 
+
+1. Definitions
+
+"Agreement" means this End User License Agreement.
+
+"Applied Software" means the third party software listed in Section 12 below.
+
+"Development Licenses" means a limited License Type that can only be used for 
+non-commercial purpose(s).  They cannot be used for any public facing site or server and 
+are typically labeled as, but not limited to, "Partner", "Developer", "Demo", 
+"Demonstration" or "Evaluation" licenses. Developer Licenses are limited to site, server 
+and/or usage restrictions.
+
+"EPiServer" means EPiServer AB. 
+
+"Implemented Software" means the implemented third party software listed in Section 11 
+below.
+
+"Intranet Licenses" means a limited License Type that can only be used for internal 
+purposes by Licensee and only by personnel within Licensee’s organization.  They cannot be 
+used for any public facing site or server and are typically labeled as, but not limited 
+to, "Intranet" licenses. Intranet Licenses are limited to site, server and/or usage 
+restrictions.
+
+"Licensee" means the customer licensing the Software in accordance with this Agreement. 
+
+"License Type" means the license types provided by EPiServer from time to time.
+
+"Products" means the product EPiServer 7™ CMS , Commerce, Relate and Supplemental products 
+provided by EPiServer as further described in Section 2.1 and 2.2 below.
+
+"Software" means (i) all of the contents of the files, CD-ROMs or other media in 
+machine-readable form provided under this Agreement, including (a) all software provided 
+by EPiServer (b) Applied Software, (c) Implemented Software (d) Third party software 
+included in Packages of software, (ii) related explanatory written material or files 
+("Documentation"); but excluding any part of the original source code of the Implemented 
+Software.
+
+"Software Bundles" means a packaging of license(s) and/or License Type(s), i.e. EPiServer 
+Social Commerce Solution, EPiServer Social Intranet Solution, etc.  Software Bundles are 
+subject to all terms, conditions, and end user license agreements of whichever Software 
+and/or License Type(s) that include and are limited to site, server and/or usage 
+restrictions. 
+
+"Third Party Products" means third party software provided by a third party which may be 
+installed together with the Software.
+
+"Use" means to access, install, download and/or execute the Software in order to utilize 
+the functionality of the Software. 
+
+2. Software License 
+
+For so long as the Licensee complies with the terms of this Agreement and makes full and 
+timely payment of all fees and charges, EPiServer grants Licensee a non-exclusive, 
+non-transferable limited license to use the Software solely for Licensee’s internal 
+business purposes and in accordance with the following conditions:
+
+2.1 General Use of Products. The condition for general Use differs depending on the 
+Product and the terms and conditions for the License Type acquired by the Licensee. 
+Additional definitions, terms, conditions and restrictions will apply depending on license 
+type, and can be found on (http://www.episerver.com/license_types).  EPiServer presently 
+offers the following Products;
+
+ (i) EPiServer 7™ CMS (Production License). The Licensee may install the Software in 
+machine-readable, object code form on one (1) physical computer/server or on one (1) 
+virtual server in a virtual operating system environment for each license they have 
+purchased. Each license is valid for one (1) EPiServer application, i.e. one site or one 
+virtual directory within Internet Information Services ("IIS").
+
+ (ii) EPiServer 7™ Commerce (Production License). The Licensee may install the Software in 
+machine-readable, object code form on one (1) physical computer/server or on one (1) 
+virtual server in a virtual operating system environment for each license they have 
+purchased. Each license is valid for one (1) EPiServer application, i.e. one site or one 
+virtual directory within Internet Information Services ("IIS").
+
+ (iii) EPiServer 7™ Relate (Production License). The Licensee may install the Software in 
+machine-readable, object code form on one (1) physical computer/server or on one (1) 
+virtual server in a virtual operating system environment for each license they have 
+purchased. Each license is valid for one (1) EPiServer application, i.e. one site or one 
+virtual directory within Internet Information Services ("IIS").
+
+ (iv) EPiServer Development License(s). The Licensee may install Development License(s) of 
+the Software in machine-readable, object code form on one (1) non-public facing physical 
+developer computer or on one (1) non-public facing virtual developer instance in a virtual 
+operating system environment to be used by a single user. Development License(s) are 
+further limited by time, user and/or usage rights, defined within the EPiServer License 
+Types and General Terms and Conditions. 
+
+ (v) EPiServer Demonstration License(s). The Licensee may install Demonstration License(s) 
+of the Software in machine-readable, object code form on one (1) non-public facing 
+physical developer computer or on one (1) non-public facing virtual developer instance in 
+a virtual operating system environment to be used for demonstration purposes only. 
+Demonstration Licenses are further limited by time, user and/or usage rights, defined 
+within the EPiServer License Types and General Terms and Conditions.   
+
+ (vi) Software Bundle(s). The Licensee may install a Software Bundle in machine-readable, 
+object code form on the number of physical computer(s)/server(s) or on the number virtual 
+server(s) in a virtual operating system environment that the Software Bundle they have 
+purchased includes. Each Software Bundle is valid for the explicit number of EPiServer 
+applications, i.e. one site or one virtual directory within Internet Information Services 
+("IIS"), its description includes. For example, the EPiServer Online Sales Solution - 5 
+Sites Software Bundle is subject to the end user license agreements and terms applicable 
+for both EPiServer 7™ CMS and EPiServer 7™ Commerce, will support up to five (5) EPiServer 
+applications on three (3) physical/virtual server. Software Bundles may be further limited 
+by time, user and/or usage rights which can be found within the EPiServer License Types 
+and General Terms and Conditions.   
+
+ (vii) EPiServer Intranet License(s). The Licensee may install Intranet License(s) of the 
+Software in machine-readable, object code form on one (1) non-public facing physical 
+computer/server or on one (1) non-public facing virtual server in a virtual operating 
+system environment for each license they have purchased. Intranet Licenses may be further 
+limited by time, user and/or usage rights which can be found within the EPiServer License 
+Types and General Terms and Conditions.
+
+ (viii) EPiServer Find (On-Premise License). The Licensee may install the Software in 
+machine-readable, object code form on one (1) physical computer/server or on one (1) 
+virtual server in a virtual operating system environment for each license they have 
+purchased. Each license is valid for one (1) licensing organization, i.e.one (1) Internet 
+Information Services ("IIS") instance.  The Licensee may not be use the Software to create 
+a hosted index service.
+
+2.2 General Use of Supplemental Products. EPiServer presently offers the following 
+Supplemental products on the following conditions: 
+
+ (i)  Packages of software. The Licensee may install the Software in machine-readable, 
+object code form on one (1) physical computer/server or on one (1) virtual server in a 
+virtual operating system environment for each license they have purchased. Packages of 
+software can only be used in combination with a Product on the terms and conditions for 
+the License Type acquired. Packages of software may include Third Party Software and 
+require acceptance of other end user license agreements.
+
+ (ii) Modules and Connectors. The Licensee may install the Software in machine-readable, 
+object code form on one (1) physical computer/server or on one (1) virtual server in a 
+virtual operating system environment for each license they have purchased. Each license is 
+valid to be used with one (1) EPiServer application, i.e. one site or one virtual 
+directory within Internet Information Services ("IIS").  Modules and Connectors may 
+require and require acceptance of additional end user license agreements.
+
+2.3 Backup copy. The Licensee may make one (1) backup machine-readable, object code copy 
+of the Software for non-productive, archiving purposes.
+
+2.4 Modifications. The Licensee may modify the disclosed parts of the Software solely in 
+connection with Licensee’s internal business purposes. EPiServer has no liability for any 
+such modifications or for any faults or errors caused by it (see Section 6.4 below). 
+EPiServer recommends that Licensee implement such modifications with the assistance of a 
+developer certified by EPiServer.
+
+2.5 Third Party Products. The Software may be installed together with software provided by 
+a third party ("Third Party Products"). With regards to Third Party Products, the relevant 
+third-party license terms and conditions shall apply. EPiServer makes no warranties 
+regarding Third Party Products and disclaims any and all liability for such products.
+
+2.6 Service Channel. The EPiServer Software has a build in service channel used for 
+automatic license key installation and updates, security announcements and other 
+information. To be able to provide these services the following information might be 
+transmitted and stored at EPiServer: License key information, software version, hostname 
+(website URL), host IP/MAC-address and machine name. 
+
+3. Restrictions
+
+3.1 Transfer. Except as expressly authorized in this Agreement, Licensee shall not hire 
+out, lease, lend, assign, sublicense, distribute (electronically or otherwise), resell, 
+sell, create any derivative works of, or otherwise transfer all or any portion of the 
+Software to a third party. Further restrictions are set forth in i.a Section 10.3 and 12.1 
+below.
+
+3.2 Decompilation. Except as expressly authorized in this Agreement, permission given by 
+EPiServer for educational purposes only, or to the extent expressly permitted by 
+applicable law, Licensee shall not copy, modify, reverse engineer, decompile, disassemble, 
+translate, make works derivate of the Software or otherwise attempt to discover the source 
+code of the Software. Any violation of this clause shall result in immediate revocation of 
+this license. Licensee may request permission from EPiServer to decompile the Software for 
+purposes of fault analysis, integration planning and other internal business purposes, 
+such permission to be expressly granted by EPiServer in writing and at its sole 
+discretion.
+
+3.3 Redirect. The Products shall not be used in solutions that use an internal redirect 
+(automatic server side or client side re-routing of traffic) for purposes of circumventing 
+EPiServer license restriction software, code, processes, and/or methods.
+
+4. Ownership and Intellectual Property Rights 
+
+4.1 EPiServer shall have sole and exclusive ownership of all right, title and interest in 
+and to the Software, the Documentation, all copies and derivative works thereof 
+(regardless of form or media in or on which the original and other copies may exist), 
+including all copyright, trademark, patent, trade secret, know-how and other intellectual 
+property rights pertaining thereto, subject solely to the limited right and license 
+expressly granted to Licensee herein. EPiServer shall retain all rights to its name and 
+trademarks. With regard to Applied Software or Third Party Software included in Packages 
+all the above mentioned rights shall be owned by the third party from whom EPiServer has 
+acquired the right to use the Applied or Third Party software, subject solely to the 
+limited right and license expressly granted to Licensee herein. The structure and code of 
+the Software are valuable trade secrets of EPiServer and remain the sole property of 
+EPiServer or, respectively the third party who owns the Applied Software or Third party 
+software. 
+
+4.2 The Software, owned by EPiServer, is protected by Swedish and international copyright 
+legislations. 
+
+4.3 This license is not a sale of the Software or any updates or new releases, or any 
+copy. Except for the limited license granted under this Agreement, the Licensee obtains no 
+other rights in or to the Software. There are no implied licenses under this Agreement and 
+EPiServer reserves any rights not expressly granted to Licensee under this Agreement.  
+This Section 4 shall survive termination of this Agreement.
+
+5. Security
+
+The Licensee shall pay special attention to security aspects related to the Software in 
+connection with the use of the Internet. Gaps in security may exist or be discovered in 
+the Software related to such use. The Licensee shall carefully follow up and monitor 
+developments within the field, in order to ensure security in connection with the use of 
+the Software. Additionally, small errors or mistakes in configuration and/or installation 
+may cause or result in security problems. EPiServer hereby disclaims any and all liability 
+for any security issues related to Licensee’s use of the Software.  
+
+6. Limited Warranty, Limitation of Liability and Indemnification
+
+6.1 For a period of thirty (30) days following delivery of the Software, EPiServer 
+warrants that the Software will perform substantially in accordance with the Documentation 
+supplied by EPiServer with the Software. EPiServer’s sole and exclusive obligation for 
+breach of this limited warranty shall be to use its commercially reasonable efforts to 
+remedy or supply a temporary fix, or make an emergency bypass. To the extent EPiServer 
+cannot perform its obligations according to the forgoing sentence EPiServer shall refund 
+to Licensee the fee paid for such Software.  This limited warranty shall not be valid if 
+the Software was subjected to abuse, misuse, accident, alteration or unauthorized 
+modification or installation.  Other than this limited warranty, the Software is provided 
+AS IS.
+
+6.2 EXCEPT AS SET FORTH IN THIS AGREEMENT AND TO THE EXTENT ALLOWED BY LAW, EPISERVER AND 
+ITS RESELLERS MAKE NO WARRANTIES OR REPRESENTATIONS, EXPRESS OR IMPLIED, WHETHER BY 
+STATUTE, COMMON LAW, CUSTOM, USAGE OR OTHERWISE AS TO ANY MATTERS, AND SPECIFICALLY 
+DISCLAIM ANY WARRANTY OF MERCHANTABILITY, INTEGRATION, SATISFACTORY QUALITY, OR FITNESS 
+FOR ANY PARTICULAR PURPOSE. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, EPISERVER 
+DISCLAIMS ANY REPRESENTATIONS OR WARRANTIES THAT THE SOFTWARE WILL OPERATE UNINTERRUPTED 
+OR ERROR FREE. NO ORAL OR WRITTEN INFORMATION OR ADVICE GIVEN BY EPISERVER, ITS DEALERS, 
+DISTRIBUTORS, RESELLERS, AGENTS, OR EMPLOYEES SHALL CREATE A WARRANTY OR IN ANY WAY 
+INCREASE THE SCOPE OF THIS WARRANTY, AND LICENSEE MAY NOT RELY ON ANY SUCH INFORMATION OR 
+ADVICE.
+
+6.3 UNDER NO CIRCUMSTANCES SHALL EPISERVER, NOR ANYONE ELSE WHO HAS BEEN INVOLVED IN THE 
+CREATION, PRODUCTION OR DELIVERY OF THE SOFTWARE OR PRODUCTS, HAVE ANY LIABILITY OF ANY 
+KIND TO LICENSEE, ANY AUTHORIZED USER OR ANY OTHER PERSON FOR ANY SPECIAL, INCIDENTAL, 
+CONSEQUENTIAL (INCLUDING LOST PROFITS OR REVENUES), PUNITIVE OR OTHER INDIRECT LOSSES OR 
+DAMAGES (EVEN IF EPISERVER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH POTENTIAL LOSS OR 
+DAMAGE) RESULTING FROM OR ARISING OUT OF (WHETHER DIRECTLY OR INDIRECTLY) ANY ACT OR 
+OMISSION OF ANY KIND HEREUNDER BY EPISERVER, ANY ACCESS TO OR USE BY LICENSEE OR ANY OTHER 
+PERSON OF THE SOFTWARE, WHETHER BASED ON BREACH OF CONTRACT, WARRANTY, TORT, PRODUCT 
+LIABILITY, NEGLIGENCE, STRICT LIABILITY OR OTHERWISE. UNDER NO CIRCUMSTANCES SHALL 
+EPISERVER'S AGGREGATE LIABILITY TO LICENSEE AND ANY OTHER PERSON FOR LOSSES OR DAMAGES OF 
+ANY KIND ARISING OUT OF OR PURSUANT TO THIS AGREEMENT EXCEED THE AGGREGATE OF ALL FEES 
+PAID BY LICENSEE FOR THE SOFTWARE OR PRODUCT AT ISSUE.  
+
+6.4 With respect to faults and errors in any Third Party Products, the relevant 
+third-party terms and conditions shall apply. EPiServer shall not be liable for any faults 
+or errors in any Third Party Products or related to use of the Software in conjunction 
+with any such Third Party Products. The Licensee shall contact the relevant third-party 
+supplier regarding all matters relating to such Third Party Products.
+
+6.5 Except as otherwise set forth in this Agreement and except in the event Licensee is in 
+material breach of this Agreement, EPiServer shall indemnify Licensee for any third party 
+claims based on the Software owned by EPiServer including infringement of any U.S. patent.
+
+6.6 Licensee agrees to indemnify, defend and hold Licensor harmless (including Licensor’s 
+officers, director, agents, representatives and employees) from: any claim, liability, 
+loss, expense or demand, including legal fees and costs and including without limitation 
+claims based on copyright infringement, related to Licensee’s modifications of the 
+Software or Licensee’s merging or including the Software with other software or other 
+violation of this Agreement by the Licensee.
+
+7. Support 
+
+7.1 No support, upgrades or updates are provided under this Agreement. Software updates 
+may be provided by EPiServer by purchase of a Software subscription. Technical support for 
+the Software may be provided by the reseller from which the Licensee purchased the 
+Software pursuant to a separate support agreement. Please check with the reseller of the 
+Software regarding any such support obligations.
+
+8. Termination
+
+8.1 This Agreement is effective until terminated. In the case that Licensee is in breach 
+of any of the provisions in this Agreement, EPiServer shall have the right to terminate 
+this Agreement, such termination to be effective immediately. Upon such termination, the 
+Licensee shall delete all copies of the Software and will provide EPiServer certification 
+of destruction of the Software, all copies thereof, and all materials and Documentation 
+related thereto, at the request of EPiServer.
+
+8.2 If EPiServer, by any reason, no longer should have the necessary licenses for the 
+Implemented Software or the Applied Software EPiServer shall within reasonable time and 
+with reasonable effort provide a substitute for such software.  If no such substitute may 
+be found, EPiServer may, at its own option, terminate this license and return any license 
+fee to the user minus any depreciation in the value of such software.
+
+9. Governing Law and Dispute Resolution
+
+Section 9.1 shall apply if the ordering entity of the customer has its registered office 
+in the USA whereas Section 9.2 shall apply if the ordering entity of the customer has its 
+registered office outside the USA.
+
+9.1 This Agreement shall be governed by and construed in accordance with the laws of State 
+of Illinois, without regard to its conflict of laws provision.  This Agreement will not be 
+governed by the United Nations Convention on Contracts for the International Sale of 
+Goods, the application of which is expressly excluded. 
+
+Any unresolved controversy or claim arising out of or relating to this Agreement, except 
+for any such controversies or claims arising out of EPiServer’s intellectual property 
+rights for which a provisional remedy or equitable relief is sought, shall be submitted to 
+arbitration in accordance with the rules of the American Arbitration Association (the " 
+AAA ").  The arbitration shall take place in the state of Illinois, in accordance with the 
+Commercial Arbitration Rules then in effect, and judgment upon any award rendered in such 
+arbitration will be binding and may be entered in any court having jurisdiction thereof.  
+Each party will bear its own costs with respect to any disputes arising under this 
+Agreement.  Each of the parties to this Agreement consents to personal jurisdiction for 
+any equitable or other action sought in a U.S. District Court in Illinois or any court of 
+the State of Illinois having subject matter jurisdiction.
+
+9.2 This Agreement shall be governed by and construed in accordance with the substantive 
+laws of Sweden. Any dispute, controversy or claim arising out of or in connection with 
+this contract, or the breach, termination or invalidity thereof, shall be finally settled 
+by arbitration in accordance with the Rules for Expedited Arbitrations of the Arbitration 
+Institute of the Stockholm Chamber of Commerce. The place of arbitration shall be 
+Stockholm.
+
+10. General provision
+
+10.1 The following contractual documents shall apply between EPiServer and Licensee and 
+form part of this Agreement: (i) This Agreement and (ii) EPiServer License Types and 
+General Terms and Conditions.  Subsection (ii) can be found at 
+http://www.episerver.com/license_types. In case of any discrepancy or inconsistency 
+between the contractual documents, the documents shall prevail in the order listed above, 
+unless the circumstances clearly induce otherwise.
+
+10.2 Amendments or supplements to this Agreement must be made in written form and executed 
+by both parties hereto in order to be valid between the parties.
+
+10.3 This Agreement is valid for the version(s) of the Software released after November 
+1st 2012. EPiServer may amend the terms and conditions of this Agreement for any upcoming 
+versions of the Software. 
+
+10.4 Licensee shall not assign or sublicense this Agreement without EPiServer’s prior 
+written consent, which consent may be withheld for any or no reason.  Either party may 
+assign all or part of its rights under this Agreement to an affiliate or to any entity 
+that succeeds to or acquires all or substantially all of the business or assets of such 
+party through merger, consolidation, or acquisition of stock or assets. This Agreement is 
+binding on any permitted assignees or sub licensees.
+
+11. Implemented Software
+
+11.1 The following software has been implemented as a part of the Product.
+
+(i) Private port of Lucene dot net, Open Source, (Apache Software License); (ii) Log4net, 
+Open Source, (Apache Software License Version 2.0); (iii) Simple CSS Parser, (Code Project 
+Open License 1.02); (iv) CommonServiceLocator, (Microsoft Public License (Ms-PL)); (v) 
+Structure Map, (Apache Software License Version 2.0); (vi) NuGet Packet Manager, (Apache 
+Software License Version 2.0); (vii) Castle Project - Core 2.5.2, (Apache Software License 
+Version 2.0); and (viii) EFExtensions, (Microsoft Limited Public License).
+
+11.2 By agreeing to this Agreement the Licensee also acknowledges that the license 
+agreements for the above listed software and MIT/BSD licensed components have been made 
+available at http://www.episerver.com/implemented_software; that the Licensee has taken 
+notice of said license agreements; and that the Licensee hereby accepts the terms and 
+conditions of these license agreements to be, when applicable, binding to the Licensee.
+
+12. Other applied third party software
+
+12.1 The following product/s is/are considered to be a part of the Product however 
+constructed by a third party (the "Applied Software").
+
+(i) SGML Reader; (ii) JW Player;
+
+In addition to Section 3.1 above, EPiServer is not permitted to give authorization to a 
+third party according to said section with respect to the Applied Software.
+
+13. Compatibility 
+
+As between EPiServer and the Licensee Section 6, 7, 8 and 10 shall also apply with respect 
+to the Implemented Software, unless the license on the specific Implemented Software 
+explicitly states otherwise.
+
+IF THERE IS NO ACCEPTANCE THESE TO TERMS AND CONDITIONS, CEASE ALL USE AND RETURN THE 
+PRODUCT TO THE COMPANY LICENSEE PURCHASED IT FROM WITHIN THIRTY (30) DAYS FOR A FULL 
+REFUND OF THE LICENSE FEE. 
+
+If the Licensee has any questions concerning this Agreement or otherwise wishes to contact 
+EPiServer, the Licensee is referred to:
+
+EPiServer AB (Headquarter), Sales Information, Box 7007, 103 86 STOCKHOLM, Sweden; Phone: 
++46(0)8 555 827 00, Fax: +46(0)8 555 827 01; E-mail: sales@episerver.com.
+
+EPiServer Inc. (US Office) , Sales Information, 2 Mid America Plaza, Suite 600, Oakbrook 
+Terrace, IL 60181, USA; Phone: +1 630-974-3000; E-mail: sales@episerver.com
+

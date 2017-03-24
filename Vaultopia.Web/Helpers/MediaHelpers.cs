@@ -1,20 +1,21 @@
-﻿using EPiServer.Web;
-using ImageVault.Client;
-using ImageVault.Common.Data;
-using ImageVault.Common.Data.Effects;
-using ImageVault.Common.Data.Query;
-using ImageVault.Common.Services;
-using ImageVault.EPiServer;
-using ImageVault.EPiServer.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.Script.Serialization;
-using Vaultopia.Web.Business.Media;
+using EPiServer.Web;
+using ImageVault.Client;
+using ImageVault.Common.Data;
+using ImageVault.EPiServer;
+using ImageVault.EPiServer.Common;
+using System.Linq;
 using Vaultopia.Web.Models.Formats;
+using System.Web.Script.Serialization;
+using ImageVault.Common.Data.Query;
+using ImageVault.Common.Data.Effects;
+using ImageVault.Common.Services;
+using Vaultopia.Web.Business.Media;
+using Convert = MindFusion.Convert;
 
 namespace Vaultopia.Web.Helpers
 {

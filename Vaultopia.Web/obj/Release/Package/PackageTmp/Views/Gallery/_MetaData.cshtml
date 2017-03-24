@@ -1,0 +1,22 @@
+﻿@using Vaultopia.Web.Helpers
+@model Vaultopia.Web.Models.Formats.GalleryImage
+<div>
+    <h1>@Model.Title</h1>
+    <em>@Model.DateAdded.ToString("MMM dd yyyy, hh:mm tt")</em>
+    <span class="photographer icon">Photographer: </span>@Model.Photographer
+    <span class="spanTxb">
+        <p class="pTxb">Url:  @Html.TextBox("url", MediaHelpers.GetExternalUrl(Model.Thumbnail.Url), new { @class = "txbUrl", @readonly = "readonly" })</p>
+        <br />
+        <p>Html: @Html.TextBox("url", "<a href=\"http://imagevault.se/\"><img src=\"" + MediaHelpers.GetExternalUrl(Model.Thumbnail.Url) + "\" border=\"0\" alt=\"" + Model.Title + "\"/></a>", new { @class = "txbUrl", @readonly = "readonly" })</p>
+    </span>
+    <ul class="exif">
+        <li>ISO @Model.Iso</li>
+        <li>@Model.FocalLength mm</li>
+        <li>f/@Model.Aperture</li>
+        <li>@Model.ExposureTime</li>
+        <li><span>JPEG</span></li>
+    </ul>
+    
+    <div id="map" data-map-lat="@Model.Latitude" data-map-lng="@Model.Longitude"></div>
+   
+</div>

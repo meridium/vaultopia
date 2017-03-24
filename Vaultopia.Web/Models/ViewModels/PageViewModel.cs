@@ -25,5 +25,10 @@ namespace Vaultopia.Web.Models.ViewModels {
         ///     The layout.
         /// </value>
         public LayoutModel Layout { get; set; }
+
+
+
+
+        public string Files { get; set; }
     }
 }

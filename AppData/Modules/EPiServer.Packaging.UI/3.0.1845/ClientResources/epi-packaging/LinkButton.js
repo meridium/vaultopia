@@ -1,0 +1,2 @@
+//>>built
+define("epi-packaging/LinkButton",["epi","dojo","dijit","dijit/_Widget"],function(_1,_2,_3,_4){return _2.declare([_4],{label:"",href:"",buildRendering:function(){this.domNode=_2.create("a",{href:this.href,"class":this["class"],innerHTML:this.label});},postCreate:function(){this.connect(this.domNode,"onclick",this._onClick);},onClick:function(e){return true;},_onClick:function(e){this.onClick(e);}});});

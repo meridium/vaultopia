@@ -1,0 +1,17 @@
+﻿<div>
+    <!-- Upload form -->
+    <form method="post" action="${_uploadUrl}" enctype="multipart/form-data">
+        <div class="uploaderButton" >
+            <input dojoAttachPoint="_uploaderInput" type="file" />
+        </div>
+        <input type="submit" dojoAttachPoint="_installButton" label="${res.buttoninstall}" data-dojo-type="dijit/form/Button" />
+        <input type="reset" dojoAttachPoint="_clearButton" label="${res.buttonclear}" data-dojo-type="dijit/form/Button" />
+        <div class="epi-paddingVertical-small">
+            <!-- Selected files -->
+            <div dojoAttachPoint="_fileListNode"></div>
+            <!-- Uploaded file -->
+            <div dojoAttachPoint="_uploadResultsNode"></div>
+        </div>
+        <input type="hidden" dojoAttachPoint="_uploadType" name="uploadType" />
+    </form>
+</div>

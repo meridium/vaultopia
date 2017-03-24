@@ -4,7 +4,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Web;
-using ProcessMap.EPiServer7.Common;
+using ProcessMap.EPiServer.Common;
 
 namespace Vaultopia.Web.Models.Blocks
 {
@@ -21,17 +21,6 @@ namespace Vaultopia.Web.Models.Blocks
         [Required(AllowEmptyStrings = false)]
         [Display(GroupName = SystemTabNames.Content, Order = 1)]
         public virtual String TeaserHeading { get; set; }
-
-        /// <summary>
-        /// Gets or sets the teaser link.
-        /// </summary>
-        /// <value>
-        /// The teaser link.
-        /// </value>
-        [CultureSpecific]
-        [Required(AllowEmptyStrings = false)]
-        [Display(GroupName = SystemTabNames.Content, Order = 2)]
-        public virtual PageReference TeaserLink { get; set; }
 
         /// <summary>
         /// Gets or sets the teaser image.

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProcessMapItemTemplate templateId="200" zLayer="10" resizable="true" rotate="false" rotateContent="true" minimumWidth="15" minimumHeight="15" linksDisabled="false" affectRouting="true" defaultRotation="0" ImageAlign="Stretch" Image="">
+	<NameDictionary>
+		<item>
+			<key>
+				<string>en</string>
+			</key>
+			<value>
+				<string>Exclusive Decision, Data-Based</string>
+			</value>
+		</item>
+		<item>
+			<key>
+				<string>sv</string>
+			</key>
+			<value>
+				<string>Exclusive Decision, Data-Based</string>
+			</value>
+		</item>
+	</NameDictionary>
+	<ShapePlaceholder>
+		<Shape id="" fill-mode="Winding">
+			<outline>
+				<line dash-style="Custom" width="-1">
+					<point x="50" y="0" />
+					<point x="100" y="50" />
+				</line>
+				<line dash-style="Custom" width="-1">
+					<point x="100" y="50" />
+					<point x="50" y="100" />
+				</line>
+				<line dash-style="Custom" width="-1">
+					<point x="50" y="100" />
+					<point x="0" y="50" />
+				</line>
+				<line dash-style="Custom" width="-1">
+					<point x="0" y="50" />
+					<point x="50" y="0" />
+				</line>
+			</outline>
+      <textarea>
+        <line dash-style="Custom" width="-1">
+          <point x="50" y="3" />
+          <point x="97" y="50" />
+        </line>
+        <line dash-style="Custom" width="-1">
+          <point x="97" y="50" />
+          <point x="50" y="97" />
+        </line>
+        <line dash-style="Custom" width="-1">
+          <point x="50" y="97" />
+          <point x="3" y="50" />
+        </line>
+        <line dash-style="Custom" width="-1">
+          <point x="3" y="50" />
+          <point x="50" y="3" />
+        </line>
+      </textarea>
+    </Shape>
+	</ShapePlaceholder>
+	<Connectors>
+		<ProcessMapItemConnector connectorId="1" x="0" y="50" connectorType="Up">
+			<Documents />
+		</ProcessMapItemConnector>
+		<ProcessMapItemConnector connectorId="2" x="50" y="0" connectorType="Left">
+			<Documents />
+		</ProcessMapItemConnector>
+		<ProcessMapItemConnector connectorId="3" x="50" y="100" connectorType="Down">
+			<Documents />
+		</ProcessMapItemConnector>
+		<ProcessMapItemConnector connectorId="4" x="100" y="50" connectorType="Right">
+			<Documents />
+		</ProcessMapItemConnector>
+	</Connectors>
+	<Shadow>false</Shadow>
+	<AspectRatio>1</AspectRatio>
+</ProcessMapItemTemplate>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <configSections xdt:Transform="InsertBefore(/configuration/*[1])" />
+  <configSections xdt:Locator="XPath(/configuration/configSections[last()])">
+    <section name="imagevault.client" type="ImageVault.Client.Configuration.ClientConfigurationSection, ImageVault.Client" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" />
+  </configSections>
+  <configSections xdt:Transform="RemoveAll" xdt:Locator="Condition(count(*)=0)" />
+  <imagevault.client configSource="imagevault.client.config" xdt:Transform="Insert"/>
+  <imagevault.client xdt:Locator="XPath(/configuration/imagevault.client[2])" xdt:Transform="Remove"/>
+</configuration>

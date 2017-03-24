@@ -18,5 +18,6 @@ namespace Vaultopia.Web.Models.ViewModels {
 
         public string FileShare { get; set; }
 
+
     }
 }

@@ -1,0 +1,20 @@
+﻿<div class="dojoxUploaderFileList" data-dojo-attach-point="listContainer" style="display:none">
+    <span>${res.fileslisttitle}</span>
+    <div data-dojo-attach-point="sizeHeader" style="display:none;"></div>
+    <table class="dojoxUploaderFileListTable epi-default" data-dojo-attach-point="listTable">
+        <thead>
+            <tr class="dojoxUploaderFileListHeader">
+                <th class="dojoxUploaderIndex">
+                    ${res.headerindex}
+                </th>
+                <th class="dojoxUploaderIcon">
+                    ${res.headertype}
+                </th>
+                <th class="dojoxUploaderFileName">
+                    ${res.headerfile}
+                </th>
+            </tr>
+        </thead>
+        <tbody data-dojo-attach-point="listNode"></tbody>
+    </table>
+</div>

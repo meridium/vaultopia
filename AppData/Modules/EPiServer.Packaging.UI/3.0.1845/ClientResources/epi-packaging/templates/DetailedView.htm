@@ -1,0 +1,18 @@
+﻿<div class="epi-packaging-detailedViewContainer epi-TabContainerWrapper" data-dojo-attach-point="contentContainer">
+    <div data-dojo-attach-point="tabContainer" data-dojo-type="dijit/layout/TabContainer">
+        <div class="epi-dialogPadding" data-dojo-type="dijit/layout/ContentPane" title="${res.tab.title.overview}"  selected="true">
+            <h4>${res.tab.content.about}</h4>
+            <p data-dojo-attach-point="overviewAboutContent"></p>
+            
+            <h4>${res.tab.content.releasenotes}</h4>
+            <p data-dojo-attach-point="overviewReleaseNotesContent"></p>
+        </div>
+        <div class="epi-dialogPadding" data-dojo-type="dijit/layout/ContentPane" title="${res.tab.title.specs}">
+            <ul data-dojo-attach-point="specItemList"></ul>
+        </div>
+        <div class="epi-dialogPadding epi-dependenciesTabContainer" data-dojo-type="dijit/layout/ContentPane" title="${res.tab.title.dependencies}">
+            <div data-dojo-attach-point="dependenciesContent"></div>
+            <div data-dojo-attach-point="dependenciesList" data-dojo-type="epi-packaging/DependenciesGrid"></div>
+        </div>
+    </div>
+</div>

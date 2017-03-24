@@ -83,7 +83,9 @@ namespace Vaultopia.Web.Business {
             return string.Format(
                 "{0}?ReturnUrl={1}",
                 FormsAuthentication.LoginUrl,
-                _urlResolver.GetVirtualPath(returnToContentLink));
+                _urlResolver.GetUrl(returnToContentLink));
+            //_urlResolver.GetVirtualPath(returnToContentLink));
+
         }
     }
 }
