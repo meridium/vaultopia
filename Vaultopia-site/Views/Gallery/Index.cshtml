@@ -1,0 +1,49 @@
+﻿@using Vaultopia.Web.Helpers;
+@model Vaultopia.Web.Models.ViewModels.GalleryViewModel<Vaultopia.Web.Models.Pages.GalleryPage>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BodyClass = "gallery";
+    
+   
+}
+<main>
+    <div class="wrap">
+        <h1>@Model.CurrentPage.Heading</h1>
+        <p class="introduction">Browse through memories from trips made by various Vaultopia travelers and seek inspiration to your next trip, or contribute with your own memories and inspire others.</p>
+        <a class="button" id="upload-action" href="@Url.Action("Upload")">Upload your photos!</a>
+
+        <section id="categories" style="display: none;">
+            <ul>
+                <li><a href="/">Summer</a></li>
+                <li><a href="/">Beach</a></li>
+                <li><a href="/">Female</a></li>
+                <li><a href="/">Male</a></li>
+                <li><a href="/">Water</a></li>
+                <li><a href="/">City</a></li>
+            </ul>
+            <a href="/" id="categories-more-action">Show more categories...</a>
+        </section>
+        <section id="search">
+               
+            @Html.Partial("_Search", Model)
+        </section>
+  
+
+        <section id="gallery">
+            <ul>
+                @Html.Partial("_Images", Model)
+            </ul>
+            <a href="/" id="gallery-paging-action" class="button">Show more awesome photos</a>
+        </section>
+    </div>
+</main>
+@section ExternalScripts {
+    <script type="text/javascript">
+        Vaultopia.Gallery.init();
+    </script>
+<script type="text/javascript">
+    Vaultopia.GalleryDownloadBtn.init();
+</script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeGCmrvtGi8k18J9qQPD4end49bOrjEBA&sensor=false"></script>
+}

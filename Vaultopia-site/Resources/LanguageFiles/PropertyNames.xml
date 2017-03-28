@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<languages>
+
+  <language name="English" id="en">
+
+    <pagetypes>
+      <common>
+        
+        <!-- StartPage -->
+
+        <property name="SiteInspiration">
+          <caption>Inspiration</caption>
+          <help></help>
+        </property>
+
+        <property name="MediaList">
+          <caption>Inspiration</caption>
+          <help></help>
+        </property>
+
+        <property name="FirstSiteTestimonial">
+          <caption>Testimonial</caption>
+          <help></help>
+        </property>
+        
+        <property name="MediaReference">
+          <caption>Inspiration</caption>
+          <help></help>
+        </property>
+        
+        <property name="Testimonial">
+          <caption>Text</caption>
+          <help></help>
+        </property>
+        
+        <property name="SecondSiteTestimonial">
+          <caption>Testimonial</caption>
+          <help></help>
+        </property>
+        
+        <property name="MediaList">
+          <caption>Inspiration</caption>
+          <help></help>
+        </property>
+        
+        <property name="MediaList">
+          <caption>Inspiration</caption>
+          <help></help>
+        </property>
+
+        <property name="PushMediaList">
+          <caption>Image slider</caption>
+          <help></help>
+        </property>
+
+        <property name="VaultPicker">
+          <caption>List media from vault</caption>
+          <help></help>
+        </property>
+
+        <property name="Teasers">
+          <caption>Awesome deals</caption>
+          <help></help>
+        </property>
+
+        <property name="WideTeasers">
+          <caption>Popular destinations</caption>
+          <help></help>
+        </property>
+
+        <!-- Article -->
+        <property name="SlideMediaList">
+          <caption>Slideshow</caption>
+          <help></help>
+        </property>
+
+        <!-- ContactBlock -->
+        <property name="ContactBlockImage">
+          <caption>Image</caption>
+          <help></help>
+        </property>
+
+        <!-- TeaserBlock -->
+        <property name="TeaserHeading">
+          <caption>Heading</caption>
+          <help></help>
+        </property>
+
+        <property name="TeaserLink">
+          <caption>Link</caption>
+          <help></help>
+        </property>
+
+        <property name="TeaserImage">
+          <caption>Media (Displays an image or a youtube video)</caption>
+          <help></help>
+        </property>
+
+        <property name="TeaserText">
+          <caption>Text</caption>
+          <help></help>
+        </property>
+
+        <property name="TeaserLocation">
+          <caption>Location</caption>
+          <help></help>
+        </property>
+
+        <property name="TeaserPrice">
+          <caption>Price</caption>
+          <help></help>
+        </property>
+
+        <!-- WideTeaserBlock -->
+        <property name="WideTeaserHeading">
+          <caption>Heading</caption>
+          <help></help>
+        </property>
+
+        <property name="WideTeaserLink">
+          <caption>Link</caption>
+          <help></help>
+        </property>
+
+        <property name="WideTeaserImage">
+          <caption>Media (Displays only images)</caption>
+          <help></help>
+        </property>
+
+        <property name="WideTeaserText">
+          <caption>Text</caption>
+          <help></help>
+        </property>
+
+        <property name="WideTeaserLocation">
+          <caption>Location</caption>
+          <help></help>
+        </property>
+
+        <property name="WideTeaserPrice">
+          <caption>Price</caption>
+          <help></help>
+        </property> 
+        
+      </common>
+    </pagetypes>
+    
+  </language>
+  
+</languages>

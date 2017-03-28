@@ -167,8 +167,8 @@
       <HintPath>..\packages\ImageVault.EPiServer.5.3.8\lib\net45\ImageVault.EPiServer.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.EPiServer.UI, Version=5.3.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.EPiServer.UI.5.3.8\lib\net45\ImageVault.EPiServer.UI.dll</HintPath>
+    <Reference Include="ImageVault.EPiServer.UI, Version=5.1.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.EPiServer.UI.5.1.21\lib\net45\ImageVault.EPiServer.UI.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
@@ -652,13 +652,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="robots.txt" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\web.config" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\readme.md" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\MediaReferenceList`1.cshtml" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\MediaReference.cshtml" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.zip" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.rar" />
-    <Content Include="ImageVault.EPiServer.UI.readme.markdown" />
     <Content Include="Plugins\ProcessMap\Client\ProcessMap3.application" />
     <Content Include="Plugins\ProcessMap\Client\ProcessMap.Admin.application" />
     <Content Include="modules\_protected\ProcessMap.EPiServer.UI\web.config" />
@@ -671,6 +664,12 @@
     <Content Include="modules\_protected\Shell\Shell.zip" />
     <Content Include="modules\_protected\CMS\web.config" />
     <Content Include="modules\_protected\CMS\CMS.zip" />
+    <Content Include="modules\_protected\ImageVault.EPiServer.UI\web.config" />
+    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\readme.md" />
+    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\MediaReferenceList`1.cshtml" />
+    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\MediaReference.cshtml" />
+    <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.zip" />
+    <Content Include="ImageVault.EPiServer.UI.readme.markdown" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />

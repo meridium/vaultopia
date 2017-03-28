@@ -2,15 +2,12 @@
 @using EPiServer.Editor
 @using HtmlAgilityPack
 @using ImageVault.Client
-@using ImageVault.Client.Query
 @using ImageVault.EPiServer
 @using ImageVault.EPiServer.UI
 
 @{
     var client = ClientFactory.GetSdkClient();
-    var ignoreCache = PageEditing.PageIsInEditMode ? true : false;
-
-    var items = client.Load<DisplayMediaItem>(Model, ViewContext.GetSettings<PropertyMediaSettings>()).IgnoreClientCache(ignoreCache).ToList();
+    var items = client.Load<DisplayMediaItem>(Model, ViewContext.GetSettings<PropertyMediaSettings>()).ToList();
 }
 
 @functions {

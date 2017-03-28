@@ -1,0 +1,64 @@
+﻿@using EPiServer.Web.Mvc.Html
+@using EPiServer.XForms.WebControls
+@using ImageVault.EPiServer
+@using Vaultopia.Web.Helpers;
+@model Vaultopia.Web.Models.ViewModels.ArticleViewModel<Vaultopia.Web.Models.Pages.Article>
+@{
+    ViewBag.BodyClass = "article";
+}
+
+<div id="main">
+    <div class="wrap">
+
+        <main>
+
+            @if (Model.Slides != null)
+            {
+                <div id="slideshow">
+                    <div class="slidewrap">
+                        <img src="" alt="" />
+                    </div>
+                    <ul>
+                        @foreach (var image in Model.Slides)
+                        {
+                            <li data-mobile-url="@image.MobileImage.Url" data-medium-url="@image.MediumImage.Url" data-large-url="@image.LargeImage.Url"><img src="@image.SmallImage.Url" alt="" /></li>
+                        }
+                    </ul>
+
+                </div>
+            }
+            <div class="imagedrop">
+                <p>Display images</p>
+            </div>
+
+            <h1>@Html.PropertyFor(x => x.CurrentPage.Heading)</h1>
+            <p class="introduction">
+                @Html.PropertyFor(x => x.CurrentPage.Introduction)
+            </p>
+            <div id="primary">
+                @Html.PropertyFor(x => x.CurrentPage.MainBody)
+                <div class="medialist">
+                    @Html.PropertyFor(x => x.CurrentPage.Media, new { PropertySettings = PropertyHelpers.GetPropertySettings<Vaultopia.Web.Models.Pages.Article, MediaReference, PropertyMediaSettings>(Model.CurrentPage, m => m.Media) })
+                </div>
+                <br />
+                @Html.PropertyFor(m => m.CurrentPage.Contact)
+            </div>
+            <div id="secondary">
+                <ul>
+                    <li><span></span><a target="_blank" href="@Model.FileShare">Travelers guide</a></li>
+                </ul>
+            </div>
+        </main>
+            <aside>
+                @Html.PropertyFor(x => x.CurrentPage.Teasers, new { Tag = "aside" })
+            </aside>
+        
+    </div>
+</div>
+
+@section ExternalScripts {
+    <script type="text/javascript">
+        Vaultopia.ArticleSlideShow.init();
+    </script>
+    <script src="~/Static/Scripts/Vaultopia.ArticleSlideResponsive.js"></script>
+}

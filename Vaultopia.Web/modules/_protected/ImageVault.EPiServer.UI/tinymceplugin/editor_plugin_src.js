@@ -179,7 +179,7 @@
 			var isIvClientLoaded = function () { return window.ImageVault && window.ImageVault.Client; };
 
 			this.loadjQuery(function (disposejQueryCallback) {
-			    this.loadScript(this.editor.settings.imagevault_imageVaultEPiServerCmsBaseUrl + "Scripts/imagevault-client-script/scripts/imagevault-client.min.js", isIvClientLoaded, function () {
+			    this.loadScript(this.editor.settings.imagevault_imageVaultEPiServerCmsBaseUrl + "Scripts/ImageVault.Client.js", isIvClientLoaded, function () {
 					disposejQueryCallback();
 					callback.call(scope || window);
 				}, this);
@@ -207,8 +207,7 @@
 								editorOkButtonText: this.editor.settings.imagevault_pmcm_editorOkButtonText,
 								editorCancelButtonText: this.editor.settings.imagevault_pmcm_editorCancelButtonText,
 								editorWarningIconText: this.editor.settings.imagevault_pmcm_editorWarningIconText,
-								editorReloadButtonText: this.editor.settings.imagevault_pmcm_editorReloadButtonText,
-								title: this.editor.settings.imagevault_pmcm_title
+								editorReloadButtonText: this.editor.settings.imagevault_pmcm_editorReloadButtonText
 							};
 						}
 					}
@@ -255,16 +254,17 @@
 		},
 		//Gets the client for communicating with core
 		getClient: function (callback, scope) {
-		    this.loadClient(function () {
-
-		        if (ImageVault.ClientInstance == undefined)
-		            ImageVault.ClientInstance = new ImageVault.Client({
-		                core: this.editor.settings.imagevault_ivCoreProxy,
-		                authMethod: "none"
-		            });;
+			this.loadClient(function () {
+				//Create client instance (if not already existing)
+				if (!ImageVault.Client.Instance) {
+					ImageVault.Client.Instance = new ImageVault.Client({
+					    core: this.editor.settings.imagevault_ivCoreProxy,
+                        authMethod: "none"
+					});
+				}
 
 				//then call the callback
-		        callback.call(scope || window, ImageVault.ClientInstance);
+				callback.call(scope || window, ImageVault.Client.Instance);
 			}, this);
 		},
 
