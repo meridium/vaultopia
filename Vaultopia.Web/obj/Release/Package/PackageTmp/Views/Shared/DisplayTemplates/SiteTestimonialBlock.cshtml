@@ -1,0 +1,7 @@
+﻿@using EPiServer.Web.Mvc.Html
+
+@model Vaultopia.Web.Models.Blocks.SiteTestimonialBlock
+<blockquote>
+    <p>@Html.PropertyFor(x => x.Testimonial)</p>
+    <img src="@Model.MediaUrl" alt="" width="60" height="60" />
+</blockquote>

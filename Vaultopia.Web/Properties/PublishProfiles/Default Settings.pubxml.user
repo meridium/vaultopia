@@ -7,7 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAk2nHeWOSJUqEiYxpuxspgQAAAAACAAAAAAAQZgAAAAEAACAAAAAsUFZVYPaQz6Q/niBg8j4+hgLRvqmfvka8pbiZcu2N/wAAAAAOgAAAAAIAACAAAADOcdJRszoTuH+7a2XltxK5Kf6tIcM9Hm5TorLZTz0n9SAAAAAWWjEbuglEWvLp0B4o4J60QGhGSj28rAhCUKSrkHUKFUAAAACxqPdd4ngUEJtCSsmRblLUwOcENsW90cVAEEZTKVuG5XdRXD7Ks7zJftpn0pJ4oRvbuv+nE0mB52MnZyvKnj/P</EncryptedPassword>
-    <_PublishTargetUrl>C:\ImageVault\Demo\Vaultopia-site</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Git\Vaultopia\vaultopia\Vaultopia-site</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/GeoLiteCity.dat">
@@ -113,7 +113,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/21/2017 16:11:58</publishTime>
     </File>
     <File Include="bin/ImageVault.EPiServer.UI.dll">
-      <publishTime>03/21/2017 16:11:56</publishTime>
+      <publishTime>11/18/2016 11:24:12</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>01/06/2011 21:24:28</publishTime>
@@ -206,10 +206,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/Vaultopia.Web.dll">
-      <publishTime>03/23/2017 11:25:13</publishTime>
+      <publishTime>03/28/2017 14:12:25</publishTime>
     </File>
     <File Include="connectionStrings.config">
-      <publishTime>03/23/2017 11:16:15</publishTime>
+      <publishTime>03/23/2017 12:33:39</publishTime>
     </File>
     <File Include="connectionStrings.QA.config">
       <publishTime>11/11/2014 00:26:14</publishTime>
@@ -230,16 +230,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/11/2014 00:26:14</publishTime>
     </File>
     <File Include="EPiServerLog.config">
-      <publishTime>10/15/2015 15:52:10</publishTime>
+      <publishTime>03/28/2017 13:39:46</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>10/23/2014 14:11:20</publishTime>
     </File>
     <File Include="imagevault.client.config">
-      <publishTime>03/23/2017 11:16:15</publishTime>
+      <publishTime>03/24/2017 13:45:55</publishTime>
     </File>
     <File Include="ImageVault.EPiServer.UI.readme.markdown">
-      <publishTime>03/22/2017 15:36:34</publishTime>
+      <publishTime>03/28/2017 13:57:51</publishTime>
     </File>
     <File Include="lang/processmap_en.xml">
       <publishTime>10/09/2014 14:33:32</publishTime>
@@ -269,31 +269,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/22/2017 15:36:34</publishTime>
     </File>
     <File Include="modules/_protected/ImageVault.EPiServer.UI/ImageVault.EPiServer.UI.zip">
-      <publishTime>03/22/2017 15:36:34</publishTime>
+      <publishTime>03/28/2017 13:57:51</publishTime>
     </File>
     <File Include="modules/_protected/ImageVault.EPiServer.UI/tinymceplugin/editor_plugin.js">
-      <publishTime>03/22/2017 15:36:34</publishTime>
+      <publishTime>03/28/2017 13:57:51</publishTime>
     </File>
     <File Include="modules/_protected/ImageVault.EPiServer.UI/tinymceplugin/editor_plugin_src.js">
-      <publishTime>03/22/2017 15:36:34</publishTime>
+      <publishTime>03/28/2017 13:57:51</publishTime>
     </File>
     <File Include="modules/_protected/ImageVault.EPiServer.UI/tinymceplugin/ImageVaultEditorButton.png">
-      <publishTime>03/22/2017 15:36:34</publishTime>
+      <publishTime>03/28/2017 13:57:51</publishTime>
     </File>
     <File Include="modules/_protected/ImageVault.EPiServer.UI/tinymceplugin/ImageVaultEditorPlugin.png">
-      <publishTime>03/22/2017 15:36:34</publishTime>
+      <publishTime>03/28/2017 13:57:51</publishTime>
     </File>
     <File Include="modules/_protected/ImageVault.EPiServer.UI/Views/Shared/DisplayTemplates/MediaReference.cshtml">
-      <publishTime>03/22/2017 15:36:34</publishTime>
+      <publishTime>03/28/2017 13:57:51</publishTime>
     </File>
     <File Include="modules/_protected/ImageVault.EPiServer.UI/Views/Shared/DisplayTemplates/MediaReferenceList`1.cshtml">
-      <publishTime>03/22/2017 15:36:34</publishTime>
+      <publishTime>03/28/2017 13:57:51</publishTime>
     </File>
     <File Include="modules/_protected/ImageVault.EPiServer.UI/Views/Shared/DisplayTemplates/readme.md">
-      <publishTime>03/22/2017 15:36:34</publishTime>
+      <publishTime>03/28/2017 13:57:51</publishTime>
     </File>
     <File Include="modules/_protected/ImageVault.EPiServer.UI/web.config">
-      <publishTime>03/22/2017 15:36:34</publishTime>
+      <publishTime>03/28/2017 13:57:51</publishTime>
     </File>
     <File Include="modules/_protected/ProcessMap.EPiServer.UI/ProcessMap.EPiServer.UI.zip">
       <publishTime>03/23/2017 08:19:34</publishTime>
@@ -308,7 +308,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/23/2017 11:16:18</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>03/23/2017 11:16:20</publishTime>
+      <publishTime>03/28/2017 13:57:52</publishTime>
     </File>
     <File Include="Plugins/ProcessMap/Client/ProcessMap.Admin.application">
       <publishTime>03/23/2017 08:19:34</publishTime>
@@ -1541,7 +1541,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2014 14:11:20</publishTime>
     </File>
     <File Include="Web.Config">
-      <publishTime>03/23/2017 11:25:24</publishTime>
+      <publishTime>03/28/2017 14:17:28</publishTime>
     </File>
   </ItemGroup>
 </Project>
