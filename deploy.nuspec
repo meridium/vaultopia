@@ -12,10 +12,13 @@
     <files>
         <file src='Vaultopia.Web\bin\*.*' target='bin' />
 		<file src='Vaultopia.Web\Views\**\*.*' target='Views' />
+		<file src='Vaultopia.Web\Static\**\*.*' target='Static' />
 		<file src='Vaultopia.Web\Resources\**\*.*' target='Resources' />
+		<file src='Vaultopia.Web\modules\**\*.*' target='modules' />
         <file src='Vaultopia.Web\global.asax' target='' />
         <file src='Vaultopia.Web\web.config' target='' />
 		<file src='Vaultopia.Web\imagevault.client.config' target='' />
+		<file src='Vaultopia.Web\EPiServerLog.config' target='' />
         <file src='Vaultopia.Web\episerverframework.config' target='' />
 		<file src='Vaultopia.Web\episerverframework.QA.config' target='' />
         <file src='Vaultopia.Web\episerverframework.UAT.config' target='' />
