@@ -10,7 +10,7 @@
         <description>Vaultopia</description>
     </metadata>
     <files>
-        <file src='Vaultopia.Web\bin\*.*' target='bin' />
+        <file src='Vaultopia.Web\bin\**\*.*' target='bin' />
 		<file src='Vaultopia.Web\Views\**\*.*' target='Views' />
 		<file src='Vaultopia.Web\App_Data\**\*.*' target='App_Data' />
 		<file src='AppData\**\*.*' target='App_Data' />
