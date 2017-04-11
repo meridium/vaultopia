@@ -4620,3 +4620,23 @@ System.Configuration.SettingsPropertyNotFoundException: The settings property 'S
 2017-04-11 14:49:05,720 [10] DEBUG EPiServer.Framework.Initialization.ApplicationDomainInitializer: Adding 'C:\Git\Vaultopia\vaultopia\Vaultopia.Web\modulesbin' to the AppDomain shadow copy path
 2017-04-11 14:49:05,735 [10] DEBUG EPiServer.Framework.Initialization.ApplicationDomainInitializer: New shadow copy path : C:\Git\Vaultopia\vaultopia\Vaultopia.Web\bin;C:\Git\Vaultopia\vaultopia\Vaultopia.Web\modulesbin
 2017-04-11 15:50:27,642 [1] ERROR EPiServer.Personalization.Providers.MaxMind.GeolocationProvider: Geolocation database file cannot be found: C:\Git\Vaultopia\vaultopia\Vaultopia.Web\App_Data\Geolocation\GeoLiteCity.dat
+2017-04-11 16:13:44,827 [12] ERROR EPiServer.Packaging.Storage.StateStorage: There are more than one record in StorageUpdateEntity data store for server with id 642dd81e-4667-4200-829a-b52166f1e318. Extra records will be deleted.
+2017-04-11 16:14:05,052 [12] ERROR EPiServer.DataAbstraction.ScheduledJob: 3.1.2 Failed to execute job 7d8fad39-2682-43b6-b49c-d7c8199d5195
+System.Configuration.SettingsPropertyNotFoundException: The settings property 'SubscriptionInfo' was not found.
+   at System.Configuration.SettingsBase.GetPropertyValueByName(String propertyName)
+   at System.Configuration.SettingsBase.get_Item(String propertyName)
+   at System.Web.Profile.ProfileBase.GetInternal(String propertyName)
+   at System.Web.Profile.ProfileBase.get_Item(String propertyName)
+   at EPiServer.Personalization.EPiServerProfile.get_Item(String propertyName)
+   at EPiServer.Personalization.EPiServerProfile.get_SubscriptionInfo()
+   at EPiServer.Personalization.SubscriptionJob.InternalExecute()
+   at EPiServer.Personalization.SubscriptionJob.Execute()
+System.Configuration.SettingsPropertyNotFoundException: The settings property 'SubscriptionInfo' was not found.
+   at System.Configuration.SettingsBase.GetPropertyValueByName(String propertyName)
+   at System.Configuration.SettingsBase.get_Item(String propertyName)
+   at System.Web.Profile.ProfileBase.GetInternal(String propertyName)
+   at System.Web.Profile.ProfileBase.get_Item(String propertyName)
+   at EPiServer.Personalization.EPiServerProfile.get_Item(String propertyName)
+   at EPiServer.Personalization.EPiServerProfile.get_SubscriptionInfo()
+   at EPiServer.Personalization.SubscriptionJob.InternalExecute()
+   at EPiServer.Personalization.SubscriptionJob.Execute()
