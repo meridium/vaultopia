@@ -7,7 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAk2nHeWOSJUqEiYxpuxspgQAAAAACAAAAAAAQZgAAAAEAACAAAAAsUFZVYPaQz6Q/niBg8j4+hgLRvqmfvka8pbiZcu2N/wAAAAAOgAAAAAIAACAAAADOcdJRszoTuH+7a2XltxK5Kf6tIcM9Hm5TorLZTz0n9SAAAAAWWjEbuglEWvLp0B4o4J60QGhGSj28rAhCUKSrkHUKFUAAAACxqPdd4ngUEJtCSsmRblLUwOcENsW90cVAEEZTKVuG5XdRXD7Ks7zJftpn0pJ4oRvbuv+nE0mB52MnZyvKnj/P</EncryptedPassword>
-    <_PublishTargetUrl>C:\Git\Vaultopia\vaultopia\Vaultopia-site</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\ImageVault\VaultopiaSite</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/GeoLiteCity.dat">
@@ -206,13 +206,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/Vaultopia.Web.dll">
-      <publishTime>03/28/2017 14:12:25</publishTime>
+      <publishTime>04/11/2017 15:27:50</publishTime>
     </File>
     <File Include="connectionStrings.config">
-      <publishTime>03/23/2017 12:33:39</publishTime>
+      <publishTime>04/11/2017 13:30:38</publishTime>
     </File>
     <File Include="connectionStrings.QA.config">
-      <publishTime>11/11/2014 00:26:14</publishTime>
+      <publishTime>04/11/2017 14:16:42</publishTime>
     </File>
     <File Include="connectionStrings.UAT.config">
       <publishTime>11/11/2014 00:26:14</publishTime>
@@ -221,16 +221,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/23/2017 11:16:15</publishTime>
     </File>
     <File Include="EPiServerFramework.config">
-      <publishTime>03/23/2017 11:16:15</publishTime>
+      <publishTime>04/11/2017 14:17:00</publishTime>
     </File>
     <File Include="EPiServerFramework.QA.config">
-      <publishTime>11/11/2014 00:26:14</publishTime>
+      <publishTime>04/11/2017 14:16:53</publishTime>
     </File>
     <File Include="EPiServerFramework.UAT.config">
-      <publishTime>11/11/2014 00:26:14</publishTime>
+      <publishTime>04/11/2017 14:16:57</publishTime>
     </File>
     <File Include="EPiServerLog.config">
-      <publishTime>03/28/2017 13:39:46</publishTime>
+      <publishTime>04/11/2017 15:23:16</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>10/23/2014 14:11:20</publishTime>
@@ -1541,7 +1541,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2014 14:11:20</publishTime>
     </File>
     <File Include="Web.Config">
-      <publishTime>03/28/2017 14:17:28</publishTime>
+      <publishTime>04/11/2017 15:27:50</publishTime>
     </File>
   </ItemGroup>
 </Project>
