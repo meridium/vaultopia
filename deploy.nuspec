@@ -12,6 +12,7 @@
     <files>
         <file src='Vaultopia.Web\bin\*.*' target='bin' />
 		<file src='Vaultopia.Web\Views\**\*.*' target='Views' />
+		<file src='Vaultopia.Web\Resources\**\*.*' target='Views' />
         <file src='Vaultopia.Web\global.asax' target='' />
         <file src='Vaultopia.Web\web.config' target='' />
         <file src='Vaultopia.Web\episerverframework.config' target='' />
