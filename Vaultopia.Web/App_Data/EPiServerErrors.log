@@ -4617,3 +4617,5 @@ System.Configuration.SettingsPropertyNotFoundException: The settings property 'S
 2017-04-11 14:28:26,056 [17] DEBUG EPiServer.Notification.NotificationDispatcherJob: The notification dispatcher job has been started.
 2017-04-11 14:28:26,083 [17] WARN EPiServer.Notification.DefaultNotificationDispatcher: There are no active Notification Providers
 2017-04-11 14:28:26,095 [17] DEBUG EPiServer.Notification.NotificationDispatcherJob:  There are no active providers. The provider "email" is disabled because of: "No from-address found, specify 'from' in smtp section or 'defaultNotificationEmailAddress' in applicationSettings section."
+2017-04-11 14:49:05,720 [10] DEBUG EPiServer.Framework.Initialization.ApplicationDomainInitializer: Adding 'C:\Git\Vaultopia\vaultopia\Vaultopia.Web\modulesbin' to the AppDomain shadow copy path
+2017-04-11 14:49:05,735 [10] DEBUG EPiServer.Framework.Initialization.ApplicationDomainInitializer: New shadow copy path : C:\Git\Vaultopia\vaultopia\Vaultopia.Web\bin;C:\Git\Vaultopia\vaultopia\Vaultopia.Web\modulesbin

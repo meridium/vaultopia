@@ -12,9 +12,11 @@
     <files>
         <file src='Vaultopia.Web\bin\*.*' target='bin' />
 		<file src='Vaultopia.Web\Views\**\*.*' target='Views' />
+		<file src='Vaultopia.Web\App_Data\**\*.*' target='App_Data' />
 		<file src='Vaultopia.Web\Static\**\*.*' target='Static' />
 		<file src='Vaultopia.Web\Resources\**\*.*' target='Resources' />
 		<file src='Vaultopia.Web\modules\**\*.*' target='modules' />
+		<file src='Vaultopia.Web\modulesbin\**\*.*' target='modulesbin' />
         <file src='Vaultopia.Web\global.asax' target='' />
         <file src='Vaultopia.Web\web.config' target='' />
 		<file src='Vaultopia.Web\imagevault.client.config' target='' />
