@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<languages>
+	<language name="Svenska" id="SV">
+		<MeridiumLinkEditor>
+			<Dialog>
+				<TargetWebPagePageOnThisSite>Sida på denna webbplats</TargetWebPagePageOnThisSite>
+				<TargetWebPagePageOnThisSiteLanguage>Språk</TargetWebPagePageOnThisSiteLanguage>
+				<TargetFileDocumentOnThisWebSite>Dokument på denna webbplats</TargetFileDocumentOnThisWebSite>
+			</Dialog>
+		</MeridiumLinkEditor>
+		<ProcessMapExtension>
+			<Edit>
+				<EditProcessMap>Editera processkartan</EditProcessMap>
+				<Delete>Ta bort</Delete>
+			</Edit>
+		</ProcessMapExtension>
+    <ProcessMap>
+      <Scheduler>
+        <ProcessMapBrokenLinkReporter>
+          <DisplayName>Processmap - Rapport över brutna länkar</DisplayName>
+          <Description>Rapporterar brutna länkar i Processmap</Description>
+        </ProcessMapBrokenLinkReporter>
+      </Scheduler>
+    </ProcessMap>
+  </language>
+</languages>

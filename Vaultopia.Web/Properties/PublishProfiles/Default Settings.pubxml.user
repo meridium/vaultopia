@@ -206,7 +206,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/Vaultopia.Web.dll">
-      <publishTime>04/11/2017 15:27:50</publishTime>
+      <publishTime>04/11/2017 16:30:16</publishTime>
     </File>
     <File Include="connectionStrings.config">
       <publishTime>04/11/2017 13:30:38</publishTime>
@@ -221,13 +221,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/23/2017 11:16:15</publishTime>
     </File>
     <File Include="EPiServerFramework.config">
-      <publishTime>04/11/2017 14:17:00</publishTime>
+      <publishTime>04/11/2017 15:50:15</publishTime>
     </File>
     <File Include="EPiServerFramework.QA.config">
-      <publishTime>04/11/2017 14:16:53</publishTime>
+      <publishTime>04/11/2017 15:49:30</publishTime>
     </File>
     <File Include="EPiServerFramework.UAT.config">
-      <publishTime>04/11/2017 14:16:57</publishTime>
+      <publishTime>04/11/2017 15:48:30</publishTime>
     </File>
     <File Include="EPiServerLog.config">
       <publishTime>04/11/2017 15:23:16</publishTime>
@@ -1541,7 +1541,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2014 14:11:20</publishTime>
     </File>
     <File Include="Web.Config">
-      <publishTime>04/11/2017 15:27:50</publishTime>
+      <publishTime>04/11/2017 16:30:29</publishTime>
     </File>
   </ItemGroup>
 </Project>

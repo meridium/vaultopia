@@ -15,6 +15,9 @@
 		<file src='Vaultopia.Web\App_Data\**\*.*' target='App_Data' />
 		<file src='Vaultopia.Web\Static\**\*.*' target='Static' />
 		<file src='Vaultopia.Web\Resources\**\*.*' target='Resources' />
+		<file src='Vaultopia.Web\Plugins\**\*.*' target='Plugins' />
+		<file src='Vaultopia.Web\Scripts\**\*.*' target='Scripts' />
+		<file src='Vaultopia.Web\lang\**\*.*' target='lang' />
 		<file src='Vaultopia.Web\modules\**\*.*' target='modules' />
 		<!-- <file src='Vaultopia.Web\modulesbin\**\*.*' target='modulesbin' /> -->
         <file src='Vaultopia.Web\global.asax' target='' />
@@ -25,6 +28,8 @@
 		<file src='Vaultopia.Web\episerverframework.QA.config' target='' />
         <file src='Vaultopia.Web\episerverframework.UAT.config' target='' />
 		<file src='Vaultopia.Web\episerver.config' target='' />
+		<file src='Vaultopia.Web\packages.config' target='' />
+		<file src='Vaultopia.Web\robots.txt' target='' />
 		<file src='Vaultopia.Web\connectionStrings.config' target='' />
 		<file src='Vaultopia.Web\connectionStrings.QA.config' target='' />
         <file src='Vaultopia.Web\connectionStrings.UAT.config' target='' />

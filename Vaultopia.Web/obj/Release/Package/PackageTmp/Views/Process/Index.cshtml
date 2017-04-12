@@ -1,0 +1,54 @@
+﻿@using EPiServer.Web.Mvc.Html
+@model Vaultopia.Web.Models.ViewModels.ProcessViewModel<Vaultopia.Web.Models.Pages.Process>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BodyClass = "process";
+}
+<div id="main">
+
+    <div class="wrap">
+        <main>
+
+
+            <h1>@Html.PropertyFor(x => x.CurrentPage.Heading)</h1>
+            <p class="introduction">
+                @Html.PropertyFor(x => x.CurrentPage.Introduction)
+            </p>
+
+            @Html.PropertyFor(x => x.CurrentPage.ProcessMap)
+            <div id="primary">
+                @Html.PropertyFor(x => x.CurrentPage.MainBody)
+            </div>
+            <div id="secondary">
+
+
+                @if (Model.CurrentPage.InfoDocuments != null && Model.CurrentPage.InfoDocuments.Any())
+                {<ul>
+                     <li><h2>Documents</h2></li>
+
+                     @if (Model.FileList != null)
+                     {
+                         foreach (var file in Model.FileList)
+                         {
+                             <li>
+                                 <a href="@file.FileShareUrl">
+                                     <img src="@file.FileUrl" />
+                                     @file.FileName
+                                 </a>
+                             </li>
+                         }
+                     }
+
+                 </ul>
+                }
+            </div>
+             <aside>
+                    @Html.PropertyFor(x => x.CurrentPage.Teasers, new { Tag = "aside" })
+                </aside>
+         
+
+        </main>
+
+    </div>
+</div>
