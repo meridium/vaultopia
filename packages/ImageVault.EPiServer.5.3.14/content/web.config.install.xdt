@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform" xmlns:asm="urn:schemas-microsoft-com:asm.v1">
+  <system.webServer>
+    <handlers>
+      <add xdt:Transform="RemoveAll" xdt:Locator="Condition(@name='ImageVaultMediaHandler' or @name='ImageVaultPublishedMediaHandler' or @name='ImageVaultMediaProxy' or @name='ImageVaultPublishedMediaProxy')"/>
+      <add name="ImageVaultMediaHandler" verb="GET" path="imagevault/media/*/*" type="ImageVault.Client.Web.MediaProxyHandler,ImageVault.Client" xdt:Transform="InsertBefore(/configuration/system.webServer/handlers/add[1])"/>
+      <add name="ImageVaultPublishedMediaHandler" verb="GET" path="imagevault/publishedmedia/*/*" type="ImageVault.Client.Web.PublishedMediaProxyHandler,ImageVault.Client" xdt:Transform="InsertBefore(/configuration/system.webServer/handlers/add[1])"/>
+    </handlers>
+  </system.webServer>
+  <location path="imagevaultidentity" xdt:Transform="Remove" xdt:Locator="Match(path)"/>
+  <location path="imagevaultidentity" xdt:Transform="Insert" xdt:Locator="Match(path)">
+    <system.web>
+      <authorization>
+        <allow users="?" />
+      </authorization>
+    </system.web>
+  </location>
+</configuration>

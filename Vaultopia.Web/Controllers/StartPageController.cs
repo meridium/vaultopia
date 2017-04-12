@@ -63,7 +63,7 @@ namespace Vaultopia.Web.Controllers {
 
             var viewModel = new StartPageViewModel<StartPage>(currentPage)
                 {
-                    FirstSlideUrl = ImageSlides != null ? ImageSlides.FirstOrDefault().Where(x => x.Key == "large").Select(x => x.Value.ToString()).FirstOrDefault() : null,
+                    FirstSlideUrl = ImageSlides != null && ImageSlides.Any() ? ImageSlides.FirstOrDefault().Where(x => x.Key == "large").Select(x => x.Value.ToString()).FirstOrDefault() : null,
                     Slides = new JavaScriptSerializer().Serialize(ImageSlides)
                 };
             return View(viewModel);

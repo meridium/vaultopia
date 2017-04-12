@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -12,9 +13,17 @@ using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 
-namespace Vaultopia.Web.Business {
-    public class PageViewContextFactory {
-        private readonly Client _client;
+namespace Vaultopia.Web.Business
+{
+    public class PageViewContextFactory
+    {
+        private Client _client;
+
+        public Client Client
+        {
+            get { return _client ?? (_client = ClientFactory.GetSdkClient()); }
+        }
+
         private readonly IContentLoader _contentLoader;
         private readonly UrlResolver _urlResolver;
 
@@ -23,10 +32,10 @@ namespace Vaultopia.Web.Business {
         /// </summary>
         /// <param name="contentLoader">The content loader.</param>
         /// <param name="urlResolver">The URL resolver.</param>
-        public PageViewContextFactory(IContentLoader contentLoader, UrlResolver urlResolver) {
+        public PageViewContextFactory(IContentLoader contentLoader, UrlResolver urlResolver)
+        {
             _contentLoader = contentLoader;
             _urlResolver = urlResolver;
-            _client = ClientFactory.GetSdkClient(); // TODO: inject this
         }
 
         /// <summary>
@@ -35,43 +44,46 @@ namespace Vaultopia.Web.Business {
         /// <value>
         /// The inspiration images.
         /// </value>
-        protected List<InspirationImage> InspirationImages {
-            get {
-             
-          
+        protected List<InspirationImage> InspirationImages
+        {
+            get
+            {
                 var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
-                    _inspirationImages = new List<InspirationImage>();
-  
-                    foreach (MediaReference mediaReference in startPage.SiteInspiration.MediaList) {
-                        InspirationImage media = _client.Load<InspirationImage>(mediaReference.Id).SingleOrDefault();
-                        if (media == null) {
-                            continue;
-                        }
-                        _inspirationImages.Add(media);
-                    }     
-                
+                _inspirationImages = new List<InspirationImage>();
+
+                foreach (MediaReference mediaReference in startPage.SiteInspiration.MediaList)
+                {
+                    InspirationImage media = Client.Load<InspirationImage>(mediaReference.Id).SingleOrDefault();
+                    if (media == null)
+                    {
+                        continue;
+                    }
+                    _inspirationImages.Add(media);
+                }
+
                 return _inspirationImages;
             }
         }
-        private List<InspirationImage> _inspirationImages; 
+        private List<InspirationImage> _inspirationImages;
         /// <summary>
         ///     Creates the layout model.
         /// </summary>
         /// <param name="currentContentLink">The current content link.</param>
         /// <param name="requestContext">The request context.</param>
         /// <returns></returns>
-        public LayoutModel CreateLayoutModel(ContentReference currentContentLink, RequestContext requestContext) {
+        public LayoutModel CreateLayoutModel(ContentReference currentContentLink, RequestContext requestContext)
+        {
             var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
 
             return new LayoutModel
-                {
-                    FirstTestimonial = startPage.FirstSiteTestimonial,
-                    SecondTestimonial = startPage.SecondSiteTestimonial,
-                    SiteInspirationUrls = InspirationImages,
-                    LoggedIn = requestContext.HttpContext.User.Identity.IsAuthenticated,
-                    LoginUrl = new MvcHtmlString(GetLoginUrl(currentContentLink)),
-                    StartPageUrl = startPage.LinkURL
-                };
+            {
+                FirstTestimonial = startPage.FirstSiteTestimonial,
+                SecondTestimonial = startPage.SecondSiteTestimonial,
+                SiteInspirationUrls = InspirationImages,
+                LoggedIn = requestContext.HttpContext.User.Identity.IsAuthenticated,
+                LoginUrl = new MvcHtmlString(GetLoginUrl(currentContentLink)),
+                StartPageUrl = startPage.LinkURL
+            };
         }
 
         /// <summary>
@@ -79,7 +91,8 @@ namespace Vaultopia.Web.Business {
         /// </summary>
         /// <param name="returnToContentLink">The return to content link.</param>
         /// <returns></returns>
-        private string GetLoginUrl(ContentReference returnToContentLink) {
+        private string GetLoginUrl(ContentReference returnToContentLink)
+        {
             return string.Format(
                 "{0}?ReturnUrl={1}",
                 FormsAuthentication.LoginUrl,
