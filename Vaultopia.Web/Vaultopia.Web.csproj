@@ -671,6 +671,7 @@
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.zip" />
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.rar" />
     <Content Include="ImageVault.EPiServer.UI.readme.markdown" />
+
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -796,12 +797,6 @@
     <Content Include="Web.Config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="EPiServerFramework.UAT.config">
-      <DependentUpon>EPiServerFramework.config</DependentUpon>
-    </Content>
-    <Content Include="EPiServerFramework.QA.config">
-      <DependentUpon>EPiServerFramework.config</DependentUpon>
-    </Content>
     <Content Include="EPiServerFramework.config">
       <SubType>Designer</SubType>
     </Content>
@@ -810,6 +805,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="connectionStrings.QA.config">
+      <DependentUpon>connectionStrings.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+	 <Content Include="connectionStrings.PROD.config">
       <DependentUpon>connectionStrings.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>

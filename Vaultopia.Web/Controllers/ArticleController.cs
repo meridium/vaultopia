@@ -97,25 +97,29 @@ namespace Vaultopia.Web.Controllers {
             if (currentPage.SharedFile != null && Request.Url != null)
             {   
                 var mediaShares = mediaShareService.FindShareByMediaItemId(currentPage.SharedFile.Id);
-                var shares = mediaShares as MediaShare[] ?? mediaShares.ToArray();
-                var shared = new MediaShare();
-                var foundShare = shares.FirstOrDefault(x => x.Items.Count == 1);
-       
 
-                if (foundShare == null)
+                if (mediaShares != null && mediaShares.Any())
                 {
-                    shared.MediaFormatId = 1;
-                    shared.Name = "Shared Files";
-                    shared.Items = new List<MediaItem>() { new MediaItem() { Id = currentPage.SharedFile.Id } };
-                }
-                else
-                {
-                    shared = foundShare;
-                }
+                    var shares = mediaShares as MediaShare[] ?? mediaShares.ToArray();
+                    var shared = new MediaShare();
+                    var foundShare = shares.FirstOrDefault(x => x.Items.Count == 1);
 
-                _client.Store(shared);
-                var baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
-                viewModel.FileShare = baseUrl + "/imagevault/shares/" + shared.Id;
+
+                    if (foundShare == null)
+                    {
+                        shared.MediaFormatId = 1;
+                        shared.Name = "Shared Files";
+                        shared.Items = new List<MediaItem>() {new MediaItem() {Id = currentPage.SharedFile.Id}};
+                    }
+                    else
+                    {
+                        shared = foundShare;
+                    }
+
+                    _client.Store(shared);
+                    var baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
+                    viewModel.FileShare = baseUrl + "/imagevault/shares/" + shared.Id;
+                }
             }
             else
             {
