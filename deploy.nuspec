@@ -20,13 +20,13 @@
 		<file src='Vaultopia.Web\lang\**\*.*' target='lang' />
 		<file src='Vaultopia.Web\modules\**\*.*' target='modules' />
 		<!-- <file src='Vaultopia.Web\modulesbin\**\*.*' target='modulesbin' /> -->
-        <file src='Vaultopia.Web\global.asax' target='' />
+        <file src='Vaultopia.Web\Global.asax' target='' />
         <file src='Vaultopia.Web\web.config' target='' />
 		<file src='Vaultopia.Web\imagevault.client.config' target='' />
 		<file src='Vaultopia.Web\EPiServerLog.config' target='' />
-        <file src='Vaultopia.Web\episerverframework.config' target='' />
-		<file src='Vaultopia.Web\episerverframework.QA.config' target='' />
-        <file src='Vaultopia.Web\episerverframework.UAT.config' target='' />
+        <file src='Vaultopia.Web\EPiServerFramework.config' target='' />
+		<file src='Vaultopia.Web\EPiServerFramework.QA.config' target='' />
+        <file src='Vaultopia.Web\EPiServerFramework.UAT.config' target='' />
 		<file src='Vaultopia.Web\episerver.config' target='' />
 		<file src='Vaultopia.Web\packages.config' target='' />
 		<file src='Vaultopia.Web\robots.txt' target='' />
