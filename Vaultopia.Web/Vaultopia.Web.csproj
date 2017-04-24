@@ -808,7 +808,7 @@
       <DependentUpon>connectionStrings.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
-	 <Content Include="connectionStrings.PROD.config">
+	 <Content Include="connectionStrings.IV-Demo.config">
       <DependentUpon>connectionStrings.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
