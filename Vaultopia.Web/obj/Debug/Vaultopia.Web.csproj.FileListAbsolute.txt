@@ -209,6 +209,5 @@ C:\Git\Vaultopia\vaultopia\Vaultopia.Web\bin\System.Web.WebPages.Razor.xml
 C:\Git\Vaultopia\vaultopia\Vaultopia.Web\bin\sv\ImageVault.Client.resources.dll
 C:\Git\Vaultopia\vaultopia\Vaultopia.Web\bin\de\ImageVault.Common.resources.dll
 C:\Git\Vaultopia\vaultopia\Vaultopia.Web\bin\sv\ImageVault.Common.resources.dll
-C:\Git\Vaultopia\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.csprojResolveAssemblyReference.cache
 C:\Git\Vaultopia\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.dll
 C:\Git\Vaultopia\vaultopia\Vaultopia.Web\obj\Debug\Vaultopia.Web.pdb

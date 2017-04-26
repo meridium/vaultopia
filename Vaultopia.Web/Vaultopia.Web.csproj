@@ -20,6 +20,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -671,7 +673,6 @@
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.zip" />
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.rar" />
     <Content Include="ImageVault.EPiServer.UI.readme.markdown" />
-
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -808,7 +809,7 @@
       <DependentUpon>connectionStrings.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
-	 <Content Include="connectionStrings.IV-Demo.config">
+    <Content Include="connectionStrings.IV-Demo.config">
       <DependentUpon>connectionStrings.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
@@ -849,6 +850,9 @@
     <Content Include="Views\ProcessMapBlock\Index.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Web.Config.merge.host.MathiasO-w10e.xdt">
+      <DependentUpon>Web.Config</DependentUpon>
+    </Content>
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>
@@ -895,6 +899,13 @@ cd ..
 
 :exit</PreBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\Meriworks.PowerShell.ConfigBuilder.5.1.3\build\Meriworks.PowerShell.ConfigBuilder.targets" Condition="Exists('..\packages\Meriworks.PowerShell.ConfigBuilder.5.1.3\build\Meriworks.PowerShell.ConfigBuilder.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Meriworks.PowerShell.ConfigBuilder.5.1.3\build\Meriworks.PowerShell.ConfigBuilder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Meriworks.PowerShell.ConfigBuilder.5.1.3\build\Meriworks.PowerShell.ConfigBuilder.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
