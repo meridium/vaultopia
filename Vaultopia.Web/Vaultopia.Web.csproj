@@ -149,28 +149,28 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.Client, Version=5.3.33.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.Client.5.3.33\lib\net45\ImageVault.Client.dll</HintPath>
+    <Reference Include="ImageVault.Client, Version=5.3.91.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.Client.5.3.91\lib\net45\ImageVault.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.Common, Version=5.3.33.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.Common.5.3.33\lib\net45\ImageVault.Common.dll</HintPath>
+    <Reference Include="ImageVault.Common, Version=5.3.91.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.Common.5.3.91\lib\net45\ImageVault.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.Common.Lib.StructureMap, Version=5.3.33.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.Common.Lib.StructureMap.5.3.33\lib\net45\ImageVault.Common.Lib.StructureMap.dll</HintPath>
+    <Reference Include="ImageVault.Common.Lib.StructureMap, Version=5.3.91.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.Common.Lib.StructureMap.5.3.91\lib\net45\ImageVault.Common.Lib.StructureMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.EPiServer, Version=5.3.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.EPiServer.5.3.14\lib\net45\ImageVault.EPiServer.dll</HintPath>
+    <Reference Include="ImageVault.EPiServer, Version=5.3.95.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.EPiServer.5.3.95\lib\net45\ImageVault.EPiServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.EPiServer.Common, Version=5.3.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.EPiServer.5.3.14\lib\net45\ImageVault.EPiServer.Common.dll</HintPath>
+    <Reference Include="ImageVault.EPiServer.Common, Version=5.3.95.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.EPiServer.5.3.95\lib\net45\ImageVault.EPiServer.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.EPiServer.UI, Version=5.3.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.EPiServer.UI.5.3.14\lib\net45\ImageVault.EPiServer.UI.dll</HintPath>
+    <Reference Include="ImageVault.EPiServer.UI, Version=5.3.95.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.EPiServer.UI.5.3.95\lib\net45\ImageVault.EPiServer.UI.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
@@ -236,6 +236,10 @@
     </Reference>
     <Reference Include="ProcessMapEditor.Data, Version=3.5.16.0, Culture=neutral, PublicKeyToken=01f4840270d48493, processorArchitecture=MSIL">
       <HintPath>..\packages\ProcessMap.EPiServer.UI.3.5.16\lib\net45\ProcessMapEditor.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.9.3.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.9.3\lib\net45\RazorEngine.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="StructureMap, Version=3.1.9.463, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
@@ -661,13 +665,6 @@
     <Content Include="modules\_protected\Shell\Shell.zip" />
     <Content Include="modules\_protected\CMS\web.config" />
     <Content Include="modules\_protected\CMS\CMS.zip" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\web.config" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\readme.md" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\MediaReferenceList`1.cshtml" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\MediaReference.cshtml" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.zip" />
-    <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.rar" />
-    <Content Include="ImageVault.EPiServer.UI.readme.markdown" />
     <Content Include="Plugins\ProcessMap\Client\ProcessMap3.application" />
     <Content Include="Plugins\ProcessMap\Client\ProcessMap.Admin.application" />
     <Content Include="Plugins\ProcessMap\web.config" />
@@ -709,9 +706,16 @@
     <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\DevComponents.DotNetBar2.dll.deploy" />
     <Content Include="modules\_protected\ProcessMap.EPiServer.UI\web.config" />
     <Content Include="modules\_protected\ProcessMap.EPiServer.UI\ProcessMap.EPiServer.UI.zip" />
-    <Content Include="web.config.merge.pre.xdt">
+    <Content Include="modules\_protected\ImageVault.EPiServer.UI\web.config" />
+    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\readme.md" />
+    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\MediaReferenceList`1.cshtml" />
+    <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\MediaReference.cshtml" />
+    <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.zip" />
+    <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.rar" />
+    <Content Include="ImageVault.EPiServer.UI.readme.markdown" />
+    <None Include="web.QA.config">
       <DependentUpon>Web.Config</DependentUpon>
-    </Content>
+    </None>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -886,9 +890,18 @@
     <Content Include="Views\ProcessMapBlock\Index.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="web.config.merge.host.avrak.xdt">
+      <DependentUpon>Web.Config</DependentUpon>
+    </Content>
     <Content Include="Web.Config.merge.host.MathiasO-w10e.xdt">
       <DependentUpon>Web.Config</DependentUpon>
     </Content>
+    <Content Include="web.config.merge.pre.xdt">
+      <DependentUpon>Web.Config</DependentUpon>
+    </Content>
+    <None Include="Web.IV-Demo.config">
+      <DependentUpon>Web.Config</DependentUpon>
+    </None>
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

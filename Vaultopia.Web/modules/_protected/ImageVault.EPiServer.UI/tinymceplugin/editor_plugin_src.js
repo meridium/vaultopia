@@ -432,6 +432,7 @@
 		},
 		//Real open ImageVault function. Only works if UiCallback script is loaded
 		openImageVaultWhenScriptIsLoaded: function () {
+
 			var params = '?PageLang=' + this.editor.settings.epi_page_context.epslanguage;
 			params += '&UiLang=' + this.editor.getLang('imagevault.language', "en");
 			params += '&insertMultiple=false&FormatId=NA';
