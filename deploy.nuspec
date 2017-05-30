@@ -22,7 +22,6 @@
 		<!-- <file src='Vaultopia.Web\modulesbin\**\*.*' target='modulesbin' /> -->
         <file src='Vaultopia.Web\Global.asax' target='' />
         <file src='Vaultopia.Web\web.config' target='' />
-        <file src='Vaultopia.Web\web.QA.config' target='' />
         <file src='Vaultopia.Web\web.IV-Demo.config' target='' />
 		<file src='Vaultopia.Web\imagevault.client.config' target='' />
 		<file src='Vaultopia.Web\EPiServerLog.config' target='' />

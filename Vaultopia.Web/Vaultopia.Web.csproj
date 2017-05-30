@@ -713,9 +713,6 @@
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.zip" />
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.rar" />
     <Content Include="ImageVault.EPiServer.UI.readme.markdown" />
-    <Content Include="web.QA.config">
-      <DependentUpon>Web.Config</DependentUpon>
-    </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -890,15 +887,6 @@
     <Content Include="Views\ProcessMapBlock\Index.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="web.config.merge.host.avrak.xdt">
-      <DependentUpon>Web.Config</DependentUpon>
-    </Content>
-    <Content Include="Web.Config.merge.host.MathiasO-w10e.xdt">
-      <DependentUpon>Web.Config</DependentUpon>
-    </Content>
-    <Content Include="web.config.merge.pre.xdt">
-      <DependentUpon>Web.Config</DependentUpon>
-    </Content>
     <Content Include="Web.IV-Demo.config">
       <DependentUpon>Web.Config</DependentUpon>
     </Content>
