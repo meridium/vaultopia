@@ -1,0 +1,4 @@
+#manifest files cannot be changed since it's digitally signed and verification will fail
+*.manifest -crlf
+*.deploy -crlf
+

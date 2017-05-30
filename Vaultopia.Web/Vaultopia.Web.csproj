@@ -183,8 +183,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
@@ -654,11 +654,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="robots.txt" />
-    <Content Include="Plugins\ProcessMap\Client\ProcessMap3.application" />
-    <Content Include="Plugins\ProcessMap\Client\ProcessMap.Admin.application" />
-    <Content Include="modules\_protected\ProcessMap.EPiServer.UI\web.config" />
-    <Content Include="modules\_protected\ProcessMap.EPiServer.UI\ProcessMap.EPiServer.UI.zip" />
-    <Content Include="Plugins\ProcessMap\web.config" />
     <Content Include="modules\_protected\EPiServer.Packaging.UI\web.config" />
     <Content Include="modules\_protected\EPiServer.Packaging.UI\EPiServer.Packaging.UI.zip" />
     <Content Include="App_Data\GeoLiteCity.dat" />
@@ -673,6 +668,50 @@
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.zip" />
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.rar" />
     <Content Include="ImageVault.EPiServer.UI.readme.markdown" />
+    <Content Include="Plugins\ProcessMap\Client\ProcessMap3.application" />
+    <Content Include="Plugins\ProcessMap\Client\ProcessMap.Admin.application" />
+    <Content Include="Plugins\ProcessMap\web.config" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\sv\ProcessMap3.resources.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\sv\ProcessMap.Client.resources.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\ProcessMapEditor.Data.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\ProcessMap3.exe.manifest" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\ProcessMap3.exe.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\ProcessMap3.application" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\ProcessMap.Client.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\no\ProcessMap3.resources.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\Newtonsoft.Json.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\MindFusion.Svg.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\MindFusion.Scripting.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\MindFusion.Graphs.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\MindFusion.Diagramming.WinForms.Ruler.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\MindFusion.Diagramming.WinForms.Overview.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\MindFusion.Diagramming.WinForms.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\MindFusion.Diagramming.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\MindFusion.Common.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\fr\ProcessMapEditor.Data.resources.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\Documentation\UserguideSV.chm.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\Documentation\UserguideEN.chm.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\de\ProcessMapEditor.Data.resources.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap3_3_5_0_4\DevComponents.DotNetBar2.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\sv\ProcessMap.Client.resources.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\ProcessMapEditor.Data.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\ProcessMap.Client.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\ProcessMap.Admin.exe.manifest" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\ProcessMap.Admin.exe.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\ProcessMap.Admin.application" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\MindFusion.Svg.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\MindFusion.Scripting.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\MindFusion.Graphs.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\MindFusion.Diagramming.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\MindFusion.Common.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\fr\ProcessMapEditor.Data.resources.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\de\ProcessMapEditor.Data.resources.dll.deploy" />
+    <Content Include="Plugins\ProcessMap\Client\Application Files\ProcessMap.Admin_3_5_0_4\DevComponents.DotNetBar2.dll.deploy" />
+    <Content Include="modules\_protected\ProcessMap.EPiServer.UI\web.config" />
+    <Content Include="modules\_protected\ProcessMap.EPiServer.UI\ProcessMap.EPiServer.UI.zip" />
+    <Content Include="web.config.merge.pre.xdt">
+      <DependentUpon>Web.Config</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -790,10 +829,7 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="modulesbin\" />
-    <Folder Include="Plugins\ProcessMap\Client\Application Files\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Web.Config">
       <SubType>Designer</SubType>

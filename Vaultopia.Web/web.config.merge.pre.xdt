@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+    <se.meridium>
+        <ProcessMap>
+            <appSettings>
+                <add key="processMapEditorBasePath" value="https://demo.imagevault.se/Plugins/ProcessMap/Client" 
+                     xdt:Locator="Match(key)" xdt:Transform="SetAttributes(value)"/>
+            </appSettings>
+        </ProcessMap>
+    </se.meridium>
+
+</configuration>
