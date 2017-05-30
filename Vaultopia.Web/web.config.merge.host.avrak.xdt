@@ -3,8 +3,7 @@
     <se.meridium>
         <ProcessMap>
             <appSettings>
-                <add key="processMapEditorBasePath" value="http://vaultopia.local/Plugins/ProcessMap/Client" 
-                     xdt:Locator="Match(key)" xdt:Transform="SetAttributes(value)"/>
+                <add key="processMapEditorBasePath" xdt:Locator="Match(key)" xdt:Transform="Remove"/>
             </appSettings>
         </ProcessMap>
     </se.meridium>

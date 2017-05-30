@@ -713,9 +713,9 @@
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.zip" />
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.rar" />
     <Content Include="ImageVault.EPiServer.UI.readme.markdown" />
-    <None Include="web.QA.config">
+    <Content Include="web.QA.config">
       <DependentUpon>Web.Config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -899,9 +899,9 @@
     <Content Include="web.config.merge.pre.xdt">
       <DependentUpon>Web.Config</DependentUpon>
     </Content>
-    <None Include="Web.IV-Demo.config">
+    <Content Include="Web.IV-Demo.config">
       <DependentUpon>Web.Config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>
