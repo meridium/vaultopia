@@ -44,7 +44,7 @@ namespace Vaultopia.Web.Controllers
                 allImages = allImages.Where(m => m.Categories.Contains(category));
             }
 
-           if (!string.IsNullOrEmpty(searchImage))
+            if (!string.IsNullOrEmpty(searchImage))
             {
                 allImages = allImages.SearchFor(searchImage);
             }
@@ -54,15 +54,15 @@ namespace Vaultopia.Web.Controllers
             viewModel.Categorys =
                 _client.Query<Category>().Include(x => x.IsUsed).ToList().Where(x => x.IsUsed.HasValue).ToList();
             viewModel.SelectedCategoryID = category;
-      
+
             return View(viewModel);
         }
 
         /// <summary>
-         /// Creates images to be downloaded
-         /// </summary>
-         /// <param name="id"></param>
-         /// <returns></returns>
+        /// Creates images to be downloaded
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [WebMethod]
         public string Download(int id)
         {
@@ -73,7 +73,7 @@ namespace Vaultopia.Web.Controllers
                 Filter = { Id = new List<int> { id } },
                 Populate =
                 {
-                    PublishIdentifier = _client.PublishIdentifier
+                    PublishInfo = new PublishInfo(_client.PublishIdentifier,new PublishDetailsData("Download",null,"Gallery download"))
                 }
             };
 
@@ -89,7 +89,7 @@ namespace Vaultopia.Web.Controllers
                 return string.Empty;
             }
 
-             var downloadList = DownloadList(mediaItem);
+            var downloadList = DownloadList(mediaItem);
 
             return new JavaScriptSerializer().Serialize(downloadList);
         }
@@ -131,7 +131,7 @@ namespace Vaultopia.Web.Controllers
         private static IEnumerable<Download> DownloadList(MediaItem mediaItem)
         {
             var downloadList = new List<Download>();
-            string[] formats = {"Jpeg", "Png", "Gif"};
+            string[] formats = { "Jpeg", "Png", "Gif" };
             foreach (var format in formats)
             {
                 foreach (var conversion in mediaItem.MediaConversions)
@@ -182,7 +182,7 @@ namespace Vaultopia.Web.Controllers
                     _client.Query<GalleryImage>()
                         .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
                         .OrderByDescending(m => m.DateAdded)
-                        .Skip(skip*32)
+                        .Skip(skip * 32)
                         .Take(33)
                         .ToList()
             };
@@ -222,7 +222,7 @@ namespace Vaultopia.Web.Controllers
 
             var service = _client.CreateChannel<IMediaService>();
 
-            service.Save(new List<MediaItem> {mediaItem}, MediaServiceSaveOptions.MarkAsOrganized);
+            service.Save(new List<MediaItem> { mediaItem }, MediaServiceSaveOptions.MarkAsOrganized);
 
             var image = _client.Load<GalleryImage>(mediaItem.Id).SingleOrDefault();
 
@@ -283,7 +283,7 @@ namespace Vaultopia.Web.Controllers
 
             if (image != null)
             {
-                var response = new {mediaItem.Id, image.Url};
+                var response = new { mediaItem.Id, image.Url };
                 return Json(response);
             }
 
@@ -347,18 +347,15 @@ namespace Vaultopia.Web.Controllers
 
             //when we save the metadata we only want to modify the new one
             //when we clear the metadata, this will not clear the metadata stored in the db only for this copy
-            if (item.Metadata != null)
-            {
-                item.Metadata.Clear();
-            }
+            item.Metadata?.Clear();
 
             //add the new/modified metadata
-            item.Metadata.Add(m);
+            item.Metadata?.Add(m);
             var ms = client.CreateChannel<IMediaService>();
             //supply the Metadata save option flag to indicate that medatata should be saved as well.
             //as stated above, we cannot delete any metadata. Any metadata passed to the save function will only 
             //be added/modified for now.
-            ms.Save(new List<MediaItem> {item}, MediaServiceSaveOptions.Metadata);
+            ms.Save(new List<MediaItem> { item }, MediaServiceSaveOptions.Metadata);
         }
 
         /// <summary>

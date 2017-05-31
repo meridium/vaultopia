@@ -1,5 +1,4 @@
 ﻿@using EPiServer.Web.Mvc.Html
-@using EPiServer.XForms.WebControls
 @using ImageVault.EPiServer
 @using Vaultopia.Web.Helpers;
 @model Vaultopia.Web.Models.ViewModels.ArticleViewModel<Vaultopia.Web.Models.Pages.Article>
@@ -45,14 +44,17 @@
             </div>
             <div id="secondary">
                 <ul>
-                    <li><span></span><a target="_blank" href="@Model.FileShare">Travelers guide</a></li>
+                    @if (Model.FileShare != null)
+                    {
+                        <li><span></span><a target="_blank" href="@Model.FileShare">Travelers guide</a></li>
+                    }
                 </ul>
             </div>
         </main>
-            <aside>
-                @Html.PropertyFor(x => x.CurrentPage.Teasers, new { Tag = "aside" })
-            </aside>
-        
+        <aside>
+            @Html.PropertyFor(x => x.CurrentPage.Teasers, new { Tag = "aside" })
+        </aside>
+
     </div>
 </div>
 

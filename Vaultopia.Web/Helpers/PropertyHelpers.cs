@@ -13,9 +13,8 @@ namespace Vaultopia.Web.Helpers
         {
             var expression = (MemberExpression)property.Body;
             var name = expression.Member.Name;
-
-            var propertyData = ((IContent)model).Property[name];
-            var settings = (TSettings)propertyData.GetSetting(typeof(TSettings));
+            
+            var settings = ((IContent) model).GetPropertySettings<TSettings>(name);
             var settingsJson = Json.Encode(settings);
             return settingsJson;
         }

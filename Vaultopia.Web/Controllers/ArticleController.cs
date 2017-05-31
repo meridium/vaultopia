@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using EPiServer.Data;
 using EPiServer.Editor;
+using EPiServer.Web;
 using EPiServer.Web.Mvc;
 using ImageVault.Client;
 using ImageVault.Common.Data;
-using ImageVault.EPiServer;
-using Ionic.Zip;
-using StructureMap.Configuration.DSL;
 using Vaultopia.Web.Business.Media;
 using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
@@ -17,9 +14,12 @@ using Vaultopia.Web.Models.ViewModels;
 using ImageVault.Common.Services;
 using ImageVault.Common.Data.Query;
 using ImageVault.Common.Data.Effects;
+using ImageVault.EPiServer;
 
-namespace Vaultopia.Web.Controllers {
-    public class ArticleController : PageController<Article> {
+namespace Vaultopia.Web.Controllers
+{
+    public class ArticleController : PageController<Article>
+    {
         private readonly Client _client;
 
         /// <summary>
@@ -27,24 +27,26 @@ namespace Vaultopia.Web.Controllers {
         /// </summary>
         /// <param name="currentPage">The current page.</param>
         /// <returns></returns>
-        public ActionResult Index(Article currentPage) {
-          
+        public ActionResult Index(Article currentPage)
+        {
+
             var slides = new List<Slide>();
             var mediaService = _client.CreateChannel<IMediaService>();
             var viewModel = new ArticleViewModel<Article>(currentPage);
             var formats = Formats();
-            
-            if (currentPage.SlideMediaList != null && currentPage.SlideMediaList.Count > 0) {
+
+            if (currentPage.SlideMediaList != null && currentPage.SlideMediaList.Count > 0)
+            {
 
                 var mediaReferences = currentPage.SlideMediaList.Take(5);
                 var imageSlides = mediaReferences.Select(mediaReference => mediaReference.Id).ToList();
 
                 var query = new MediaItemQuery
                 {
-                    Filter = { Id = imageSlides},
+                    Filter = { Id = imageSlides },
                     Populate =
                     {
-                        PublishIdentifier = _client.PublishIdentifier
+                        PublishInfo = new PublishInfo(_client.PublishIdentifier,new EPiServerPublishDetails(currentPage,"SlideMediaList"))
                     }
                 };
 
@@ -95,21 +97,20 @@ namespace Vaultopia.Web.Controllers {
             var mediaShareService = _client.CreateChannel<IMediaShareService>();
 
             if (currentPage.SharedFile != null && Request.Url != null)
-            {   
-                var mediaShares = mediaShareService.FindShareByMediaItemId(currentPage.SharedFile.Id);
+            {
+                var mediaShares = mediaShareService.FindShareByMediaItemId(currentPage.SharedFile.Id).ToList();
 
-                if (mediaShares != null && mediaShares.Any())
+                if (mediaShares.Any())
                 {
-                    var shares = mediaShares as MediaShare[] ?? mediaShares.ToArray();
                     var shared = new MediaShare();
-                    var foundShare = shares.FirstOrDefault(x => x.Items.Count == 1);
+                    var foundShare = mediaShares.FirstOrDefault(x => x.Items.Count == 1);
 
 
                     if (foundShare == null)
                     {
                         shared.MediaFormatId = 1;
                         shared.Name = "Shared Files";
-                        shared.Items = new List<MediaItem>() {new MediaItem() {Id = currentPage.SharedFile.Id}};
+                        shared.Items = new List<MediaItem> { new MediaItem { Id = currentPage.SharedFile.Id } };
                     }
                     else
                     {
@@ -117,7 +118,7 @@ namespace Vaultopia.Web.Controllers {
                     }
 
                     _client.Store(shared);
-                    var baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
+                    var baseUrl = new UriBuilder(SiteDefinition.Current.SiteUrl).Uri.AbsoluteUri;
                     viewModel.FileShare = baseUrl + "/imagevault/shares/" + shared.Id;
                 }
             }
@@ -165,9 +166,11 @@ namespace Vaultopia.Web.Controllers {
         ///     Renders the placeholder.
         /// </summary>
         /// <returns></returns>
-        public ActionResult RenderPlaceholder() {
+        public ActionResult RenderPlaceholder()
+        {
             // Only show the placeholder if the page is in edit mode
-            if (!PageEditing.PageIsInEditMode) {
+            if (!PageEditing.PageIsInEditMode)
+            {
                 return new EmptyResult();
             }
 
@@ -178,7 +181,8 @@ namespace Vaultopia.Web.Controllers {
         /// <summary>
         /// Initializes a new instance of the <see cref="ArticleController" /> class.
         /// </summary>
-        public ArticleController() {
+        public ArticleController()
+        {
             _client = ClientFactory.GetSdkClient();
         }
     }
