@@ -149,28 +149,28 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.Client, Version=5.3.91.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.Client.5.3.91\lib\net45\ImageVault.Client.dll</HintPath>
+    <Reference Include="ImageVault.Client, Version=5.3.100.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.Client.5.3.100\lib\net45\ImageVault.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.Common, Version=5.3.91.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.Common.5.3.91\lib\net45\ImageVault.Common.dll</HintPath>
+    <Reference Include="ImageVault.Common, Version=5.3.100.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.Common.5.3.100\lib\net45\ImageVault.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.Common.Lib.StructureMap, Version=5.3.91.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.Common.Lib.StructureMap.5.3.91\lib\net45\ImageVault.Common.Lib.StructureMap.dll</HintPath>
+    <Reference Include="ImageVault.Common.Lib.StructureMap, Version=5.3.100.0, Culture=neutral, PublicKeyToken=5adb7bea47dfc40a, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.Common.Lib.StructureMap.5.3.100\lib\net45\ImageVault.Common.Lib.StructureMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.EPiServer, Version=5.3.95.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.EPiServer.5.3.95\lib\net45\ImageVault.EPiServer.dll</HintPath>
+    <Reference Include="ImageVault.EPiServer, Version=5.3.100.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.EPiServer.5.3.100\lib\net45\ImageVault.EPiServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.EPiServer.Common, Version=5.3.95.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.EPiServer.5.3.95\lib\net45\ImageVault.EPiServer.Common.dll</HintPath>
+    <Reference Include="ImageVault.EPiServer.Common, Version=5.3.100.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.EPiServer.5.3.100\lib\net45\ImageVault.EPiServer.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.EPiServer.UI, Version=5.3.95.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.EPiServer.UI.5.3.95\lib\net45\ImageVault.EPiServer.UI.dll</HintPath>
+    <Reference Include="ImageVault.EPiServer.UI, Version=5.3.100.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.EPiServer.UI.5.3.100\lib\net45\ImageVault.EPiServer.UI.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
