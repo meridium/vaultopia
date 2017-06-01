@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -8,10 +7,12 @@ using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web.Routing;
 using ImageVault.Client;
+using ImageVault.Client.Query;
 using ImageVault.EPiServer;
 using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
+using Vaultopia.Web.ToIV;
 
 namespace Vaultopia.Web.Business
 {
@@ -19,10 +20,7 @@ namespace Vaultopia.Web.Business
     {
         private Client _client;
 
-        public Client Client
-        {
-            get { return _client ?? (_client = ClientFactory.GetSdkClient()); }
-        }
+        public Client Client => _client ?? (_client = ClientFactory.GetSdkClient());
 
         private readonly IContentLoader _contentLoader;
         private readonly UrlResolver _urlResolver;
@@ -53,7 +51,9 @@ namespace Vaultopia.Web.Business
 
                 foreach (MediaReference mediaReference in startPage.SiteInspiration.MediaList)
                 {
-                    InspirationImage media = Client.Load<InspirationImage>(mediaReference.Id).SingleOrDefault();
+                    var media = Client.Load<InspirationImage>(mediaReference.Id)
+                        .UsedOn(startPage,nameof(startPage.SiteInspiration.MediaList))
+                        .SingleOrDefault();
                     if (media == null)
                     {
                         continue;
@@ -93,12 +93,7 @@ namespace Vaultopia.Web.Business
         /// <returns></returns>
         private string GetLoginUrl(ContentReference returnToContentLink)
         {
-            return string.Format(
-                "{0}?ReturnUrl={1}",
-                FormsAuthentication.LoginUrl,
-                _urlResolver.GetUrl(returnToContentLink));
-            //_urlResolver.GetVirtualPath(returnToContentLink));
-
+            return $"{FormsAuthentication.LoginUrl}?ReturnUrl={_urlResolver.GetUrl(returnToContentLink)}";
         }
     }
 }

@@ -775,6 +775,7 @@
     <Compile Include="Controllers\NewsPartialController.cs" />
     <Compile Include="Controllers\ProcessController.cs" />
     <Compile Include="Controllers\ProcessMapBlockController.cs" />
+    <Compile Include="ToIV\QueryableExtensions.cs" />
     <Compile Include="Helpers\MediaHelpers.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AsideTeaserBlockController.cs" />

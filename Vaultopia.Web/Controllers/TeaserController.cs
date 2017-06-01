@@ -1,19 +1,14 @@
-﻿using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc;
-using ImageVault.Client;
-using ImageVault.Client.Query;
-using ImageVault.Common.Data;
 using Vaultopia.Web.Models.Blocks;
 
 namespace Vaultopia.Web.Controllers {
     [TemplateDescriptor(Tags = new[] {"narrow"}, AvailableWithoutTag = false, Inherited = false, Name = "Teaser")]
     public class TeaserController : BlockController<TeaserBlock> {
-        private readonly Client _client;
         private readonly IContentRepository _repository;
 
         /// <summary>
@@ -38,7 +33,6 @@ namespace Vaultopia.Web.Controllers {
         public TeaserController() {
             var repository = ServiceLocator.Current.GetInstance<IContentRepository>();
             _repository = repository;
-            _client = ClientFactory.GetSdkClient();
         }
     }
 }

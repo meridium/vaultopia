@@ -56,7 +56,7 @@ namespace Vaultopia.Web.Models.Pages {
             base.SetDefaultValues(contentType);
 
             var value = _client.Query<Vault>().OrderBy(v => v.Name).FirstOrDefault();
-            VaultPicker = value != null ? value.Id.ToString() : "0";
+            VaultPicker = value?.Id.ToString() ?? "0";
         }
         #endregion
 

@@ -11,6 +11,7 @@ using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 using System.IO;
+using Vaultopia.Web.ToIV;
 
 namespace Vaultopia.Web.Controllers
 {
@@ -32,12 +33,13 @@ namespace Vaultopia.Web.Controllers
             var viewModel = new ProcessViewModel<Process>(currentPage);
             if (currentPage.InfoDocuments == null || Request.Url == null) return View(viewModel);
             var mediaShareService = _client.CreateChannel<IMediaShareService>();
-            var shareList = new List<Vaultopia.Web.Models.Formats.FileShare>();
-            var thumbnails = _client.Load<FileImage>(currentPage.InfoDocuments.Select(x => x.Id)).ToList();
+            var shareList = new List<Models.Formats.FileShare>();
+            var thumbnails = _client.Load<FileImage>(currentPage.InfoDocuments.Select(x => x.Id))
+                .UsedOn(currentPage,nameof(currentPage.InfoDocuments)).ToList();
             for (var i = 0; i < currentPage.InfoDocuments.Count; i++)
             {
                 var shared = new MediaShare();
-                var fileShare = new Vaultopia.Web.Models.Formats.FileShare()
+                var fileShare = new Models.Formats.FileShare()
                 {
                     FileName = Path.GetFileNameWithoutExtension(thumbnails[i].SideImage.Name),
                     FileUrl = thumbnails[i].SideImage.Url

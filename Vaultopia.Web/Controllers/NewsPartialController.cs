@@ -10,6 +10,8 @@ using ImageVault.Common.Data;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 using ImageVault.Client;
+using ImageVault.EPiServer;
+using Vaultopia.Web.ToIV;
 
 namespace Vaultopia.Web.Controllers
 {
@@ -21,7 +23,7 @@ namespace Vaultopia.Web.Controllers
         {
 
             var startPage = DataFactory.Instance.GetPage(PageReference.StartPage);
-          
+
             //Get current contentarea for rendering
             var currentContentArea = ControllerContext.ParentActionViewContext.ViewData.Model as ContentArea;
 
@@ -29,20 +31,13 @@ namespace Vaultopia.Web.Controllers
             WebMedia media = null;
             if (currentPage.PartialImage != null)
             {
-                if (currentContentArea == startPage["WideTeasers"])
-                {
-                    media = _client.Load<WebMedia>(currentPage.PartialImage.Id)
-                        .ApplyEffects(currentPage.PartialImage.Effects)
-                        .Resize(237, 167, ResizeMode.ScaleToFill)
-                        .SingleOrDefault();
-                }
-                else
-                {
-                    media = _client.Load<WebMedia>(currentPage.PartialImage.Id)
-                        .ApplyEffects(currentPage.PartialImage.Effects)
-                        .Resize(218, 138, ResizeMode.ScaleToFill)
-                        .SingleOrDefault();
-                }
+                var propertyMediaSettings = currentContentArea == startPage["WideTeasers"]
+                    ? new PropertyMediaSettings { Width = 237, Height = 167, ResizeMode = ResizeMode.ScaleToFill }
+                    : new PropertyMediaSettings { Width = 218, Height = 138, ResizeMode = ResizeMode.ScaleToFill };
+
+                media = _client.Load<WebMedia>(currentPage.PartialImage, propertyMediaSettings)
+                    .UsedOn(currentPage, nameof(currentPage.PartialImage))
+                    .SingleOrDefault();
             }
 
             var viewModel = new NewsViewModel<NewsPage>(currentPage)
@@ -54,7 +49,7 @@ namespace Vaultopia.Web.Controllers
 
         public NewsPartialController()
         {
-        _client = ClientFactory.GetSdkClient();
+            _client = ClientFactory.GetSdkClient();
         }
     }
 }

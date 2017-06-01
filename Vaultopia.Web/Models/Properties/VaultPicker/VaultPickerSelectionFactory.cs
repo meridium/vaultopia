@@ -25,9 +25,9 @@ namespace Vaultopia.Web.Models.Properties.VaultPicker {
             var vaultList = new List<SelectItem>();
 
             try {
-                IOrderedEnumerable<Vault> vaults = _client.Query<Vault>().ToList().OrderBy(v => v.Name);
+                var vaults = _client.Query<Vault>().ToList().OrderBy(v => v.Name);
 
-                foreach (Vault vault in vaults) {
+                foreach (var vault in vaults) {
                     vaultList.Add(new SelectItem {Text = vault.Name, Value = vault.Id});
                 }
             }

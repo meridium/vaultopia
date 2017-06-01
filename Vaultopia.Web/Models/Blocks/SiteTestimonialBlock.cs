@@ -2,9 +2,9 @@
 using EPiServer.Core;
 using EPiServer.DataAnnotations;
 using ImageVault.Client;
-using ImageVault.Client.Query;
 using ImageVault.Common.Data;
 using ImageVault.EPiServer;
+using Vaultopia.Web.ToIV;
 
 namespace Vaultopia.Web.Models.Blocks {
     [ContentType(DisplayName = "SiteTestimonialBlock", GUID = "ba4fa9b3-53cb-44e6-9f89-4b156da4c002", Description = "",
@@ -41,11 +41,13 @@ namespace Vaultopia.Web.Models.Blocks {
                 if (MediaReference == null) {
                     return string.Empty;
                 }
-                WebMedia media =
-                    _client.Load<WebMedia>(MediaReference.Id)
-                           .ApplyEffects(MediaReference.Effects)
-                           .Resize(132, 132, ResizeMode.ScaleToFill)
-                           .SingleOrDefault();
+                var propertyMediaSettings = new PropertyMediaSettings
+                {
+                    Width = 132,Height = 132,ResizeMode = ResizeMode.ScaleToFill
+                };
+                var media = _client.Load<WebMedia>(MediaReference,propertyMediaSettings)
+                    .UsedOn(nameof(SiteTestimonialBlock)+nameof(MediaReference))
+                    .SingleOrDefault();
                 return media == null ? string.Empty : media.Url;
             }
         }

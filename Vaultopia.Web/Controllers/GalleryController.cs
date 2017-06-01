@@ -18,6 +18,7 @@ using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 using Vaultopia.Web.Business.Media;
 using System.Web.Script.Serialization;
+using Vaultopia.Web.ToIV;
 
 namespace Vaultopia.Web.Controllers
 {
@@ -36,10 +37,11 @@ namespace Vaultopia.Web.Controllers
         {
 
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage);
-            var allImages = _client.Query<GalleryImage>().Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded);
+            var allImages = _client.Query<GalleryImage>()
+                .UsedOn(currentPage, nameof(currentPage.VaultPicker))
+                .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker)).OrderByDescending(m => m.DateAdded);
 
             if (category > 0)
-
             {
                 allImages = allImages.Where(m => m.Categories.Contains(category));
             }
@@ -178,13 +180,13 @@ namespace Vaultopia.Web.Controllers
         {
             var viewModel = new GalleryViewModel<GalleryPage>(currentPage)
             {
-                Images =
-                    _client.Query<GalleryImage>()
-                        .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
-                        .OrderByDescending(m => m.DateAdded)
-                        .Skip(skip * 32)
-                        .Take(33)
-                        .ToList()
+                Images = _client.Query<GalleryImage>()
+                    .UsedOn(currentPage, nameof(currentPage.VaultPicker))
+                    .Where(m => m.VaultId == int.Parse(currentPage.VaultPicker))
+                    .OrderByDescending(m => m.DateAdded)
+                    .Skip(skip * 32)
+                    .Take(33)
+                    .ToList()
             };
 
             return PartialView("_Images", viewModel);
@@ -208,10 +210,9 @@ namespace Vaultopia.Web.Controllers
         public ActionResult Save(UploadModel model)
         {
             //Why can't I load the mediaitem with the same id i just saved...?
-            var mediaItem =
-                _client.Load<MediaItem>(Int32.Parse(model.Id))
-                    .Include(x => x.Metadata.Where(md => md.DefinitionType == MetadataDefinitionTypes.User))
-                    .FirstOrDefault();
+            var mediaItem = _client.Load<MediaItem>(int.Parse(model.Id))
+                .Include(x => x.Metadata.Where(md => md.DefinitionType == MetadataDefinitionTypes.User))
+                .FirstOrDefault();
 
             if (mediaItem == null)
             {
@@ -224,7 +225,8 @@ namespace Vaultopia.Web.Controllers
 
             service.Save(new List<MediaItem> { mediaItem }, MediaServiceSaveOptions.MarkAsOrganized);
 
-            var image = _client.Load<GalleryImage>(mediaItem.Id).SingleOrDefault();
+            var image = _client.Load<GalleryImage>(mediaItem.Id)
+                .UsedOn("GallerySave").SingleOrDefault();
 
             if (image != null)
             {
@@ -279,7 +281,9 @@ namespace Vaultopia.Web.Controllers
                 Thread.Sleep(1000);
             }
 
-            var image = _client.Load<Image>(mediaItem.Id).Resize(222, 222, ResizeMode.ScaleToFill).SingleOrDefault();
+            var image = _client.Load<Image>(mediaItem.Id)
+                .UsedOn("GalleryUpload")
+                .Resize(222, 222, ResizeMode.ScaleToFill).SingleOrDefault();
 
             if (image != null)
             {
@@ -297,7 +301,7 @@ namespace Vaultopia.Web.Controllers
         /// <returns></returns>
         public ActionResult ShowMetaData(int imageId)
         {
-            var model = _client.Load<GalleryImage>(imageId).FirstOrDefault();
+            var model = _client.Load<GalleryImage>(imageId).UsedOn("GalleryShowMetaData").FirstOrDefault();
             return PartialView("_MetaData", model);
         }
 
