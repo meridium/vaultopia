@@ -98,7 +98,7 @@ namespace Vaultopia.Web.Controllers
 
             if (currentPage.SharedFile != null && Request.Url != null)
             {
-                var mediaShares = mediaShareService.FindShareByMediaItemId(currentPage.SharedFile.Id).ToList();
+                var mediaShares = mediaShareService.FindShareByMediaItemId(currentPage.SharedFile.Id)?.ToList()??new List<MediaShare>();
 
                 if (mediaShares.Any())
                 {

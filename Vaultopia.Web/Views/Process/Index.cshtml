@@ -6,7 +6,9 @@
     ViewBag.BodyClass = "process";
 }
 <div id="main">
-
+    <div style="margin: 0 auto; position: relative; max-width: 1000px">
+        @Html.PropertyFor(x => x.CurrentPage.ProcessMap, "ResponsiveProcessMap")
+    </div>
     <div class="wrap">
         <main>
 
@@ -16,7 +18,6 @@
                 @Html.PropertyFor(x => x.CurrentPage.Introduction)
             </p>
 
-            @Html.PropertyFor(x => x.CurrentPage.ProcessMap)
             <div id="primary">
                 @Html.PropertyFor(x => x.CurrentPage.MainBody)
             </div>
