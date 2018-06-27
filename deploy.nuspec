@@ -34,11 +34,5 @@
         <file src='Vaultopia.Web\connectionStrings.UAT.config' target='' />
 		<file src='Vaultopia.Web\connectionStrings.IV-Demo.config' target='' />
 		<file src='conformance-uris.txt' target='' />
-		<file src='packages\psake.4.2.0.1\tools\psake.psm1' target='' />
-        <file src='packages\Meridium.Psake.2.1.0\tools\PreDeploy.ps1' target='' />
-		<file src='packages\Meridium.Psake.2.1.0\tools\PostDeploy.ps1' target='' />
-        <file src='packages\Meridium.Psake.2.1.0\tools\default.ps1' target='' />
-        <file src='packages\Meridium.Psake.2.1.0\tools\funclib.ps1' target='' />
-		<file src='packages\Meridium.Psake.2.1.0\tools\edit-xml.ps1' target='' />
     </files>
 </package>
