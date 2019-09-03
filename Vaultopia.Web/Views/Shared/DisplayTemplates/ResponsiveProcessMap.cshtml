@@ -1,0 +1,28 @@
+﻿@using EPiServer.Editor
+@model ProcessMap.EPiServer.Common.ProcessMapDataType
+
+@*Make sure we only draw the placeholder if we are in edit mode*@
+<style type="text/css">
+    img[usemap] {
+        border: none;
+        height: auto;
+        max-width: 100%;
+        width: auto;
+        margin: auto;
+    }
+</style>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-3.1.1.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.rwdImageMaps.js")"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("img[usemap]").rwdImageMaps();
+    });
+</script>
+@{
+    var propertyIsEmpty = Model == null || string.IsNullOrEmpty(Model.Filename);
+}
+@if (propertyIsEmpty && PageEditing.PageIsInEditMode || !propertyIsEmpty)
+{
+    var x = Model ?? new ProcessMap.EPiServer.Common.ProcessMapDataType();
+    @Html.Raw(x.ToHtml())
+}

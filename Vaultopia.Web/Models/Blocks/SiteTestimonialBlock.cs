@@ -45,8 +45,7 @@ namespace Vaultopia.Web.Models.Blocks {
                 {
                     Width = 132,Height = 132,ResizeMode = ResizeMode.ScaleToFill
                 };
-                var media = _client.Load<WebMedia>(MediaReference,propertyMediaSettings)
-                    .UsedOn(nameof(SiteTestimonialBlock)+nameof(MediaReference))
+                var media = QueryableExtensions.UsedOn(_client.Load<WebMedia>(MediaReference,propertyMediaSettings), nameof(SiteTestimonialBlock)+nameof(MediaReference))
                     .SingleOrDefault();
                 return media == null ? string.Empty : media.Url;
             }

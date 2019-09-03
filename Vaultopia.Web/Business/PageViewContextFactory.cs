@@ -7,7 +7,6 @@ using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web.Routing;
 using ImageVault.Client;
-using ImageVault.Client.Query;
 using ImageVault.EPiServer;
 using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
@@ -51,8 +50,7 @@ namespace Vaultopia.Web.Business
 
                 foreach (MediaReference mediaReference in startPage.SiteInspiration.MediaList)
                 {
-                    var media = Client.Load<InspirationImage>(mediaReference.Id)
-                        .UsedOn(startPage,nameof(startPage.SiteInspiration.MediaList))
+                    var media = QueryableExtensions.UsedOn(Client.Load<InspirationImage>(mediaReference.Id), startPage,nameof(startPage.SiteInspiration.MediaList))
                         .SingleOrDefault();
                     if (media == null)
                     {

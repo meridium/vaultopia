@@ -6,7 +6,6 @@ using EPiServer.Framework.DataAnnotations;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc;
 using ImageVault.Client;
-using ImageVault.Client.Query;
 using ImageVault.Common.Data;
 using ImageVault.EPiServer;
 using Vaultopia.Web.Models.Blocks;
@@ -33,8 +32,7 @@ namespace Vaultopia.Web.Controllers
             {
                 Block = currentBlock,
                 Page = _repository.Get<PageData>(currentBlock.TeaserLink),
-                WebMedia = _client.Load<WebMedia>(currentBlock.TeaserImage, pms)
-                    .UsedOn(nameof(AsideTeaserBlock)+nameof(currentBlock.TeaserImage))
+                WebMedia = QueryableExtensions.UsedOn(_client.Load<WebMedia>(currentBlock.TeaserImage, pms), nameof(AsideTeaserBlock)+nameof(currentBlock.TeaserImage))
                     .SingleOrDefault()
             };
             return PartialView(model);

@@ -5,7 +5,6 @@ using EPiServer.Core;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.Framework.Web;
 using EPiServer.Web.Mvc;
-using ImageVault.Client.Query;
 using ImageVault.Common.Data;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
@@ -35,8 +34,7 @@ namespace Vaultopia.Web.Controllers
                     ? new PropertyMediaSettings { Width = 237, Height = 167, ResizeMode = ResizeMode.ScaleToFill }
                     : new PropertyMediaSettings { Width = 218, Height = 138, ResizeMode = ResizeMode.ScaleToFill };
 
-                media = _client.Load<WebMedia>(currentPage.PartialImage, propertyMediaSettings)
-                    .UsedOn(currentPage, nameof(currentPage.PartialImage))
+                media = QueryableExtensions.UsedOn(_client.Load<WebMedia>(currentPage.PartialImage, propertyMediaSettings), currentPage, nameof(currentPage.PartialImage))
                     .SingleOrDefault();
             }
 

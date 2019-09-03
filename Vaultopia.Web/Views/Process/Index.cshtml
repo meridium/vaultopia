@@ -6,7 +6,6 @@
     ViewBag.BodyClass = "process";
 }
 <div id="main">
-
     <div class="wrap">
         <main>
 
@@ -15,8 +14,14 @@
             <p class="introduction">
                 @Html.PropertyFor(x => x.CurrentPage.Introduction)
             </p>
+        </main>
+    </div>
+    <div style="margin: 0 auto; position: relative; max-width: 1000px">
+        @Html.PropertyFor(x => x.CurrentPage.ProcessMap, "ResponsiveProcessMap")
+    </div>
+    <div class="wrap">
+        <main>
 
-            @Html.PropertyFor(x => x.CurrentPage.ProcessMap)
             <div id="primary">
                 @Html.PropertyFor(x => x.CurrentPage.MainBody)
             </div>
@@ -25,28 +30,28 @@
 
                 @if (Model.CurrentPage.InfoDocuments != null && Model.CurrentPage.InfoDocuments.Any())
                 {<ul>
-                     <li><h2>Documents</h2></li>
+                    <li><h2>Documents</h2></li>
 
-                     @if (Model.FileList != null)
-                     {
-                         foreach (var file in Model.FileList)
-                         {
-                             <li>
-                                 <a href="@file.FileShareUrl">
-                                     <img src="@file.FileUrl" />
-                                     @file.FileName
-                                 </a>
-                             </li>
-                         }
-                     }
+                    @if (Model.FileList != null)
+                    {
+                        foreach (var file in Model.FileList)
+                        {
+                            <li>
+                                <a href="@file.FileShareUrl">
+                                    <img src="@file.FileUrl" />
+                                    @file.FileName
+                                </a>
+                            </li>
+                        }
+                    }
 
-                 </ul>
+                </ul>
                 }
             </div>
-             <aside>
-                    @Html.PropertyFor(x => x.CurrentPage.Teasers, new { Tag = "aside" })
-                </aside>
-         
+            <aside>
+                @Html.PropertyFor(x => x.CurrentPage.Teasers, new { Tag = "aside" })
+            </aside>
+
 
         </main>
 
