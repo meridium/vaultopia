@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Error opening ImageVault</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 32px;
+        }
+
+        header {
+            margin-top: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        header img {
+            display: inline-block;
+            width: 100px;
+            vertical-align: middle;
+        }
+
+        header h1 {
+            display: inline-block;
+            vertical-align: middle;
+            padding-left: 20px;
+        }
+
+        #main {
+            padding: 20px;
+        }
+
+        code {
+            font-family: 'Courier new', sans-serif;
+            font-size: 12px;
+            display: block;
+            padding: 5px;
+            background-color: #FAFCB0;
+            margin-bottom: 10px;
+        }
+
+        a:link, a:visited, a:hover, a:active {
+            text-decoration: none;
+            color: #2B529D;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <img src="vault_color.svg" alt="ImageVault logo"/>
+    <h1>Oops, something went wrong...</h1>
+</header>
+<div id="main">
+    <p>ImageVault failed to open, we are really sorry for the inconvenience. If the error remains, please contact your site administrator. Here are some details of the error and links to troubleshoot and fix the problem:</p>
+    <code id="errorMessage"></code>
+    <a href="http://www.imagevault.se/doc" target="_blank">ImageVault documentation</a><br />
+    <a href="https://meriworks.freshdesk.com/solution/categories/11000002874" target="_blank">Common solutions for the ImageVault TinyMCE plugin</a>
+</div>
+<script type="text/javascript">
+    var args = top.tinymce.activeEditor.windowManager.getParams();
+    document.getElementById("errorMessage").textContent = args.errorMessage;
+</script>
+</body>
+</html>

@@ -31,7 +31,7 @@ namespace Vaultopia.Web.Controllers
                 {
                     var slides = new List<Dictionary<string, string>>();
                     // Fetch the current page
-                    var pageRouteHelper = ServiceLocator.Current.GetInstance<PageRouteHelper>();
+                    var pageRouteHelper = ServiceLocator.Current.GetInstance<IPageRouteHelper>();
                     var currentPage = pageRouteHelper.Page as StartPage;
                     if (currentPage?.PushMediaList != null && currentPage.PushMediaList.Count > 0)
                     {

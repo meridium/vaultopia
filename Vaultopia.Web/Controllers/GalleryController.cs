@@ -17,8 +17,8 @@ using Vaultopia.Web.Models.Formats;
 using Vaultopia.Web.Models.Pages;
 using Vaultopia.Web.Models.ViewModels;
 using Vaultopia.Web.Business.Media;
-using System.Web.Script.Serialization;
 using Vaultopia.Web.ToIV;
+using System.Web.Script.Serialization;
 
 namespace Vaultopia.Web.Controllers
 {
@@ -248,7 +248,7 @@ namespace Vaultopia.Web.Controllers
         {
 
             // Fetch the current page
-            var pageRouteHelper = ServiceLocator.Current.GetInstance<PageRouteHelper>();
+            var pageRouteHelper = ServiceLocator.Current.GetInstance<IPageRouteHelper>();
             var currentPage = pageRouteHelper.Page as GalleryPage;
 
             // If the current page can not be found (no VaultPicker found) use the first available vault

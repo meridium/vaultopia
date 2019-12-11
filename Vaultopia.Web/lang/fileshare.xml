@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<languages>
+  <language name="English" id="en">
+    <episerver>
+      <cms>
+        <components>
+          <fileshare>
+            <name>Fileshares</name>
+            <command>
+              <download>Download</download>
+              <label>Upload files</label>
+              <openineditor>Open in Image Editor</openineditor>
+            </command>
+            <description>Fileshare file management</description>
+            <dropareatitle>Upload files by dropping them here or click to browse</dropareatitle>
+            <linktocreateitem>Upload Files</linktocreateitem>
+            <nocontent>This folder does not contain any media</nocontent>
+            <title>Fileshares</title>
+            <translationfailedmessage>Failed to translate the content "{0}". You might not have access rights for this action.</translationfailedmessage>
+            <validation>
+              <accessdenied>Access denied</accessdenied>
+              <fileexists>The file "{0}" already exists</fileexists>
+              <missingfileextension>The file "{0}" has no file extension</missingfileextension>
+              <nocontenttype>There is no content type associated with the "{0}" file extension.</nocontenttype>
+              <nocreatepermission>You do not have access rights to upload this type of file.</nocreatepermission>
+            </validation>
+          </fileshare>
+        </components>
+      </cms>
+    </episerver>
+  </language>
+  <language name="Svenska" id="sv">
+    <episerver>
+      <cms>
+        <components>
+          <fileshare>
+            <name>Delningar</name>
+            <command>
+              <download>Ladda ner</download>
+              <label>Ladda upp filer</label>
+              <openineditor>Öppna i bildredigerare</openineditor>
+            </command>
+            <description>Underhåll av delning</description>
+            <dropareatitle>Ladda upp filer genom att släppa dem här eller klicka för att välja fil</dropareatitle>
+            <linktocreateitem>Ladda upp filer</linktocreateitem>
+            <nocontent>Katalogen innehåller inga filer</nocontent>
+            <title>Delningar</title>
+            <translationfailedmessage>Misslyckades att översätta innehåll "{0}". Du kanske saknar rättigheter för den här funktionen.</translationfailedmessage>
+            <validation>
+              <accessdenied>Nekad åtkomst</accessdenied>
+              <fileexists>Filen "{0}" existerar redan</fileexists>
+              <missingfileextension>Filen "{0}" saknar filändelse</missingfileextension>
+              <nocontenttype>Det finns ingen mediatyp förknippade med filändelsen "{0}".</nocontenttype>
+              <nocreatepermission>Du saknar rättigheter att ladda upp den här typen av fil.</nocreatepermission>
+            </validation>
+          </fileshare>
+        </components>
+      </cms>
+    </episerver>
+  </language>
+</languages>

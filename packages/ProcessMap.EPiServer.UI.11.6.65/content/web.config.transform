@@ -1,0 +1,17 @@
+﻿<configuration>
+  <appSettings>
+    <!--
+      Enables / disables the use of content providers in ProcessMap:
+      <add key="processmap:UseContentProviders" value="true" />
+    -->
+  </appSettings>
+  <episerver.shell>
+    <protectedModules>
+      <add name="ProcessMap.EPiServer.UI">
+        <assemblies>
+          <add assembly="ProcessMap.EPiServer.UI"/>
+        </assemblies>
+      </add>
+    </protectedModules>
+  </episerver.shell>
+</configuration>
