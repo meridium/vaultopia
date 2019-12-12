@@ -165,17 +165,14 @@
       <HintPath>..\packages\ImageVault.Common.Lib.StructureMap.5.5.183\lib\net45\ImageVault.Common.Lib.StructureMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ImageVault.EPiServer, Version=11.7.44.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.EPiServer.11.7.44\lib\net461\ImageVault.EPiServer.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="ImageVault.EPiServer, Version=11.7.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.EPiServer.11.7.45\lib\net461\ImageVault.EPiServer.dll</HintPath>
     </Reference>
-    <Reference Include="ImageVault.EPiServer.Common, Version=5.7.44.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.EPiServer.11.7.44\lib\net461\ImageVault.EPiServer.Common.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="ImageVault.EPiServer.Common, Version=5.7.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.EPiServer.11.7.45\lib\net461\ImageVault.EPiServer.Common.dll</HintPath>
     </Reference>
-    <Reference Include="ImageVault.EPiServer.UI, Version=11.7.44.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ImageVault.EPiServer.UI.11.7.44\lib\net461\ImageVault.EPiServer.UI.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="ImageVault.EPiServer.UI, Version=11.7.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageVault.EPiServer.UI.11.7.45\lib\net461\ImageVault.EPiServer.UI.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
@@ -719,14 +716,14 @@
     <Content Include="modules\_protected\EPiServer.Packaging.UI\web.config" />
     <Content Include="modules\_protected\EPiServer.Packaging.UI\EPiServer.Packaging.UI.zip" />
     <Content Include="App_Data\GeoLiteCity.dat" />
+    <Content Include="modules\_protected\ProcessMap.EPiServer.UI\web.config" />
+    <Content Include="modules\_protected\ProcessMap.EPiServer.UI\ProcessMap.EPiServer.UI.zip" />
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\web.config" />
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\readme.md" />
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\MediaReferenceList`1.cshtml" />
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\Views\Shared\DisplayTemplates\MediaReference.cshtml" />
     <Content Include="modules\_protected\ImageVault.EPiServer.UI\ImageVault.EPiServer.UI.zip" />
     <Content Include="ImageVault.EPiServer.UI.readme.markdown" />
-    <Content Include="modules\_protected\ProcessMap.EPiServer.UI\web.config" />
-    <Content Include="modules\_protected\ProcessMap.EPiServer.UI\ProcessMap.EPiServer.UI.zip" />
     <None Include="packages.config" />
     <Content Include="Plugins\ProcessMap\web.config" />
     <Content Include="Plugins\ProcessMap\Client\ProcessMap3.application" />
